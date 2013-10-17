@@ -1,0 +1,313 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Cassandra, .NET, Connection Pools and TCP/IP Port Exhaustion - Douglas Tarr</title>
+  <meta name="author" content="Douglas Tarr">
+
+  
+  <meta name="description" content="The Cassandra Thrift client does not contain any connection pools. &nbsp;Since it connects via TCP/IP, you will inevitably run out of sockets if you &hellip;" />
+  
+  <meta name="keywords" content="" />
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://douglastarr.com/cassandra-net-connection-pools-and-tcp-ip-port-exhaustion">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Douglas Tarr" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script>(function(G,o,O,g,l){G.GoogleAnalyticsObject=O;G[O]||(G[O]=function(){(G[O].q=G[O].q||[]).push(arguments)});G[O].l=+new Date;g=o.createElement('script'),l=o.scripts[0];g.src='//www.google-analytics.com/analytics.js';l.parentNode.insertBefore(g,l)}(this,document,'ga'));ga('create','UA-18064705-1');ga('send','pageview')</script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Douglas Tarr</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:douglastarr.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/projects.html">Projects</a></li>
+  <li><a href="/contact.html">Contact</a></li>
+  <li><a href="/resume.html">Resume</a></li>
+  <li><a href="/archives">Blog Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Cassandra, .NET, Connection Pools and TCP/IP Port Exhaustion</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-19T00:00:00-07:00" pubdate data-updated="true">Aug 19<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div>The Cassandra Thrift client does not contain any connection pools. &nbsp;Since it connects via TCP/IP, you will inevitably run out of sockets if you call the Cassandra often.</div>
+<p />
+<div>The error you will see (at least in .NET) is:</div>
+<p />
+<div>&#8220;Only one usage of each socket address (protocol/network address/port) is normally permitted&#8221;.</div>
+<p />
+<div>Here&#8217;s some code that will cause this error:</div>
+<div><script src="https://gist.github.com/538029.js"></script></div>
+<p />
+<div>If you run netstat -n after you run this code, you&#8217;ll see this:</div>
+<div><script src="https://gist.github.com/538032.js"></script></div>
+<p />
+<div>TCP/IP ports do not close right away. &nbsp;<a href="http://msdn.microsoft.com/en-us/library/aa560610(BTS.20).aspx">Instead, they go into a TIME_WAIT state</a>&nbsp;for 240 seconds. &nbsp;</div>
+<p />
+<div>So, in order to use Cassandra in any high volume application, you&#8217;ll have to implement your own connection pool.</div>
+<p />
+<div>The three .NET cassandra clients seem to implement connection pooling.&nbsp;</div>
+<div>&nbsp;&nbsp;<a href=" <a href="http://aquiles.codeplex.com/SourceControl/changeset/view/64644#1232463">http://aquiles.codeplex.com/SourceControl/changeset/view/64644#1232463</a>&#8220;>Aquiles Connection Pool Code</a></div>
+<p />
+<div>&nbsp;&nbsp;<a href="http://github.com/mattvv/hectorsharp/blob/master/Service/CassandraClientPoolFactory.cs">Hector Sharp Connection Pool Code</a>&nbsp;</div>
+<div>&nbsp;&nbsp; <a href="http://aquiles.codeplex.com/Thread/View.aspx?ThreadId=217616">This comment </a>seems to imply that the connection pooling code in Hector Sharp is problematic. &nbsp;After briefly looking at it, it made me nervous. &nbsp;Anyone have any experience with it?</div>
+<p />
+<div>&nbsp;&nbsp;<a href="http://github.com/managedfusion/fluentcassandra/blob/master/FluentCassandra/Connection/PooledConnectionProvider.cs">Fluent Cassandra Connection Pool Code</a>&nbsp;(requires .NET 4.0)</div>
+<p />
+<div>Alternatively, you can implement your own connection pooling mechanism.</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Douglas Tarr</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-19T00:00:00-07:00" pubdate data-updated="true">Aug 19<span>th</span>, 2010</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://douglastarr.com/cassandra-net-connection-pools-and-tcp-ip-port-exhaustion/" data-via="tarr11" data-counturl="http://douglastarr.com/cassandra-net-connection-pools-and-tcp-ip-port-exhaustion/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/a-cassandra-connection-pool-for-net/" title="Previous Post: A Cassandra Connection Pool for .NET">&laquo; A Cassandra Connection Pool for .NET</a>
+      
+      
+        <a class="basic-alignment right" href="/linkedin-social-connector-doesn-t-work-with-64-bit-office/" title="Next Post: LinkedIn Social Connector doesn't work with 64 bit office">LinkedIn Social Connector doesn't work with 64 bit office &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+        <div><img src="/images/profile.jpg"></div>
+        <p>I'm a software developer who lives in Mill Valley, California, with my wife and 2 children.</p>
+	<p>My wife J'Amy is a talented fashion designer who has launched a line of <a href="http://jamytarr.com">Women's Coats and Jackets</a>.  You should check it out.</p>
+
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/Teaching-Coding-to-4th-graders/">Teaching Coding to 4th Graders</a>
+      </li>
+    
+      <li class="post">
+        <a href="/Ideas-are-a-virus-but-not-in-a-good-way/">Your idea is a virus - but not in a good way</a>
+      </li>
+    
+      <li class="post">
+        <a href="/A-simple-way-to-save-time-at-work/">A simple way to save time at work</a>
+      </li>
+    
+      <li class="post">
+        <a href="/coding-vs-writing/">Coding vs Writing</a>
+      </li>
+    
+      <li class="post">
+        <a href="/chromecast-screensaver/">Chromecast Screensaver</a>
+      </li>
+    
+  </ul>
+</section>
+<a class="twitter-timeline" href="https://twitter.com/tarr11" data-widget-id="389457673361428481">Tweets by @tarr11</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/tarr11">@tarr11</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'tarr11',
+            count: 1,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+<!-- AddThis Smart Layers BEGIN -->
+<!-- Go to http://www.addthis.com/get/smart-layers to customize -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5098ae81598024c4"></script>
+<script type="text/javascript">
+  addthis.layers({
+    'theme' : 'transparent',
+    'share' : {
+      'position' : 'left',
+      'numPreferredServices' : 5
+    }, 
+    'follow' : {
+      'services' : [
+        {'service': 'twitter', 'id': 'tarr11'}
+      ]
+    },  
+    'whatsnext' : {},  
+    'recommended' : {
+      'title': 'Recommended for you:'
+    } 
+  });
+</script>
+<!-- AddThis Smart Layers END -->
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Douglas Tarr -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

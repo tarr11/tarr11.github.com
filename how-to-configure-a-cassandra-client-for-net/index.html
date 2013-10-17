@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Douglas Tarr</title>
+  <title>How to configure a Cassandra client for .NET - Douglas Tarr</title>
   <meta name="author" content="Douglas Tarr">
 
   
-  <meta name="description" content="This is the personal website of Douglas Tarr. I work as a software developer based in Mill Valley, California. I&#8217;m available to chat about &hellip;" />
+  <meta name="description" content="Cassandra uses Apache Thrift to generate client proxies in various languages.  The downside of this is it is super linux based, and if you are like &hellip;" />
   
   <meta name="keywords" content="" />
 
@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://douglastarr.com">
+  <link rel="canonical" href="http://douglastarr.com/how-to-configure-a-cassandra-client-for-net">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Douglas Tarr" type="application/atom+xml">
@@ -67,34 +67,94 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
-    <article>
-    <p>This is the personal website of Douglas Tarr.</p>
-    <p>I work as a software developer based in Mill Valley, California.</p>
-    <p>I&#8217;m available to chat about contract developer or dev manager positions near San Francisco.</p>
-    <p><a href="/contact.html">Contact me</a></p>
-
-    <h2>Latest Blog Entry</h2>
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
     
-    <h3><a href="/Teaching-Coding-to-4th-graders/">Teaching Coding to 4th Graders</a></h3>
+      <h1 class="entry-title">How to Configure a Cassandra Client for .NET</h1>
+    
+    
+      <p class="meta">
+        
 
 
-    <h2>Active Projects</h2>
-    <h3><a href="https://seedequity.com">SeedEquity</a></h3>
-    <p>A stealth startup involving seeds and equity.  coming soon.</p>
-      <h3><a href="/mvcoders.html">MVCoders</a></h3>
-    <p>A coding class I am teaching for my 4th grade son and a few of his classmates</p>
 
-    <p><a href="/projects.html">All my projects</a></p>
-    </article>
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-18T00:00:00-07:00" pubdate data-updated="true">Aug 18<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content">Cassandra uses <a href="http://incubator.apache.org/thrift/">Apache Thrift</a> to generate client proxies in various languages.  The downside of this is it is super linux based, and if you are like me and live on Windows, getting this to work is a challenge.  If you want to try this, here&#39;s some instructions on how to <a href="http://coderjournal.com/2010/03/cassandra-jump-start-for-the-windows-developer/">generate your own C# thrift client for Cassandra</a>.  I tried to do this from Cygwin and failed.  :(<p /><div>I haven&#39;t actually been able to generate a Thrift client for C# directly.  However, <a href="http://wiki.apache.org/cassandra/ClientOptions">there are some pre-built clients for Cassandra out there on the web you can already use</a>.  You will need to regenerate them if you switch versions of Cassandra.</div> <p /><div>I started with <a href="http://aquiles.codeplex.com/wikipage?title=Aquiles.Configuration&amp;referringTitle=Home">Aquiles</a> which wraps lots of the thrift functions in their own class library.  After looking at what Aquiles was doing, I wasn&#39;t happy; it was hiding a lot of stuff in Thrift that is available, and using the underlying thrift client isn&#39;t that hard.  It will also teach you about how Cassandra works if you use the Thrift client.   </div> <p /><div>Fortunately, part of the Aquiles client download contains a compiled Thrift client.  You can just reference that in your project and that should be enough.  </div><p /><div>There are two dlls you need to reference:</div> <div> Apache.Cassandra.064.dll</div><div> Thrift.dll</div><p /><div>The 064 is the version of Cassandra you are working with.</div><p /><div>Next I&#39;ll reference some articles on how to setup a local instance of Cassandra running on your own machine.</div>
 </div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Douglas Tarr</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-18T00:00:00-07:00" pubdate data-updated="true">Aug 18<span>th</span>, 2010</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://douglastarr.com/how-to-configure-a-cassandra-client-for-net/" data-via="tarr11" data-counturl="http://douglastarr.com/how-to-configure-a-cassandra-client-for-net/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/cassandra-and-net/" title="Previous Post: Cassandra and .NET">&laquo; Cassandra and .NET</a>
+      
+      
+        <a class="basic-alignment right" href="/how-to-setup-a-cassandra-server-on-windows/" title="Next Post: How to setup a cassandra server on windows">How to setup a cassandra server on windows &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
 <aside class="sidebar">
   
     <section>
   <h1>About Me</h1>
         <div><img src="/images/profile.jpg"></div>
-        <p>I&#8217;m a software developer who lives in Mill Valley, California, with my wife and 2 children.</p>
-	<p>My wife J&#8217;Amy is a talented fashion designer who has launched a line of <a href="http://jamytarr.com">Women&#8217;s Coats and Jackets</a>.  You should check it out.</p>
+        <p>I'm a software developer who lives in Mill Valley, California, with my wife and 2 children.</p>
+	<p>My wife J'Amy is a talented fashion designer who has launched a line of <a href="http://jamytarr.com">Women's Coats and Jackets</a>.  You should check it out.</p>
 
 </section>
 <section>
@@ -129,7 +189,7 @@
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
   <a href="https://github.com/tarr11">@tarr11</a> on GitHub
@@ -161,6 +221,30 @@
 
   
 </aside>
+
+<!-- AddThis Smart Layers BEGIN -->
+<!-- Go to http://www.addthis.com/get/smart-layers to customize -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5098ae81598024c4"></script>
+<script type="text/javascript">
+  addthis.layers({
+    'theme' : 'transparent',
+    'share' : {
+      'position' : 'left',
+      'numPreferredServices' : 5
+    }, 
+    'follow' : {
+      'services' : [
+        {'service': 'twitter', 'id': 'tarr11'}
+      ]
+    },  
+    'whatsnext' : {},  
+    'recommended' : {
+      'title': 'Recommended for you:'
+    } 
+  });
+</script>
+<!-- AddThis Smart Layers END -->
+
 
     </div>
   </div>

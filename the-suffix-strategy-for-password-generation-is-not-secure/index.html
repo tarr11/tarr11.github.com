@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Douglas Tarr</title>
+  <title>The suffix strategy for password generation is not secure - Douglas Tarr</title>
   <meta name="author" content="Douglas Tarr">
 
   
-  <meta name="description" content="This is the personal website of Douglas Tarr. I work as a software developer based in Mill Valley, California. I&#8217;m available to chat about &hellip;" />
+  <meta name="description" content="One of the most common password strategies is to take some random, relatively secure, long base password, and then re-use it over and over by &hellip;" />
   
   <meta name="keywords" content="" />
 
@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://douglastarr.com">
+  <link rel="canonical" href="http://douglastarr.com/the-suffix-strategy-for-password-generation-is-not-secure">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Douglas Tarr" type="application/atom+xml">
@@ -67,34 +67,94 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
-    <article>
-    <p>This is the personal website of Douglas Tarr.</p>
-    <p>I work as a software developer based in Mill Valley, California.</p>
-    <p>I&#8217;m available to chat about contract developer or dev manager positions near San Francisco.</p>
-    <p><a href="/contact.html">Contact me</a></p>
-
-    <h2>Latest Blog Entry</h2>
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
     
-    <h3><a href="/Teaching-Coding-to-4th-graders/">Teaching Coding to 4th Graders</a></h3>
+      <h1 class="entry-title">The Suffix Strategy for Password Generation Is Not Secure</h1>
+    
+    
+      <p class="meta">
+        
 
 
-    <h2>Active Projects</h2>
-    <h3><a href="https://seedequity.com">SeedEquity</a></h3>
-    <p>A stealth startup involving seeds and equity.  coming soon.</p>
-      <h3><a href="/mvcoders.html">MVCoders</a></h3>
-    <p>A coding class I am teaching for my 4th grade son and a few of his classmates</p>
 
-    <p><a href="/projects.html">All my projects</a></p>
-    </article>
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-05T00:00:00-07:00" pubdate data-updated="true">Apr 5<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content">One of the most common password strategies is to take some random, relatively secure, long base password, and then re-use it over and over by appending an easily recallable suffix to that string (usually related to the name of the domain of the password)<p /><div>Ie.., let&#39;s say you chose <b>jkfd$k#d251mf</b> as your base password.  You dutifully memorize this password.  Then when you go to various websites, you append an easily recognizable suffix to that password:</div> <p /><div><b>jkfd$k#d251mf</b>facebook</div><div><div><b>jkfd$k#d251mf</b>google</div></div><div><div><div><b>jkfd$k#d251mf</b>twitter</div></div></div><p /><div>The problem with this is that let&#39;s say you visit <a href="http://badguy.com">badguy.com</a> who is a criminal looking to harvest passwords.</div> <p /><div>So you enter your password:</div><div><b>jkfd$k#d251mf</b>badguy</div><p /><div>Now, <a href="http://badguy.com">badguy.com</a> knows this is pretty common, so he can just run a regex like so: (.*)badguy and find out your base password.  At that point, he&#39;s got access to any well-known website where you&#39;ve used that base password.</div> <p /><div>So, next, you say, well, I have two base passwords, one for websites I really trust (say, google, your bank, etc) and another for random sites I&#39;ve never heard of and don&#39;t care if they get cracked.</div> <p /><div>The problem now is that on the supposedly secure sites, you are relying on any one of them to secure all of them.  So a bad guy just picks the least secure of your most secure sites, and then he&#39;s got access to all of your really secure information.</div> <p /><div>The idea of simplifying your life with fewer passwords is a fallacy - once you have to recall more than four different passwords, you might as well have a strategy that allows you to call hundreds. <p /></div>
 </div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Douglas Tarr</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-05T00:00:00-07:00" pubdate data-updated="true">Apr 5<span>th</span>, 2011</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://douglastarr.com/the-suffix-strategy-for-password-generation-is-not-secure/" data-via="tarr11" data-counturl="http://douglastarr.com/the-suffix-strategy-for-password-generation-is-not-secure/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/i-challenge-you-not-to-click-through-this-whole-thing/" title="Previous Post: I challenge you not to click through this whole thing">&laquo; I challenge you not to click through this whole thing</a>
+      
+      
+        <a class="basic-alignment right" href="/thank-you-payscale/" title="Next Post: Thank You, PayScale">Thank You, PayScale &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
 <aside class="sidebar">
   
     <section>
   <h1>About Me</h1>
         <div><img src="/images/profile.jpg"></div>
-        <p>I&#8217;m a software developer who lives in Mill Valley, California, with my wife and 2 children.</p>
-	<p>My wife J&#8217;Amy is a talented fashion designer who has launched a line of <a href="http://jamytarr.com">Women&#8217;s Coats and Jackets</a>.  You should check it out.</p>
+        <p>I'm a software developer who lives in Mill Valley, California, with my wife and 2 children.</p>
+	<p>My wife J'Amy is a talented fashion designer who has launched a line of <a href="http://jamytarr.com">Women's Coats and Jackets</a>.  You should check it out.</p>
 
 </section>
 <section>
@@ -129,7 +189,7 @@
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
   <a href="https://github.com/tarr11">@tarr11</a> on GitHub
@@ -161,6 +221,30 @@
 
   
 </aside>
+
+<!-- AddThis Smart Layers BEGIN -->
+<!-- Go to http://www.addthis.com/get/smart-layers to customize -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5098ae81598024c4"></script>
+<script type="text/javascript">
+  addthis.layers({
+    'theme' : 'transparent',
+    'share' : {
+      'position' : 'left',
+      'numPreferredServices' : 5
+    }, 
+    'follow' : {
+      'services' : [
+        {'service': 'twitter', 'id': 'tarr11'}
+      ]
+    },  
+    'whatsnext' : {},  
+    'recommended' : {
+      'title': 'Recommended for you:'
+    } 
+  });
+</script>
+<!-- AddThis Smart Layers END -->
+
 
     </div>
   </div>

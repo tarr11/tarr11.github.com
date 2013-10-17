@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Douglas Tarr]]></title>
+  <link href="http://douglastarr.com/atom.xml" rel="self"/>
+  <link href="http://douglastarr.com/"/>
+  <updated>2013-10-17T09:50:15-07:00</updated>
+  <id>http://douglastarr.com/</id>
+  <author>
+    <name><![CDATA[Douglas Tarr]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Teaching Coding to 4th Graders]]></title>
+    <link href="http://douglastarr.com/Teaching-Coding-to-4th-graders/"/>
+    <updated>2013-10-12T00:00:00-07:00</updated>
+    <id>http://douglastarr.com/Teaching-Coding-to-4th-graders</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve decided to teach coding to some 4th graders after school, including my son and about 7 other kids.</p>
+
+<p>My background is as a software developer, but teaching is new to me.</p>
+
+<p>So, I&rsquo;m planning on writing some blog entries to keep notes on what I&rsquo;ve learned and how I&rsquo;m structuring the class.  You can follow along about it using the <a href="http://douglastarr.com/categories/mvcoders">mvcoders</a> tag in my blog.</p>
+
+<p>My son really enjoys Minecraft, to the point where he religiously watches every &ldquo;How-To&rdquo; video on YouTube about fun ways to use Redstone and Command Blocks to do neat things.</p>
+
+<p>I really want to encourage kids to have fun programming.  It is so much different now and there are a ton of resources to use that don&rsquo;t require kids to get immersed in the guts of the OS to learn some basic coding.</p>
+
+<p>My challenge has been to find a good curriculum to teach, and figure out how to best structure for the class so that all of the kids have a great experience.</p>
+
+<p>Resources I&rsquo;m looking at using:</p>
+
+<ul>
+<li><a href="http://scratch.mit.edu/">Scratch</a> &ndash; This is a visual programming language with a very active community, centered around making games.   There&rsquo;s a lot of resources to help make the class.</li>
+<li><a href="https://www.khanacademy.org/cs">Khan Academy CS</a> &ndash; There is a great new environment in Khan Academy that helps kids learn javascript.  My sense is this would be good for some of the advanced kids.</li>
+<li><a href="http://www.codecademy.com/">CodeAcademy</a> &ndash; Similar to Khan Academy, this site helps people learn javascript (and other languages) in a step by step environment.</li>
+</ul>
+
+
+<p>I&rsquo;ve also been intrigued by using MineCraft directly in the class.  You can do a lot of interesting programming and logic exercises simply by using Redstone and Command Blocks.  That said, there&rsquo;s no real guard rails here and I&rsquo;m pretty sure as soon as I let the kids go play MineCraft, they&rsquo;d go off and do whatever they wanted.</p>
+
+<p>There&rsquo;s an open source / javascript version of MineCraft called <a href="http://voxeljs.com/">Voxel.js</a>.  I&rsquo;ve tried this with my son, and though it was cool, I am not sure it&rsquo;ll work for a class.  It looks very similar to Minecraft but doesn&rsquo;t have all the features.  I am a bit worried that they will be disappointed by this.  I like it because it will get them to learn a greater part of the coding toolchain (node.js, text editors, html5, javascript, etc) whereas tools like Scratch hide all of that.  I might introduce it later in the cycle if the kids find Scratch too limiting.  Similarly, there are a lot of open source javascript frameworks for gaming.  I haven&rsquo;t looked too closely into these so I&rsquo;m not sure that they&rsquo;ll work.</p>
+
+<p>I&rsquo;m also looking into &ldquo;physical&rdquo; devices such as Arduino, Lego Mindstorm, or Raspberry Pi to introduce hardware concepts and give them something real to play with.   This might be too ambitious for this class (which is only one day a week for 1.5 hours after school) so perhaps I will do that in another class.</p>
+
+<p>If you know of any other resources (around curriculum, tools, or generally understanding the mindset of a 4th grader), please share in the comments!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Your idea is a virus - but not in a good way]]></title>
+    <link href="http://douglastarr.com/Ideas-are-a-virus-but-not-in-a-good-way/"/>
+    <updated>2013-10-08T00:00:00-07:00</updated>
+    <id>http://douglastarr.com/Ideas-are-a-virus-but-not-in-a-good-way</id>
+    <content type="html"><![CDATA[<p>As I&rsquo;ve gone from one startup to another, I&rsquo;ve tended to think of ideas as &ldquo;viral&rdquo;.</p>
+
+<p>What I thought that meant was that they spread from one person to the next.</p>
+
+<p>I&rsquo;ve come to understand that ideas are more than just a meme that spreads from person to person, destined to provide fame and riches.</p>
+
+<p>Ideas can be destructive, and foolish, and completely irrational.</p>
+
+<p>Like the flu, once an idea takes hold, it can be hard to get rid of.</p>
+
+<p>You get a fever, you can&rsquo;t see clearly, and you often don&rsquo;t make sense to others.  You might even be hallucinating.</p>
+
+<p>It&rsquo;s really a kind of sickness.  Many founders will often describe themselves as kind of insane, or ill, or something.</p>
+
+<p>They will hallucinate that they are changing the world.</p>
+
+<p>So, be careful about letting your startup idea consume you completely.  You&rsquo;ll get sick and distracted and the fever may not break for months or years.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A simple way to save time at work]]></title>
+    <link href="http://douglastarr.com/A-simple-way-to-save-time-at-work/"/>
+    <updated>2013-10-03T00:00:00-07:00</updated>
+    <id>http://douglastarr.com/A-simple-way-to-save-time-at-work</id>
+    <content type="html"><![CDATA[<p>It&rsquo;s a good idea to create a list of questions and answers that people commonly ask you at work.</p>
+
+<p>This will save you time and some grief from constant interruption.</p>
+
+<ul>
+<li>Create a page or document somewhere (any tool will do), and call it &ldquo;My FAQ&rdquo;.  (Obviously replace &ldquo;My&rdquo; with our name)</li>
+<li>Add it to your email signature as a link, and whatever other social tools people can discover you by (your GChat handle, etc)</li>
+<li>When new questions come in from people (from any channel), make sure to write them down in your FAQ first.  Then, instead of answering them directly, send a link to the appropriate FAQ article.</li>
+<li>Put a link on your FAQ to prompt people to say &ldquo;Thanks&rdquo;.  This will encourage you to keep up your FAQ.</li>
+</ul>
+
+
+<p>Once you&rsquo;ve started to do this, you&rsquo;ll get in the habit and find that the time you save makes up for time spent adding to your FAQ.</p>
+
+<p>What tricks do you use to save time at work?</p>
+
+<p>PS- If you would like a tool that can help you build your own personal FAQs at work, you can try <a href="https://corpqna.com">CorpQNA</a>.  It will create and maintain your FAQ for you, let you share it, and do a lot of Q&amp;A stuff that you might expect if your team really gets into it.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Coding vs Writing]]></title>
+    <link href="http://douglastarr.com/coding-vs-writing/"/>
+    <updated>2013-09-16T00:00:00-07:00</updated>
+    <id>http://douglastarr.com/coding-vs-writing</id>
+    <content type="html"><![CDATA[<p>As someone who sits in front of a computer all day, I should be writing more on my blog.</p>
+
+<p>When I am coding, I am in a comfortable environment (Visual Studio) and workstation is completely setup for writing</p>
+
+<p>I have always struggled with a good environment for writing.  Currently, I switch between vim and Sublime Text, but I don&#8217;t really find either of those to be effective, since they are lacking tools to help me lookup things and integrate them into my workflow.</p>
+
+<p>It&#8217;s pretty clear that if I am going to write more, it needs to be as easy as coding.</p>
+
+<p>What do you do to make writing easier?</p>
+
+<p>Update! I just discovered <a href ="http://prose.io">Prose.io</a> which is a nice little content editor for github pages.  Perfect!</p>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Chromecast Screensaver]]></title>
+    <link href="http://douglastarr.com/chromecast-screensaver/"/>
+    <updated>2013-08-23T00:00:00-07:00</updated>
+    <id>http://douglastarr.com/chromecast-screensaver</id>
+    <content type="html"><![CDATA[<p>I recently got a Google Chromecast, and was looking for a way to push custom images as a screensaver for it.</p>
+
+<p>Though there&#8217;s no obvious &#8220;set it and forget it&#8221; that runs headless, you can easily run the built-in
+<a href="https://clients3.google.com/cast/chromecast/home">Chromecast wallpapers</a> in FullScreen mode.</p>
+
+<p>Just click to that page, use the Chromecast extension, and type F11 to put it in full screen mode. </p>
+
+<p><a href="http://www.techhive.com/article/2045755/7-browser-tricks-to-get-the-most-out-of-your-chromecast.html">Hat Tip - TechHive.com</a></p>
+
+<p>If you discover any Chromecast Screensaver apps, please add them in the comments!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rails vs CSharp]]></title>
+    <link href="http://douglastarr.com/rails-vs-csharp/"/>
+    <updated>2013-07-14T00:00:00-07:00</updated>
+    <id>http://douglastarr.com/rails-vs-csharp</id>
+    <content type="html"><![CDATA[<p>In which I write a few thoughts on Rails v CSharp</p>
+<p>I originally published this on Seattle Tech Startups mailing list</p>
+<ul>
+<li>The market in Seattle is distorted with a lot more startup oriented .NET devs than you will see in just about any other city.</li>
+<li>When I tell people that I work on .NET startups in SF, and they are Rails devs, they look at me like I&#8217;m crazy and building my app in COBOL.NET.  They still think ASP.NET == WebForms.</li>
+<li>BizSpark is offering effectively 3 years of free hosting to startups.  This is changing the market and getting more new companies to try out .NET</li>
+<li>The dynamic features of the CLR / .NET still are not as useful as the dynamic features of Rails.</li>
+<li>ASP.NET MVC / WebAPI is on par with Rails</li>
+<li>Entity Framework Code First is not as good as Active Record.</li>
+<li>People&#8217;s faith in Rails security has been shaken this year by a series of apocolyptic security flaws.</li>
+<li>.NET security is very good.</li>
+<li>The user model in rails is more extensible and well thought out than the off-the-shelf ASP.NET model.</li>
+<li>The rubygems ecoysystem is better than the nuget ecosystem, (and probably always will be)</li>
+<li>is mitigated by a lot of javascript based services that function the same way as a gem might.</li>
+<li>Azure no longer sucks.</li>
+<li>If you believe in OSS as a core part of your being, you will always feel second rate in the .NET world, compared to the Ruby world.</li>
+</ul>
+
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ASP.NET MVC Best Practices]]></title>
+    <link href="http://douglastarr.com/aspnet-mvc-best-practices/"/>
+    <updated>2013-07-11T00:00:00-07:00</updated>
+    <id>http://douglastarr.com/aspnet-mvc-best-practices</id>
+    <content type="html"><![CDATA[<p>This is work-in-progress list of my ASP.NET Best Practices. They each deserve more explanation plus code samples, which I will eventually write and link to.</p>
+
+<div class="row">
+
+<div class="offset1 span4">
+<blockquote class="twitter-tweet"><p>Make your <a href="http://t.co/hdxeE4s5KY">http://t.co/hdxeE4s5KY</a> Controllers partial classes + ViewModels and Actions in the same file <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355373348609470466">July 11, 2013</a></blockquote>
+</div>
+
+<div class="span4">
+<blockquote class="twitter-tweet"><p>Make your service class partial and keep DTOs and service methods as method-per-file <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355373477232001025">July 11, 2013</a></blockquote>
+</div>
+</div>
+
+<div class="row">
+<div class="offset1 span4">
+<blockquote class="twitter-tweet"><p>Use ICollection or IList to avoid leaking your Entity Framework IQueryable into your Controller and View <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355376435436847104">July 11, 2013</a></blockquote>
+</div>
+
+<div class="span4">
+<blockquote class="twitter-tweet"><p>Create a service per resource (db, search, email, etc) and a master service that your controller calls <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355377591961661441">July 11, 2013</a></blockquote>
+</div>
+</div>
+
+<div class="row">
+<div class="offset1 span4">
+<blockquote class="twitter-tweet"><p>Avoid the code-&gt;run-&gt;debug loop by creating an integration suite to write your db / search / querying code <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355378129721753600">July 11, 2013</a></blockquote>
+</div>
+<div class="span4">
+	<blockquote class="twitter-tweet"><p>Use ViewModels to keep logic out of your views and make them more testable <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355390310236430337">July 11, 2013</a></blockquote>
+</div>
+
+</div>
+
+<script async src="http://douglastarr.com//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[An intercom.io playbook]]></title>
+    <link href="http://douglastarr.com/my-intercom-playbook/"/>
+    <updated>2013-07-04T00:00:00-07:00</updated>
+    <id>http://douglastarr.com/my-intercom-playbook</id>
+    <content type="html"><![CDATA[	<p>At <a href="https://corpqna.com">CorpQNA</a>, we use <a href="http://intercom.io">intercom.io</a> to manage our web CRM.  It&#8217;s a fairly sophisticated product, and there are a few tricks that I&#8217;ve learned that I thought that I would share.</p>
+
+	<h3>Send out your newsletters using tags</h3>
+		<p>Avoid using the &#8220;manual&#8221; message to send newsletters.	Using tags lets you easily control large sends, and then also lets you repurpose your content for future users.</p>
+		<ul>
+			<li>Create a new tag, and tag yourself with it, that says &#8220;Blue Newsletter&#8221;.</li>
+			<li>Write your email, and target it at people only with the &#8220;Blue Newsletter&#8221; tag.</li>
+			<li>Tag some small % of your users with the &#8220;Blue Newsletter&#8221; and watch open / click rates.</li>
+			<li>Monitor open / click rates via intercom.</li>
+			<li>Once you are happy with your results - resend it to the whole group.</li>
+		</ul>	
+
+
+	<h3>Use LastContacted to reduce email overload</h3>
+		<p>It can be overwhelming to put together a DRIP campaign for your website.  Given intercom&#8217;s interface, it&#8217;s kind of hard to know who is going to receive what message, at what time.</p>
+
+		<p>What this often leads to is users being blasted by multiple emails in too short of a time period.</p>
+
+		<p>Intercom has a field called LastContacted.  In all of your Auto messages, just make sure LastContact > 3 days, so that you don&#8217;t contact your users more than every 3 days, regardless of whatever other rules you&#8217;ve setup.</p>
+
+	<h3>Use a big call to action near the top of your newsletter</h3>
+
+		<p>We&#8217;ve found that most users click the first big link they see.  Maybe this is because they don&#8217;t read the whole newsletter, maybe because they are trained that way, who knows.  In any case, it&#8217;s good to take advantage of that by putting a big call to action in a large font right near the top of your newsletter.  It will probably get the most clicks.</p>
+
+	<h3>Tag your links with Google Analytics Campaigns</h3>
+		<p>Assuming you use Google Analytics, you can tag each link separately with the utm_* keywords.  This lets you see how each link is doing.</p>
+
+	<h3>Use Intercom as a lightweight email list for your leads</h3>
+		<p>If you have users who are not using your product, but perhaps have signed up for your newsletter, make sure they are on your list by dropping your intercom javascript on the &#8220;Thank you&#8221; page.  Mark these users separate from logged in users.  Beware, though.   With the new intercom pricing, this can be prohibitive since you may have a lot more people signing up for your mailing list than actually using your product, and you are charged by the active user.</p>
+
+	<h3>Copy the intercom playbook</h3>
+		<p>If you don&#8217;t know what to do with your email campaign, start by copying the experts.  Here&#8217;s a <a href="http://insideintercom.io/does-your-app-have-a-message-schedule/">great article from intercom</a> on some ideas to include in your campaign.</p>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Create a repo for each idea]]></title>
+    <link href="http://douglastarr.com/create-a-repo-per-idea/"/>
+    <updated>2013-04-29T00:00:00-07:00</updated>
+    <id>http://douglastarr.com/create-a-repo-per-idea</id>
+    <content type="html"><![CDATA[<p>Each time you have a new idea, put your notes in a repo for it, instead of simply storing it Dropbox or on your local computer.</p>
+
+<p>If it&#8217;s an open source project, push that repo to Github.  Then you can advertise it on a public repository like Github, and actually start working on it and without having it complete.</p>
+
+<p>This will get you started quicker, and when you have some time or you want to go back to that project, it will be all ready for you.</p>]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Azure Websockets 302 Error]]></title>
+    <link href="http://douglastarr.com/azure-websockets-302-error/"/>
+    <updated>2013-03-20T00:00:00-07:00</updated>
+    <id>http://douglastarr.com/azure-websockets-302-error</id>
+    <content type="html"><![CDATA[<div>If you see an azure websockets error where it falls back to long polling , you need to make sure you set your app to use .NET 4.5 in your web.config</div><p /><div><div>    &lt;httpRuntime targetFramework=&quot;4.5&quot; requestValidationMode=&quot;2.0&quot; /&gt;</div> <p /></div> 
+fdsf]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Using powershell 3 Invoke-RestMethod with Basic Authentication and JSON]]></title>
+    <link href="http://douglastarr.com/using-powershell-3-invoke-restmethod-with-basic-authentication-and-json/"/>
+    <updated>2013-03-05T00:00:00-08:00</updated>
+    <id>http://douglastarr.com/using-powershell-3-invoke-restmethod-with-basic-authentication-and-json</id>
+    <content type="html"><![CDATA[<div>This took me a remarkably long time to figure out.  Enjoy!</div><p><div>$user = &quot;myuserid&quot;<br /></div><div>$pass= &quot;mypass&quot;</div><div>$uri = &quot;<a href="https://myresturi.com/api/something">https://myresturi.com/api/something</a>&quot;</div> <p><div>$json = &quot;{</div><div>            &quot;&quot;foo&quot;&quot; : &quot;&quot;bar&quot;&quot;</div><div>          }&quot; <br /></div><p><div>$secpasswd = ConvertTo-SecureString $user -AsPlainText -Force</div> <div>$cred = New-Object System.Management.Automation.PSCredential ($pass, $secpasswd)</div><p><div>Invoke-RestMethod -Uri <a href="https://api.intercom.io/v1/users">https://api.intercom.io/v1/users</a> -Method Post -Credential $cred -ContentType &quot;application/json&quot; -Body $json </div> </p></p></p></p> 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Setting IPRestrictions in a Windows Azure Cloud App Deployment]]></title>
+    <link href="http://douglastarr.com/setting-iprestrictions-in-a-windows-azure-cloud-app-deployment/"/>
+    <updated>2013-02-24T00:00:00-08:00</updated>
+    <id>http://douglastarr.com/setting-iprestrictions-in-a-windows-azure-cloud-app-deployment</id>
+    <content type="html"><![CDATA[<div>To set IP Restrictions in Windows Azure, you have to do 2 things, create an azure startup task in your service configuration (.cscg file), and a cmd file that runs it.</div>
+<p />
+<div><strong>Create a Service Configuration Startup Task to run a startup command</strong></div>
+<div>
+<div>&nbsp; &nbsp; &lt;Startup&gt;</div>
+<div>&nbsp; &nbsp; &nbsp; &lt;Task commandLine=&#8221;startup\ip-restrictions.cmd&#8221; executionContext=&#8221;elevated&#8221;&gt;</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Environment&gt;</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;Variable name=&#8221;EMULATED&#8221;&gt;</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;RoleInstanceValue xpath=&#8221;/RoleEnvironment/Deployment/@emulated&#8221; /&gt;</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/Variable&gt;</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;Variable name=&#8221;RESTRICTIP&#8221;&gt;</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;RoleInstanceValue xpath=&#8221;/RoleEnvironment/CurrentInstance/ConfigurationSettings/ConfigurationSetting[@name=&#8217;RestrictIp&#8217;]/@value&#8221;/&gt;</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/Variable&gt;</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;/Environment&gt;</div>
+<div>&nbsp; &nbsp; &nbsp; &lt;/Task&gt;</div>
+<div>&nbsp; &nbsp; &lt;/Startup&gt;</div>
+<p />
+</div>
+<div>
+<div><strong>Create a startup command</strong>&nbsp;</div>
+<p />
+<div>This startup command checks the &#8220;RESTRICTIP&#8221; variable so that you can have different deployments that you can set whether or not to restrict IPs by (beta, test, production, etc). &nbsp;It also bypasses this if you are running the Azure Emulator.</div>
+<p />
+<div>This installs the IP Restriction Windows Role, unlocks the IIS Config, and sets the appropriate IP Restrictions (put your IP in place of 1.2.3.4)</div>
+<p />
+<p />
+<div>
+<div>if &#8220;%RESTRICTIP%&#8221;==&#8221;false&#8221; goto :EOF</div>
+<div>if &#8220;%EMULATED%&#8221;==&#8221;true&#8221; goto :EOF</div>
+<p />
+<div>powershell Install-WindowsFeature Web-IP-Security</div>
+<div>%windir%\system32\inetsrv\AppCmd.exe unlock config -section:system.webServer/security/ipSecurity</div>
+<div>
+<div>%windir%\system32\inetsrv\AppCmd.exe set config -section:system.webServer/security/ipSecurity /~ /commit:apphost</div>
+</div>
+<div>%windir%\system32\inetsrv\AppCmd.exe set config -section:system.webServer/security/ipSecurity /allowUnlisted:false /commit:apphost</div>
+<div>%windir%\system32\inetsrv\AppCmd.exe set config -section:system.webServer/security/ipSecurity /+&#8221;[ipAddress=&#8217;1.2.3.4&#8217;,allowed=&#8217;True&#8217;]&#8221; /commit:apphost</div>
+</div>
+<p />
+<p />
+<div>This particular solution will not work well if you are trying to have IP restrictions on your staging deployment, and not your production deployment, since the startup command only runs on a deploy, and you will likely just swap VIPs to go from staging to production.</div>
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Don't prototype on your own platform]]></title>
+    <link href="http://douglastarr.com/don-t-prototype-on-your-own-platform/"/>
+    <updated>2013-02-16T00:00:00-08:00</updated>
+    <id>http://douglastarr.com/don-t-prototype-on-your-own-platform</id>
+    <content type="html"><![CDATA[<p>When building a new feature for your website, avoid using the legacy platform that the rest of the site is built on. </p> <p>Legacy integrations take longer. Your goal with a prototype is to validate if it&#39;s worthwhile. This will take more work if your integration exposes bugs or side effects in legacy systems. </p> <p>New designs get coupled to legacy issues. For instance, you may have a complex registration funnel for your main product. But your new feature may not require that, and might be better off with a simple process. You may find that the simpler registration feeds the more complex multi stage process, rather than pushing full registration for a new feature. </p> <p>Deep integrations can mask issues with your prototype. You may see user adoption, but only because the new feature is very visible to your installed base. The prototype might be flawed and produce false positive results because of the legacy integration. </p> <p>Modern platforms with better features are ignored. You may have a poor search function on your site. Requiring the prototype to use the legacy search isn&#39;t really necessary. You can take advantage of newer versions of software by limiting their use to your prototype. </p> <p>You can break legacy inertia with prototypes. If your prototype requires newer versions of platform components, you will build more company expertise in the new version. This will make it more likely that you can migrate legacy code to new versions. </p> <p>Build new prototypes in isolation, so that you can develop faster, learn more and make better product decisions. </p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Learn from success, avoid failure]]></title>
+    <link href="http://douglastarr.com/learn-from-success-avoid-failure/"/>
+    <updated>2013-02-04T00:00:00-08:00</updated>
+    <id>http://douglastarr.com/learn-from-success-avoid-failure</id>
+    <content type="html"><![CDATA[<p>It has become prevalent to use &#8220;failing fast&#8221; as jargon for &#8220;learning&#8221;. &nbsp;It is not valuable to fail. Failure means &#8220;lack of success&#8221;. It doesn&#8217;t mean learning.</p>
+<p>When something fails, it is common to identify the failure, and then state that you learned from the failure.</p>
+<p>You learn nothing from failure.</p>
+<p>Perhaps you have a theory on why you&#8217;ve failed, then make an effort to fix the failure. If you are successful, you will have learned something.</p>
+<p>You learned from the success, not the failure. &nbsp;Failure is not sufficient, or even required, for success.</p>
+<p>To succeed, prefer to study success. &nbsp;Avoid studying failure, it is a waste of time.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Why this is short]]></title>
+    <link href="http://douglastarr.com/why-this-is-short/"/>
+    <updated>2013-01-27T00:00:00-08:00</updated>
+    <id>http://douglastarr.com/why-this-is-short</id>
+    <content type="html"><![CDATA[<p>It&#8217;s easier to communicate an idea when it is simple and short.</p>
+<p>It&#8217;s ok to write a few sentences, instead of a few paragraphs.</p>
+<p>You will choose your words more carefully, and make fewer mistakes.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Quora Email Settings Anti-Pattern]]></title>
+    <link href="http://douglastarr.com/quora-email-settings-anti-pattern/"/>
+    <updated>2013-01-23T00:00:00-08:00</updated>
+    <id>http://douglastarr.com/quora-email-settings-anti-pattern</id>
+    <content type="html"><![CDATA[<div>I can only imagine the regression tests</div><p /><div>[[posterous-content:l5WOJymvRPJ4E81gnHeJ]]<br /></div> 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA["TLDR" is unnecessary]]></title>
+    <link href="http://douglastarr.com/-tldr-is-unnecessary/"/>
+    <updated>2013-01-13T00:00:00-08:00</updated>
+    <id>http://douglastarr.com/-tldr-is-unnecessary</id>
+    <content type="html"><![CDATA[<div>If you summarize your idea in your first sentence, writing &#8220;TLDR&#8221; is superfluous. &nbsp;</div>
+<p />
+<div>The English Language already has tools to summarize and communicate your thoughts. &nbsp;Leverage existing conventions, which are accepted by a larger population, and you will engage more users and succeed in communicating your idea.</div>
+<p />
+<div>&#8220;TLDR&#8221; stands for &#8220;Too Long, didn&#8217;t read&#8221;, and began as a response to the &#8220;wall of text&#8221; style of writing that would appear on sites like Reddit. &nbsp; Over time, it became a shorthand way of saying &#8220;Here&#8217;s a summary.&#8221;. &nbsp;<p /> However, if you actually wrote the article, it is asinine to preface it with &#8220;Too Long; Didn&#8217;t Read&#8221;. &nbsp; &nbsp;Of course you read it. &nbsp;You wrote it.<p />Instead, edit your article, and make sure to summarize your point in the first sentence.</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to solve this Facebook Pages error - Our automated system will not allow the name]]></title>
+    <link href="http://douglastarr.com/how-to-solve-this-facebook-pages-error-our-automated-system-will-not-allow-the-name/"/>
+    <updated>2012-12-10T00:00:00-08:00</updated>
+    <id>http://douglastarr.com/how-to-solve-this-facebook-pages-error-our-automated-system-will-not-allow-the-name</id>
+    <content type="html"><![CDATA[Recently, I was setting up a new Facebook page with a naming convention that capitalizes various words.<p /><div>[[posterous-content:YMhRfIb8DP3YSrcFuRmn]]<br /></div><p /><div>For whatever reason ,Facebook has decreed that this is not the appropriate naming convention.</div><p /><div>This is easily worked around.  </div><p /><div>To fix,  accept their selection.  </div> <p /><div>Then go to your page, click &quot;Edit Page-&gt;Update Info&quot;</div><p /><div>Under name, select the name with casing you wish to have.  In the &quot;Edit&quot; window, it will allow you to select whatever casing you want.</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[IIS Express does not respect dynamic routes]]></title>
+    <link href="http://douglastarr.com/iis-express-does-not-respect-dynamic-routes/"/>
+    <updated>2012-11-24T00:00:00-08:00</updated>
+    <id>http://douglastarr.com/iis-express-does-not-respect-dynamic-routes</id>
+    <content type="html"><![CDATA[<p>If you are using IISExpress for your web server during development, and you try to route static files to dynamic files, IISExpress will not respect rerouting those files.</p>
+<p />
+<div>Ie, if you have a dynamic robots.txt file like this:</div>
+<p />
+<div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; routes.MapRoute(&#8220;Robots.txt&#8221;,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#8220;robots.txt&#8221;,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; new { controller = &#8220;Home&#8221;, action = &#8220;Robots&#8221; });</div>
+</div>
+<p />
+<div>You will get a standard 404 error which tries to map it to a static handler.</div>
+<p />
+<div>To fix, you need to configure web.config like so:</div>
+<div>
+<div class="CodeRay">
+  <div class="code"><pre>&lt;system.webServer&gt;
+    &lt;modules runAllManagedModulesForAllRequests=&quot;true&quot;&gt;
+    &lt;/modules&gt;
+  &lt;/system.webServer&gt;</pre></div>
+</div>
+
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[FeatureShot - Web and App Feature Snapshots]]></title>
+    <link href="http://douglastarr.com/featureshot-web-and-app-feature-snapshots/"/>
+    <updated>2012-11-16T00:00:00-08:00</updated>
+    <id>http://douglastarr.com/featureshot-web-and-app-feature-snapshots</id>
+    <content type="html"><![CDATA[<p>I&#8217;ve been working on a new website called&nbsp;<a href="http://www.featureshot.com">FeatureShot</a>.&nbsp;</p>
+<p>As I&#8217;ve been building apps this past year, I&#8217;ve been overwhelmed at how fast website and apps are innovating. &nbsp;It is really hard to keep up, let alone discover new things or incorporate new trends into products I&#8217;m building.</p>
+<p>So, I built a tool that is aimed at developers and product managers who spend a lot of time evaluating new features of websites. &nbsp;It allows you to take screenshots and categorize web and app features.</p>
+<p>
+<p>It is also a useful tool for anyone who is interested in seeing an &#8220;inside look&#8221; of new apps and website features.</p>
+<p>If a product is big and complex enough, it is overwhelming to try and review it. &nbsp;Instead, you want to review a small, digestible part of that feature. &nbsp;I call those reviews &#8221;<strong>FeatureShots&#8221;</strong>&nbsp;- they are simply a few screen grabs of a feature, with a bit of explanation around what it does.</p>
+</p>
+<p>My vision is to build a comprehensive feature graph that connects these features. &nbsp;That way, you view all the features that make up a product, compare it to other features in other products, and discover new features that you might like. &nbsp;&nbsp;</p>
+<p>Please <a href="http://www.featureshot.com">check it out</a>, and let me know what you think.</p>
+]]></content>
+  </entry>
+  
+</feed>
