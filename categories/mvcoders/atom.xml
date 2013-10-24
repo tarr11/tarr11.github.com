@@ -4,7 +4,7 @@
   <title><![CDATA[Category: mvcoders | Douglas Tarr]]></title>
   <link href="http://douglastarr.com/categories/mvcoders/atom.xml" rel="self"/>
   <link href="http://douglastarr.com/"/>
-  <updated>2013-10-18T09:58:06-07:00</updated>
+  <updated>2013-10-24T10:20:43-07:00</updated>
   <id>http://douglastarr.com/</id>
   <author>
     <name><![CDATA[Douglas Tarr]]></name>
@@ -12,6 +12,50 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[3 Types of Programming Classes for Kids]]></title>
+    <link href="http://douglastarr.com/3-types-of-programming-classes-for-kids/"/>
+    <updated>2013-10-24T09:43:00-07:00</updated>
+    <id>http://douglastarr.com/3-types-of-programming-classes-for-kids</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve been doing a lot of research on how to effectively make a curriculum for the 4th Graders that I am teaching.  Turns out, it&rsquo;s not easy!</p>
+
+<p>I&rsquo;ve been struggling to figure out what my role is in this experience.  For example, there are many <a href="http://en.wikipedia.org/wiki/Massive_open_online_course">MOOCs</a> (<a href="http://khanacademy.org">Khan Academy</a>, <a href="http://codeacademy.com">Code Academy</a> ) out there that essentially provide a self-directed learning environment.  There are some hybrid environments like <a href="http://tynker.com">Tynker</a> that provide a more structured environment which helps teachers run a larger class, but still get into some depth around programming.  It would be a waste of time for me to have them just simply turn on computers and point them at Khan Academy.</p>
+
+<p>My experience watching my children try to use these tools is that they work well for everything &hellip; except programming.  It is really hard to make a perfectly self-contained, understandable, modular programming environment where the kids don&rsquo;t go off the rails.  That said &ndash; they are great to use when someone can help get past roadblocks, bugs in software, and design issues that make the software confusing. I think online or self-directed curricula are very important, but I think that if kids (especially younger kids) are left to their own on these programs, they will get stuck and discouraged, even with the best designed programs.</p>
+
+<p>So, where does that leave us?  Can we adopt an online curriculum for our class or do we have to build our own?<br/>
+There are some curricula out there, especially built around tools like <a href="http://scratch.mit.edu">MIT Scratch</a>.
+The curriculum you use or develop is highly dependent on the kind of structure you put towards your class.  This stuff is probably pretty obvious to anyone who has been involved professionally in education (teachers, etc) but it&rsquo;s a new discovery for me.</p>
+
+<p>I would categorize the curriculum into 3 groups (classes, teams, and clubs)</p>
+
+<h2>The Class</h2>
+
+<p>The entire class is going to be learning the exact same thing, at the same time.  This seems to be the model taken by schools.  It&rsquo;s also a valuable way to go if you have a large group of kids (more than 8 or 10) since you really won&rsquo;t have the time to give them individual attention.  You are trading some creativity and self-direction for scale.  It&rsquo;s also harder to get kids to be excited by a class.</p>
+
+<h2>The Team</h2>
+
+<p>You are teaching them some skills but there&rsquo;s a lot of free time and everyone need not learn the same thing.  There&rsquo;s a concept of working together as a team and collaborating.  Teams can be smaller, and different kids can specialize in different areas.  There&rsquo;s a sense of grouping by age and at the end of the &ldquo;season&rdquo; you should have learned some valuable skills.  You might have a competition or challenge as well.</p>
+
+<h2>The Club</h2>
+
+<p>You are there to provide some resources and keep everyone moving forward, but it&rsquo;s more self-directed.  My guess is that this model works really well in high school, where the kids have self-selected into wanting to participate and have the ability to solve more in depth problems on their own.  You are offering lots of opportunities and an environment for individual creativity and collaboration.</p>
+
+<p>For the <a href="/categories/mvcoders">MVCoders</a> group, I am going to use the &ldquo;Team&rdquo; approach since I am dealing with a small group of motivated kids.</p>
+
+<h2>Future Questions To Address</h2>
+
+<ul>
+<li>Visual Programming Languages (ie, Scratch) vs Text based Languages (javascript)</li>
+<li>What is an appropriate amount of &ldquo;help&rdquo; to give students</li>
+<li>As a developer, how much custom code should I be writing myself?</li>
+<li>What is the relationship of a coding class to other traditional classes?</li>
+<li>What expectations does everyone (parents, kids, teachers, etc) have for the class?</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Teaching Coding to 4th Graders]]></title>
