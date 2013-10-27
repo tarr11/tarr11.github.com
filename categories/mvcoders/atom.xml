@@ -4,7 +4,7 @@
   <title><![CDATA[Category: mvcoders | Douglas Tarr]]></title>
   <link href="http://douglastarr.com/categories/mvcoders/atom.xml" rel="self"/>
   <link href="http://douglastarr.com/"/>
-  <updated>2013-10-24T10:51:42-07:00</updated>
+  <updated>2013-10-27T12:15:39-07:00</updated>
   <id>http://douglastarr.com/</id>
   <author>
     <name><![CDATA[Douglas Tarr]]></name>
@@ -12,6 +12,47 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[An Open Source Coding Curriculum]]></title>
+    <link href="http://douglastarr.com/an-open-source-coding-curriculum/"/>
+    <updated>2013-10-27T11:48:00-07:00</updated>
+    <id>http://douglastarr.com/an-open-source-coding-curriculum</id>
+    <content type="html"><![CDATA[<p>One of the biggest challenges in teaching a coding class is the curriculum.  What are the kids going to do during each class?  How do we keep them challenged?  Is the class something that they enjoy, or not?</p>
+
+<h2>Discovering Curriculums Online</h2>
+
+<p>I have been feverishly searching the internet for a coding curriculum that works for an in-person coding class.  There are a lot of resources that are geared toward online classes, but very few for in person classes.</p>
+
+<p>There are a lot of people thinking about this same problem right now.  Every day, I hear about parents and teachers trying to teach their kids to code, and going online to figure out how to do it.</p>
+
+<h2>Coding Curriculum on GitHub</h2>
+
+<p>I&rsquo;m putting the <a href="https://github.com/tarr11/coding-lessons">curriculum I&rsquo;m building</a> on Github so that other parents and teachers can learn from it, or use it for their own needs.  <a href="https://github.com">Github</a> is a tool that is used by software developers to share and discover code.  But, it&rsquo;s also great for sharing and discovering any &ldquo;structured&rdquo; data.  Since I&rsquo;m using github, you can change the curriculum as you need for your own purposes (just sign up for a Github account and then click the &ldquo;Fork&rdquo; button on the project)</p>
+
+<p>My curriculum is fairly straightforward &ndash; it&rsquo;s a way to guide me through an 90 minutes with 4 or 5 kids.  I&rsquo;ve decided to use GitHub to host the curriculum, and I&rsquo;m using a simple language called MarkDown to write the curriculum.  MarkDown is like HTML, but a bit easier to write.  For instance, you can just write text, with no formatting, and it&rsquo;s smart enough to make things format fairly nicely.  It also supports most of the basic web formats you&rsquo;d expect &ndash; images, links, etc.  It&rsquo;s a bit more technical than writing an email (since there are a few special codes) but if you are teaching a coding class, you probably won&rsquo;t mind a few more codes, right?</p>
+
+<p>I&rsquo;m writing the curriculum as I go, since I need to see how students respond to each class to structure the next one.  My best guess on how the class will go is available on Github.  You can &ldquo;star&rdquo; the repository on Github if you want to follow along as i change it.  You can also use the <a href="https://github.com/tarr11/coding-lessons/issues">Issues feature</a> of Github to provide comments on the curriculum itself.  Finally, if you want to make your own curriculum, you can <a href="https://github.com/tarr11/coding-lessons/fork">Fork it</a> and make your own.  There will be a lot of changes (until the end of December 2013) so beware if you are trying to stay &ldquo;in sync&rdquo; with me.</p>
+
+<p>View the curriculum here:</p>
+
+<h3><a href="https://github.com/tarr11/coding-lessons/tree/master/4th-grade-coders">4th Grade Coding Class on Github</a></h3>
+
+<h2>CodeClub software</h2>
+
+<p>A few months ago, it was Eli&rsquo;s birthday, and we invited his friends over to play MineCraft.  I brought out some of my old laptops, and some of the kids brought their own.  I tried to get everyone setup to play Minecraft on our network, and that took some time, even with just 8 or 10 kids.</p>
+
+<p>What I learned from that experience was that even having some basic links and setup in a web browser can go a long way to making the class more effecient.</p>
+
+<p>The kids I&rsquo;m working with don&rsquo;t all have email addresses &ndash; so I need a way to communicate with them as well, give them links, and give parents a way to follow what their kids are working on.</p>
+
+<p>So, I&rsquo;ve decided to write some software called <a href="http://github.com/tarr11/codeclub">CodeClub</a> that lets you pull in any ccurriculum available on Github and use it to run your own class. The software will be free, open source, and MIT licensed.  Right now, that repository is blank since the code is pretty rough.</p>
+
+<p>CodeClub is what we are going to be using in the class.  Once it&rsquo;s a little better, I&rsquo;ll put it up with some instructions on how you can easily host it yourself.</p>
+
+<p>First class starts tomorrow, we are all very excited to get started.  Stay tuned on my blog to learn how it goes.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[3 Types of Programming Classes for Kids]]></title>
