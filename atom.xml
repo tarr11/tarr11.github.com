@@ -4,7 +4,7 @@
   <title><![CDATA[Douglas Tarr]]></title>
   <link href="http://douglastarr.com/atom.xml" rel="self"/>
   <link href="http://douglastarr.com/"/>
-  <updated>2013-11-01T10:45:23-07:00</updated>
+  <updated>2013-11-01T10:48:10-07:00</updated>
   <id>http://douglastarr.com/</id>
   <author>
     <name><![CDATA[Douglas Tarr]]></name>
@@ -62,13 +62,13 @@
 
 <p>CodeCombat uses two windows &ndash; a game and a javascript editor in a browser.  This does present some challenges.  The coding window loses focus a lot, and the kids expect when they start typing, sometimes nothing would happen.  The game would occasionally get stuck, or the browser would get wonky, and I&rsquo;d have to reset the screen.   At this age (9 + 10 years old), this would be a tough game for the kids to learn without my help.</p>
 
-<p>The kids also needed to learn to type like a software developer would.  Learning how to type as a coder is different than typing words.  I am not teaching them to use advanced coding motions (ie, vim) but there are a set of things that they need to code javascript.  For example, they need to know various characters &ndash; parentheses, semicolon, single and double quotes.  They need to know how to position the cursor on a line and insert a new line below it.  They need to know how to &ldquo;pronounce&rdquo; code.  ie, when I asked them to pronounce &ldquo;this.moveNext();&rdquo;, they said &ldquo;this period move next parentheses parentheses semicolon&rdquo;.   Teaching them how &ldquo;talk in code&rdquo; was a surprising thing that was important to teach.</p>
+<p>The kids also needed to learn to type like a software developer would.  Learning how to type as a coder is different than typing words.  I am not teaching them to use advanced coding motions (ie, <a href="http://www.vim.org/">vim</a> ) but there are a set of things that they need to code javascript.  For example, they need to know various characters &ndash; parentheses, semicolon, single and double quotes.  They need to know how to position the cursor on a line and insert a new line below it.  They need to know how to &ldquo;pronounce&rdquo; code.  ie, when I asked them to pronounce &ldquo;this.moveNext();&rdquo;, they said &ldquo;this period move next parentheses parentheses semicolon&rdquo;.   Teaching them how &ldquo;talk in code&rdquo; was a surprising thing that was important to teach.</p>
 
 <h2>CodeClub Software</h2>
 
 <p><img src="https://lh5.googleusercontent.com/-YV1ZHLB3uao/UnGDazlwlCI/AAAAAAAAYlE/K5tPI5iS5JM/w1623-h1217-no/20131030_150608.jpg" alt="CodeClub Software on ChromeCast" /></p>
 
-<p>I&rsquo;ve built a little ASP.NET MVC website that gives them logins, lets them take notes, and then guides them through the class using the curriculum that I put on Github.   This mostly worked, but there was a bug in the first class where some of their notes didn&rsquo;t save.   This software is really valuable for parents to see what&rsquo;s going on, and it gives me a way to communicate and guide the class.</p>
+<p>I&rsquo;ve built a little ASP.NET MVC website that gives them logins, lets them take notes, and then guides them through the class using the curriculum that I put on Github.   This mostly worked, but there was a bug in the first class where some of their notes didn&rsquo;t save.   This software is really valuable for parents to see what&rsquo;s going on, and it gives me a way to communicate and guide the class.  This code isn&rsquo;t available yet but I plan to put it online in a few weeks.</p>
 
 <h2>Second Class</h2>
 
