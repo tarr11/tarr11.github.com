@@ -4,7 +4,7 @@
   <title><![CDATA[Category: mvcoders | Douglas Tarr]]></title>
   <link href="http://douglastarr.com/categories/mvcoders/atom.xml" rel="self"/>
   <link href="http://douglastarr.com/"/>
-  <updated>2013-11-08T10:11:39-08:00</updated>
+  <updated>2013-11-08T10:15:00-08:00</updated>
   <id>http://douglastarr.com/</id>
   <author>
     <name><![CDATA[Douglas Tarr]]></name>
@@ -105,11 +105,15 @@
 
 <ul>
 <li>Kids should have a mouse. It&rsquo;s really hard to manipulate Scratch with a touchpad.</li>
-<li>If some kids get too far ahead, use them as teaching assistants to help the other kids.</li>
+<li>If some kids get too far ahead, use them as teaching assistants to help the other kids
+
+<ul>
 <li>This helps the further ahead kids since they have to explain what they are doing and will learn more.</li>
 <li>It helps the other kids catch up.</li>
-<li><p>And it helps me keep control of the class.</p></li>
-<li><p>Windows 8 is kind of difficult for kids to use.  There are lots of weird swipes that cause the tile screen to show up.</p></li>
+<li>And it helps me keep control of the class.</li>
+</ul>
+</li>
+<li>Windows 8 is kind of difficult for kids to use.  There are lots of weird swipes that cause the tile screen to show up.</li>
 <li>Chromebooks are actually fine.</li>
 <li>If you are teaching kids Scratch, these are the things that tripped them up:
 
