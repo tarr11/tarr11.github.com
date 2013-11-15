@@ -4,7 +4,7 @@
   <title><![CDATA[Douglas Tarr]]></title>
   <link href="http://douglastarr.com/atom.xml" rel="self"/>
   <link href="http://douglastarr.com/"/>
-  <updated>2013-11-09T09:37:05-08:00</updated>
+  <updated>2013-11-15T11:24:58-08:00</updated>
   <id>http://douglastarr.com/</id>
   <author>
     <name><![CDATA[Douglas Tarr]]></name>
@@ -12,6 +12,77 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Drawing and Painting - Coding Class Week 3]]></title>
+    <link href="http://douglastarr.com/drawing-and-painting-coding-class-week-3/"/>
+    <updated>2013-11-15T08:52:00-08:00</updated>
+    <id>http://douglastarr.com/drawing-and-painting-coding-class-week-3</id>
+    <content type="html"><![CDATA[<p>Originally, my plan for this week was to run a series of Scratch Challenges (make an animated story, a maze, etc).</p>
+
+<p> I had Eli try one out, and I quickly realized that a lot of time is spent on creating sprites.  So, I decided to completely focus the class on drawing and painting.</p>
+
+<p>To start the class, we watched this timelapse video of someone making a game character in Illustrator.</p>
+
+<iframe width="560" height="315" src="http://douglastarr.com//www.youtube.com/embed/k2xYSCNysS0" frameborder="0" allowfullscreen></iframe>
+
+
+<p>This gave the kids an idea of what is possible.  Timelapse videos have a &ldquo;magic&rdquo; to them and I noticed that the kids were mesmerized by it.  They were certainly still chatting and joking (&ldquo;hey that kind of looks like the guy who works at Jamba Juice!&rdquo;) but they were paying attention.</p>
+
+<h2>Drawing and Painting Happy Faces in Scratch</h2>
+
+<p>It turns out that Scratch comes with a fairly decent draw/paint tool.  It&rsquo;s like a simplified version of Adobe Illustrator / Photoshop.</p>
+
+<p>When presented with a drawing or painting tool online, kids immediately just go for a paintbrush and predictably have a hard time making something look good.</p>
+
+<p>Pictures of faces tend to look like very messy.  I had the kids go through and try to make &ldquo;better&rdquo; happy faces so that they could understand why it&rsquo;s better to use vector based methods for drawing instead of bitmap methods.</p>
+
+<p>My goal for the class was to get them to understand what the tools (especially the vector tools) do so that they could make and remix existing vector illustrations.</p>
+
+<p>We learned about painting (bitmaps) and drawing (vectors) and what you could do with each.</p>
+
+<p><img src="http://douglastarr.com/images/animation.gif" alt="Happy Face Progression" /></p>
+
+<p>We learned how to make shapes, fill them in, resize and reshape them.  We also learned how to group and ungroup shapes in vector mode, and the difference between resizing shapes in bitmap vs vector.</p>
+
+<h2>Remixing</h2>
+
+<p>The &ldquo;a-ha&rdquo; moment of the class was then they realized that they could go to the Scratch sprite library, grab a vector based sprite, and then &ldquo;re-mix&rdquo; it to their needs.
+<img src="http://douglastarr.com/images/gobo-anim.gif" alt="Gobo" /></p>
+
+<p>We had about 5 or 10 minutes at the end &ndash; I asked the kids to try and make a few drawings and see if they could animate them (using what they learned from last week)  A few of them (who were more comfortable) were able to do this.  Most had a hard time recalling how to connect these two things.</p>
+
+<p>These are still 4th graders and there is a lot of toilet humor.  One of the kids grabbed a picture of a squirrel and decided he was going to use some vector based drawings to make the squirrel have boogers drip down his nose.</p>
+
+<h2>Speed, Focus and Fun</h2>
+
+<p>We&rsquo;re still having some challenges around getting everyone to focus.  I find myself having to use &ldquo;teacher-voice&rdquo; more than I&rsquo;d like.  I could see some yawns at the beginning of class after a hard day at school.</p>
+
+<p>I&rsquo;ve also noticed that sometimes, the kids just are in there, doing their own thing, and not totally paying attention to what I&rsquo;m having them learn.  That&rsquo;s ok (that&rsquo;s exactly how I was as a kid their age), but I try to go around and make sure everyone gets the gist of the lesson.</p>
+
+<p>And then there was this&hellip;</p>
+
+<blockquote class="twitter-tweet"><p>OH in <a href="https://twitter.com/search?q=%23mvcodeclub&amp;src=hash">#mvcodeclub</a> yesterday - &quot;OOOOH, If I make the boogers into sprites, I can make them drip down the squirrel&#39;s nose!&quot;</p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/400341894791589888">November 12, 2013</a></blockquote>
+
+
+<script async src="http://douglastarr.com//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>We are literally blazing through Scratch in a really short time.  These kids are learning a lot quickly, but that does lead to some frustration when they don&rsquo;t pick something up as quickly as they&rsquo;d like.</p>
+
+<p>I can sometimes see some frustration when it takes a little longer than they had hoped to figure something out.  It&rsquo;s ok if they don&rsquo;t &ldquo;perfect&rdquo; a skill before moving on to the next one.  I can sense that some of them want to spend more time before moving on.</p>
+
+<p>That said, it seems like everyone is having a great time.</p>
+
+<h2>Next Week</h2>
+
+<p>Next week we are going to work together on teams.  We&rsquo;ll use some of the lessons that we learned to do some challenges together.</p>
+
+<h2>Github</h2>
+
+<p>As always, this lesson is available on Github here &ndash; <a href="https://github.com/tarr11/coding-lessons/blob/master/4th-grade-coders/lesson-3.md">Lesson 3 on Github</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[A call to application developers - the cloud needs to go]]></title>
@@ -756,17 +827,6 @@ fdsf]]></content>
 <p>Perhaps you have a theory on why you&#8217;ve failed, then make an effort to fix the failure. If you are successful, you will have learned something.</p>
 <p>You learned from the success, not the failure. &nbsp;Failure is not sufficient, or even required, for success.</p>
 <p>To succeed, prefer to study success. &nbsp;Avoid studying failure, it is a waste of time.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Why this is short]]></title>
-    <link href="http://douglastarr.com/why-this-is-short/"/>
-    <updated>2013-01-27T00:00:00-08:00</updated>
-    <id>http://douglastarr.com/why-this-is-short</id>
-    <content type="html"><![CDATA[<p>It&#8217;s easier to communicate an idea when it is simple and short.</p>
-<p>It&#8217;s ok to write a few sentences, instead of a few paragraphs.</p>
-<p>You will choose your words more carefully, and make fewer mistakes.</p>
 ]]></content>
   </entry>
   
