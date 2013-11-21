@@ -4,7 +4,7 @@
   <title><![CDATA[Category: mvcoders | Douglas Tarr]]></title>
   <link href="http://douglastarr.com/categories/mvcoders/atom.xml" rel="self"/>
   <link href="http://douglastarr.com/"/>
-  <updated>2013-11-15T11:56:19-08:00</updated>
+  <updated>2013-11-21T10:52:41-08:00</updated>
   <id>http://douglastarr.com/</id>
   <author>
     <name><![CDATA[Douglas Tarr]]></name>
@@ -12,6 +12,82 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Messages and Animation - Coding Class Week 4]]></title>
+    <link href="http://douglastarr.com/messages-and-animation-coding-class-week-4/"/>
+    <updated>2013-11-21T08:30:00-08:00</updated>
+    <id>http://douglastarr.com/messages-and-animation-coding-class-week-4</id>
+    <content type="html"><![CDATA[<p>The past 3 weeks, the kids have been learning a lot of things.  How to interact with Scratch, basic programming concepts, and some basic computer skills.</p>
+
+<p>This week, we spent a little time learning something new (events and message passing) but most of the time, I wanted the kids to be focused on building something.</p>
+
+<h2>Unity Video</h2>
+
+<p>We watched this short time lapse video of someone building a game scene in Unity 3D. This looks more like the games that they play on consoles at home.</p>
+
+<iframe width="560" height="315" src="http://douglastarr.com//www.youtube.com/embed/Z2ZX9soqOz4" frameborder="0" allowfullscreen></iframe>
+
+
+<h2>Message Passing</h2>
+
+<p>Our goal this week was for the kids to learn about how to animate a story.  The tools in Scratch for doing this are pretty light &ndash; they don&rsquo;t really support a timeline UI for keyframing, so there&rsquo;s a lot of manual counting going on in order to synchronize your characters.</p>
+
+<p>I wanted to teach them about message passing, which is a powerful concept that lets them control their animations via events, as opposed to trying to coordinate timing.</p>
+
+<h2>Animation Challenge</h2>
+
+<p>I presented the kids with a challenge &ndash; they had to animate a story, but they were only allowed to press one button to start it, and then it needed to run on its own (sort of like tipping over dominoes)
+<img src="/images/dominoes.jpg" alt="Dominoes" /></p>
+
+<p>They had gotten comfortable with event based processing, where they were controlling the animation sort of like a puppet show.  ie., press &ldquo;j&rdquo; and a character will jump.  I wanted them to use messages to instead say &ldquo;when this sprite is finished, it broadcasts a message&rdquo;.  And then, another sprite would listen for that</p>
+
+<p>They spent much of the class working in teams of two, coming up with a story and then trying to animate it.  I liked this model because they would learn based on what they needed, as opposed to just going through and learning every command in the platform.</p>
+
+<p>They loved to record sounds and have their characters do things together.</p>
+
+<p>Here&rsquo;s an example of one of the animations (based on Pokemon) the kids put together:</p>
+
+<iframe allowtransparency="true" width="485" height="402" src="http://scratch.mit.edu/projects/embed/14440381/?autostart=false" frameborder="0" allowfullscreen></iframe>
+
+
+<p>Pretty impressive for some 4th graders who did this in about an hour!</p>
+
+<h2>Computers, Creativity, Collaboration and Communication</h2>
+
+<p>I spent some time thinking about the the role of a computer in the creative process.  There is a danger that because computers are powerful devices, they can have a hypnotic effect on the kids.</p>
+
+<p>I wanted the kids to think about what they wanted to build, instead of just clicking around the computer.  This is an important skill for them to learn &ndash; these are just tools and they need to use the tools, not have the tools use them.</p>
+
+<p>So, they spent a few minutes discussing what they wanted to build.  This was somewhat challenging and overwhelming.  A lot of them just wanted to mess around and build it that way.  I think that&rsquo;s fine, but I also wanted them to have their own point of view.</p>
+
+<p>Some of the kids have more experience than others, and I wanted them to learn how to work together and teach each other.  If they are just working alone, they might as well be at home!  So, I spend some time each class trying to get them to work together, communicate, and solve problems together.  Since I&rsquo;ve put them on time limits for this project, that can be somewhat stressful.</p>
+
+<p>It&rsquo;s a good skill for them to learn how to manage their time and their communication under time pressure.</p>
+
+<h2>Advanced Class + Another Intro Class In January</h2>
+
+<p>We are going to have an advanced class starting in January.  I think it still will be focused around Scratch &ndash; there is a lot to learn here and I&rsquo;d like them to get a bit more mastery before we move on to more complex topics.</p>
+
+<p>I&rsquo;m also thinking about running another Intro class &ndash; this is for 4th graders, but it could also work for 3rd and 5th graders as well.  I&rsquo;m hoping to include more girls as well, to balance things out.</p>
+
+<p>If you are interested, please <a href="/contact.html">contact me</a></p>
+
+<h2>Mill Valley Code Club Website, Facebook, and HQ</h2>
+
+<p>I&rsquo;ve finally got a the <a href="http://www.mvcodeclub.com">Mill Valley Code Club Website</a> setup.  This is where the kids log in, keep notes, and learn about new lessons.  I&rsquo;ll probably improve it more over time.</p>
+
+<p>Also, I&rsquo;ve setup a <a href="http://www.facebook.com/mvcodeclub">Facebook Page</a> and a <a href="http://twitter.com/mvcodeclub">Twitter</a> if you are interested in following along.</p>
+
+<h2>Code Club HQ?</h2>
+
+<p>I am looking at renting out a small space in downtown Mill Valley, to run Code Club classes.  We&rsquo;ve been running out of my house which has been fine, but things get a little hectic, and there&rsquo;s a lot of setup and teardown that I have to do in our living room.</p>
+
+<p>If we have a space, I can add some better hardware.  I have my eye on a <a href="http://www.makerbot.com">Makerbot</a> for example, which would be a fun thing for the kids to play with.</p>
+
+<p>I&rsquo;ll probably also get a server that we can run Minecraft on, and a bunch of other fun stuff like <a href="http://arduino.cc">Arduino</a>, <a href="http://www.raspberrypi.org">Raspberry Pi</a> etc.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Drawing and Painting - Coding Class Week 3]]></title>
@@ -322,50 +398,6 @@
 <p>CodeClub is what we are going to be using in the class.  Once it&rsquo;s a little better, I&rsquo;ll put it up with some instructions on how you can easily host it yourself.</p>
 
 <p>First class starts tomorrow, we are all very excited to get started.  Stay tuned on my blog to learn how it goes.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[3 Types of Programming Classes for Kids]]></title>
-    <link href="http://douglastarr.com/3-types-of-programming-classes-for-kids/"/>
-    <updated>2013-10-24T09:43:00-07:00</updated>
-    <id>http://douglastarr.com/3-types-of-programming-classes-for-kids</id>
-    <content type="html"><![CDATA[<p>I&rsquo;ve been doing a lot of research on how to effectively make a curriculum for the 4th Graders that I am teaching.  Turns out, it&rsquo;s not easy!</p>
-
-<p>I&rsquo;ve been struggling to figure out what my role is in this experience.  For example, there are many <a href="http://en.wikipedia.org/wiki/Massive_open_online_course">MOOCs</a> (<a href="http://khanacademy.org">Khan Academy</a>, <a href="http://codeacademy.com">Code Academy</a> ) out there that essentially provide a self-directed learning environment.  There are some hybrid environments like <a href="http://tynker.com">Tynker</a> that provide a more structured environment which helps teachers run a larger class, but still get into some depth around programming.  It would be a waste of time for me to have them just simply turn on computers and point them at Khan Academy.</p>
-
-<p>My experience watching my children try to use these tools is that they work well for everything &hellip; except programming.  It is really hard to make a perfectly self-contained, understandable, modular programming environment where the kids don&rsquo;t go off the rails.  That said &ndash; they are great to use when someone can help get past roadblocks, bugs in software, and design issues that make the software confusing. I think online or self-directed curricula are very important, but I think that if kids (especially younger kids) are left to their own on these programs, they will get stuck and discouraged, even with the best designed programs.</p>
-
-<p>So, where does that leave us?  Can we adopt an online curriculum for our class or do we have to build our own?<br/>
-There are some curricula out there, especially built around tools like <a href="http://scratch.mit.edu">MIT Scratch</a>.
-The curriculum you use or develop is highly dependent on the kind of structure you put towards your class.  This stuff is probably pretty obvious to anyone who has been involved professionally in education (teachers, etc) but it&rsquo;s a new discovery for me.</p>
-
-<p>I would categorize the curriculum into 3 groups (classes, teams, and clubs)</p>
-
-<h2>The Class</h2>
-
-<p>The entire class is going to be learning the exact same thing, at the same time.  This seems to be the model taken by schools.  It&rsquo;s also a valuable way to go if you have a large group of kids (more than 8 or 10) since you really won&rsquo;t have the time to give them individual attention.  You are trading some creativity and self-direction for scale.  It&rsquo;s also harder to get kids to be excited by a class.</p>
-
-<h2>The Team</h2>
-
-<p>You are teaching them some skills but there&rsquo;s a lot of free time and everyone need not learn the same thing.  There&rsquo;s a concept of working together as a team and collaborating.  Teams can be smaller, and different kids can specialize in different areas.  There&rsquo;s a sense of grouping by age and at the end of the &ldquo;season&rdquo; you should have learned some valuable skills.  You might have a competition or challenge as well.</p>
-
-<h2>The Club</h2>
-
-<p>You are there to provide some resources and keep everyone moving forward, but it&rsquo;s more self-directed.  My guess is that this model works really well in high school, where the kids have self-selected into wanting to participate and have the ability to solve more in depth problems on their own.  You are offering lots of opportunities and an environment for individual creativity and collaboration.</p>
-
-<p>For the <a href="/categories/mvcoders">MVCoders</a> group, I am going to use the &ldquo;Team&rdquo; approach since I am dealing with a small group of motivated kids.</p>
-
-<h2>Future Questions To Address</h2>
-
-<ul>
-<li>Visual Programming Languages (ie, Scratch) vs Text based Languages (javascript)</li>
-<li>What is an appropriate amount of &ldquo;help&rdquo; to give students</li>
-<li>As a developer, how much custom code should I be writing myself?</li>
-<li>What is the relationship of a coding class to other traditional classes?</li>
-<li>What expectations does everyone (parents, kids, teachers, etc) have for the class?</li>
-</ul>
-
 ]]></content>
   </entry>
   

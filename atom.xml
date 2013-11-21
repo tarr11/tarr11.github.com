@@ -4,7 +4,7 @@
   <title><![CDATA[Douglas Tarr]]></title>
   <link href="http://douglastarr.com/atom.xml" rel="self"/>
   <link href="http://douglastarr.com/"/>
-  <updated>2013-11-15T11:56:19-08:00</updated>
+  <updated>2013-11-21T10:52:41-08:00</updated>
   <id>http://douglastarr.com/</id>
   <author>
     <name><![CDATA[Douglas Tarr]]></name>
@@ -12,6 +12,82 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Messages and Animation - Coding Class Week 4]]></title>
+    <link href="http://douglastarr.com/messages-and-animation-coding-class-week-4/"/>
+    <updated>2013-11-21T08:30:00-08:00</updated>
+    <id>http://douglastarr.com/messages-and-animation-coding-class-week-4</id>
+    <content type="html"><![CDATA[<p>The past 3 weeks, the kids have been learning a lot of things.  How to interact with Scratch, basic programming concepts, and some basic computer skills.</p>
+
+<p>This week, we spent a little time learning something new (events and message passing) but most of the time, I wanted the kids to be focused on building something.</p>
+
+<h2>Unity Video</h2>
+
+<p>We watched this short time lapse video of someone building a game scene in Unity 3D. This looks more like the games that they play on consoles at home.</p>
+
+<iframe width="560" height="315" src="http://douglastarr.com//www.youtube.com/embed/Z2ZX9soqOz4" frameborder="0" allowfullscreen></iframe>
+
+
+<h2>Message Passing</h2>
+
+<p>Our goal this week was for the kids to learn about how to animate a story.  The tools in Scratch for doing this are pretty light &ndash; they don&rsquo;t really support a timeline UI for keyframing, so there&rsquo;s a lot of manual counting going on in order to synchronize your characters.</p>
+
+<p>I wanted to teach them about message passing, which is a powerful concept that lets them control their animations via events, as opposed to trying to coordinate timing.</p>
+
+<h2>Animation Challenge</h2>
+
+<p>I presented the kids with a challenge &ndash; they had to animate a story, but they were only allowed to press one button to start it, and then it needed to run on its own (sort of like tipping over dominoes)
+<img src="http://douglastarr.com/images/dominoes.jpg" alt="Dominoes" /></p>
+
+<p>They had gotten comfortable with event based processing, where they were controlling the animation sort of like a puppet show.  ie., press &ldquo;j&rdquo; and a character will jump.  I wanted them to use messages to instead say &ldquo;when this sprite is finished, it broadcasts a message&rdquo;.  And then, another sprite would listen for that</p>
+
+<p>They spent much of the class working in teams of two, coming up with a story and then trying to animate it.  I liked this model because they would learn based on what they needed, as opposed to just going through and learning every command in the platform.</p>
+
+<p>They loved to record sounds and have their characters do things together.</p>
+
+<p>Here&rsquo;s an example of one of the animations (based on Pokemon) the kids put together:</p>
+
+<iframe allowtransparency="true" width="485" height="402" src="http://scratch.mit.edu/projects/embed/14440381/?autostart=false" frameborder="0" allowfullscreen></iframe>
+
+
+<p>Pretty impressive for some 4th graders who did this in about an hour!</p>
+
+<h2>Computers, Creativity, Collaboration and Communication</h2>
+
+<p>I spent some time thinking about the the role of a computer in the creative process.  There is a danger that because computers are powerful devices, they can have a hypnotic effect on the kids.</p>
+
+<p>I wanted the kids to think about what they wanted to build, instead of just clicking around the computer.  This is an important skill for them to learn &ndash; these are just tools and they need to use the tools, not have the tools use them.</p>
+
+<p>So, they spent a few minutes discussing what they wanted to build.  This was somewhat challenging and overwhelming.  A lot of them just wanted to mess around and build it that way.  I think that&rsquo;s fine, but I also wanted them to have their own point of view.</p>
+
+<p>Some of the kids have more experience than others, and I wanted them to learn how to work together and teach each other.  If they are just working alone, they might as well be at home!  So, I spend some time each class trying to get them to work together, communicate, and solve problems together.  Since I&rsquo;ve put them on time limits for this project, that can be somewhat stressful.</p>
+
+<p>It&rsquo;s a good skill for them to learn how to manage their time and their communication under time pressure.</p>
+
+<h2>Advanced Class + Another Intro Class In January</h2>
+
+<p>We are going to have an advanced class starting in January.  I think it still will be focused around Scratch &ndash; there is a lot to learn here and I&rsquo;d like them to get a bit more mastery before we move on to more complex topics.</p>
+
+<p>I&rsquo;m also thinking about running another Intro class &ndash; this is for 4th graders, but it could also work for 3rd and 5th graders as well.  I&rsquo;m hoping to include more girls as well, to balance things out.</p>
+
+<p>If you are interested, please <a href="http://douglastarr.com/contact.html">contact me</a></p>
+
+<h2>Mill Valley Code Club Website, Facebook, and HQ</h2>
+
+<p>I&rsquo;ve finally got a the <a href="http://www.mvcodeclub.com">Mill Valley Code Club Website</a> setup.  This is where the kids log in, keep notes, and learn about new lessons.  I&rsquo;ll probably improve it more over time.</p>
+
+<p>Also, I&rsquo;ve setup a <a href="http://www.facebook.com/mvcodeclub">Facebook Page</a> and a <a href="http://twitter.com/mvcodeclub">Twitter</a> if you are interested in following along.</p>
+
+<h2>Code Club HQ?</h2>
+
+<p>I am looking at renting out a small space in downtown Mill Valley, to run Code Club classes.  We&rsquo;ve been running out of my house which has been fine, but things get a little hectic, and there&rsquo;s a lot of setup and teardown that I have to do in our living room.</p>
+
+<p>If we have a space, I can add some better hardware.  I have my eye on a <a href="http://www.makerbot.com">Makerbot</a> for example, which would be a fun thing for the kids to play with.</p>
+
+<p>I&rsquo;ll probably also get a server that we can run Minecraft on, and a bunch of other fun stuff like <a href="http://arduino.cc">Arduino</a>, <a href="http://www.raspberrypi.org">Raspberry Pi</a> etc.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Drawing and Painting - Coding Class Week 3]]></title>
@@ -811,20 +887,6 @@ fdsf]]></content>
     <updated>2013-02-16T00:00:00-08:00</updated>
     <id>http://douglastarr.com/don-t-prototype-on-your-own-platform</id>
     <content type="html"><![CDATA[<p>When building a new feature for your website, avoid using the legacy platform that the rest of the site is built on. </p> <p>Legacy integrations take longer. Your goal with a prototype is to validate if it&#39;s worthwhile. This will take more work if your integration exposes bugs or side effects in legacy systems. </p> <p>New designs get coupled to legacy issues. For instance, you may have a complex registration funnel for your main product. But your new feature may not require that, and might be better off with a simple process. You may find that the simpler registration feeds the more complex multi stage process, rather than pushing full registration for a new feature. </p> <p>Deep integrations can mask issues with your prototype. You may see user adoption, but only because the new feature is very visible to your installed base. The prototype might be flawed and produce false positive results because of the legacy integration. </p> <p>Modern platforms with better features are ignored. You may have a poor search function on your site. Requiring the prototype to use the legacy search isn&#39;t really necessary. You can take advantage of newer versions of software by limiting their use to your prototype. </p> <p>You can break legacy inertia with prototypes. If your prototype requires newer versions of platform components, you will build more company expertise in the new version. This will make it more likely that you can migrate legacy code to new versions. </p> <p>Build new prototypes in isolation, so that you can develop faster, learn more and make better product decisions. </p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Learn from success, avoid failure]]></title>
-    <link href="http://douglastarr.com/learn-from-success-avoid-failure/"/>
-    <updated>2013-02-04T00:00:00-08:00</updated>
-    <id>http://douglastarr.com/learn-from-success-avoid-failure</id>
-    <content type="html"><![CDATA[<p>It has become prevalent to use &#8220;failing fast&#8221; as jargon for &#8220;learning&#8221;. &nbsp;It is not valuable to fail. Failure means &#8220;lack of success&#8221;. It doesn&#8217;t mean learning.</p>
-<p>When something fails, it is common to identify the failure, and then state that you learned from the failure.</p>
-<p>You learn nothing from failure.</p>
-<p>Perhaps you have a theory on why you&#8217;ve failed, then make an effort to fix the failure. If you are successful, you will have learned something.</p>
-<p>You learned from the success, not the failure. &nbsp;Failure is not sufficient, or even required, for success.</p>
-<p>To succeed, prefer to study success. &nbsp;Avoid studying failure, it is a waste of time.</p>
 ]]></content>
   </entry>
   
