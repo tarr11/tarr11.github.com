@@ -4,7 +4,7 @@
   <title><![CDATA[Douglas Tarr]]></title>
   <link href="http://douglastarr.com/atom.xml" rel="self"/>
   <link href="http://douglastarr.com/"/>
-  <updated>2013-11-21T10:52:41-08:00</updated>
+  <updated>2013-11-24T10:42:58-08:00</updated>
   <id>http://douglastarr.com/</id>
   <author>
     <name><![CDATA[Douglas Tarr]]></name>
@@ -12,6 +12,52 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Installing New Relic on Elastic Beanstalk for Windows and IIS]]></title>
+    <link href="http://douglastarr.com/installing-new-relic-on-elastic-beanstalk-for-windows-and-iis/"/>
+    <updated>2013-11-24T10:30:00-08:00</updated>
+    <id>http://douglastarr.com/installing-new-relic-on-elastic-beanstalk-for-windows-and-iis</id>
+    <content type="html"><![CDATA[<p>I recently had the experience of getting New Relic to install on an AWS Elastic Beanstalk environment using IIS and Windows.</p>
+
+<p>There are some great tools that make this dead simple on Azure, but on Elastic Beanstalk, it&rsquo;s not quite as simple.   You can&rsquo;t just install using an MSI manually, since Elastic Beanstalk will auto-scale instances.</p>
+
+<p>This means that you need to build it as part of the Elastic Beanstalk configuration.</p>
+
+<ol>
+<li>Create a directory called <code>.ebextensions</code> under the root of your project</li>
+<li>Create a file called <code>newrelic.config</code> in that directory.  This will be in YAML format (2 spaces per indent)</li>
+<li>Make sure to add this file to your .csproj project and include it as content so it copies up with AWS.</li>
+<li>Download the latest <a href="https://docs.newrelic.com/docs/dotnet/new-relic-net-installation">.NET MSI from New Relic</a></li>
+<li>Upload this MSI to S3 and make it public (everyone should be able to download it)</li>
+<li>Get your New Relic license key from your New Relic account</li>
+<li>In newrelic.config, copy this in:</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>files:
+</span><span class='line'>  "c:\\newrelic\\newrelic.msi":
+</span><span class='line'>    source: [Your S3 URL]
+</span><span class='line'>
+</span><span class='line'>commands:
+</span><span class='line'>  install_newrelic:
+</span><span class='line'>    command: msiexec.exe /i c:\\newrelic\\newrelic.msi NR_LICENSE_KEY=[Your License Key] INSTALLLEVEL=1</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>This should copy down the MSI from your s3 bucket and install new relic with our license key to your instance</li>
+<li>New Relic should start reporting your instances (called AMAZON-something)</li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Messages and Animation - Coding Class Week 4]]></title>
@@ -86,6 +132,10 @@
 <p>If we have a space, I can add some better hardware.  I have my eye on a <a href="http://www.makerbot.com">Makerbot</a> for example, which would be a fun thing for the kids to play with.</p>
 
 <p>I&rsquo;ll probably also get a server that we can run Minecraft on, and a bunch of other fun stuff like <a href="http://arduino.cc">Arduino</a>, <a href="http://www.raspberrypi.org">Raspberry Pi</a> etc.</p>
+
+<h2>Github</h2>
+
+<p>As always, <a href="https://github.com/tarr11/coding-lessons/blob/master/4th-grade-coders/lesson-4.md">this weeks lesson plan</a> is on Github.  Enjoy!</p>
 ]]></content>
   </entry>
   
@@ -878,15 +928,6 @@ fdsf]]></content>
 <p />
 <div>This particular solution will not work well if you are trying to have IP restrictions on your staging deployment, and not your production deployment, since the startup command only runs on a deploy, and you will likely just swap VIPs to go from staging to production.</div>
 </div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Don't prototype on your own platform]]></title>
-    <link href="http://douglastarr.com/don-t-prototype-on-your-own-platform/"/>
-    <updated>2013-02-16T00:00:00-08:00</updated>
-    <id>http://douglastarr.com/don-t-prototype-on-your-own-platform</id>
-    <content type="html"><![CDATA[<p>When building a new feature for your website, avoid using the legacy platform that the rest of the site is built on. </p> <p>Legacy integrations take longer. Your goal with a prototype is to validate if it&#39;s worthwhile. This will take more work if your integration exposes bugs or side effects in legacy systems. </p> <p>New designs get coupled to legacy issues. For instance, you may have a complex registration funnel for your main product. But your new feature may not require that, and might be better off with a simple process. You may find that the simpler registration feeds the more complex multi stage process, rather than pushing full registration for a new feature. </p> <p>Deep integrations can mask issues with your prototype. You may see user adoption, but only because the new feature is very visible to your installed base. The prototype might be flawed and produce false positive results because of the legacy integration. </p> <p>Modern platforms with better features are ignored. You may have a poor search function on your site. Requiring the prototype to use the legacy search isn&#39;t really necessary. You can take advantage of newer versions of software by limiting their use to your prototype. </p> <p>You can break legacy inertia with prototypes. If your prototype requires newer versions of platform components, you will build more company expertise in the new version. This will make it more likely that you can migrate legacy code to new versions. </p> <p>Build new prototypes in isolation, so that you can develop faster, learn more and make better product decisions. </p>
 ]]></content>
   </entry>
   
