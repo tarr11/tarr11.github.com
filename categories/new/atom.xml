@@ -4,7 +4,7 @@
   <title><![CDATA[Category: new | Douglas Tarr]]></title>
   <link href="http://douglastarr.com/categories/new/atom.xml" rel="self"/>
   <link href="http://douglastarr.com/"/>
-  <updated>2013-11-24T10:42:58-08:00</updated>
+  <updated>2013-11-24T10:44:56-08:00</updated>
   <id>http://douglastarr.com/</id>
   <author>
     <name><![CDATA[Douglas Tarr]]></name>
@@ -24,7 +24,7 @@
 
 <p>This means that you need to build it as part of the Elastic Beanstalk configuration.</p>
 
-<ol>
+<ul>
 <li>Create a directory called <code>.ebextensions</code> under the root of your project</li>
 <li>Create a file called <code>newrelic.config</code> in that directory.  This will be in YAML format (2 spaces per indent)</li>
 <li>Make sure to add this file to your .csproj project and include it as content so it copies up with AWS.</li>
@@ -32,7 +32,7 @@
 <li>Upload this MSI to S3 and make it public (everyone should be able to download it)</li>
 <li>Get your New Relic license key from your New Relic account</li>
 <li>In newrelic.config, copy this in:</li>
-</ol>
+</ul>
 
 
 <p>```
@@ -49,8 +49,8 @@ files:
 </code></pre>
 
 <p>```
-8.  This should copy down the MSI from your s3 bucket and install new relic with our license key to your instance
-9.  New Relic should start reporting your instances (called AMAZON-something)</p>
+*  This should copy down the MSI from your s3 bucket and install new relic with our license key to your instance
+*  New Relic should start reporting your instances (called AMAZON-something)</p>
 ]]></content>
   </entry>
   
