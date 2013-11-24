@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: relic | Douglas Tarr]]></title>
-  <link href="http://douglastarr.com/categories/relic/atom.xml" rel="self"/>
+  <title><![CDATA[Category: elastic-beanstalk, | Douglas Tarr]]></title>
+  <link href="http://douglastarr.com/categories/elastic-beanstalk/atom.xml" rel="self"/>
   <link href="http://douglastarr.com/"/>
-  <updated>2013-11-24T10:44:56-08:00</updated>
+  <updated>2013-11-24T10:46:32-08:00</updated>
   <id>http://douglastarr.com/</id>
   <author>
     <name><![CDATA[Douglas Tarr]]></name>
