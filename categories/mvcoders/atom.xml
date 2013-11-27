@@ -4,7 +4,7 @@
   <title><![CDATA[Category: mvcoders | Douglas Tarr]]></title>
   <link href="http://douglastarr.com/categories/mvcoders/atom.xml" rel="self"/>
   <link href="http://douglastarr.com/"/>
-  <updated>2013-11-24T10:46:32-08:00</updated>
+  <updated>2013-11-27T14:53:54-08:00</updated>
   <id>http://douglastarr.com/</id>
   <author>
     <name><![CDATA[Douglas Tarr]]></name>
@@ -12,6 +12,57 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Scratch Variables and Lists - Coding Class Week 5]]></title>
+    <link href="http://douglastarr.com/scratch-variables-and-lists-coding-class-week-5/"/>
+    <updated>2013-11-27T13:44:00-08:00</updated>
+    <id>http://douglastarr.com/scratch-variables-and-lists-coding-class-week-5</id>
+    <content type="html"><![CDATA[<p>This week we learned about variables and lists.</p>
+
+<h2>How Computers Work</h2>
+
+<p>We watched this Ted video on how computers work.  I&rsquo;m not sure any of it sunk in, but it was a good way to visualize how a computer processes things.</p>
+
+<iframe width="560" height="315" src="http://douglastarr.com//www.youtube.com/embed/AkFi90lZmXA" frameborder="0" allowfullscreen></iframe>
+
+
+<h2>Keeping Score</h2>
+
+<p>Rather than present variables as an abstract concept, I asked the kids if they wanted to keep score in their games.  Most of them did, a few weren&rsquo;t sure.</p>
+
+<p>So, we made a game this week where we made a map, animated a sprite, and collected coins, which would increase their score.</p>
+
+<p>Once their score got a certain point, they would win.</p>
+
+<p>Here&rsquo;s an example from one of the students
+<img src="/images/coin-game.png" alt="Coin Game" /></p>
+
+<h2>Math, Physics, Art, and Communication</h2>
+
+<p>I&rsquo;ve noticed that the kids have to quickly learn a lot of advanced concepts in order to make their game work.  For example, they have to understand negative numbers, multiplication, and graphs.</p>
+
+<p>They inevitably start to make fairly complex designs, and they have to learn how to keep things organized and modular.</p>
+
+<p>Several kids have wanted to make their character &ldquo;jump&rdquo;, which involves simulating physics (gravity, velocity, etc)</p>
+
+<p>It&rsquo;s pretty amazing what they will learn quickly enough if they are motivated.</p>
+
+<p>My sense is that programming games is a great way to teach just about any subject at this age.  They have to quickly master a concept and if they don&rsquo;t, their program won&rsquo;t work.</p>
+
+<h2>Finishing our game</h2>
+
+<p>At this point, the kids may not know it, but they&rsquo;ve got a completely working game!  We will spend the remaining few weeks fine tuning our games and adding more features.</p>
+
+<h2>Code Club HQ</h2>
+
+<p>I&rsquo;ve rented a space for Code Club Headquarters, at 38 Miller Ave in Mill Valley.  I&rsquo;m very excited to put some cool stuff in there and run a few more classes.</p>
+
+<p>Follow along here on this blog and <a href="http://facebook.com/mvcodeclub">become a fan on Facebook</a></p>
+
+<p>If you live in Marin and are interested in having your child participate, please <a href="http://www.mvcodeclub.com/home/winterschedule">check out the schedule</a> on the <a href="http://www.mvcodeclub.com">mvcodeclub.com website</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Messages and Animation - Coding Class Week 4]]></title>
@@ -359,49 +410,6 @@
 <h2>Second Class</h2>
 
 <p>The goal of the next class is to introduce them to <a href="http://scratch.mit.edu">MIT Scratch</a> which is a visual environment for learning to make games and animations.  I&rsquo;m working on the curriculum now, so check back in a week or so to see how that went.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[An Open Source Coding Curriculum]]></title>
-    <link href="http://douglastarr.com/an-open-source-coding-curriculum/"/>
-    <updated>2013-10-27T11:48:00-07:00</updated>
-    <id>http://douglastarr.com/an-open-source-coding-curriculum</id>
-    <content type="html"><![CDATA[<p><img src="https://github.global.ssl.fastly.net/images/modules/training/professortocat.png" alt="Github Teacher Logo" /></p>
-
-<p>One of the biggest challenges in teaching a coding class is the curriculum.  What are the kids going to do during each class?  How do we keep them challenged?  Is the class something that they enjoy, or not?</p>
-
-<h2>Discovering Curriculums Online</h2>
-
-<p>I have been feverishly searching the internet for a coding curriculum that works for an in-person coding class.  There are a lot of resources that are geared toward online classes, but very few for in person classes.</p>
-
-<p>There are a lot of people thinking about this same problem right now.  Every day, I hear about parents and teachers trying to teach their kids to code, and going online to figure out how to do it.</p>
-
-<h2>Coding Curriculum on GitHub</h2>
-
-<p>I&rsquo;m putting the <a href="https://github.com/tarr11/coding-lessons">curriculum I&rsquo;m building</a> on Github so that other parents and teachers can learn from it, or use it for their own needs.  <a href="https://github.com">Github</a> is a tool that is used by software developers to share and discover code.  But, it&rsquo;s also great for sharing and discovering any &ldquo;structured&rdquo; data.  Since I&rsquo;m using github, you can change the curriculum as you need for your own purposes (just sign up for a Github account and then click the &ldquo;Fork&rdquo; button on the project)</p>
-
-<p>My curriculum is fairly straightforward &ndash; it&rsquo;s a way to guide me through an 90 minutes with 4 or 5 kids.  I&rsquo;ve decided to use GitHub to host the curriculum, and I&rsquo;m using a simple language called MarkDown to write the curriculum.  MarkDown is like HTML, but a bit easier to write.  For instance, you can just write text, with no formatting, and it&rsquo;s smart enough to make things format fairly nicely.  It also supports most of the basic web formats you&rsquo;d expect &ndash; images, links, etc.  It&rsquo;s a bit more technical than writing an email (since there are a few special codes) but if you are teaching a coding class, you probably won&rsquo;t mind a few more codes, right?</p>
-
-<p>I&rsquo;m writing the curriculum as I go, since I need to see how students respond to each class to structure the next one.  My best guess on how the class will go is available on Github.  You can &ldquo;star&rdquo; the repository on Github if you want to follow along as i change it.  You can also use the <a href="https://github.com/tarr11/coding-lessons/issues">Issues feature</a> of Github to provide comments on the curriculum itself.  Finally, if you want to make your own curriculum, you can <a href="https://github.com/tarr11/coding-lessons/fork">Fork it</a> and make your own.  There will be a lot of changes (until the end of December 2013) so beware if you are trying to stay &ldquo;in sync&rdquo; with me.</p>
-
-<p>View the curriculum here:</p>
-
-<h3><a href="https://github.com/tarr11/coding-lessons/tree/master/4th-grade-coders">4th Grade Coding Class on Github</a></h3>
-
-<h2>CodeClub software</h2>
-
-<p>A few months ago, it was Eli&rsquo;s birthday, and we invited his friends over to play MineCraft.  I brought out some of my old laptops, and some of the kids brought their own.  I tried to get everyone setup to play Minecraft on our network, and that took some time, even with just 8 or 10 kids.</p>
-
-<p>What I learned from that experience was that even having some basic links and setup in a web browser can go a long way to making the class more effecient.</p>
-
-<p>The kids I&rsquo;m working with don&rsquo;t all have email addresses &ndash; so I need a way to communicate with them as well, give them links, and give parents a way to follow what their kids are working on.</p>
-
-<p>So, I&rsquo;ve decided to write some software called <a href="http://github.com/tarr11/codeclub">CodeClub</a> that lets you pull in any ccurriculum available on Github and use it to run your own class. The software will be free, open source, and MIT licensed.  Right now, that repository is blank since the code is pretty rough.</p>
-
-<p>CodeClub is what we are going to be using in the class.  Once it&rsquo;s a little better, I&rsquo;ll put it up with some instructions on how you can easily host it yourself.</p>
-
-<p>First class starts tomorrow, we are all very excited to get started.  Stay tuned on my blog to learn how it goes.</p>
 ]]></content>
   </entry>
   

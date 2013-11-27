@@ -4,7 +4,7 @@
   <title><![CDATA[Douglas Tarr]]></title>
   <link href="http://douglastarr.com/atom.xml" rel="self"/>
   <link href="http://douglastarr.com/"/>
-  <updated>2013-11-24T10:46:32-08:00</updated>
+  <updated>2013-11-27T14:53:54-08:00</updated>
   <id>http://douglastarr.com/</id>
   <author>
     <name><![CDATA[Douglas Tarr]]></name>
@@ -12,6 +12,57 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Scratch Variables and Lists - Coding Class Week 5]]></title>
+    <link href="http://douglastarr.com/scratch-variables-and-lists-coding-class-week-5/"/>
+    <updated>2013-11-27T13:44:00-08:00</updated>
+    <id>http://douglastarr.com/scratch-variables-and-lists-coding-class-week-5</id>
+    <content type="html"><![CDATA[<p>This week we learned about variables and lists.</p>
+
+<h2>How Computers Work</h2>
+
+<p>We watched this Ted video on how computers work.  I&rsquo;m not sure any of it sunk in, but it was a good way to visualize how a computer processes things.</p>
+
+<iframe width="560" height="315" src="http://douglastarr.com//www.youtube.com/embed/AkFi90lZmXA" frameborder="0" allowfullscreen></iframe>
+
+
+<h2>Keeping Score</h2>
+
+<p>Rather than present variables as an abstract concept, I asked the kids if they wanted to keep score in their games.  Most of them did, a few weren&rsquo;t sure.</p>
+
+<p>So, we made a game this week where we made a map, animated a sprite, and collected coins, which would increase their score.</p>
+
+<p>Once their score got a certain point, they would win.</p>
+
+<p>Here&rsquo;s an example from one of the students
+<img src="http://douglastarr.com/images/coin-game.png" alt="Coin Game" /></p>
+
+<h2>Math, Physics, Art, and Communication</h2>
+
+<p>I&rsquo;ve noticed that the kids have to quickly learn a lot of advanced concepts in order to make their game work.  For example, they have to understand negative numbers, multiplication, and graphs.</p>
+
+<p>They inevitably start to make fairly complex designs, and they have to learn how to keep things organized and modular.</p>
+
+<p>Several kids have wanted to make their character &ldquo;jump&rdquo;, which involves simulating physics (gravity, velocity, etc)</p>
+
+<p>It&rsquo;s pretty amazing what they will learn quickly enough if they are motivated.</p>
+
+<p>My sense is that programming games is a great way to teach just about any subject at this age.  They have to quickly master a concept and if they don&rsquo;t, their program won&rsquo;t work.</p>
+
+<h2>Finishing our game</h2>
+
+<p>At this point, the kids may not know it, but they&rsquo;ve got a completely working game!  We will spend the remaining few weeks fine tuning our games and adding more features.</p>
+
+<h2>Code Club HQ</h2>
+
+<p>I&rsquo;ve rented a space for Code Club Headquarters, at 38 Miller Ave in Mill Valley.  I&rsquo;m very excited to put some cool stuff in there and run a few more classes.</p>
+
+<p>Follow along here on this blog and <a href="http://facebook.com/mvcodeclub">become a fan on Facebook</a></p>
+
+<p>If you live in Marin and are interested in having your child participate, please <a href="http://www.mvcodeclub.com/home/winterschedule">check out the schedule</a> on the <a href="http://www.mvcodeclub.com">mvcodeclub.com website</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Installing New Relic on Elastic Beanstalk for Windows and IIS]]></title>
@@ -878,56 +929,6 @@ fdsf]]></content>
     <updated>2013-03-05T00:00:00-08:00</updated>
     <id>http://douglastarr.com/using-powershell-3-invoke-restmethod-with-basic-authentication-and-json</id>
     <content type="html"><![CDATA[<div>This took me a remarkably long time to figure out.  Enjoy!</div><p><div>$user = &quot;myuserid&quot;<br /></div><div>$pass= &quot;mypass&quot;</div><div>$uri = &quot;<a href="https://myresturi.com/api/something">https://myresturi.com/api/something</a>&quot;</div> <p><div>$json = &quot;{</div><div>            &quot;&quot;foo&quot;&quot; : &quot;&quot;bar&quot;&quot;</div><div>          }&quot; <br /></div><p><div>$secpasswd = ConvertTo-SecureString $user -AsPlainText -Force</div> <div>$cred = New-Object System.Management.Automation.PSCredential ($pass, $secpasswd)</div><p><div>Invoke-RestMethod -Uri <a href="https://api.intercom.io/v1/users">https://api.intercom.io/v1/users</a> -Method Post -Credential $cred -ContentType &quot;application/json&quot; -Body $json </div> </p></p></p></p> 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Setting IPRestrictions in a Windows Azure Cloud App Deployment]]></title>
-    <link href="http://douglastarr.com/setting-iprestrictions-in-a-windows-azure-cloud-app-deployment/"/>
-    <updated>2013-02-24T00:00:00-08:00</updated>
-    <id>http://douglastarr.com/setting-iprestrictions-in-a-windows-azure-cloud-app-deployment</id>
-    <content type="html"><![CDATA[<div>To set IP Restrictions in Windows Azure, you have to do 2 things, create an azure startup task in your service configuration (.cscg file), and a cmd file that runs it.</div>
-<p />
-<div><strong>Create a Service Configuration Startup Task to run a startup command</strong></div>
-<div>
-<div>&nbsp; &nbsp; &lt;Startup&gt;</div>
-<div>&nbsp; &nbsp; &nbsp; &lt;Task commandLine=&#8221;startup\ip-restrictions.cmd&#8221; executionContext=&#8221;elevated&#8221;&gt;</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Environment&gt;</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;Variable name=&#8221;EMULATED&#8221;&gt;</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;RoleInstanceValue xpath=&#8221;/RoleEnvironment/Deployment/@emulated&#8221; /&gt;</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/Variable&gt;</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;Variable name=&#8221;RESTRICTIP&#8221;&gt;</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;RoleInstanceValue xpath=&#8221;/RoleEnvironment/CurrentInstance/ConfigurationSettings/ConfigurationSetting[@name=&#8217;RestrictIp&#8217;]/@value&#8221;/&gt;</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/Variable&gt;</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;/Environment&gt;</div>
-<div>&nbsp; &nbsp; &nbsp; &lt;/Task&gt;</div>
-<div>&nbsp; &nbsp; &lt;/Startup&gt;</div>
-<p />
-</div>
-<div>
-<div><strong>Create a startup command</strong>&nbsp;</div>
-<p />
-<div>This startup command checks the &#8220;RESTRICTIP&#8221; variable so that you can have different deployments that you can set whether or not to restrict IPs by (beta, test, production, etc). &nbsp;It also bypasses this if you are running the Azure Emulator.</div>
-<p />
-<div>This installs the IP Restriction Windows Role, unlocks the IIS Config, and sets the appropriate IP Restrictions (put your IP in place of 1.2.3.4)</div>
-<p />
-<p />
-<div>
-<div>if &#8220;%RESTRICTIP%&#8221;==&#8221;false&#8221; goto :EOF</div>
-<div>if &#8220;%EMULATED%&#8221;==&#8221;true&#8221; goto :EOF</div>
-<p />
-<div>powershell Install-WindowsFeature Web-IP-Security</div>
-<div>%windir%\system32\inetsrv\AppCmd.exe unlock config -section:system.webServer/security/ipSecurity</div>
-<div>
-<div>%windir%\system32\inetsrv\AppCmd.exe set config -section:system.webServer/security/ipSecurity /~ /commit:apphost</div>
-</div>
-<div>%windir%\system32\inetsrv\AppCmd.exe set config -section:system.webServer/security/ipSecurity /allowUnlisted:false /commit:apphost</div>
-<div>%windir%\system32\inetsrv\AppCmd.exe set config -section:system.webServer/security/ipSecurity /+&#8221;[ipAddress=&#8217;1.2.3.4&#8217;,allowed=&#8217;True&#8217;]&#8221; /commit:apphost</div>
-</div>
-<p />
-<p />
-<div>This particular solution will not work well if you are trying to have IP restrictions on your staging deployment, and not your production deployment, since the startup command only runs on a deploy, and you will likely just swap VIPs to go from staging to production.</div>
-</div>
 ]]></content>
   </entry>
   
