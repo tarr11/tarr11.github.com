@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: dev | Douglas Tarr]]></title>
+  <link href="http://douglastarr.com/categories/dev/atom.xml" rel="self"/>
+  <link href="http://douglastarr.com/"/>
+  <updated>2013-12-02T08:47:57-08:00</updated>
+  <id>http://douglastarr.com/</id>
+  <author>
+    <name><![CDATA[Douglas Tarr]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[A call to application developers - the cloud needs to go]]></title>
+    <link href="http://douglastarr.com/a-call-to-application-developers-the-cloud-needs-to-go/"/>
+    <updated>2013-11-09T08:31:00-08:00</updated>
+    <id>http://douglastarr.com/a-call-to-application-developers-the-cloud-needs-to-go</id>
+    <content type="html"><![CDATA[<p>As software proliferates, customers have more and more choices as to where they put their data.  Why would they choose your service?  As software developers, we think that this is mostly an issue of feature parity.  But there are other factors that go into the decision &ndash; business relationships, price, and most relevant to this article, trust.</p>
+
+<h2>Trust as a Service</h2>
+
+<p>Multi-Tenant cloud services are problematic and insecure.  We need a new solution for cloud computing that allows more security and better resource management.</p>
+
+<p>There are many examples of single-tenant architectures, but they are usually reserved for use cases where compliance is required (ie., health care and finance).</p>
+
+<p>In these cases,  single tenancy is not always really enforced; There is often a separate database instance that is running for each customer, but the instances are on a shared server, and many other resources (application servers, search, network) are shared.</p>
+
+<p>On the flipside, many line-of-business or backoffice apps are single tenant applications, since they are by definition only run by one client.</p>
+
+<p>The movement towards instances has been growing as IaaS has proliferated (AWS, Azure, etc), and tools like <a href="http://docker.io">docker</a> and <a href="http://bitnami.com">bitnami</a> make it easier to spin up isolated instances, but the developer software platform support is minimal or non-existent.</p>
+
+<h2>The problems with cloud</h2>
+
+<p>There are many problems with cloud services:</p>
+
+<ul>
+<li>Customer data is intermingled</li>
+<li>You are paying for scale that you simply don&rsquo;t need</li>
+<li>SaaS databases are a rich target for criminals, extortion and spying.</li>
+<li>Data security is a secondary consideration, or not well enforced inside SaaS company</li>
+</ul>
+
+
+<h3>Intermingled Data and Resources</h3>
+
+<p>As a SaaS customer, have you ever stopped to ask why your resources are intermingled with other customers?  The reason is simply that software companies are not equipped to isolate your data.  This would require complete rewrites of code, as well as an order of magnitude more ops support.</p>
+
+<p>In short, it&rsquo;s prohibitively expensive to isolate your data, given the software infrastructure currently available.</p>
+
+<h3>Security issues abound</h3>
+
+<p>A common SaaS application stack looks like this:</p>
+
+<ul>
+<li>Application Server (Rails, Django, etc)</li>
+<li>Search Engine (Elastic Search / SOLR, etc)</li>
+<li>Database (Postgres, MySql, etc)</li>
+<li>A myriad of cloud solutions for logging, email, alerts, backups, analytics</li>
+</ul>
+
+
+<p>Each of these components has an opportunity for security issues.  Many developers have access to your application server.  Your search engine or database may be hosted by a third party service.   The cloud solutions you are using proliferate customer data across hundreds or thousands of different environments.</p>
+
+<p>Each one of these layers offers spying entities an opportunity to access your data.</p>
+
+<h3>Wasteful Scale problems</h3>
+
+<p>Most SaaS applications are built on a relational SQL environment.  All customer data is stored in the same table, and separated by foreign keys.</p>
+
+<p>This means that if another customer puts a high demand on a resource (typically a database instance) that also houses your data, access to your data may be impacted, and you may experience performance issues when using the SaaS application.</p>
+
+<p>Developers spend huge amounts of time on this problem.  High Scalability has gone from a niche area of Computer Science to something that is asked as part of a junior software engineer interview.</p>
+
+<p>It&rsquo;s also incredibly hard to get right.</p>
+
+<p>Scale should be a problem for infrastructure platforms, not applications platforms.  Trying to address scale in an application is fraught with problems and tremendously expensive.</p>
+
+<p>If SaaS moved to a single instance architecture, we could push these scale problems down the stack to a few IaaS providers.  Your application simply has to be able to scale to one organization, not all the potential customers you might have.  This can change your development cycle significantly.</p>
+
+<p>We could also provide meaningful SLAs to customers since we could isolate their resources and pass on the SLA offered by IaaS such as AWS.</p>
+
+<h2>Let&rsquo;s build a Single Instance Stack</h2>
+
+<p>Given how hard it is to isolate your data, it makes sense that so few SaaS providers offer it.  There are simply few resources, developers or stacks that can help support it.  The IT / devops requirements are too burdensome.</p>
+
+<p>But, it&rsquo;s certainly possible!  After all, this is how IaaS providers work.  They can monitor and provision your application and guarantee a certain number of 9&rsquo;s of uptime.  Your SaaS should do the same, and your customers shouldn&rsquo;t have to hire a devops pro to run your cloud.</p>
+
+<h3>It&rsquo;s not just about OSS</h3>
+
+<p>Much open source software works in this way.  Simply download the software and run it on your own infrastructure.</p>
+
+<p>Single Tenant software is not a new concept.  It&rsquo;s what everyone did before they went to cloud solutions.</p>
+
+<p>It&rsquo;s still a common model for certain kinds of enterprise software (ie, MSFT) and Open Source software.</p>
+
+<p>However, the problem is that it requires a deep level of IT expertise that is prohibitive.</p>
+
+<h2>A Single Tenant Ruby on Rails?</h2>
+
+<p>We need an application stack for Isolated Environments.  We need a stack like Rails, that enables developers to easily build single tenant solutions.</p>
+
+<p>Ie, instead of deploying your SaaS app to one Heroku or AWS instance, you deploy it to 5000.</p>
+
+<p>If you have worked on any SaaS application, just thinking about that is probably enough to give you a migraine.</p>
+
+<p>What&rsquo;s missing?   Basically all backoffice support that allows you to manage thousands of customer environments.</p>
+
+<p>This is an incredibly hard task &ndash; just thinking about running a database migration on thousands of instances of customer databases makes my head spin.</p>
+
+<p>Think about all the components of your current SaaS app &ndash; and now try and figure out how to manage them across thousands of instances.  I suspect this would require some sort of management API that can deploy code, upgrades, and let you remotely manage data.</p>
+
+<ul>
+<li>Robust Security Model</li>
+<li>Managing Users-</li>
+<li>Pluggable Service Components</li>
+<li>Supporting Deployments</li>
+<li>DevOps and Provisioning</li>
+<li>Migrations, Versioning and Upgrades</li>
+</ul>
+
+
+<p>I suspect that some of these components are out there.</p>
+
+<p>Perhaps they just need to be assembled into a stack that is more manageable.</p>
+
+<p>Perhaps they don&rsquo;t exist.</p>
+
+<p>Do we need this stack?  Please share your thoughts in comments.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Coding vs Writing]]></title>
+    <link href="http://douglastarr.com/coding-vs-writing/"/>
+    <updated>2013-09-16T00:00:00-07:00</updated>
+    <id>http://douglastarr.com/coding-vs-writing</id>
+    <content type="html"><![CDATA[<p>As someone who sits in front of a computer all day, I should be writing more on my blog.</p>
+
+
+
+
+<p>When I am coding, I am in a comfortable environment (Visual Studio) and workstation is completely setup for writing</p>
+
+
+
+
+<p>I have always struggled with a good environment for writing.  Currently, I switch between vim and Sublime Text, but I don't really find either of those to be effective, since they are lacking tools to help me lookup things and integrate them into my workflow.</p>
+
+
+
+
+<p>It's pretty clear that if I am going to write more, it needs to be as easy as coding.</p>
+
+
+
+
+<p>What do you do to make writing easier?</p>
+
+
+
+
+<p>Update! I just discovered <a href ="http://prose.io">Prose.io</a> which is a nice little content editor for github pages.  Perfect!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ASP.NET MVC Best Practices]]></title>
+    <link href="http://douglastarr.com/aspnet-mvc-best-practices/"/>
+    <updated>2013-07-11T00:00:00-07:00</updated>
+    <id>http://douglastarr.com/aspnet-mvc-best-practices</id>
+    <content type="html"><![CDATA[<p>This is work-in-progress list of my ASP.NET Best Practices. They each deserve more explanation plus code samples, which I will eventually write and link to.</p>
+
+
+
+
+<div class="row">
+
+<div class="offset1 span4">
+<blockquote class="twitter-tweet"><p>Make your <a href="http://t.co/hdxeE4s5KY">http://t.co/hdxeE4s5KY</a> Controllers partial classes + ViewModels and Actions in the same file <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355373348609470466">July 11, 2013</a></blockquote>
+</div>
+
+<div class="span4">
+<blockquote class="twitter-tweet"><p>Make your service class partial and keep DTOs and service methods as method-per-file <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355373477232001025">July 11, 2013</a></blockquote>
+</div>
+</div>
+
+
+
+
+<div class="row">
+<div class="offset1 span4">
+<blockquote class="twitter-tweet"><p>Use ICollection or IList to avoid leaking your Entity Framework IQueryable into your Controller and View <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355376435436847104">July 11, 2013</a></blockquote>
+</div>
+
+<div class="span4">
+<blockquote class="twitter-tweet"><p>Create a service per resource (db, search, email, etc) and a master service that your controller calls <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355377591961661441">July 11, 2013</a></blockquote>
+</div>
+</div>
+
+
+
+
+<div class="row">
+<div class="offset1 span4">
+<blockquote class="twitter-tweet"><p>Avoid the code-&gt;run-&gt;debug loop by creating an integration suite to write your db / search / querying code <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355378129721753600">July 11, 2013</a></blockquote>
+</div>
+<div class="span4">
+    <blockquote class="twitter-tweet"><p>Use ViewModels to keep logic out of your views and make them more testable <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355390310236430337">July 11, 2013</a></blockquote>
+</div>
+
+</div>
+
+
+
+
+<script async src="http://douglastarr.com//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Azure Websockets 302 Error]]></title>
+    <link href="http://douglastarr.com/azure-websockets-302-error/"/>
+    <updated>2013-03-20T00:00:00-07:00</updated>
+    <id>http://douglastarr.com/azure-websockets-302-error</id>
+    <content type="html"><![CDATA[<div>If you see an azure websockets error where it falls back to long polling , you need to make sure you set your app to use .NET 4.5 in your web.config</div>
+
+
+<p><p /><div><div>    &lt;httpRuntime targetFramework=&quot;4.5&quot; requestValidationMode=&quot;2.0&quot; /&gt;</div> <p /></div>
+fdsf</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Setting IPRestrictions in a Windows Azure Cloud App Deployment]]></title>
+    <link href="http://douglastarr.com/setting-iprestrictions-in-a-windows-azure-cloud-app-deployment/"/>
+    <updated>2013-02-24T00:00:00-08:00</updated>
+    <id>http://douglastarr.com/setting-iprestrictions-in-a-windows-azure-cloud-app-deployment</id>
+    <content type="html"><![CDATA[<div>To set IP Restrictions in Windows Azure, you have to do 2 things, create an azure startup task in your service configuration (.cscg file), and a cmd file that runs it.</div>
+
+
+
+
+<p><p /></p>
+
+<p><div><strong>Create a Service Configuration Startup Task to run a startup command</strong></div></p>
+
+<p><div></p>
+
+<p><div>&nbsp; &nbsp; &lt;Startup&gt;</div></p>
+
+<p><div>&nbsp; &nbsp; &nbsp; &lt;Task commandLine=&ldquo;startup\ip-restrictions.cmd&rdquo; executionContext=&ldquo;elevated&rdquo;&gt;</div></p>
+
+<p><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Environment&gt;</div></p>
+
+<p><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;Variable name=&ldquo;EMULATED&rdquo;&gt;</div></p>
+
+<p><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;RoleInstanceValue xpath=&ldquo;/RoleEnvironment/Deployment/@emulated&rdquo; /&gt;</div></p>
+
+<p><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/Variable&gt;</div></p>
+
+<p><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;Variable name=&ldquo;RESTRICTIP&rdquo;&gt;</div></p>
+
+<p><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;RoleInstanceValue xpath=&ldquo;/RoleEnvironment/CurrentInstance/ConfigurationSettings/ConfigurationSetting[@name=&lsquo;RestrictIp&rsquo;]/@value&rdquo;/&gt;</div></p>
+
+<p><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/Variable&gt;</div></p>
+
+<p><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;/Environment&gt;</div></p>
+
+<p><div>&nbsp; &nbsp; &nbsp; &lt;/Task&gt;</div></p>
+
+<p><div>&nbsp; &nbsp; &lt;/Startup&gt;</div></p>
+
+<p><p /></p>
+
+<p></div></p>
+
+<p><div></p>
+
+<p><div><strong>Create a startup command</strong>&nbsp;</div></p>
+
+<p><p /></p>
+
+<p><div>This startup command checks the &ldquo;RESTRICTIP&rdquo; variable so that you can have different deployments that you can set whether or not to restrict IPs by (beta, test, production, etc). &nbsp;It also bypasses this if you are running the Azure Emulator.</div></p>
+
+<p><p /></p>
+
+<p><div>This installs the IP Restriction Windows Role, unlocks the IIS Config, and sets the appropriate IP Restrictions (put your IP in place of 1.2.3.4)</div></p>
+
+<p><p /></p>
+
+<p><p /></p>
+
+<p><div></p>
+
+<p><div>if &ldquo;%RESTRICTIP%&rdquo;==&ldquo;false&rdquo; goto :EOF</div></p>
+
+<p><div>if &ldquo;%EMULATED%&rdquo;==&ldquo;true&rdquo; goto :EOF</div></p>
+
+<p><p /></p>
+
+<p><div>powershell Install-WindowsFeature Web-IP-Security</div></p>
+
+<p><div>%windir%\system32\inetsrv\AppCmd.exe unlock config -section:system.webServer/security/ipSecurity</div></p>
+
+<p><div></p>
+
+<p><div>%windir%\system32\inetsrv\AppCmd.exe set config -section:system.webServer/security/ipSecurity /~ /commit:apphost</div></p>
+
+<p></div></p>
+
+<p><div>%windir%\system32\inetsrv\AppCmd.exe set config -section:system.webServer/security/ipSecurity /allowUnlisted:false /commit:apphost</div></p>
+
+<p><div>%windir%\system32\inetsrv\AppCmd.exe set config -section:system.webServer/security/ipSecurity /+&ldquo;[ipAddress=&lsquo;1.2.3.4&rsquo;,allowed=&lsquo;True&rsquo;]&rdquo; /commit:apphost</div></p>
+
+<p></div></p>
+
+<p><p /></p>
+
+<p><p /></p>
+
+<p><div>This particular solution will not work well if you are trying to have IP restrictions on your staging deployment, and not your production deployment, since the startup command only runs on a deploy, and you will likely just swap VIPs to go from staging to production.</div></p>
+
+<p></div></p>
+]]></content>
+  </entry>
+  
+</feed>

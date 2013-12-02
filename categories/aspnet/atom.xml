@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: aspnet | Douglas Tarr]]></title>
+  <link href="http://douglastarr.com/categories/aspnet/atom.xml" rel="self"/>
+  <link href="http://douglastarr.com/"/>
+  <updated>2013-12-02T08:47:57-08:00</updated>
+  <id>http://douglastarr.com/</id>
+  <author>
+    <name><![CDATA[Douglas Tarr]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[ASP.NET MVC Best Practices]]></title>
+    <link href="http://douglastarr.com/aspnet-mvc-best-practices/"/>
+    <updated>2013-07-11T00:00:00-07:00</updated>
+    <id>http://douglastarr.com/aspnet-mvc-best-practices</id>
+    <content type="html"><![CDATA[<p>This is work-in-progress list of my ASP.NET Best Practices. They each deserve more explanation plus code samples, which I will eventually write and link to.</p>
+
+
+
+
+<div class="row">
+
+<div class="offset1 span4">
+<blockquote class="twitter-tweet"><p>Make your <a href="http://t.co/hdxeE4s5KY">http://t.co/hdxeE4s5KY</a> Controllers partial classes + ViewModels and Actions in the same file <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355373348609470466">July 11, 2013</a></blockquote>
+</div>
+
+<div class="span4">
+<blockquote class="twitter-tweet"><p>Make your service class partial and keep DTOs and service methods as method-per-file <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355373477232001025">July 11, 2013</a></blockquote>
+</div>
+</div>
+
+
+
+
+<div class="row">
+<div class="offset1 span4">
+<blockquote class="twitter-tweet"><p>Use ICollection or IList to avoid leaking your Entity Framework IQueryable into your Controller and View <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355376435436847104">July 11, 2013</a></blockquote>
+</div>
+
+<div class="span4">
+<blockquote class="twitter-tweet"><p>Create a service per resource (db, search, email, etc) and a master service that your controller calls <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355377591961661441">July 11, 2013</a></blockquote>
+</div>
+</div>
+
+
+
+
+<div class="row">
+<div class="offset1 span4">
+<blockquote class="twitter-tweet"><p>Avoid the code-&gt;run-&gt;debug loop by creating an integration suite to write your db / search / querying code <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355378129721753600">July 11, 2013</a></blockquote>
+</div>
+<div class="span4">
+    <blockquote class="twitter-tweet"><p>Use ViewModels to keep logic out of your views and make them more testable <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355390310236430337">July 11, 2013</a></blockquote>
+</div>
+
+</div>
+
+
+
+
+<script async src="http://douglastarr.com//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

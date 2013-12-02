@@ -104,48 +104,90 @@
   </header>
 
 
-<div class="entry-content"><div>To set IP Restrictions in Windows Azure, you have to do 2 things, create an azure startup task in your service configuration (.cscg file), and a cmd file that runs it.</div>
-<p />
-<div><strong>Create a Service Configuration Startup Task to run a startup command</strong></div>
-<div>
-<div>&nbsp; &nbsp; &lt;Startup&gt;</div>
-<div>&nbsp; &nbsp; &nbsp; &lt;Task commandLine=&#8221;startup\ip-restrictions.cmd&#8221; executionContext=&#8221;elevated&#8221;&gt;</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Environment&gt;</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;Variable name=&#8221;EMULATED&#8221;&gt;</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;RoleInstanceValue xpath=&#8221;/RoleEnvironment/Deployment/@emulated&#8221; /&gt;</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/Variable&gt;</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;Variable name=&#8221;RESTRICTIP&#8221;&gt;</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;RoleInstanceValue xpath=&#8221;/RoleEnvironment/CurrentInstance/ConfigurationSettings/ConfigurationSetting[@name=&#8217;RestrictIp&#8217;]/@value&#8221;/&gt;</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/Variable&gt;</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;/Environment&gt;</div>
-<div>&nbsp; &nbsp; &nbsp; &lt;/Task&gt;</div>
-<div>&nbsp; &nbsp; &lt;/Startup&gt;</div>
-<p />
-</div>
-<div>
-<div><strong>Create a startup command</strong>&nbsp;</div>
-<p />
-<div>This startup command checks the &#8220;RESTRICTIP&#8221; variable so that you can have different deployments that you can set whether or not to restrict IPs by (beta, test, production, etc). &nbsp;It also bypasses this if you are running the Azure Emulator.</div>
-<p />
-<div>This installs the IP Restriction Windows Role, unlocks the IIS Config, and sets the appropriate IP Restrictions (put your IP in place of 1.2.3.4)</div>
-<p />
-<p />
-<div>
-<div>if &#8220;%RESTRICTIP%&#8221;==&#8221;false&#8221; goto :EOF</div>
-<div>if &#8220;%EMULATED%&#8221;==&#8221;true&#8221; goto :EOF</div>
-<p />
-<div>powershell Install-WindowsFeature Web-IP-Security</div>
-<div>%windir%\system32\inetsrv\AppCmd.exe unlock config -section:system.webServer/security/ipSecurity</div>
-<div>
-<div>%windir%\system32\inetsrv\AppCmd.exe set config -section:system.webServer/security/ipSecurity /~ /commit:apphost</div>
-</div>
-<div>%windir%\system32\inetsrv\AppCmd.exe set config -section:system.webServer/security/ipSecurity /allowUnlisted:false /commit:apphost</div>
-<div>%windir%\system32\inetsrv\AppCmd.exe set config -section:system.webServer/security/ipSecurity /+&#8221;[ipAddress=&#8217;1.2.3.4&#8217;,allowed=&#8217;True&#8217;]&#8221; /commit:apphost</div>
-</div>
-<p />
-<p />
-<div>This particular solution will not work well if you are trying to have IP restrictions on your staging deployment, and not your production deployment, since the startup command only runs on a deploy, and you will likely just swap VIPs to go from staging to production.</div>
-</div>
+<div class="entry-content"><div>To set IP Restrictions in Windows Azure, you have to do 2 things, create an azure startup task in your service configuration (.cscg file), and a cmd file that runs it.</div>
+
+<p />
+
+<div><strong>Create a Service Configuration Startup Task to run a startup command</strong></div>
+
+<div>
+
+<div>&nbsp; &nbsp; &lt;Startup&gt;</div>
+
+<div>&nbsp; &nbsp; &nbsp; &lt;Task commandLine=&#8221;startup\ip-restrictions.cmd&#8221; executionContext=&#8221;elevated&#8221;&gt;</div>
+
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Environment&gt;</div>
+
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;Variable name=&#8221;EMULATED&#8221;&gt;</div>
+
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;RoleInstanceValue xpath=&#8221;/RoleEnvironment/Deployment/@emulated&#8221; /&gt;</div>
+
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/Variable&gt;</div>
+
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;Variable name=&#8221;RESTRICTIP&#8221;&gt;</div>
+
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;RoleInstanceValue xpath=&#8221;/RoleEnvironment/CurrentInstance/ConfigurationSettings/ConfigurationSetting[@name=&#8217;RestrictIp&#8217;]/@value&#8221;/&gt;</div>
+
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/Variable&gt;</div>
+
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;/Environment&gt;</div>
+
+<div>&nbsp; &nbsp; &nbsp; &lt;/Task&gt;</div>
+
+<div>&nbsp; &nbsp; &lt;/Startup&gt;</div>
+
+<p />
+
+</div>
+
+<div>
+
+<div><strong>Create a startup command</strong>&nbsp;</div>
+
+<p />
+
+<div>This startup command checks the &#8220;RESTRICTIP&#8221; variable so that you can have different deployments that you can set whether or not to restrict IPs by (beta, test, production, etc). &nbsp;It also bypasses this if you are running the Azure Emulator.</div>
+
+<p />
+
+<div>This installs the IP Restriction Windows Role, unlocks the IIS Config, and sets the appropriate IP Restrictions (put your IP in place of 1.2.3.4)</div>
+
+<p />
+
+<p />
+
+<div>
+
+<div>if &#8220;%RESTRICTIP%&#8221;==&#8221;false&#8221; goto :EOF</div>
+
+<div>if &#8220;%EMULATED%&#8221;==&#8221;true&#8221; goto :EOF</div>
+
+<p />
+
+<div>powershell Install-WindowsFeature Web-IP-Security</div>
+
+<div>%windir%\system32\inetsrv\AppCmd.exe unlock config -section:system.webServer/security/ipSecurity</div>
+
+<div>
+
+<div>%windir%\system32\inetsrv\AppCmd.exe set config -section:system.webServer/security/ipSecurity /~ /commit:apphost</div>
+
+</div>
+
+<div>%windir%\system32\inetsrv\AppCmd.exe set config -section:system.webServer/security/ipSecurity /allowUnlisted:false /commit:apphost</div>
+
+<div>%windir%\system32\inetsrv\AppCmd.exe set config -section:system.webServer/security/ipSecurity /+&#8221;[ipAddress=&#8217;1.2.3.4&#8217;,allowed=&#8217;True&#8217;]&#8221; /commit:apphost</div>
+
+</div>
+
+<p />
+
+<p />
+
+<div>This particular solution will not work well if you are trying to have IP restrictions on your staging deployment, and not your production deployment, since the startup command only runs on a deploy, and you will likely just swap VIPs to go from staging to production.</div>
+
+</div>
+
 </div>
 
 
@@ -170,6 +212,12 @@
 
 <time datetime="2013-02-24T00:00:00-08:00" pubdate data-updated="true">Feb 24<span>th</span>, 2013</time>
       
+
+<span class="categories">
+  
+    <a class='category' href='/categories/azure/'>azure</a>, <a class='category' href='/categories/dev/'>dev</a>
+  
+</span>
 
 
     </p>
