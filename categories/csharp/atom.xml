@@ -4,7 +4,7 @@
   <title><![CDATA[Category: csharp | Douglas Tarr]]></title>
   <link href="http://douglastarr.com/categories/csharp/atom.xml" rel="self"/>
   <link href="http://douglastarr.com/"/>
-  <updated>2013-12-02T08:51:48-08:00</updated>
+  <updated>2013-12-02T08:59:11-08:00</updated>
   <id>http://douglastarr.com/</id>
   <author>
     <name><![CDATA[Douglas Tarr]]></name>
@@ -152,9 +152,13 @@ namespace BetterMvc.Services.Master
 
 <h3>Use shell commands to navigate files</h3>
 
-<p>Shell commands (powershell, dos, bash) become much more powerful when your code is organized by granularly by files.
-* Sort by alpha, date modified, size changes
-* Use git status / hg st to find which sections of code changed</p>
+<p>Shell commands (powershell, dos, bash) become much more powerful when your code is organized by granularly by files.</p>
+
+<ul>
+<li>Sort by alpha, date modified, size changes</li>
+<li>Use git status / hg st to find which sections of code changed</li>
+</ul>
+
 
 <h3>Reduce Merge Conflicts by organizing files more granularly</h3>
 
