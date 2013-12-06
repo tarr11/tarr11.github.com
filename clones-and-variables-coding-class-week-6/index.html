@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: elastic-beanstalk, - Douglas Tarr</title>
+  <title>Clones and variables - Coding Class Week 6 - Douglas Tarr</title>
   <meta name="author" content="Douglas Tarr">
 
   
-  <meta name="description" content="Category: elastic-beanstalk,">
+  <meta name="description" content="This week was a bit of a stretch. I wanted to teach the kids about clones. This is a concept that&rsquo;s used fairly extensively in video games. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://douglastarr.comcategories/elastic-beanstalk">
+  <link rel="canonical" href="http://douglastarr.com/clones-and-variables-coding-class-week-6">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Douglas Tarr" type="application/atom+xml">
@@ -77,36 +77,138 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Elastic-beanstalk,</h1>
+    
+      <h1 class="entry-title">Clones and Variables - Coding Class Week 6</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-06T08:58:00-08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>This week was a bit of a stretch.  I wanted to teach the kids about clones.  This is a concept that&rsquo;s used fairly extensively in video games.</p>
 
-  
-  <h2>2013</h2>
+<h2>Video</h2>
 
-<article>
-  
-<h1><a href="/installing-new-relic-on-elastic-beanstalk-for-windows-and-iis/">Installing New Relic on Elastic Beanstalk for Windows and IIS</a></h1>
-<time datetime="2013-11-24T10:30:00-08:00" pubdate><span class='month'>Nov</span> <span class='day'>24</span> <span class='year'>2013</span></time>
+<p>We watched this video &ndash; someone basically modeled minecraft in a 3D toolkit.  I wanted them to see clones and physics in action.</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/categories/elastic-beanstalk/'>elastic-beanstalk,</a>, <a class='category' href='/categories/new-relic/'>new-relic</a>, <a class='category' href='/categories/qna/'>qna,</a></span>
-</footer>
+<iframe width="420" height="315" src="//www.youtube.com/embed/o702In0aI5E" frameborder="0" allowfullscreen></iframe>
 
 
-</article>
+<h2>Clones</h2>
 
+<p><img src="/images/clones.jpg" alt="Clones" /></p>
+
+<p>Clones are copies of things.  The kids have been learning to make a game, but the games tend to have very few characters, and they have to script them out individually.  This can be tedious and still feel fairly manual.</p>
+
+<p>Part of the magic of coding is when you start building lots of objects that interact with each other.   Much of this involves math and physics, so that you can simulate bouncing, gravity, and other real world phenomena.</p>
+
+<p>However, I figured that the kids would be far enough along that they could try.</p>
+
+<h2>Shoot the Penguin</h2>
+
+<p><img src="/images/shoot-the-penguin.png" alt="Shoot the penguin" /></p>
+
+<p>We were going to make a simple game  &ndash; I just called it &ldquo;Shoot the Penguin&rdquo;.  Make a gun, make a bullet, make a penguin.   If the bullet touches the penguin, the penguin dies.</p>
+
+<p>I gave them an example of a gun that shoots a bullet.  Some of the kids had previously figured out how to do this; They had a gun sprite and a bullet sprite and when they hit the space bar, the bullet sprite started moving until it hit the edge.</p>
+
+<h2>Direction, Position, and Variables</h2>
+
+<p>At some point, most of the kids had figured out how to make the gun shoot a bullet, and even kill the penguin.</p>
+
+<p>Then, the next goal was to aim the gun.   This was useful because the kids naturally start complaining that their gun doesn&rsquo;t work too well, since it won&rsquo;t aim, and the bullet sometimes doesn&rsquo;t shoot out of the gun.  So, we had to create some global variables to store the position of the gun, and then copy those to the bullet so that the bullet knew which direction to go.</p>
+
+<h2>Scratch Limitations, and Bugs</h2>
+
+<p>Scratch is very &ldquo;opionated&rdquo;, and only comes with a subset of features available in modern programming languages.  It&rsquo;d be better if it was more object oriented, such that I could query the gun&rsquo;s position, instead of copying into a global variable.  This would have been more natural for the kids to understand.  Copying around variables around is a little bit confusing and messy.</p>
+
+<p>We also ran into some bugs &ndash; sprites would just simply not rotate correctly sometimes, and we had to delete them and re-add them.  It was also common for kids to build a complicated sprite, but put it in the wrong place (ie, as a backdrop or as a costume attached to a different sprite)  When they finally realized they did it wrong, they had no idea how to move it.</p>
+
+<p>We finally figured out that you do it by downloading the sprite to your local computer, then uploading again.  Copy/paste would have been better.</p>
+
+<p>Also, renaming variables and sprites tends to break script blocks, which don&rsquo;t update their references always.  So, either name your variables and sprites up front, or don&rsquo;t bother.</p>
+
+<h2>Next Week</h2>
+
+<p>I keep meaning to let the kids just build in class, and not really teach them anything.  I think for the last 2 weeks, that&rsquo;s what we&rsquo;ll do.  They can be creative, and I&rsquo;ll just help them as they finish their &ldquo;final projects&rdquo;.</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Douglas Tarr</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-06T08:58:00-08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/categories/mvcoders/'>mvcoders</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://douglastarr.com/clones-and-variables-coding-class-week-6/" data-via="tarr11" data-counturl="http://douglastarr.com/clones-and-variables-coding-class-week-6/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/keep-your-asp-dot-net-mvc-projects-more-organized-with-partial-classes/" title="Previous Post: Keep your ASP.NET MVC projects organized with partial classes">&laquo; Keep your ASP.NET MVC projects organized with partial classes</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -170,7 +272,10 @@
       var disqus_shortname = 'douglastarr';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://douglastarr.com/clones-and-variables-coding-class-week-6/';
+        var disqus_url = 'http://douglastarr.com/clones-and-variables-coding-class-week-6/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

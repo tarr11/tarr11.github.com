@@ -4,7 +4,7 @@
   <title><![CDATA[Douglas Tarr]]></title>
   <link href="http://douglastarr.com/atom.xml" rel="self"/>
   <link href="http://douglastarr.com/"/>
-  <updated>2013-12-02T08:59:11-08:00</updated>
+  <updated>2013-12-06T09:50:36-08:00</updated>
   <id>http://douglastarr.com/</id>
   <author>
     <name><![CDATA[Douglas Tarr]]></name>
@@ -12,6 +12,60 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Clones and variables - Coding Class Week 6]]></title>
+    <link href="http://douglastarr.com/clones-and-variables-coding-class-week-6/"/>
+    <updated>2013-12-06T08:58:00-08:00</updated>
+    <id>http://douglastarr.com/clones-and-variables-coding-class-week-6</id>
+    <content type="html"><![CDATA[<p>This week was a bit of a stretch.  I wanted to teach the kids about clones.  This is a concept that&rsquo;s used fairly extensively in video games.</p>
+
+<h2>Video</h2>
+
+<p>We watched this video &ndash; someone basically modeled minecraft in a 3D toolkit.  I wanted them to see clones and physics in action.</p>
+
+<iframe width="420" height="315" src="http://douglastarr.com//www.youtube.com/embed/o702In0aI5E" frameborder="0" allowfullscreen></iframe>
+
+
+<h2>Clones</h2>
+
+<p><img src="http://douglastarr.com/images/clones.jpg" alt="Clones" /></p>
+
+<p>Clones are copies of things.  The kids have been learning to make a game, but the games tend to have very few characters, and they have to script them out individually.  This can be tedious and still feel fairly manual.</p>
+
+<p>Part of the magic of coding is when you start building lots of objects that interact with each other.   Much of this involves math and physics, so that you can simulate bouncing, gravity, and other real world phenomena.</p>
+
+<p>However, I figured that the kids would be far enough along that they could try.</p>
+
+<h2>Shoot the Penguin</h2>
+
+<p><img src="http://douglastarr.com/images/shoot-the-penguin.png" alt="Shoot the penguin" /></p>
+
+<p>We were going to make a simple game  &ndash; I just called it &ldquo;Shoot the Penguin&rdquo;.  Make a gun, make a bullet, make a penguin.   If the bullet touches the penguin, the penguin dies.</p>
+
+<p>I gave them an example of a gun that shoots a bullet.  Some of the kids had previously figured out how to do this; They had a gun sprite and a bullet sprite and when they hit the space bar, the bullet sprite started moving until it hit the edge.</p>
+
+<h2>Direction, Position, and Variables</h2>
+
+<p>At some point, most of the kids had figured out how to make the gun shoot a bullet, and even kill the penguin.</p>
+
+<p>Then, the next goal was to aim the gun.   This was useful because the kids naturally start complaining that their gun doesn&rsquo;t work too well, since it won&rsquo;t aim, and the bullet sometimes doesn&rsquo;t shoot out of the gun.  So, we had to create some global variables to store the position of the gun, and then copy those to the bullet so that the bullet knew which direction to go.</p>
+
+<h2>Scratch Limitations, and Bugs</h2>
+
+<p>Scratch is very &ldquo;opionated&rdquo;, and only comes with a subset of features available in modern programming languages.  It&rsquo;d be better if it was more object oriented, such that I could query the gun&rsquo;s position, instead of copying into a global variable.  This would have been more natural for the kids to understand.  Copying around variables around is a little bit confusing and messy.</p>
+
+<p>We also ran into some bugs &ndash; sprites would just simply not rotate correctly sometimes, and we had to delete them and re-add them.  It was also common for kids to build a complicated sprite, but put it in the wrong place (ie, as a backdrop or as a costume attached to a different sprite)  When they finally realized they did it wrong, they had no idea how to move it.</p>
+
+<p>We finally figured out that you do it by downloading the sprite to your local computer, then uploading again.  Copy/paste would have been better.</p>
+
+<p>Also, renaming variables and sprites tends to break script blocks, which don&rsquo;t update their references always.  So, either name your variables and sprites up front, or don&rsquo;t bother.</p>
+
+<h2>Next Week</h2>
+
+<p>I keep meaning to let the kids just build in class, and not really teach them anything.  I think for the last 2 weeks, that&rsquo;s what we&rsquo;ll do.  They can be creative, and I&rsquo;ll just help them as they finish their &ldquo;final projects&rdquo;.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Keep your ASP.NET MVC projects organized with partial classes]]></title>
@@ -1094,15 +1148,6 @@ The curriculum you use or develop is highly dependent on the kind of structure y
 <p>If it&#8217;s an open source project, push that repo to Github.  Then you can advertise it on a public repository like Github, and actually start working on it and without having it complete.</p>
 
 <p>This will get you started quicker, and when you have some time or you want to go back to that project, it will be all ready for you.</p>]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Azure Websockets 302 Error]]></title>
-    <link href="http://douglastarr.com/azure-websockets-302-error/"/>
-    <updated>2013-03-20T00:00:00-07:00</updated>
-    <id>http://douglastarr.com/azure-websockets-302-error</id>
-    <content type="html"><![CDATA[<div>If you see an azure websockets error where it falls back to long polling , you need to make sure you set your app to use .NET 4.5 in your web.config</div><p /><div><div>    &lt;httpRuntime targetFramework=&quot;4.5&quot; requestValidationMode=&quot;2.0&quot; /&gt;</div> <p /></div> 
-fdsf]]></content>
   </entry>
   
 </feed>
