@@ -4,7 +4,7 @@
   <title><![CDATA[Douglas Tarr]]></title>
   <link href="http://douglastarr.com/atom.xml" rel="self"/>
   <link href="http://douglastarr.com/"/>
-  <updated>2013-12-06T09:50:36-08:00</updated>
+  <updated>2013-12-14T09:57:34-08:00</updated>
   <id>http://douglastarr.com/</id>
   <author>
     <name><![CDATA[Douglas Tarr]]></name>
@@ -12,6 +12,40 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Working on our Scratch game - Week 7]]></title>
+    <link href="http://douglastarr.com/working-on-our-scratch-game-week-7/"/>
+    <updated>2013-12-14T09:50:00-08:00</updated>
+    <id>http://douglastarr.com/working-on-our-scratch-game-week-7</id>
+    <content type="html"><![CDATA[<p>The promise of this class is that kids would have their own working game.  So, this week, they just got to work on their game using all that they knew about Scratch.</p>
+
+<p>Everyone worked on their individual games, and I saw some really cool ideas.</p>
+
+<p>Rather than talk to much about the class, I&rsquo;ve started to reflect on what I&rsquo;ve learned about teaching coding.</p>
+
+<h2>Learnings</h2>
+
+<ol>
+<li><p>Laptops are hard for kids to code on.  We hit lots of frustrating bugs related to slow latops, using touchpads, and weird browser interactions.</p></li>
+<li><p>The kids love Scratch!   It lets them express their creativity in a new way.</p></li>
+<li><p>Most of the problems in class happen when their code &ldquo;doesn&rsquo;t work&rdquo;.  Then, they are completely blocked.  Sometimes, it&rsquo;s not obvious (even to me) what happened and why it doesn&rsquo;t work, and can take me a while to figure it out.    As they try to build more sophisticated programs, the problems get harder to solve.</p></li>
+<li><p> Kids enjoy coding together &ndash; they are always looking at what each other is working on and makes it more fun.</p></li>
+<li><p>Scheduling is painful.  Every child has so much to do in their schedule, and they want to be in class with a particular set of other kids, and it quickly turns into a very hard math problem.   I&rsquo;ve got a set of other kids who might want to participate, but I am having trouble integrating the schedules effectively.</p></li>
+<li><p>Coding is more than just computer science math.  Kids are spending a lot of their time making songs, drawing, creating little &ldquo;theatrical animations&rdquo;.</p></li>
+<li><p>There&rsquo;s a lot of math that they haven&rsquo;t yet learned in school.  They have to master Cartesian coordinates, how to manipulate negative numbers, and a lot of other things.  So, I find myself teaching a lot of math so that you can get your game to have a character jump up and down.</p></li>
+<li><p>We probably don&rsquo;t need to &ldquo;move on&rdquo; from Scratch for a while.  There is a lot to do there and I think it will take some time to master.</p></li>
+<li><p>Different kids like different things.  I&rsquo;ve got a few kids who love performing, music and singing, and they spend a lot of their time making &ldquo;arrangements&rdquo;.  Some others just love hacking on video games.  Some are just naturally curious and enjoy learning technologies.</p></li>
+</ol>
+
+
+<h2>Next Steps</h2>
+
+<p>Next week is our final week of this 8 week class, and hopefully the kids will feel like it was enjoyable and that they learned some new things about computers and programming.</p>
+
+<p>We are going to start a new session in the new year, and I&rsquo;m pleased to announce that 100% of the kids are going to continue to participate.   Based on what I&rsquo;ve learned, I&rsquo;m working on some changes that I think will make the experience better.  Stay tuned, I&rsquo;ll announce those next week.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Clones and variables - Coding Class Week 6]]></title>
@@ -1136,18 +1170,6 @@ The curriculum you use or develop is highly dependent on the kind of structure y
 
 	<h3>Copy the intercom playbook</h3>
 		<p>If you don&#8217;t know what to do with your email campaign, start by copying the experts.  Here&#8217;s a <a href="http://insideintercom.io/does-your-app-have-a-message-schedule/">great article from intercom</a> on some ideas to include in your campaign.</p>]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Create a repo for each idea]]></title>
-    <link href="http://douglastarr.com/create-a-repo-per-idea/"/>
-    <updated>2013-04-29T00:00:00-07:00</updated>
-    <id>http://douglastarr.com/create-a-repo-per-idea</id>
-    <content type="html"><![CDATA[<p>Each time you have a new idea, put your notes in a repo for it, instead of simply storing it Dropbox or on your local computer.</p>
-
-<p>If it&#8217;s an open source project, push that repo to Github.  Then you can advertise it on a public repository like Github, and actually start working on it and without having it complete.</p>
-
-<p>This will get you started quicker, and when you have some time or you want to go back to that project, it will be all ready for you.</p>]]></content>
   </entry>
   
 </feed>
