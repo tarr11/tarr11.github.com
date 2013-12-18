@@ -4,7 +4,7 @@
   <title><![CDATA[Douglas Tarr]]></title>
   <link href="http://douglastarr.com/atom.xml" rel="self"/>
   <link href="http://douglastarr.com/"/>
-  <updated>2013-12-14T10:02:01-08:00</updated>
+  <updated>2013-12-18T10:53:49-08:00</updated>
   <id>http://douglastarr.com/</id>
   <author>
     <name><![CDATA[Douglas Tarr]]></name>
@@ -12,6 +12,41 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[CoveredCA and Anthem Problems]]></title>
+    <link href="http://douglastarr.com/coveredca-and-anthem-problems/"/>
+    <updated>2013-12-18T10:25:00-08:00</updated>
+    <id>http://douglastarr.com/coveredca-and-anthem-problems</id>
+    <content type="html"><![CDATA[<p>I applied for insurance on the CoveredCA site a few weeks ago (in November).</p>
+
+<p>The coveredca plan pricing was significantly better than what was available under the &ldquo;individual insurance&rdquo; page on their site.</p>
+
+<p>That said, neither CoveredCA nor Anthem has had any contact with me, and I have been calling them weekly.</p>
+
+<p>If you call them, expect long wait times.  Also, the &ldquo;online chat&rdquo; feature on CoveredCA simply doesn&rsquo;t work.</p>
+
+<p>If you have been having problems, here&rsquo;s what they told me:</p>
+
+<ul>
+<li>They are behind on processing applications since they haven&rsquo;t received them from CoveredCA.</li>
+<li>They receive new applications from CoveredCA every Friday, so that&rsquo;s a good time to check if they have your application.</li>
+<li>There&rsquo;s a lot of people looking for help / stressed out on the <a href="http://facebook.com/coveredca">CoveredCA facebook page</a>  There seem to be some representatives of CoveredCA there, but they don&rsquo;t seem to be able to help individuals.</li>
+<li>If you were approved on the CoveredCA site for an Anthem plan, and you have your case # and application # (which should be available on your CoveredCA account), then you can send your payment with case# / application# and they will process it.</li>
+</ul>
+
+
+<p>Mailing Address:</p>
+
+<p>Anthem Blue Cross</p>
+
+<p>Attention Covered California Exchange</p>
+
+<p>PO BOX 9041</p>
+
+<p>OXNARD, CA 93031</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Working on our Scratch game - Week 7]]></title>
@@ -1133,45 +1168,6 @@ The curriculum you use or develop is highly dependent on the kind of structure y
 
 
 ]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[An intercom.io playbook]]></title>
-    <link href="http://douglastarr.com/my-intercom-playbook/"/>
-    <updated>2013-07-04T00:00:00-07:00</updated>
-    <id>http://douglastarr.com/my-intercom-playbook</id>
-    <content type="html"><![CDATA[	<p>At <a href="https://corpqna.com">CorpQNA</a>, we use <a href="http://intercom.io">intercom.io</a> to manage our web CRM.  It&#8217;s a fairly sophisticated product, and there are a few tricks that I&#8217;ve learned that I thought that I would share.</p>
-
-	<h3>Send out your newsletters using tags</h3>
-		<p>Avoid using the &#8220;manual&#8221; message to send newsletters.	Using tags lets you easily control large sends, and then also lets you repurpose your content for future users.</p>
-		<ul>
-			<li>Create a new tag, and tag yourself with it, that says &#8220;Blue Newsletter&#8221;.</li>
-			<li>Write your email, and target it at people only with the &#8220;Blue Newsletter&#8221; tag.</li>
-			<li>Tag some small % of your users with the &#8220;Blue Newsletter&#8221; and watch open / click rates.</li>
-			<li>Monitor open / click rates via intercom.</li>
-			<li>Once you are happy with your results - resend it to the whole group.</li>
-		</ul>	
-
-
-	<h3>Use LastContacted to reduce email overload</h3>
-		<p>It can be overwhelming to put together a DRIP campaign for your website.  Given intercom&#8217;s interface, it&#8217;s kind of hard to know who is going to receive what message, at what time.</p>
-
-		<p>What this often leads to is users being blasted by multiple emails in too short of a time period.</p>
-
-		<p>Intercom has a field called LastContacted.  In all of your Auto messages, just make sure LastContact > 3 days, so that you don&#8217;t contact your users more than every 3 days, regardless of whatever other rules you&#8217;ve setup.</p>
-
-	<h3>Use a big call to action near the top of your newsletter</h3>
-
-		<p>We&#8217;ve found that most users click the first big link they see.  Maybe this is because they don&#8217;t read the whole newsletter, maybe because they are trained that way, who knows.  In any case, it&#8217;s good to take advantage of that by putting a big call to action in a large font right near the top of your newsletter.  It will probably get the most clicks.</p>
-
-	<h3>Tag your links with Google Analytics Campaigns</h3>
-		<p>Assuming you use Google Analytics, you can tag each link separately with the utm_* keywords.  This lets you see how each link is doing.</p>
-
-	<h3>Use Intercom as a lightweight email list for your leads</h3>
-		<p>If you have users who are not using your product, but perhaps have signed up for your newsletter, make sure they are on your list by dropping your intercom javascript on the &#8220;Thank you&#8221; page.  Mark these users separate from logged in users.  Beware, though.   With the new intercom pricing, this can be prohibitive since you may have a lot more people signing up for your mailing list than actually using your product, and you are charged by the active user.</p>
-
-	<h3>Copy the intercom playbook</h3>
-		<p>If you don&#8217;t know what to do with your email campaign, start by copying the experts.  Here&#8217;s a <a href="http://insideintercom.io/does-your-app-have-a-message-schedule/">great article from intercom</a> on some ideas to include in your campaign.</p>]]></content>
   </entry>
   
 </feed>
