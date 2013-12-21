@@ -4,7 +4,7 @@
   <title><![CDATA[Douglas Tarr]]></title>
   <link href="http://douglastarr.com/atom.xml" rel="self"/>
   <link href="http://douglastarr.com/"/>
-  <updated>2013-12-18T10:53:49-08:00</updated>
+  <updated>2013-12-21T10:08:09-08:00</updated>
   <id>http://douglastarr.com/</id>
   <author>
     <name><![CDATA[Douglas Tarr]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Mill Valley FPV Drone Project]]></title>
+    <link href="http://douglastarr.com/mill-valley-fpv-drone-project/"/>
+    <updated>2013-12-21T09:56:00-08:00</updated>
+    <id>http://douglastarr.com/mill-valley-fpv-drone-project</id>
+    <content type="html"><![CDATA[<p>Part of the reason that I started the Mill Valley Code Club was to give me an outlet to do stuff that would otherwise seem totally ridiculous.</p>
+
+<p><img src="http://douglastarr.com/images/quadcopter.png" alt="Quadrocopter" /></p>
+
+<p>I have this idea that I could build a quadrocopter with a GoPro, that could fly from the Mill Valley Square, up to the top of Mount Tamalpais.</p>
+
+<p>It would have a GoPro attached and we could get a First Person View (FPV) of that trip.</p>
+
+<p>Not sure if the quadrocopter has that kind of range.</p>
+
+<p>As I learn more about how this goes, I&rsquo;ll post using the <a href="http://douglastarr.com/categories/mvcopter">mvcopter</a> category.</p>
+
+<p>If you are interested in helping out, let me know!  I&rsquo;ll probably working on this at the Mill Valley Code Club every once in a while.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[CoveredCA and Anthem Problems]]></title>
@@ -46,6 +67,48 @@
 
 <p>OXNARD, CA 93031</p>
 ]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Coveredca And Anthem Problems]]></title>
+    <link href="http://douglastarr.com/coveredca-and-anthem-problems/"/>
+    <updated>2013-12-18T00:00:00-08:00</updated>
+    <id>http://douglastarr.com/coveredca-and-anthem-problems</id>
+    <content type="html"><![CDATA[﻿<hr/>
+
+<p>layout: post<br/>
+title: &#8220;CoveredCA and Anthem Problems&#8221;<br/>
+date: 2013-12-18 10:25<br/>
+comments: true</p>
+
+<h2>categories: obamacare</h2>
+
+<p>I applied for insurance on the CoveredCA site a few weeks ago (in November).  </p>
+
+<p>The coveredca plan pricing was significantly better than what was available under the &#8220;individual insurance&#8221; page on their site.</p>
+
+<p>That said, neither CoveredCA nor Anthem has had any contact with me, and I have been calling them weekly.</p>
+
+<p>If you call them, expect long wait times.  Also, the &#8220;online chat&#8221; feature on CoveredCA simply doesn&#8217;t work.</p>
+
+<p>If you have been having problems, here&#8217;s what they told me:</p>
+
+<ul>
+<li>They are behind on processing applications since they haven&#8217;t received them from CoveredCA.</li>
+<li>They receive new applications from CoveredCA every Friday, so that&#8217;s a good time to check if they have your application.</li>
+<li>There&#8217;s a lot of people looking for help / stressed out on the <a href="http://facebook.com/coveredca">CoveredCA facebook page</a>  There seem to be some representatives of CoveredCA there, but they don&#8217;t seem to be able to help individuals.</li>
+<li>If you were approved on the CoveredCA site for an Anthem plan, and you have your case # and application # (which should be available on your CoveredCA account), then you can send your payment with case# / application# and they will process it. </li>
+</ul>
+
+<p>Mailing Address:</p>
+
+<p>Anthem Blue Cross</p>
+
+<p>Attention Covered California Exchange</p>
+
+<p>PO BOX 9041</p>
+
+<p>OXNARD, CA 93031</p>]]></content>
   </entry>
   
   <entry>
@@ -1091,81 +1154,6 @@ The curriculum you use or develop is highly dependent on the kind of structure y
 <p><a href="http://www.techhive.com/article/2045755/7-browser-tricks-to-get-the-most-out-of-your-chromecast.html">Hat Tip - TechHive.com</a></p>
 
 <p>If you discover any Chromecast Screensaver apps, please add them in the comments!</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Rails vs CSharp]]></title>
-    <link href="http://douglastarr.com/rails-vs-csharp/"/>
-    <updated>2013-07-14T00:00:00-07:00</updated>
-    <id>http://douglastarr.com/rails-vs-csharp</id>
-    <content type="html"><![CDATA[<p>In which I write a few thoughts on Rails v CSharp</p>
-<p>I originally published this on Seattle Tech Startups mailing list</p>
-<ul>
-<li>The market in Seattle is distorted with a lot more startup oriented .NET devs than you will see in just about any other city.</li>
-<li>When I tell people that I work on .NET startups in SF, and they are Rails devs, they look at me like I&#8217;m crazy and building my app in COBOL.NET.  They still think ASP.NET == WebForms.</li>
-<li>BizSpark is offering effectively 3 years of free hosting to startups.  This is changing the market and getting more new companies to try out .NET</li>
-<li>The dynamic features of the CLR / .NET still are not as useful as the dynamic features of Rails.</li>
-<li>ASP.NET MVC / WebAPI is on par with Rails</li>
-<li>Entity Framework Code First is not as good as Active Record.</li>
-<li>People&#8217;s faith in Rails security has been shaken this year by a series of apocolyptic security flaws.</li>
-<li>.NET security is very good.</li>
-<li>The user model in rails is more extensible and well thought out than the off-the-shelf ASP.NET model.</li>
-<li>The rubygems ecoysystem is better than the nuget ecosystem, (and probably always will be)</li>
-<li>is mitigated by a lot of javascript based services that function the same way as a gem might.</li>
-<li>Azure no longer sucks.</li>
-<li>If you believe in OSS as a core part of your being, you will always feel second rate in the .NET world, compared to the Ruby world.</li>
-</ul>
-
-
-
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[ASP.NET MVC Best Practices]]></title>
-    <link href="http://douglastarr.com/aspnet-mvc-best-practices/"/>
-    <updated>2013-07-11T00:00:00-07:00</updated>
-    <id>http://douglastarr.com/aspnet-mvc-best-practices</id>
-    <content type="html"><![CDATA[<p>This is work-in-progress list of my ASP.NET Best Practices. They each deserve more explanation plus code samples, which I will eventually write and link to.</p>
-
-<div class="row">
-
-<div class="offset1 span4">
-<blockquote class="twitter-tweet"><p>Make your <a href="http://t.co/hdxeE4s5KY">http://t.co/hdxeE4s5KY</a> Controllers partial classes + ViewModels and Actions in the same file <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355373348609470466">July 11, 2013</a></blockquote>
-</div>
-
-<div class="span4">
-<blockquote class="twitter-tweet"><p>Make your service class partial and keep DTOs and service methods as method-per-file <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355373477232001025">July 11, 2013</a></blockquote>
-</div>
-</div>
-
-<div class="row">
-<div class="offset1 span4">
-<blockquote class="twitter-tweet"><p>Use ICollection or IList to avoid leaking your Entity Framework IQueryable into your Controller and View <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355376435436847104">July 11, 2013</a></blockquote>
-</div>
-
-<div class="span4">
-<blockquote class="twitter-tweet"><p>Create a service per resource (db, search, email, etc) and a master service that your controller calls <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355377591961661441">July 11, 2013</a></blockquote>
-</div>
-</div>
-
-<div class="row">
-<div class="offset1 span4">
-<blockquote class="twitter-tweet"><p>Avoid the code-&gt;run-&gt;debug loop by creating an integration suite to write your db / search / querying code <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355378129721753600">July 11, 2013</a></blockquote>
-</div>
-<div class="span4">
-	<blockquote class="twitter-tweet"><p>Use ViewModels to keep logic out of your views and make them more testable <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355390310236430337">July 11, 2013</a></blockquote>
-</div>
-
-</div>
-
-<script async src="http://douglastarr.com//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
-
 
 ]]></content>
   </entry>
