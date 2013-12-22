@@ -4,7 +4,7 @@
   <title><![CDATA[Douglas Tarr]]></title>
   <link href="http://douglastarr.com/atom.xml" rel="self"/>
   <link href="http://douglastarr.com/"/>
-  <updated>2013-12-21T10:16:47-08:00</updated>
+  <updated>2013-12-22T10:08:23-08:00</updated>
   <id>http://douglastarr.com/</id>
   <author>
     <name><![CDATA[Douglas Tarr]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[A Parent's Guide to Minecraft]]></title>
+    <link href="http://douglastarr.com/a-parents-guide-to-minecraft/"/>
+    <updated>2013-12-21T13:12:00-08:00</updated>
+    <id>http://douglastarr.com/a-parents-guide-to-minecraft</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mill Valley FPV Drone Project]]></title>
@@ -1137,25 +1146,6 @@ The curriculum you use or develop is highly dependent on the kind of structure y
 <p>What do you do to make writing easier?</p>
 
 <p>Update! I just discovered <a href ="http://prose.io">Prose.io</a> which is a nice little content editor for github pages.  Perfect!</p>]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Chromecast Screensaver]]></title>
-    <link href="http://douglastarr.com/chromecast-screensaver/"/>
-    <updated>2013-08-23T00:00:00-07:00</updated>
-    <id>http://douglastarr.com/chromecast-screensaver</id>
-    <content type="html"><![CDATA[<p>I recently got a Google Chromecast, and was looking for a way to push custom images as a screensaver for it.</p>
-
-<p>Though there&#8217;s no obvious &#8220;set it and forget it&#8221; that runs headless, you can easily run the built-in
-<a href="https://clients3.google.com/cast/chromecast/home">Chromecast wallpapers</a> in FullScreen mode.</p>
-
-<p>Just click to that page, use the Chromecast extension, and type F11 to put it in full screen mode. </p>
-
-<p><a href="http://www.techhive.com/article/2045755/7-browser-tricks-to-get-the-most-out-of-your-chromecast.html">Hat Tip - TechHive.com</a></p>
-
-<p>If you discover any Chromecast Screensaver apps, please add them in the comments!</p>
-
-]]></content>
   </entry>
   
 </feed>
