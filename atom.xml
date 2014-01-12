@@ -4,7 +4,7 @@
   <title><![CDATA[Douglas Tarr]]></title>
   <link href="http://douglastarr.com/atom.xml" rel="self"/>
   <link href="http://douglastarr.com/"/>
-  <updated>2014-01-12T09:04:37-08:00</updated>
+  <updated>2014-01-12T09:08:49-08:00</updated>
   <id>http://douglastarr.com/</id>
   <author>
     <name><![CDATA[Douglas Tarr]]></name>
@@ -86,89 +86,6 @@
 
 <p>For many parents, code club is a new experience.  I welcome your comments and feedback either here or by emailing me directly.</p>
 ]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[A New Year Of Coding]]></title>
-    <link href="http://douglastarr.com/a-new-year-of-coding/"/>
-    <updated>2014-01-12T00:00:00-08:00</updated>
-    <id>http://douglastarr.com/a-new-year-of-coding</id>
-    <content type="html"><![CDATA[﻿<hr/>
-
-<p>layout: post<br/>
-title: &#8220;A new year of coding&#8221;<br/>
-date: 2014-01-12 07:33<br/>
-comments: true</p>
-
-<h2>categories: mvcoders</h2>
-
-<p>This week, we started the new year with one new coding class, and the two additional ones.  By the end of the week, we had two more classes, including our first girls-only class.  So, we&#8217;ve gone from 12 coders to almost 30.</p>
-
-<p>So, thank you all for participating and recommending the Mill Valley Code Club to your friends.  I know it wouldn&#8217;t be here without your support and enthusiasm.</p>
-
-<h2>On Using Scratch</h2>
-
-<p>When I first started code club, I was not sure which platform to use.  I use Code Combat in the first session, which is a fun way to get kids excited about coding.  </p>
-
-<p>However, I eventually chose Scratch as a tool to use, since it seemed the most mature tool.  I had been hearing good things about Tynker, but I didn&#8217;t choose it initially because it was going to add costs to the class, and I needed to learn for myself what the curriculum was going to be like.</p>
-
-<p>The first mvcoders I had join were mostly an outgrowth of Elijah&#8217;s soccer team - more than half the kids came from that group.  More than half of them liked Minecraft.  Since it was a bit more uniform, it made sense to teach the same curriculum to all of them.  Our goal in that class was to make a video game.  This resonated with most of the kids as that was something that they wanted to do.</p>
-
-<p>The intro class was geared towards getting kids to understand the Scratch platform, and also to start thinking about solving problems in a new way.  Coding requires you to plan ahead, and by the end of the first session, most of the kids had figured out how to orchestrate sophisticated games and anmiations.</p>
-
-<h2>CodeCombat and Jumping</h2>
-
-<p>The Monday coders started off with CodeCombat, just as the first group did last time.  We had a blast slaying ogres!  At some point, some of the kids were getting stuck, and I said &#8220;I know this can be a little frustrating&#8221;.  Then, I was corrected - &#8220;No, not frustrating.  Just challenging!&#8221;  That&#8217;s the attitude!</p>
-
-<p>I wanted to have the Wednesday kids explore some basic physics motions so that their games could feel more realistic.  Turns out, teaching physics to 4th and 5th graders is not so easy!   They still haven&#8217;t mastered negative numbers and coordinates, and they haven&#8217;t been much introduced to Physics concepts in class yet.  So, we spent some time talking about speed, velocity and acceleration.   We learned that when you jump, your speed goes to zero at the top of your jump.  </p>
-
-<p>These concepts are not easy;  it may take a few sessions to get the hang of it.  However, if they can master jumping in their code, they will be ready for more advanced Math and Science classes at school.</p>
-
-<p><img src="http://douglastarr.com/images/angry-birds.jpg" alt="Angry Birds"/></p>
-
-<h2>Different Strokes</h2>
-
-<p>As I&#8217;ve watched the kids learn to code, I&#8217;ve noticed that there are several different learning styles that the kids fall into.  I&#8217;ve been trying to create a program that allows each of these types of kids to have a good experience.</p>
-
-<h3>The Curious Explorer</h3>
-
-<p>These kids love to try new things.  They are always pushing the platform to it&#8217;s limits, kicking the tires, and seeing what it can do.  These are the kids who not only have tried Scratch, but are interested in Javascript, Python, Ruby and even Unity 3D!</p>
-
-<h3>The Digital Artist</h3>
-
-<p>Some kids come to coding with either an artistic or musical interest.  They spend much of their time perfecting animations, creating music, using vector drawing tools and illustrating.</p>
-
-<h3>The Hardcore Hacker/Gamer</h3>
-
-<p>The hacker and gamer (two separate categories for adults) loves to play.  They are adept at taking pieces of things and mashing them together in new ways.  </p>
-
-<p>I&#8217;d like to cater to each group more specifically.  I think it would be fun to try out new tools for our explorers, maybe do some advanced Photoshop, Illustrator (and Garage Band??) for the Artists, and encourage the hackers to dream up new takes on existing games.</p>
-
-<h2>Trying out Tynker</h2>
-
-<p>Starting this week, I am going to mix in some Tynker sessions as well.  The interface to Tynker is not that different from Scratch, and it has some good tools for creating curriculums for kids, while still letting the different &#8220;coder-types&#8221; have a good time.  It will also make it easier to create coding curriculums that satisifies kids with different interests and who work at different paces.</p>
-
-<h2>Socializing and Coding</h2>
-
-<p>Collaboration and socializing are an important part of code club.  I had the Monday class wear headphones the whole time.  I did this because some of the Wednesday classes had gotten too noisy, and I wanted to cut that down a bit.  However, the kids in the Monday class were simply too quiet!  So, I think this week, we&#8217;ll probably have headphones, but mainly for when we need to concentrate.   </p>
-
-<h2>Debugging and Unblocking</h2>
-
-<p>I see one of my main jobs in code club as &#8220;Chief Debugger&#8221;.  Perhaps your child is doing some coding at home;  it can be tough when they run into problems and you don&#8217;t really have the time or knowledge to help them solve them.</p>
-
-<p>A key value of code club is helping kids get past roadblocks.  Every software package has bugs and issues that make it less than perfect.  For new coders, hitting a roadblock in your coding adventure can be incredibly frustrating.  There&#8217;s so much to learn, and you are excited about it, but trying to figure out how to solve technical problems can be time consuming and require a lot of patience.</p>
-
-<h2>Summer Code Camp</h2>
-
-<p>I&#8217;ve heard from several parents that they are interested in a Marin Code Camp this summer for their kids.  I&#8217;m considering doing that.  However, I doubt that I would run &#8220;full-day&#8221; sessions as I don&#8217;t think it&#8217;s appropriate for kids this age to be on the computer all day long.   However, I think, because they won&#8217;t be in school, that having slightly longer sessions might make sense.  Please let me know if you are interested or have any thoughts on it.</p>
-
-<h2>Helping Out</h2>
-
-<p>I am looking to hire a few coding tutors to help out in the class. It&#8217;s perfect for high school or college students who have done some coding and enjoy working with kids.  If you know of anyone who might be interested, please let me know!</p>
-
-<h2>Thoughts and Comments?</h2>
-
-<p>For many parents, code club is a new experience.  I welcome your comments and feedback either here or by emailing me directly.</p>]]></content>
   </entry>
   
   <entry>
@@ -1278,6 +1195,31 @@ The curriculum you use or develop is highly dependent on the kind of structure y
 <p>They will hallucinate that they are changing the world.</p>
 
 <p>So, be careful about letting your startup idea consume you completely.  You&rsquo;ll get sick and distracted and the fever may not break for months or years.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A simple way to save time at work]]></title>
+    <link href="http://douglastarr.com/A-simple-way-to-save-time-at-work/"/>
+    <updated>2013-10-03T00:00:00-07:00</updated>
+    <id>http://douglastarr.com/A-simple-way-to-save-time-at-work</id>
+    <content type="html"><![CDATA[<p>It&rsquo;s a good idea to create a list of questions and answers that people commonly ask you at work.</p>
+
+<p>This will save you time and some grief from constant interruption.</p>
+
+<ul>
+<li>Create a page or document somewhere (any tool will do), and call it &ldquo;My FAQ&rdquo;.  (Obviously replace &ldquo;My&rdquo; with our name)</li>
+<li>Add it to your email signature as a link, and whatever other social tools people can discover you by (your GChat handle, etc)</li>
+<li>When new questions come in from people (from any channel), make sure to write them down in your FAQ first.  Then, instead of answering them directly, send a link to the appropriate FAQ article.</li>
+<li>Put a link on your FAQ to prompt people to say &ldquo;Thanks&rdquo;.  This will encourage you to keep up your FAQ.</li>
+</ul>
+
+
+<p>Once you&rsquo;ve started to do this, you&rsquo;ll get in the habit and find that the time you save makes up for time spent adding to your FAQ.</p>
+
+<p>What tricks do you use to save time at work?</p>
+
+<p>PS- If you would like a tool that can help you build your own personal FAQs at work, you can try <a href="https://corpqna.com">CorpQNA</a>.  It will create and maintain your FAQ for you, let you share it, and do a lot of Q&amp;A stuff that you might expect if your team really gets into it.</p>
 ]]></content>
   </entry>
   
