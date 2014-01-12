@@ -4,7 +4,7 @@
   <title><![CDATA[Category: mvcoders | Douglas Tarr]]></title>
   <link href="http://douglastarr.com/categories/mvcoders/atom.xml" rel="self"/>
   <link href="http://douglastarr.com/"/>
-  <updated>2013-12-22T10:15:27-08:00</updated>
+  <updated>2014-01-12T08:43:17-08:00</updated>
   <id>http://douglastarr.com/</id>
   <author>
     <name><![CDATA[Douglas Tarr]]></name>
@@ -12,6 +12,75 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[A new year of coding]]></title>
+    <link href="http://douglastarr.com/a-new-year-of-coding/"/>
+    <updated>2014-01-12T07:33:00-08:00</updated>
+    <id>http://douglastarr.com/a-new-year-of-coding</id>
+    <content type="html"><![CDATA[<p>This week, we started the new year with one new coding class, and the two additional ones.  By the end of the week, we had two more classes, including our first girls-only class.  So, we&rsquo;ve gone from 12 coders to almost 30.</p>
+
+<p>So, thank you all for participating and recommending the Mill Valley Code Club to your friends.  I know it wouldn&rsquo;t be here without your support and enthusiasm.</p>
+
+<h2>On Using Scratch</h2>
+
+<p>When I first started code club, I was not sure which platform to use.  I use Code Combat in the first session, which is a fun way to get kids excited about coding.</p>
+
+<p>However, I eventually chose Scratch as a tool to use, since it seemed the most mature tool.  I had been hearing good things about Tynker, but I didn&rsquo;t choose it initially because it was going to add costs to the class, and I needed to learn for myself what the curriculum was going to be like.</p>
+
+<p>The first mvcoders I had join were mostly an outgrowth of Elijah&rsquo;s soccer team &ndash; more than half the kids came from that group.  More than half of them liked Minecraft.  Since it was a bit more uniform, it made sense to teach the same curriculum to all of them.  Our goal in that class was to make a video game.  This resonated with most of the kids as that was something that they wanted to do.</p>
+
+<p>The intro class was geared towards getting kids to understand the Scratch platform, and also to start thinking about solving problems in a new way.  Coding requires you to plan ahead, and by the end of the first session, most of the kids had figured out how to orchestrate sophisticated games and anmiations.</p>
+
+<h2>Jumping</h2>
+
+<p>I wanted to have the Wednesday kids explore some basic physics motions so that their games could feel more realistic.  Turns out, teaching physics to 4th and 5th graders is not so easy!   They still haven&rsquo;t mastered negative numbers and coordinates, and they haven&rsquo;t been much introduced to Physics concepts in class yet.  So, we spent some time talking about speed, velocity and acceleration.   We learned that when you jump, your speed goes to zero at the top of your jump.</p>
+
+<p>These concepts are not easy;  it may take a few sessions to get the hang of it.  However, if they can master jumping in their code, they will be ready for more advanced Math and Science classes at school.</p>
+
+<p><img src="/images/angry-birds.jpg" alt="Angry Birds" /></p>
+
+<h2>Different Strokes</h2>
+
+<p>As I&rsquo;ve watched the kids learn to code, I&rsquo;ve noticed that there are several different learning styles that the kids fall into.  I&rsquo;ve been trying to create a program that allows each of these types of kids to have a good experience.</p>
+
+<h3>The Curious Explorer</h3>
+
+<p>These kids love to try new things.  They are always pushing the platform to it&rsquo;s limits, kicking the tires, and seeing what it can do.  These are the kids who not only have tried Scratch, but are interested in Javascript, Python, Ruby and even Unity 3D!</p>
+
+<h3>The Digital Artist</h3>
+
+<p>Some kids come to coding with either an artistic or musical interest.  They spend much of their time perfecting animations, creating music, using vector drawing tools and illustrating.</p>
+
+<h3>The Hardcore Hacker/Gamer</h3>
+
+<p>The hacker and gamer (two separate categories for adults) loves to play.  They are adept at taking pieces of things and mashing them together in new ways.</p>
+
+<p>I&rsquo;d like to cater to each group more specifically.  I think it would be fun to try out new tools for our explorers, maybe do some advanced Photoshop, Illustrator (and Garage Band??) for the Artists, and encourage the hackers to dream up new takes on existing games.</p>
+
+<h2>Trying out Tynker</h2>
+
+<p>Starting this week, I am going to mix in some Tynker sessions as well.  The interface to Tynker is not that different from Scratch, and it has some good tools for creating curriculums for kids, while still letting the different &ldquo;coder-types&rdquo; have a good time.  It will also make it easier to create coding curriculums that satisifies kids with different interests and who work at different paces.</p>
+
+<h2>Socializing and Coding</h2>
+
+<p>Collaboration and socializing are an important part of code club.  I had the Monday class wear headphones the whole time.  I did this because some of the Wednesday classes had gotten too noisy, and I wanted to cut that down a bit.  However, the kids in the Monday class were simply too quiet!  So, I think this week, we&rsquo;ll probably have headphones, but mainly for when we need to concentrate.</p>
+
+<h2>Debugging and Unblocking</h2>
+
+<p>I see one of my main jobs in code club as &ldquo;Chief Debugger&rdquo;.  Perhaps your child is doing some coding at home;  it can be tough when they run into problems and you don&rsquo;t really have the time or knowledge to help them solve them.</p>
+
+<p>A key value of code club is helping kids get past roadblocks.  Every software package has bugs and issues that make it less than perfect.  For new coders, hitting a roadblock in your coding adventure can be incredibly frustrating.  There&rsquo;s so much to learn, and you are excited about it, but trying to figure out how to solve technical problems can be time consuming and require a lot of patience.</p>
+
+<h2>Summer Code Camp</h2>
+
+<p>I&rsquo;ve heard from several parents that they are interested in a Marin Code Camp this summer for their kids.  I&rsquo;m considering doing that.  However, I doubt that I would run &ldquo;full-day&rdquo; sessions as I don&rsquo;t think it&rsquo;s appropriate for kids this age to be on the computer all day long.   However, I think, because they won&rsquo;t be in school, that having slightly longer sessions might make sense.  Please let me know if you are interested or have any thoughts on it.</p>
+
+<h2>Thoughts and Comments?</h2>
+
+<p>For many parents, code club is a new experience.  I welcome your comments and feedback either here or by emailing me directly.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mill Valley FPV Drone Project]]></title>
@@ -176,86 +245,6 @@
 <h2>Github</h2>
 
 <p>As always, this class is available on <a href="https://github.com/tarr11/coding-lessons/blob/master/4th-grade-coders/lesson-5.md">Github</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Messages and Animation - Coding Class Week 4]]></title>
-    <link href="http://douglastarr.com/messages-and-animation-coding-class-week-4/"/>
-    <updated>2013-11-21T08:30:00-08:00</updated>
-    <id>http://douglastarr.com/messages-and-animation-coding-class-week-4</id>
-    <content type="html"><![CDATA[<p>The past 3 weeks, the kids have been learning a lot of things.  How to interact with Scratch, basic programming concepts, and some basic computer skills.</p>
-
-<p>This week, we spent a little time learning something new (events and message passing) but most of the time, I wanted the kids to be focused on building something.</p>
-
-<h2>Unity Video</h2>
-
-<p>We watched this short time lapse video of someone building a game scene in Unity 3D. This looks more like the games that they play on consoles at home.</p>
-
-<iframe width="560" height="315" src="http://douglastarr.com//www.youtube.com/embed/Z2ZX9soqOz4" frameborder="0" allowfullscreen></iframe>
-
-
-<h2>Message Passing</h2>
-
-<p>Our goal this week was for the kids to learn about how to animate a story.  The tools in Scratch for doing this are pretty light &ndash; they don&rsquo;t really support a timeline UI for keyframing, so there&rsquo;s a lot of manual counting going on in order to synchronize your characters.</p>
-
-<p>I wanted to teach them about message passing, which is a powerful concept that lets them control their animations via events, as opposed to trying to coordinate timing.</p>
-
-<h2>Animation Challenge</h2>
-
-<p>I presented the kids with a challenge &ndash; they had to animate a story, but they were only allowed to press one button to start it, and then it needed to run on its own (sort of like tipping over dominoes)
-<img src="/images/dominoes.jpg" alt="Dominoes" /></p>
-
-<p>They had gotten comfortable with event based processing, where they were controlling the animation sort of like a puppet show.  ie., press &ldquo;j&rdquo; and a character will jump.  I wanted them to use messages to instead say &ldquo;when this sprite is finished, it broadcasts a message&rdquo;.  And then, another sprite would listen for that</p>
-
-<p>They spent much of the class working in teams of two, coming up with a story and then trying to animate it.  I liked this model because they would learn based on what they needed, as opposed to just going through and learning every command in the platform.</p>
-
-<p>They loved to record sounds and have their characters do things together.</p>
-
-<p>Here&rsquo;s an example of one of the animations (based on Pokemon) the kids put together:</p>
-
-<iframe allowtransparency="true" width="485" height="402" src="http://scratch.mit.edu/projects/embed/14440381/?autostart=false" frameborder="0" allowfullscreen></iframe>
-
-
-<p>Pretty impressive for some 4th graders who did this in about an hour!</p>
-
-<h2>Computers, Creativity, Collaboration and Communication</h2>
-
-<p>I spent some time thinking about the the role of a computer in the creative process.  There is a danger that because computers are powerful devices, they can have a hypnotic effect on the kids.</p>
-
-<p>I wanted the kids to think about what they wanted to build, instead of just clicking around the computer.  This is an important skill for them to learn &ndash; these are just tools and they need to use the tools, not have the tools use them.</p>
-
-<p>So, they spent a few minutes discussing what they wanted to build.  This was somewhat challenging and overwhelming.  A lot of them just wanted to mess around and build it that way.  I think that&rsquo;s fine, but I also wanted them to have their own point of view.</p>
-
-<p>Some of the kids have more experience than others, and I wanted them to learn how to work together and teach each other.  If they are just working alone, they might as well be at home!  So, I spend some time each class trying to get them to work together, communicate, and solve problems together.  Since I&rsquo;ve put them on time limits for this project, that can be somewhat stressful.</p>
-
-<p>It&rsquo;s a good skill for them to learn how to manage their time and their communication under time pressure.</p>
-
-<h2>Advanced Class + Another Intro Class In January</h2>
-
-<p>We are going to have an advanced class starting in January.  I think it still will be focused around Scratch &ndash; there is a lot to learn here and I&rsquo;d like them to get a bit more mastery before we move on to more complex topics.</p>
-
-<p>I&rsquo;m also thinking about running another Intro class &ndash; this is for 4th graders, but it could also work for 3rd and 5th graders as well.  I&rsquo;m hoping to include more girls as well, to balance things out.</p>
-
-<p>If you are interested, please <a href="/contact.html">contact me</a></p>
-
-<h2>Mill Valley Code Club Website, Facebook, and HQ</h2>
-
-<p>I&rsquo;ve finally got a the <a href="http://www.mvcodeclub.com">Mill Valley Code Club Website</a> setup.  This is where the kids log in, keep notes, and learn about new lessons.  I&rsquo;ll probably improve it more over time.</p>
-
-<p>Also, I&rsquo;ve setup a <a href="http://www.facebook.com/mvcodeclub">Facebook Page</a> and a <a href="http://twitter.com/mvcodeclub">Twitter</a> if you are interested in following along.</p>
-
-<h2>Code Club HQ?</h2>
-
-<p>I am looking at renting out a small space in downtown Mill Valley, to run Code Club classes.  We&rsquo;ve been running out of my house which has been fine, but things get a little hectic, and there&rsquo;s a lot of setup and teardown that I have to do in our living room.</p>
-
-<p>If we have a space, I can add some better hardware.  I have my eye on a <a href="http://www.makerbot.com">Makerbot</a> for example, which would be a fun thing for the kids to play with.</p>
-
-<p>I&rsquo;ll probably also get a server that we can run Minecraft on, and a bunch of other fun stuff like <a href="http://arduino.cc">Arduino</a>, <a href="http://www.raspberrypi.org">Raspberry Pi</a> etc.</p>
-
-<h2>Github</h2>
-
-<p>As always, <a href="https://github.com/tarr11/coding-lessons/blob/master/4th-grade-coders/lesson-4.md">this weeks lesson plan</a> is on Github.  Enjoy!</p>
 ]]></content>
   </entry>
   
