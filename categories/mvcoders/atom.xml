@@ -4,7 +4,7 @@
   <title><![CDATA[Category: mvcoders | Douglas Tarr]]></title>
   <link href="http://douglastarr.com/categories/mvcoders/atom.xml" rel="self"/>
   <link href="http://douglastarr.com/"/>
-  <updated>2014-01-12T09:08:49-08:00</updated>
+  <updated>2014-01-18T14:44:17-08:00</updated>
   <id>http://douglastarr.com/</id>
   <author>
     <name><![CDATA[Douglas Tarr]]></name>
@@ -12,6 +12,82 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Motivating your kids to learn with coding]]></title>
+    <link href="http://douglastarr.com/motivating-your-kids-to-learn-with-coding/"/>
+    <updated>2014-01-18T13:46:00-08:00</updated>
+    <id>http://douglastarr.com/motivating-your-kids-to-learn-with-coding</id>
+    <content type="html"><![CDATA[<p><img src="/images/comp-thinking.jpg" alt="Computational Thinking" /></p>
+
+<h2>Laying down a gauntlet</h2>
+
+<p>I have been in the habit of starting the kids with <a href="http://codecombat.com">CodeCombat</a>, which is a game that teaches JavaScript programming by making you solve a series of puzzles with code.</p>
+
+<p>This is a bit risky; CodeCombat is kind of hard, and a bit frustrating, especially for kids in elementary school.  But, it is a lot of fun.  The graphics and music are great, there&rsquo;s a real narrative that draws the kids in, and it treats them with respect.  I was drawn to it because it wasn&rsquo;t easy.  I didn&rsquo;t want the kids to start off on something easy, and then have it just keep getting harder, only to have them have a false sense of accomplishment and get discouraged.</p>
+
+<p>So far, this has worked out fairly well.  I try to keep a fine balance between keeping the kids challenged and excited.  What also helps is a social atmosphere; perhaps you might be having a tough problem, but you can always walk over and talk to your friend, and perhaps work on something else together.</p>
+
+<h2>Computational Thinking</h2>
+
+<p>In a sense, this game (and coding in general) is a kind of initiation into a special club called <a href="http://www.google.com/edu/computational-thinking/">computational thinking</a>   This is a way of thinking that allows you to communicate and instruct computers to do what you want.</p>
+
+<p>Computational Thinking is valuable for anyone to learn.  We live in a world of machines &ndash; this is probably the first or second generation of humans in which computers will outnumber human beings.  Ie, at what point will the entire population of the earth own at least one electronic device?  I can probably count hundreds of different micro-processors in my own home.</p>
+
+<p>So, in one sense, there&rsquo;s a larger trend towards making machines more accessible to humans.  Companies like Apple and Google are building user interfaces that try and intuit human needs and build interfaces geared towards humans.</p>
+
+<p>There&rsquo;s also a trend towards people <em>adapting human behavior to computers</em>.  An obvious example is language, which changes almost daily and is shaped by our interaction with texting, iPhones and Twitter.  Another example is trying to fix your broken computer.  You can&rsquo;t simply yell at it and fix it (though this would be a fantastic product, aspiring entrepreneurs)  Instead, you have to <em>think like the computer would</em> and solve the problem that way.</p>
+
+<p>It can be incredibly frustrating when a machine breaks or is hard to use, and you need it to do something.  By thinking &ldquo;like the machine does&rdquo;, you can be empowered to solve your own computer problems, even if you are never going to be a programmer.</p>
+
+<h2>Tynker</h2>
+
+<p>This week we tried out <a href="http://www.tynker.com">Tynker</a> in the classroom.  I would call this a &ldquo;mixed success&rdquo;.  Some of the kids really liked it.  In particular, I had one or two kids who liked the Physics engine (a differentiator from <a href="http://scratch.mit.edu">Scratch</a> ) However, many of the kids who were familiar with Scratch liked it less.  They sort of viewed as &ldquo;Scratch where everything got moved around&rdquo;.  That was interesting to see &ndash; once the kids are comfortable in a tool, it can be hard to make them learn a similar tool unless it offers a significantly altered feature set.</p>
+
+<p>My plan is to incorporate many different tools and platforms into the class.  Just this week, I heard about a few new tools I&rsquo;d like to check out <a href="http://www.sploder.com">Sploder</a> and <a href="http://www.checkio.org">Checkio</a></p>
+
+<h2>Code Club Updates</h2>
+
+<p>At this point, I am running 5 different classes over 4 days with 34 kids.  My original plan was to talk about everyone&rsquo;s progress here on this blog.  However, I don&rsquo;t think that will make as much sense, since we are working on a lot of different things.  Even in the original Wednesday group, kids are working on a variety of things.   I&rsquo;m working on a better solution that gives more personalization progress reports about each class and student.</p>
+
+<h2>Computer Hygiene</h2>
+
+<p>There was a nasty bug going around at the schools in the past week.  I&rsquo;ll be encouraging kids to wash their hands before and after class.  I will also be wiping down keyboards and mice with anti-bacterial wipes so as to avoid spreading germs.  Please let me know if you have any other ideas that might help keep our kids healthy and safe.</p>
+
+<h2>Thoughts on Summer Camp</h2>
+
+<p>I&rsquo;ve spoken to a few parents; my thinking right now is that I will offer slightly more extended sessions (maybe 2-3 hours max per day) in the summer, but not entire day long sessions as this is too much screen time, especially in the summer.</p>
+
+<h2>Middle School</h2>
+
+<p>The middle school initiative is picking up steam.  The idea is to take a group of Middle School students and build something cool, like an app or a game.   We are going to have an exploratory session soon.  If you are interested in participating, please email me.</p>
+
+<h2>Minecraft For Parents Q&amp;A</h2>
+
+<p>So, I have heard from parents about Minecraft specific questions.  Things like:</p>
+
+<ul>
+<li>What is Minecraft?   Why is my kid addicted to it?</li>
+<li>What age is appropriate for Minecraft?</li>
+<li>How do I keep my child safe?</li>
+<li>Can Minecraft cause problems with my computer?  What kind of computer do I need?</li>
+<li>How do I monitor my child&rsquo;s activity on Minecraft Servers?</li>
+</ul>
+
+
+<p>I am thinking about having a Q&amp;A session at Code Club for parents about Minecraft.  I&rsquo;d imagine I&rsquo;d have a 30 minute presentation on &ldquo;Minecraft for Parents&rdquo; followed by a Q&amp;A / roundtable session where we can discuss the various issues we&rsquo;ve had around it.   If you are interested in participating, please let me know!</p>
+
+<h2>Follow MVCodeClub</h2>
+
+<ul>
+<li><a href="https://www.mvcodeclub.com">Mill Valley Code Club Website</a></li>
+<li><a href="http://eepurl.com/LRzX1">Mill Valley Code Club Mailing List</a></li>
+<li><a href="http://www.facebook.com/mvcodeclub">Facebook</a></li>
+<li><a href="http://www.twitter.com/mvcodeclub">Twitter</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[A new year of coding]]></title>
@@ -196,61 +272,6 @@
 <h2>Next Week</h2>
 
 <p>I keep meaning to let the kids just build in class, and not really teach them anything.  I think for the last 2 weeks, that&rsquo;s what we&rsquo;ll do.  They can be creative, and I&rsquo;ll just help them as they finish their &ldquo;final projects&rdquo;.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Scratch Variables and Lists - Coding Class Week 5]]></title>
-    <link href="http://douglastarr.com/scratch-variables-and-lists-coding-class-week-5/"/>
-    <updated>2013-11-27T13:44:00-08:00</updated>
-    <id>http://douglastarr.com/scratch-variables-and-lists-coding-class-week-5</id>
-    <content type="html"><![CDATA[<p>This week we learned about variables and lists.</p>
-
-<h2>How Computers Work</h2>
-
-<p>We watched this Ted video on how computers work.  I&rsquo;m not sure any of it sunk in, but it was a good way to visualize how a computer processes things.</p>
-
-<iframe width="560" height="315" src="http://douglastarr.com//www.youtube.com/embed/AkFi90lZmXA" frameborder="0" allowfullscreen></iframe>
-
-
-<h2>Keeping Score</h2>
-
-<p>Rather than present variables as an abstract concept, I asked the kids if they wanted to keep score in their games.  Most of them did, a few weren&rsquo;t sure.</p>
-
-<p>So, we made a game this week where we made a map, animated a sprite, and collected coins, which would increase their score.</p>
-
-<p>Once their score got a certain point, they would win.</p>
-
-<p>Here&rsquo;s an example from one of the students
-<img src="/images/coin-game.png" alt="Coin Game" /></p>
-
-<h2>Math, Physics, Art, and Communication</h2>
-
-<p>I&rsquo;ve noticed that the kids have to quickly learn a lot of advanced concepts in order to make their game work.  For example, they have to understand negative numbers, multiplication, and graphs.</p>
-
-<p>They inevitably start to make fairly complex designs, and they have to learn how to keep things organized and modular.</p>
-
-<p>Several kids have wanted to make their character &ldquo;jump&rdquo;, which involves simulating physics (gravity, velocity, etc)</p>
-
-<p>It&rsquo;s pretty amazing what they will learn quickly enough if they are motivated.</p>
-
-<p>My sense is that programming games is a great way to teach just about any subject at this age.  They have to quickly master a concept and if they don&rsquo;t, their program won&rsquo;t work.</p>
-
-<h2>Finishing our game</h2>
-
-<p>At this point, the kids may not know it, but they&rsquo;ve got a completely working game!  We will spend the remaining few weeks fine tuning our games and adding more features.</p>
-
-<h2>Code Club HQ</h2>
-
-<p>I&rsquo;ve rented a space for Code Club Headquarters, at 38 Miller Ave in Mill Valley.  I&rsquo;m very excited to put some cool stuff in there and run a few more classes.</p>
-
-<p>Follow along here on this blog and <a href="http://facebook.com/mvcodeclub">become a fan on Facebook</a></p>
-
-<p>If you live in Marin and are interested in having your child participate, please <a href="http://www.mvcodeclub.com/home/winterschedule">check out the schedule</a> on the <a href="http://www.mvcodeclub.com">mvcodeclub.com website</a></p>
-
-<h2>Github</h2>
-
-<p>As always, this class is available on <a href="https://github.com/tarr11/coding-lessons/blob/master/4th-grade-coders/lesson-5.md">Github</a></p>
 ]]></content>
   </entry>
   

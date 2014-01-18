@@ -4,7 +4,7 @@
   <title><![CDATA[Douglas Tarr]]></title>
   <link href="http://douglastarr.com/atom.xml" rel="self"/>
   <link href="http://douglastarr.com/"/>
-  <updated>2014-01-12T09:08:49-08:00</updated>
+  <updated>2014-01-18T14:44:17-08:00</updated>
   <id>http://douglastarr.com/</id>
   <author>
     <name><![CDATA[Douglas Tarr]]></name>
@@ -12,6 +12,82 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Motivating your kids to learn with coding]]></title>
+    <link href="http://douglastarr.com/motivating-your-kids-to-learn-with-coding/"/>
+    <updated>2014-01-18T13:46:00-08:00</updated>
+    <id>http://douglastarr.com/motivating-your-kids-to-learn-with-coding</id>
+    <content type="html"><![CDATA[<p><img src="http://douglastarr.com/images/comp-thinking.jpg" alt="Computational Thinking" /></p>
+
+<h2>Laying down a gauntlet</h2>
+
+<p>I have been in the habit of starting the kids with <a href="http://codecombat.com">CodeCombat</a>, which is a game that teaches JavaScript programming by making you solve a series of puzzles with code.</p>
+
+<p>This is a bit risky; CodeCombat is kind of hard, and a bit frustrating, especially for kids in elementary school.  But, it is a lot of fun.  The graphics and music are great, there&rsquo;s a real narrative that draws the kids in, and it treats them with respect.  I was drawn to it because it wasn&rsquo;t easy.  I didn&rsquo;t want the kids to start off on something easy, and then have it just keep getting harder, only to have them have a false sense of accomplishment and get discouraged.</p>
+
+<p>So far, this has worked out fairly well.  I try to keep a fine balance between keeping the kids challenged and excited.  What also helps is a social atmosphere; perhaps you might be having a tough problem, but you can always walk over and talk to your friend, and perhaps work on something else together.</p>
+
+<h2>Computational Thinking</h2>
+
+<p>In a sense, this game (and coding in general) is a kind of initiation into a special club called <a href="http://www.google.com/edu/computational-thinking/">computational thinking</a>   This is a way of thinking that allows you to communicate and instruct computers to do what you want.</p>
+
+<p>Computational Thinking is valuable for anyone to learn.  We live in a world of machines &ndash; this is probably the first or second generation of humans in which computers will outnumber human beings.  Ie, at what point will the entire population of the earth own at least one electronic device?  I can probably count hundreds of different micro-processors in my own home.</p>
+
+<p>So, in one sense, there&rsquo;s a larger trend towards making machines more accessible to humans.  Companies like Apple and Google are building user interfaces that try and intuit human needs and build interfaces geared towards humans.</p>
+
+<p>There&rsquo;s also a trend towards people <em>adapting human behavior to computers</em>.  An obvious example is language, which changes almost daily and is shaped by our interaction with texting, iPhones and Twitter.  Another example is trying to fix your broken computer.  You can&rsquo;t simply yell at it and fix it (though this would be a fantastic product, aspiring entrepreneurs)  Instead, you have to <em>think like the computer would</em> and solve the problem that way.</p>
+
+<p>It can be incredibly frustrating when a machine breaks or is hard to use, and you need it to do something.  By thinking &ldquo;like the machine does&rdquo;, you can be empowered to solve your own computer problems, even if you are never going to be a programmer.</p>
+
+<h2>Tynker</h2>
+
+<p>This week we tried out <a href="http://www.tynker.com">Tynker</a> in the classroom.  I would call this a &ldquo;mixed success&rdquo;.  Some of the kids really liked it.  In particular, I had one or two kids who liked the Physics engine (a differentiator from <a href="http://scratch.mit.edu">Scratch</a> ) However, many of the kids who were familiar with Scratch liked it less.  They sort of viewed as &ldquo;Scratch where everything got moved around&rdquo;.  That was interesting to see &ndash; once the kids are comfortable in a tool, it can be hard to make them learn a similar tool unless it offers a significantly altered feature set.</p>
+
+<p>My plan is to incorporate many different tools and platforms into the class.  Just this week, I heard about a few new tools I&rsquo;d like to check out <a href="http://www.sploder.com">Sploder</a> and <a href="http://www.checkio.org">Checkio</a></p>
+
+<h2>Code Club Updates</h2>
+
+<p>At this point, I am running 5 different classes over 4 days with 34 kids.  My original plan was to talk about everyone&rsquo;s progress here on this blog.  However, I don&rsquo;t think that will make as much sense, since we are working on a lot of different things.  Even in the original Wednesday group, kids are working on a variety of things.   I&rsquo;m working on a better solution that gives more personalization progress reports about each class and student.</p>
+
+<h2>Computer Hygiene</h2>
+
+<p>There was a nasty bug going around at the schools in the past week.  I&rsquo;ll be encouraging kids to wash their hands before and after class.  I will also be wiping down keyboards and mice with anti-bacterial wipes so as to avoid spreading germs.  Please let me know if you have any other ideas that might help keep our kids healthy and safe.</p>
+
+<h2>Thoughts on Summer Camp</h2>
+
+<p>I&rsquo;ve spoken to a few parents; my thinking right now is that I will offer slightly more extended sessions (maybe 2-3 hours max per day) in the summer, but not entire day long sessions as this is too much screen time, especially in the summer.</p>
+
+<h2>Middle School</h2>
+
+<p>The middle school initiative is picking up steam.  The idea is to take a group of Middle School students and build something cool, like an app or a game.   We are going to have an exploratory session soon.  If you are interested in participating, please email me.</p>
+
+<h2>Minecraft For Parents Q&amp;A</h2>
+
+<p>So, I have heard from parents about Minecraft specific questions.  Things like:</p>
+
+<ul>
+<li>What is Minecraft?   Why is my kid addicted to it?</li>
+<li>What age is appropriate for Minecraft?</li>
+<li>How do I keep my child safe?</li>
+<li>Can Minecraft cause problems with my computer?  What kind of computer do I need?</li>
+<li>How do I monitor my child&rsquo;s activity on Minecraft Servers?</li>
+</ul>
+
+
+<p>I am thinking about having a Q&amp;A session at Code Club for parents about Minecraft.  I&rsquo;d imagine I&rsquo;d have a 30 minute presentation on &ldquo;Minecraft for Parents&rdquo; followed by a Q&amp;A / roundtable session where we can discuss the various issues we&rsquo;ve had around it.   If you are interested in participating, please let me know!</p>
+
+<h2>Follow MVCodeClub</h2>
+
+<ul>
+<li><a href="https://www.mvcodeclub.com">Mill Valley Code Club Website</a></li>
+<li><a href="http://eepurl.com/LRzX1">Mill Valley Code Club Mailing List</a></li>
+<li><a href="http://www.facebook.com/mvcodeclub">Facebook</a></li>
+<li><a href="http://www.twitter.com/mvcodeclub">Twitter</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[A new year of coding]]></title>
@@ -1195,31 +1271,6 @@ The curriculum you use or develop is highly dependent on the kind of structure y
 <p>They will hallucinate that they are changing the world.</p>
 
 <p>So, be careful about letting your startup idea consume you completely.  You&rsquo;ll get sick and distracted and the fever may not break for months or years.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[A simple way to save time at work]]></title>
-    <link href="http://douglastarr.com/A-simple-way-to-save-time-at-work/"/>
-    <updated>2013-10-03T00:00:00-07:00</updated>
-    <id>http://douglastarr.com/A-simple-way-to-save-time-at-work</id>
-    <content type="html"><![CDATA[<p>It&rsquo;s a good idea to create a list of questions and answers that people commonly ask you at work.</p>
-
-<p>This will save you time and some grief from constant interruption.</p>
-
-<ul>
-<li>Create a page or document somewhere (any tool will do), and call it &ldquo;My FAQ&rdquo;.  (Obviously replace &ldquo;My&rdquo; with our name)</li>
-<li>Add it to your email signature as a link, and whatever other social tools people can discover you by (your GChat handle, etc)</li>
-<li>When new questions come in from people (from any channel), make sure to write them down in your FAQ first.  Then, instead of answering them directly, send a link to the appropriate FAQ article.</li>
-<li>Put a link on your FAQ to prompt people to say &ldquo;Thanks&rdquo;.  This will encourage you to keep up your FAQ.</li>
-</ul>
-
-
-<p>Once you&rsquo;ve started to do this, you&rsquo;ll get in the habit and find that the time you save makes up for time spent adding to your FAQ.</p>
-
-<p>What tricks do you use to save time at work?</p>
-
-<p>PS- If you would like a tool that can help you build your own personal FAQs at work, you can try <a href="https://corpqna.com">CorpQNA</a>.  It will create and maintain your FAQ for you, let you share it, and do a lot of Q&amp;A stuff that you might expect if your team really gets into it.</p>
 ]]></content>
   </entry>
   
