@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title> - Douglas Tarr&#8217;s Blog</title>
+  <title>How to Allow Unsafe Ports in Chrome - Douglas Tarr&#8217;s Blog</title>
   <meta name="author" content="Doug Tarr">
 
   
-  <meta name="description" content="Nov 6th, 2014 7:27 pm This is the personal website of Douglas Tarr I currently run MV Code Club based in Mill Valley, California. Contact me Latest &hellip;">
+  <meta name="description" content="In Chrome, if you attempt to access a website on some non-standard ports, such as port 87, you will see:&quot;This webpage is unavailable&quot; and &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.douglastarr.com">
+  <link rel="canonical" href="http://www.douglastarr.com/how-to-allow-unsafe-ports-in-chrome">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Douglas Tarr's Blog" type="application/atom+xml">
@@ -79,60 +79,66 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title"></h1>
-    <p class="meta">
-
-
-
-
-<time class='entry-date' datetime='2014-11-06T19:27:00-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:27 pm</span></time></p>
-  </header>
-  
-  <div class="blogindex">
-        <article>
-            <p>This is the personal website of Douglas Tarr</p>
-            <p>I currently run MV Code Club based in Mill Valley, California.</p>
-            <p><a href="/contact.html">Contact me</a></p>
-    <h2>Latest Blog Entry</h2>
     
-    <h3><a href="/coveredca-and-anthem-problems">CoveredCA and Anthem Problems</a></h3>
-
-
-    <h2>Active Projects</h2>
-    <h3><a href="https://www.mvcodeclub.com">MV Code Club</a></h3>
-    <p>A coding club that I started with locations in Mill Valley and Greenbrae California</p>
-
-    <p><a href="/projects.html">All my projects</a></p>
-    </article>
-</div>
-
-  
-    <footer>
+      <h1 class="entry-title">How to Allow Unsafe Ports in Chrome</h1>
+    
+    
       <p class="meta">
         
-        
 
 
 
 
-<time class='entry-date' datetime='2014-11-06T19:27:00-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:27 pm</span></time>
+<time class='entry-date' datetime='2010-08-30T00:00:00-07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>12:00 am</span></time>
         
       </p>
+    
+  </header>
+
+
+<div class="entry-content"><div>In Chrome, if you attempt to access a website on some non-standard ports, such as port 87, you will see:</div><p /><div>&quot;This webpage is unavailable&quot; and the text of your error will be:</div><p /><div><span style="font-family: Helvetica, Arial, sans-serif; font-size: 13px; line-height: 15px;">Error 312 (net::ERR_UNSAFE_PORT): Unknown error.</span></div><p /><div>To fix this, you have to explicitly allow the unsafe port when you start up chrome.  </div><p /><div>Right click on your chrome icon that you use to launch chrome, and click properties.</div><p /><div>The textbox that says &quot;Target&quot; will look something like this (your username obviously)</div>C:\Users\dougt\AppData\Local\Google\Chrome\Application\chrome.exe<p /><div>To allow ports 81,84 and 87, change it to:</div> C:\Users\dougt\AppData\Local\Google\Chrome\Application\chrome.exe &#8211;explicitly-allowed-ports=81,84,87<div><p /><div><div>This is different from FireFox, <a href="http://www.haqthegibson.com/article/12">which does this in about:config</a> </div> </div></div><p /><div>There are many sites (<a href="http://www.ericdlarson.com/misc/chrome_command_line_flags.html">such as this</a>) that describe all the chrome command line switches, but oddly, most of them do not include explicitly-allowed-ports</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
       
-        <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.douglastarr.com/index.html" data-via="tarr11" data-counturl="http://www.douglastarr.com/index.html" >Tweet</a>
+
+<span class="byline author vcard">Posted by <span class="fn">Doug Tarr</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2010-08-30T00:00:00-07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>12:00 am</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.douglastarr.com/how-to-allow-unsafe-ports-in-chrome" data-via="tarr11" data-counturl="http://www.douglastarr.com/how-to-allow-unsafe-ports-in-chrome" >Tweet</a>
   
   
   
 </div>
 
+    
+    <p class="meta">
       
-    </footer>
-  
+        <a class="basic-alignment left" href="/linkedin-social-connector-doesn-t-work-with-64-bit-office" title="Previous Post: LinkedIn Social Connector doesn't work with 64 bit office">&laquo; LinkedIn Social Connector doesn&#8217;t work with 64 bit office</a>
+      
+      
+        <a class="basic-alignment right" href="/office-space-set-to-house-music-" title="Next Post: Office Space set to house music?">Office Space set to house music? &raquo;</a>
+      
+    </p>
+  </footer>
 </article>
 
 </div>

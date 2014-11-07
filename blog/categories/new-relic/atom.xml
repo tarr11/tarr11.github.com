@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: New-relic | Douglas Tarr's Blog]]></title>
+  <link href="http://www.douglastarr.com/blog/categories/new-relic/atom.xml" rel="self"/>
+  <link href="http://www.douglastarr.com/"/>
+  <updated>2014-11-06T20:33:54-08:00</updated>
+  <id>http://www.douglastarr.com/</id>
+  <author>
+    <name><![CDATA[Doug Tarr]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Installing New Relic on Elastic Beanstalk for Windows and IIS]]></title>
+    <link href="http://www.douglastarr.com/installing-new-relic-on-elastic-beanstalk-for-windows-and-iis"/>
+    <updated>2013-11-24T10:30:00-08:00</updated>
+    <id>http://www.douglastarr.com/installing-new-relic-on-elastic-beanstalk-for-windows-and-iis</id>
+    <content type="html"><![CDATA[<p>I recently had the experience of getting New Relic to install on an AWS Elastic Beanstalk environment using IIS and Windows.</p>
+
+<p>There are some great tools that make this dead simple on Azure, but on Elastic Beanstalk, it&rsquo;s not quite as simple.   You can&rsquo;t just install using an MSI manually, since Elastic Beanstalk will auto-scale instances.</p>
+
+<p>This means that you need to build it as part of the Elastic Beanstalk configuration.</p>
+
+<ul>
+<li>Create a directory called <code>.ebextensions</code> under the root of your project</li>
+<li>Create a file called <code>newrelic.config</code> in that directory.  This will be in YAML format (2 spaces per indent)</li>
+<li>Make sure to add this file to your .csproj project and include it as content so it copies up with AWS.</li>
+<li>Download the latest <a href="https://docs.newrelic.com/docs/dotnet/new-relic-net-installation">.NET MSI from New Relic</a></li>
+<li>Upload this MSI to S3 and make it public (everyone should be able to download it)</li>
+<li>Get your New Relic license key from your New Relic account</li>
+<li>In newrelic.config, copy this in:</li>
+</ul>
+
+
+<pre><code>files:
+  "c:\\newrelic\\newrelic.msi":
+    source: [Your S3 URL]
+
+commands:
+  install_newrelic:
+    command: msiexec.exe /i c:\\newrelic\\newrelic.msi NR_LICENSE_KEY=[Your License Key] INSTALLLEVEL=1
+</code></pre>
+
+<ul>
+<li>This should copy down the MSI from your s3 bucket and install new relic with our license key to your instance</li>
+<li>New Relic should start reporting your instances (called AMAZON-something)</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
