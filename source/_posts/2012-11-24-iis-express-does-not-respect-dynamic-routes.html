@@ -1,0 +1,27 @@
+---
+layout: post
+title: IIS Express does not respect dynamic routes
+published: true
+---
+<p>If you are using IISExpress for your web server during development, and you try to route static files to dynamic files, IISExpress will not respect rerouting those files.</p>
+<p />
+<div>Ie, if you have a dynamic robots.txt file like this:</div>
+<p />
+<div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; routes.MapRoute("Robots.txt",</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "robots.txt",</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; new { controller = "Home", action = "Robots" });</div>
+</div>
+<p />
+<div>You will get a standard 404 error which tries to map it to a static handler.</div>
+<p />
+<div>To fix, you need to configure web.config like so:</div>
+<div>
+<div class="CodeRay">
+  <div class="code"><pre>&lt;system.webServer&gt;
+    &lt;modules runAllManagedModulesForAllRequests=&quot;true&quot;&gt;
+    &lt;/modules&gt;
+  &lt;/system.webServer&gt;</pre></div>
+</div>
+
+</div>

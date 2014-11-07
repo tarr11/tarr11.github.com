@@ -1,0 +1,6 @@
+---
+layout: post
+title: Using powershell 3 Invoke-RestMethod with Basic Authentication and JSON
+published: true
+---
+<div>This took me a remarkably long time to figure out.  Enjoy!</div><p><div>$user = &quot;myuserid&quot;<br /></div><div>$pass= &quot;mypass&quot;</div><div>$uri = &quot;<a href="https://myresturi.com/api/something">https://myresturi.com/api/something</a>&quot;</div> <p><div>$json = &quot;{</div><div>            &quot;&quot;foo&quot;&quot; : &quot;&quot;bar&quot;&quot;</div><div>          }&quot; <br /></div><p><div>$secpasswd = ConvertTo-SecureString $user -AsPlainText -Force</div> <div>$cred = New-Object System.Management.Automation.PSCredential ($pass, $secpasswd)</div><p><div>Invoke-RestMethod -Uri <a href="https://api.intercom.io/v1/users">https://api.intercom.io/v1/users</a> -Method Post -Credential $cred -ContentType &quot;application/json&quot; -Body $json </div> </p></p></p></p> 
