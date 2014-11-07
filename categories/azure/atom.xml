@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: azure | Douglas Tarr]]></title>
+  <link href="http://douglastarr.com/categories/azure/atom.xml" rel="self"/>
+  <link href="http://douglastarr.com/"/>
+  <updated>2014-01-18T14:46:08-08:00</updated>
+  <id>http://douglastarr.com/</id>
+  <author>
+    <name><![CDATA[Douglas Tarr]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Azure Websockets 302 Error]]></title>
+    <link href="http://douglastarr.com/azure-websockets-302-error/"/>
+    <updated>2013-03-20T00:00:00-07:00</updated>
+    <id>http://douglastarr.com/azure-websockets-302-error</id>
+    <content type="html"><![CDATA[<div>If you see an azure websockets error where it falls back to long polling , you need to make sure you set your app to use .NET 4.5 in your web.config</div>
+
+
+<p><p /><div><div>    &lt;httpRuntime targetFramework=&quot;4.5&quot; requestValidationMode=&quot;2.0&quot; /&gt;</div> <p /></div>
+fdsf</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Setting IPRestrictions in a Windows Azure Cloud App Deployment]]></title>
+    <link href="http://douglastarr.com/setting-iprestrictions-in-a-windows-azure-cloud-app-deployment/"/>
+    <updated>2013-02-24T00:00:00-08:00</updated>
+    <id>http://douglastarr.com/setting-iprestrictions-in-a-windows-azure-cloud-app-deployment</id>
+    <content type="html"><![CDATA[<div>To set IP Restrictions in Windows Azure, you have to do 2 things, create an azure startup task in your service configuration (.cscg file), and a cmd file that runs it.</div>
+
+
+
+
+<p><p /></p>
+
+<p><div><strong>Create a Service Configuration Startup Task to run a startup command</strong></div></p>
+
+<p><div></p>
+
+<p><div>&nbsp; &nbsp; &lt;Startup&gt;</div></p>
+
+<p><div>&nbsp; &nbsp; &nbsp; &lt;Task commandLine=&ldquo;startup\ip-restrictions.cmd&rdquo; executionContext=&ldquo;elevated&rdquo;&gt;</div></p>
+
+<p><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;Environment&gt;</div></p>
+
+<p><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;Variable name=&ldquo;EMULATED&rdquo;&gt;</div></p>
+
+<p><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;RoleInstanceValue xpath=&ldquo;/RoleEnvironment/Deployment/@emulated&rdquo; /&gt;</div></p>
+
+<p><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/Variable&gt;</div></p>
+
+<p><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;Variable name=&ldquo;RESTRICTIP&rdquo;&gt;</div></p>
+
+<p><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;RoleInstanceValue xpath=&ldquo;/RoleEnvironment/CurrentInstance/ConfigurationSettings/ConfigurationSetting[@name=&lsquo;RestrictIp&rsquo;]/@value&rdquo;/&gt;</div></p>
+
+<p><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/Variable&gt;</div></p>
+
+<p><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;/Environment&gt;</div></p>
+
+<p><div>&nbsp; &nbsp; &nbsp; &lt;/Task&gt;</div></p>
+
+<p><div>&nbsp; &nbsp; &lt;/Startup&gt;</div></p>
+
+<p><p /></p>
+
+<p></div></p>
+
+<p><div></p>
+
+<p><div><strong>Create a startup command</strong>&nbsp;</div></p>
+
+<p><p /></p>
+
+<p><div>This startup command checks the &ldquo;RESTRICTIP&rdquo; variable so that you can have different deployments that you can set whether or not to restrict IPs by (beta, test, production, etc). &nbsp;It also bypasses this if you are running the Azure Emulator.</div></p>
+
+<p><p /></p>
+
+<p><div>This installs the IP Restriction Windows Role, unlocks the IIS Config, and sets the appropriate IP Restrictions (put your IP in place of 1.2.3.4)</div></p>
+
+<p><p /></p>
+
+<p><p /></p>
+
+<p><div></p>
+
+<p><div>if &ldquo;%RESTRICTIP%&rdquo;==&ldquo;false&rdquo; goto :EOF</div></p>
+
+<p><div>if &ldquo;%EMULATED%&rdquo;==&ldquo;true&rdquo; goto :EOF</div></p>
+
+<p><p /></p>
+
+<p><div>powershell Install-WindowsFeature Web-IP-Security</div></p>
+
+<p><div>%windir%\system32\inetsrv\AppCmd.exe unlock config -section:system.webServer/security/ipSecurity</div></p>
+
+<p><div></p>
+
+<p><div>%windir%\system32\inetsrv\AppCmd.exe set config -section:system.webServer/security/ipSecurity /~ /commit:apphost</div></p>
+
+<p></div></p>
+
+<p><div>%windir%\system32\inetsrv\AppCmd.exe set config -section:system.webServer/security/ipSecurity /allowUnlisted:false /commit:apphost</div></p>
+
+<p><div>%windir%\system32\inetsrv\AppCmd.exe set config -section:system.webServer/security/ipSecurity /+&ldquo;[ipAddress=&lsquo;1.2.3.4&rsquo;,allowed=&lsquo;True&rsquo;]&rdquo; /commit:apphost</div></p>
+
+<p></div></p>
+
+<p><p /></p>
+
+<p><p /></p>
+
+<p><div>This particular solution will not work well if you are trying to have IP restrictions on your staging deployment, and not your production deployment, since the startup command only runs on a deploy, and you will likely just swap VIPs to go from staging to production.</div></p>
+
+<p></div></p>
+]]></content>
+  </entry>
+  
+</feed>
