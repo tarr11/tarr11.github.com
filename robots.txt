@@ -1,8 +1,4 @@
 User-agent: *
 Disallow: 
 
-<<<<<<< HEAD
 Sitemap: http://www.douglastarr.com/sitemap.xml 
-=======
-Sitemap: http://douglastarr.com/sitemap.xml 
->>>>>>> 6cd30c5e2ecbef547714b76a1e94aa1426a5fa16
