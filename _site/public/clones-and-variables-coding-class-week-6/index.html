@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Clones and variables - Coding Class Week 6 - Douglas Tarr's Blog</title>
+  <meta name="author" content="Doug Tarr">
+
+  
+  <meta name="description" content="
+
+  
+  
+    
+      Clones and variables - Coding Class Week 6
+    
+    
+      
+        
+
+
+
+
+
+        
+      
+    
+  
+
+
+This week was a bit of a str...">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.douglastarr.com/clones-and-variables-coding-class-week-6">
+  <link href="/public/favicon.png" rel="icon">
+  <link href="/public/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Douglas Tarr's Blog" type="application/atom+xml">
+  <script src="/public/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18064705-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/public/">Douglas Tarr's Blog</a></h1>
+  
+    <h2>Coding and other things</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:http://www.douglastarr.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/public/">Home</a></li>
+  <li><a href="/public/resume.html">Resume</a></li>
+  <li><a href="/public/projects.html">Projects</a></li>
+  <li><a href="/public/contact.html">Contact</a></li>
+  <li><a href="/public/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Clones and variables - Coding Class Week 6</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>This week was a bit of a stretch.  I wanted to teach the kids about clones.  This is a concept that&rsquo;s used fairly extensively in video games.</p>
+
+<h2>Video</h2>
+
+<p>We watched this video &ndash; someone basically modeled minecraft in a 3D toolkit.  I wanted them to see clones and physics in action.</p>
+
+<iframe width="420" height="315" src="//www.youtube.com/embed/o702In0aI5E" frameborder="0" allowfullscreen></iframe>
+
+
+<h2>Clones</h2>
+
+<p><img src="/images/clones.jpg" alt="Clones" /></p>
+
+<p>Clones are copies of things.  The kids have been learning to make a game, but the games tend to have very few characters, and they have to script them out individually.  This can be tedious and still feel fairly manual.</p>
+
+<p>Part of the magic of coding is when you start building lots of objects that interact with each other.   Much of this involves math and physics, so that you can simulate bouncing, gravity, and other real world phenomena.</p>
+
+<p>However, I figured that the kids would be far enough along that they could try.</p>
+
+<h2>Shoot the Penguin</h2>
+
+<p><img src="/images/shoot-the-penguin.png" alt="Shoot the penguin" /></p>
+
+<p>We were going to make a simple game  &ndash; I just called it &ldquo;Shoot the Penguin&rdquo;.  Make a gun, make a bullet, make a penguin.   If the bullet touches the penguin, the penguin dies.</p>
+
+<p>I gave them an example of a gun that shoots a bullet.  Some of the kids had previously figured out how to do this; They had a gun sprite and a bullet sprite and when they hit the space bar, the bullet sprite started moving until it hit the edge.</p>
+
+<h2>Direction, Position, and Variables</h2>
+
+<p>At some point, most of the kids had figured out how to make the gun shoot a bullet, and even kill the penguin.</p>
+
+<p>Then, the next goal was to aim the gun.   This was useful because the kids naturally start complaining that their gun doesn&rsquo;t work too well, since it won&rsquo;t aim, and the bullet sometimes doesn&rsquo;t shoot out of the gun.  So, we had to create some global variables to store the position of the gun, and then copy those to the bullet so that the bullet knew which direction to go.</p>
+
+<h2>Scratch Limitations, and Bugs</h2>
+
+<p>Scratch is very &ldquo;opionated&rdquo;, and only comes with a subset of features available in modern programming languages.  It&rsquo;d be better if it was more object oriented, such that I could query the gun&rsquo;s position, instead of copying into a global variable.  This would have been more natural for the kids to understand.  Copying around variables around is a little bit confusing and messy.</p>
+
+<p>We also ran into some bugs &ndash; sprites would just simply not rotate correctly sometimes, and we had to delete them and re-add them.  It was also common for kids to build a complicated sprite, but put it in the wrong place (ie, as a backdrop or as a costume attached to a different sprite)  When they finally realized they did it wrong, they had no idea how to move it.</p>
+
+<p>We finally figured out that you do it by downloading the sprite to your local computer, then uploading again.  Copy/paste would have been better.</p>
+
+<p>Also, renaming variables and sprites tends to break script blocks, which don&rsquo;t update their references always.  So, either name your variables and sprites up front, or don&rsquo;t bother.</p>
+
+<h2>Next Week</h2>
+
+<p>I keep meaning to let the kids just build in class, and not really teach them anything.  I think for the last 2 weeks, that&rsquo;s what we&rsquo;ll do.  They can be creative, and I&rsquo;ll just help them as they finish their &ldquo;final projects&rdquo;.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Doug Tarr</span></span>
+
+      
+
+
+
+
+
+      
+
+<span class="categories">
+  
+    mvcoders
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.douglastarr.com/clones-and-variables-coding-class-week-6" data-via="tarr11" data-counturl="http://www.douglastarr.com/clones-and-variables-coding-class-week-6" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/keep-your-asp-dot-net-mvc-projects-more-organized-with-partial-classes" title="Previous Post: Keep your ASP.NET MVC projects organized with partial classes">&laquo; Keep your ASP.NET MVC projects organized with partial classes</a>
+      
+      
+        <a class="basic-alignment right" href="/working-on-our-scratch-game-week-7" title="Next Post: Working on our Scratch game - Week 7">Working on our Scratch game - Week 7 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Doug Tarr -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

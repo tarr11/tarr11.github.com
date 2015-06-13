@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>ASP.NET MVC Best Practices - Douglas Tarr's Blog</title>
+  <meta name="author" content="Doug Tarr">
+
+  
+  <meta name="description" content="
+
+  
+  
+    
+      ASP.NET MVC Best Practices
+    
+    
+      
+        
+
+
+
+
+
+        
+      
+    
+  
+
+
+This is work-in-progress list of my ASP.NET ...">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.douglastarr.com/aspnet-mvc-best-practices">
+  <link href="/public/favicon.png" rel="icon">
+  <link href="/public/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Douglas Tarr's Blog" type="application/atom+xml">
+  <script src="/public/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18064705-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/public/">Douglas Tarr's Blog</a></h1>
+  
+    <h2>Coding and other things</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:http://www.douglastarr.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/public/">Home</a></li>
+  <li><a href="/public/resume.html">Resume</a></li>
+  <li><a href="/public/projects.html">Projects</a></li>
+  <li><a href="/public/contact.html">Contact</a></li>
+  <li><a href="/public/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">ASP.NET MVC Best Practices</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>This is work-in-progress list of my ASP.NET Best Practices. They each deserve more explanation plus code samples, which I will eventually write and link to.</p>
+
+<div class="row">
+
+<div class="offset1 span4">
+<blockquote class="twitter-tweet"><p>Make your <a href="http://t.co/hdxeE4s5KY">http://t.co/hdxeE4s5KY</a> Controllers partial classes + ViewModels and Actions in the same file <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355373348609470466">July 11, 2013</a></blockquote>
+</div>
+
+<div class="span4">
+<blockquote class="twitter-tweet"><p>Make your service class partial and keep DTOs and service methods as method-per-file <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355373477232001025">July 11, 2013</a></blockquote>
+</div>
+</div>
+
+<div class="row">
+<div class="offset1 span4">
+<blockquote class="twitter-tweet"><p>Use ICollection or IList to avoid leaking your Entity Framework IQueryable into your Controller and View <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355376435436847104">July 11, 2013</a></blockquote>
+</div>
+
+<div class="span4">
+<blockquote class="twitter-tweet"><p>Create a service per resource (db, search, email, etc) and a master service that your controller calls <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355377591961661441">July 11, 2013</a></blockquote>
+</div>
+</div>
+
+<div class="row">
+<div class="offset1 span4">
+<blockquote class="twitter-tweet"><p>Avoid the code-&gt;run-&gt;debug loop by creating an integration suite to write your db / search / querying code <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355378129721753600">July 11, 2013</a></blockquote>
+</div>
+<div class="span4">
+	<blockquote class="twitter-tweet"><p>Use ViewModels to keep logic out of your views and make them more testable <a href="https://twitter.com/search?q=%23dotnet&amp;src=hash">#dotnet</a></p>&mdash; Douglas Tarr (@tarr11) <a href="https://twitter.com/tarr11/statuses/355390310236430337">July 11, 2013</a></blockquote>
+</div>
+
+</div>
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Doug Tarr</span></span>
+
+      
+
+
+
+
+
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.douglastarr.com/aspnet-mvc-best-practices" data-via="tarr11" data-counturl="http://www.douglastarr.com/aspnet-mvc-best-practices" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/my-intercom-playbook" title="Previous Post: An intercom.io playbook">&laquo; An intercom.io playbook</a>
+      
+      
+        <a class="basic-alignment right" href="/rails-vs-csharp" title="Next Post: Rails vs CSharp">Rails vs CSharp &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Doug Tarr -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
