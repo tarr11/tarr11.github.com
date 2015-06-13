@@ -1,0 +1,25 @@
+---
+layout: page
+title: ""
+date: 2014-11-06 19:27
+comments: true
+sharing: true
+footer: true
+---
+<div class="blogindex">
+        <article>
+            <p>This is the personal website of Douglas Tarr</p>
+            <p>I currently run MV Code Club based in Mill Valley, California.</p>
+            <p><a href="/contact.html">Contact me</a></p>
+    <h2>Latest Blog Entry</h2>
+    {% for post in site.posts limit: 1 %}
+    <h3><a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a></h3>
+{% endfor %}
+
+    <h2>Active Projects</h2>
+    <h3><a href="https://www.mvcodeclub.com">MV Code Club</a></h3>
+    <p>A coding club that I started with locations in Mill Valley and Greenbrae California</p>
+
+    <p><a href="/projects.html">All my projects</a></p>
+    </article>
+</div>

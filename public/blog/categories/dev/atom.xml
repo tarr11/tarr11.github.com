@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Dev | Douglas Tarr's Blog]]></title>
+  <link href="http://www.douglastarr.com/blog/categories/dev/atom.xml" rel="self"/>
+  <link href="http://www.douglastarr.com/"/>
+  <updated>2014-11-06T20:33:54-08:00</updated>
+  <id>http://www.douglastarr.com/</id>
+  <author>
+    <name><![CDATA[Doug Tarr]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Keep Your ASP.NET MVC Projects Organized With Partial Classes]]></title>
+    <link href="http://www.douglastarr.com/keep-your-asp-dot-net-mvc-projects-more-organized-with-partial-classes"/>
+    <updated>2013-12-01T10:57:00-08:00</updated>
+    <id>http://www.douglastarr.com/keep-your-asp-dot-net-mvc-projects-more-organized-with-partial-classes</id>
+    <content type="html"><![CDATA[<p>I use partial classes for controller and service classes to keep my ASP.NET MVC projects more organized.</p>
+
+<h3>The default behavior (file-per-controller) creates large files with lots of methods</h3>
+
+<p>I&rsquo;ve built many projects that use the standard Visual Studio csproj template, which creates a file per controller.  Over time, a controller may accumulate many methods (tens or even hundreds)</p>
+
+<p>This makes these files difficult to read and navigate.
+<img src="/images/messy-controller.png" alt="messy controller" /></p>
+
+<h2>Controllers</h2>
+
+<h3>Store ViewModels in the same file as controller methods</h3>
+
+<p>ViewModels are coupled to a controller and a view.<br/>
+<div><script src='https://gist.github.com/7739637.js'></script>
+<noscript><pre><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+namespace BetterMvc.Controllers.Home
+{
+    public partial class HomeController : ControllerBase
+    {
+        public ActionResult Index()
+        {
+            var result = svc.DoSomething(new Services.Master.DoSomethingRequest
+            {
+            });
+            var vm = new IndexViewModel { };
+            return View(vm);
+        }
+    }
+
+    public class IndexViewModel
+    {
+        public string UserName {get;set;}
+
+    }
+}</code></pre></noscript></div>
+</p>
+
+<h2>WebAPI</h2>
+
+<h3>Store GET/POST/DELETE/PUT methods in the different files</h3>
+
+<p>When using WebAPI, you will have multiple methods that apply to the same resource, for saving, deleting, updating, etc.</p>
+
+<p>Each of these methods will have a different view model and controller action.</p>
+
+<p>Create a directory with the name of the controller, and create each WebAPI controller as a partial.</p>
+
+<p>Store each WebAPI action in a separate file, along with it&rsquo;s associated ViewModel.</p>
+
+<p><div><script src='https://gist.github.com/7752207.js'></script>
+<noscript><pre><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Http;
+
+namespace BetterMvc.Api.V1.User
+{
+    public class GetUser
+    {
+	[HttpGet]
+	public GetUserViewModel Get()
+        {
+            return new GetUserViewModel();
+        }
+    }
+
+    public class GetUserViewModel
+    {
+        public string Username { get; set; }
+        public string ImageUrl { get; set; }
+
+    }
+}</code></pre></noscript></div>
+</p>
+
+<h2>Services</h2>
+
+<h3>Store DTOs in the same file as service methods</h3>
+
+<p>In a Request/Response pattern, DTOs are coupled to service methods.</p>
+
+<p>By storing the request and response in the same file, it is easier to make changes.</p>
+
+<h3>Store interface definitions in the same file as service methods</h3>
+
+<p>If you use a Dependency Injection Framework (such as <a href="http://www.ninject.org">Ninject</a>), you will have an interface definition for each public service method.  This creates file navigation problems with a typical ASP.NET MVC project, since hitting F12 on a method call from a controller will land you on the interface definition, as opposed to the method implementation.</p>
+
+<p>By putting the interface definition in the same file as the primary method definition, you can simply scroll down the page to implementation.  You can also use a tool like <a href="http://www.jetbrains.com/resharper/">ReSharper</a>, but I find that workflow to require more navigation than simply housing these files together.</p>
+
+<p><div><script src='https://gist.github.com/7752306.js'></script>
+<noscript><pre><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace BetterMvc.Services.Master
+{
+    public partial interface IMasterService
+    {
+        DoSomethingResult DoSomething(DoSomethingRequest request);
+    }
+
+    public partial class MasterService : IMasterService
+    {
+        public DoSomethingResult DoSomething(DoSomethingRequest request)
+        {
+            return new DoSomethingResult { SomeData = &quot;foo&quot; };
+        }
+    }
+
+    public class DoSomethingResult : Result
+    {
+        public string SomeData { get; set; }
+
+    }
+
+    public class DoSomethingRequest : Request
+    {
+        public int Id { get; set; }
+
+    }
+}</code></pre></noscript></div>
+</p>
+
+<h2>Version Control and Code Review</h2>
+
+<h3>Use shell commands to navigate files</h3>
+
+<p>Shell commands (powershell, dos, bash) become much more powerful when your code is organized by granularly by files.</p>
+
+<ul>
+<li>Sort by alpha, date modified, size changes</li>
+<li>Use git status / hg st to find which sections of code changed</li>
+</ul>
+
+
+<h3>Reduce Merge Conflicts by organizing files more granularly</h3>
+
+<p>The bane of a developers existence is a merge conflict.   In common workflows, a team of developers often work on one feature of the code at a time, and teams try to make an effort not to work on the same &ldquo;area&rdquo;.</p>
+
+<p>When different areas of code are combined into one file, merge conflicts arise.</p>
+
+<p>In ASP.NET MVC, this means you may be working on a few controller method, views, and service methods to implement a new feature.</p>
+
+<p>By reducing the size of files you are working on, and keeping them organized by subject, it is less likely that you will have conflicts with other developers.  Or, you may only have them in the .csproj file, where it is fairly trivial and safe to resolve.</p>
+
+<h3>Make Code Reviews easier to Read</h3>
+
+<p>If you use git or mercurial for source control, you will often do code reviews by reviewing a branch of code(ie., feature-branch), and comparing it to another branch (ie, develop).</p>
+
+<p>When doing these comparisons, you will see a series of commits that are grouped by file.  If associated assets (DTOs or ViewModels) reside in the same file as the methods that they support, it is easier to review, since you don&rsquo;t have to jump around as much.</p>
+
+<p>You can also quickly scan filenames to understand the subject of the change.</p>
+
+<p><img src="/images/github-diff.png" alt="github diff" /></p>
+
+<h3>Better MVC</h3>
+
+<p>I am organizing these practices into a project on Github, humbly called <a href="https://github.com/tarr11/BetterMVC">BetterMVC</a>.</p>
+
+<p>My goal is to make BetterMVC a lightweight project template that allows you to start new MVC projects in a clean way, and adopt some best practices along the way.  Right now, it is simply more of a reference.</p>
+
+<p><a href="https://github.com/tarr11/BetterMVC">Fork BetterMVC Here</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A Call to Application Developers - the Cloud Needs to Go]]></title>
+    <link href="http://www.douglastarr.com/a-call-to-application-developers-the-cloud-needs-to-go"/>
+    <updated>2013-11-09T08:31:00-08:00</updated>
+    <id>http://www.douglastarr.com/a-call-to-application-developers-the-cloud-needs-to-go</id>
+    <content type="html"><![CDATA[<p>As software proliferates, customers have more and more choices as to where they put their data.  Why would they choose your service?  As software developers, we think that this is mostly an issue of feature parity.  But there are other factors that go into the decision - business relationships, price, and most relevant to this article, trust.</p>
+
+<h2>Trust as a Service</h2>
+
+<p>Multi-Tenant cloud services are problematic and insecure.  We need a new solution for cloud computing that allows more security and better resource management.</p>
+
+<p>There are many examples of single-tenant architectures, but they are usually reserved for use cases where compliance is required (ie., health care and finance).</p>
+
+<p>In these cases,  single tenancy is not always really enforced; There is often a separate database instance that is running for each customer, but the instances are on a shared server, and many other resources (application servers, search, network) are shared.</p>
+
+<p>On the flipside, many line-of-business or backoffice apps are single tenant applications, since they are by definition only run by one client.</p>
+
+<p>The movement towards instances has been growing as IaaS has proliferated (AWS, Azure, etc), and tools like <a href="http://docker.io">docker</a> and <a href="http://bitnami.com">bitnami</a> make it easier to spin up isolated instances, but the developer software platform support is minimal or non-existent.</p>
+
+<h2>The problems with cloud</h2>
+
+<p>There are many problems with cloud services:</p>
+
+<ul>
+<li>Customer data is intermingled</li>
+<li>You are paying for scale that you simply don&rsquo;t need</li>
+<li>SaaS databases are a rich target for criminals, extortion and spying.</li>
+<li>Data security is a secondary consideration, or not well enforced inside SaaS company</li>
+</ul>
+
+
+<h3>Intermingled Data and Resources</h3>
+
+<p>As a SaaS customer, have you ever stopped to ask why your resources are intermingled with other customers?  The reason is simply that software companies are not equipped to isolate your data.  This would require complete rewrites of code, as well as an order of magnitude more ops support.</p>
+
+<p>In short, it&rsquo;s prohibitively expensive to isolate your data, given the software infrastructure currently available.</p>
+
+<h3>Security issues abound</h3>
+
+<p>A common SaaS application stack looks like this:</p>
+
+<ul>
+<li>Application Server (Rails, Django, etc)</li>
+<li>Search Engine (Elastic Search / SOLR, etc)</li>
+<li>Database (Postgres, MySql, etc)</li>
+<li>A myriad of cloud solutions for logging, email, alerts, backups, analytics</li>
+</ul>
+
+
+<p>Each of these components has an opportunity for security issues.  Many developers have access to your application server.  Your search engine or database may be hosted by a third party service.   The cloud solutions you are using proliferate customer data across hundreds or thousands of different environments.</p>
+
+<p>Each one of these layers offers spying entities an opportunity to access your data.</p>
+
+<h3>Wasteful Scale problems</h3>
+
+<p>Most SaaS applications are built on a relational SQL environment.  All customer data is stored in the same table, and separated by foreign keys.</p>
+
+<p>This means that if another customer puts a high demand on a resource (typically a database instance) that also houses your data, access to your data may be impacted, and you may experience performance issues when using the SaaS application.</p>
+
+<p>Developers spend huge amounts of time on this problem.  High Scalability has gone from a niche area of Computer Science to something that is asked as part of a junior software engineer interview.</p>
+
+<p>It&rsquo;s also incredibly hard to get right.</p>
+
+<p>Scale should be a problem for infrastructure platforms, not applications platforms.  Trying to address scale in an application is fraught with problems and tremendously expensive.</p>
+
+<p>If SaaS moved to a single instance architecture, we could push these scale problems down the stack to a few IaaS providers.  Your application simply has to be able to scale to one organization, not all the potential customers you might have.  This can change your development cycle significantly.</p>
+
+<p>We could also provide meaningful SLAs to customers since we could isolate their resources and pass on the SLA offered by IaaS such as AWS.</p>
+
+<h2>Let&rsquo;s build a Single Instance Stack</h2>
+
+<p>Given how hard it is to isolate your data, it makes sense that so few SaaS providers offer it.  There are simply few resources, developers or stacks that can help support it.  The IT / devops requirements are too burdensome.</p>
+
+<p>But, it&rsquo;s certainly possible!  After all, this is how IaaS providers work.  They can monitor and provision your application and guarantee a certain number of 9&rsquo;s of uptime.  Your SaaS should do the same, and your customers shouldn&rsquo;t have to hire a devops pro to run your cloud.</p>
+
+<h3>It&rsquo;s not just about OSS</h3>
+
+<p>Much open source software works in this way.  Simply download the software and run it on your own infrastructure.</p>
+
+<p>Single Tenant software is not a new concept.  It&rsquo;s what everyone did before they went to cloud solutions.</p>
+
+<p>It&rsquo;s still a common model for certain kinds of enterprise software (ie, MSFT) and Open Source software.</p>
+
+<p>However, the problem is that it requires a deep level of IT expertise that is prohibitive.</p>
+
+<h2>A Single Tenant Ruby on Rails?</h2>
+
+<p>We need an application stack for Isolated Environments.  We need a stack like Rails, that enables developers to easily build single tenant solutions.</p>
+
+<p>Ie, instead of deploying your SaaS app to one Heroku or AWS instance, you deploy it to 5000.</p>
+
+<p>If you have worked on any SaaS application, just thinking about that is probably enough to give you a migraine.</p>
+
+<p>What&rsquo;s missing?   Basically all backoffice support that allows you to manage thousands of customer environments.</p>
+
+<p>This is an incredibly hard task - just thinking about running a database migration on thousands of instances of customer databases makes my head spin.</p>
+
+<p>Think about all the components of your current SaaS app - and now try and figure out how to manage them across thousands of instances.  I suspect this would require some sort of management API that can deploy code, upgrades, and let you remotely manage data.</p>
+
+<ul>
+<li>Robust Security Model</li>
+<li>Managing Users-</li>
+<li>Pluggable Service Components</li>
+<li>Supporting Deployments</li>
+<li>DevOps and Provisioning</li>
+<li>Migrations, Versioning and Upgrades</li>
+</ul>
+
+
+<p>I suspect that some of these components are out there.</p>
+
+<p>Perhaps they just need to be assembled into a stack that is more manageable.</p>
+
+<p>Perhaps they don&rsquo;t exist.</p>
+
+<p>Do we need this stack?  Please share your thoughts in comments.</p>
+]]></content>
+  </entry>
+  
+</feed>

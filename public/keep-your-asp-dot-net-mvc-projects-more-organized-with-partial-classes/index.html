@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Keep your ASP.NET MVC projects organized with partial classes - Douglas Tarr's Blog</title>
+  <meta name="author" content="Doug Tarr">
+
+  
+  <meta name="description" content="
+
+  
+  
+    
+      Keep your ASP.NET MVC projects organized with partial classes
+    
+    
+      
+        
+
+
+
+
+
+        
+      
+    
+  
+
+
+I use par...">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.douglastarr.com/keep-your-asp-dot-net-mvc-projects-more-organized-with-partial-classes">
+  <link href="/public/favicon.png" rel="icon">
+  <link href="/public/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Douglas Tarr's Blog" type="application/atom+xml">
+  <script src="/public/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18064705-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/public/">Douglas Tarr's Blog</a></h1>
+  
+    <h2>Coding and other things</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:http://www.douglastarr.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/public/">Home</a></li>
+  <li><a href="/public/resume.html">Resume</a></li>
+  <li><a href="/public/projects.html">Projects</a></li>
+  <li><a href="/public/contact.html">Contact</a></li>
+  <li><a href="/public/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Keep your ASP.NET MVC projects organized with partial classes</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I use partial classes for controller and service classes to keep my ASP.NET MVC projects more organized.</p>
+
+<h3>The default behavior (file-per-controller) creates large files with lots of methods</h3>
+
+<p>I&rsquo;ve built many projects that use the standard Visual Studio csproj template, which creates a file per controller.  Over time, a controller may accumulate many methods (tens or even hundreds)</p>
+
+<p>This makes these files difficult to read and navigate.
+<img src="/images/messy-controller.png" alt="messy controller" /></p>
+
+<h2>Controllers</h2>
+
+<h3>Store ViewModels in the same file as controller methods</h3>
+
+<p>ViewModels are coupled to a controller and a view.</p>
+
+<script src="https://gist.github.com/7739637.js"> </script>
+
+
+<h2>WebAPI</h2>
+
+<h3>Store GET/POST/DELETE/PUT methods in the different files</h3>
+
+<p>When using WebAPI, you will have multiple methods that apply to the same resource, for saving, deleting, updating, etc.</p>
+
+<p>Each of these methods will have a different view model and controller action.</p>
+
+<p>Create a directory with the name of the controller, and create each WebAPI controller as a partial.</p>
+
+<p>Store each WebAPI action in a separate file, along with it&rsquo;s associated ViewModel.</p>
+
+<script src="https://gist.github.com/7752207.js"> </script>
+
+
+<h2>Services</h2>
+
+<h3>Store DTOs in the same file as service methods</h3>
+
+<p>In a Request/Response pattern, DTOs are coupled to service methods.</p>
+
+<p>By storing the request and response in the same file, it is easier to make changes.</p>
+
+<h3>Store interface definitions in the same file as service methods</h3>
+
+<p>If you use a Dependency Injection Framework (such as <a href="http://www.ninject.org">Ninject</a>), you will have an interface definition for each public service method.  This creates file navigation problems with a typical ASP.NET MVC project, since hitting F12 on a method call from a controller will land you on the interface definition, as opposed to the method implementation.</p>
+
+<p>By putting the interface definition in the same file as the primary method definition, you can simply scroll down the page to implementation.  You can also use a tool like <a href="http://www.jetbrains.com/resharper/">ReSharper</a>, but I find that workflow to require more navigation than simply housing these files together.</p>
+
+<script src="https://gist.github.com/7752306.js"> </script>
+
+
+<h2>Version Control and Code Review</h2>
+
+<h3>Use shell commands to navigate files</h3>
+
+<p>Shell commands (powershell, dos, bash) become much more powerful when your code is organized by granularly by files.</p>
+
+<ul>
+<li>Sort by alpha, date modified, size changes</li>
+<li>Use git status / hg st to find which sections of code changed</li>
+</ul>
+
+
+<h3>Reduce Merge Conflicts by organizing files more granularly</h3>
+
+<p>The bane of a developers existence is a merge conflict.   In common workflows, a team of developers often work on one feature of the code at a time, and teams try to make an effort not to work on the same &ldquo;area&rdquo;.</p>
+
+<p>When different areas of code are combined into one file, merge conflicts arise.</p>
+
+<p>In ASP.NET MVC, this means you may be working on a few controller method, views, and service methods to implement a new feature.</p>
+
+<p>By reducing the size of files you are working on, and keeping them organized by subject, it is less likely that you will have conflicts with other developers.  Or, you may only have them in the .csproj file, where it is fairly trivial and safe to resolve.</p>
+
+<h3>Make Code Reviews easier to Read</h3>
+
+<p>If you use git or mercurial for source control, you will often do code reviews by reviewing a branch of code(ie., feature-branch), and comparing it to another branch (ie, develop).</p>
+
+<p>When doing these comparisons, you will see a series of commits that are grouped by file.  If associated assets (DTOs or ViewModels) reside in the same file as the methods that they support, it is easier to review, since you don&rsquo;t have to jump around as much.</p>
+
+<p>You can also quickly scan filenames to understand the subject of the change.</p>
+
+<p><img src="/images/github-diff.png" alt="github diff" /></p>
+
+<h3>Better MVC</h3>
+
+<p>I am organizing these practices into a project on Github, humbly called <a href="https://github.com/tarr11/BetterMVC">BetterMVC</a>.</p>
+
+<p>My goal is to make BetterMVC a lightweight project template that allows you to start new MVC projects in a clean way, and adopt some best practices along the way.  Right now, it is simply more of a reference.</p>
+
+<p><a href="https://github.com/tarr11/BetterMVC">Fork BetterMVC Here</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Doug Tarr</span></span>
+
+      
+
+
+
+
+
+      
+
+<span class="categories">
+  
+    devcsharpaspnetbetter-mvc
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.douglastarr.com/keep-your-asp-dot-net-mvc-projects-more-organized-with-partial-classes" data-via="tarr11" data-counturl="http://www.douglastarr.com/keep-your-asp-dot-net-mvc-projects-more-organized-with-partial-classes" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/scratch-variables-and-lists-coding-class-week-5" title="Previous Post: Scratch Variables and Lists - Coding Class Week 5">&laquo; Scratch Variables and Lists - Coding Class Week 5</a>
+      
+      
+        <a class="basic-alignment right" href="/clones-and-variables-coding-class-week-6" title="Next Post: Clones and variables - Coding Class Week 6">Clones and variables - Coding Class Week 6 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Doug Tarr -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

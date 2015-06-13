@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Installing New Relic on Elastic Beanstalk for Windows and IIS - Douglas Tarr's Blog</title>
+  <meta name="author" content="Doug Tarr">
+
+  
+  <meta name="description" content="
+
+  
+  
+    
+      Installing New Relic on Elastic Beanstalk for Windows and IIS
+    
+    
+      
+        
+
+
+
+
+
+        
+      
+    
+  
+
+
+I recentl...">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.douglastarr.com/installing-new-relic-on-elastic-beanstalk-for-windows-and-iis">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Douglas Tarr's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18064705-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Douglas Tarr's Blog</a></h1>
+  
+    <h2>Coding and other things</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:http://www.douglastarr.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/resume.html">Resume</a></li>
+  <li><a href="/projects.html">Projects</a></li>
+  <li><a href="/contact.html">Contact</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Installing New Relic on Elastic Beanstalk for Windows and IIS</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I recently had the experience of getting New Relic to install on an AWS Elastic Beanstalk environment using IIS and Windows.</p>
+
+<p>There are some great tools that make this dead simple on Azure, but on Elastic Beanstalk, it&rsquo;s not quite as simple.   You can&rsquo;t just install using an MSI manually, since Elastic Beanstalk will auto-scale instances.</p>
+
+<p>This means that you need to build it as part of the Elastic Beanstalk configuration.</p>
+
+<ul>
+<li>Create a directory called <code>.ebextensions</code> under the root of your project</li>
+<li>Create a file called <code>newrelic.config</code> in that directory.  This will be in YAML format (2 spaces per indent)</li>
+<li>Make sure to add this file to your .csproj project and include it as content so it copies up with AWS.</li>
+<li>Download the latest <a href="https://docs.newrelic.com/docs/dotnet/new-relic-net-installation">.NET MSI from New Relic</a></li>
+<li>Upload this MSI to S3 and make it public (everyone should be able to download it)</li>
+<li>Get your New Relic license key from your New Relic account</li>
+<li>In newrelic.config, copy this in:</li>
+</ul>
+
+
+<p>```
+files:
+  &ldquo;c:\newrelic\newrelic.msi&rdquo;:</p>
+
+<pre><code>source: [Your S3 URL]
+</code></pre>
+
+<p>commands:
+  install_newrelic:</p>
+
+<pre><code>command: msiexec.exe /i c:\\newrelic\\newrelic.msi NR_LICENSE_KEY=[Your License Key] INSTALLLEVEL=1
+</code></pre>
+
+<p>```
+*  This should copy down the MSI from your s3 bucket and install new relic with our license key to your instance
+*  New Relic should start reporting your instances (called AMAZON-something)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Doug Tarr</span></span>
+
+      
+
+
+
+
+
+      
+
+<span class="categories">
+  
+    qna,elastic-beanstalk,new-relic
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.douglastarr.com/installing-new-relic-on-elastic-beanstalk-for-windows-and-iis" data-via="tarr11" data-counturl="http://www.douglastarr.com/installing-new-relic-on-elastic-beanstalk-for-windows-and-iis" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/messages-and-animation-coding-class-week-4" title="Previous Post: Messages and Animation - Coding Class Week 4">&laquo; Messages and Animation - Coding Class Week 4</a>
+      
+      
+        <a class="basic-alignment right" href="/scratch-variables-and-lists-coding-class-week-5" title="Next Post: Scratch Variables and Lists - Coding Class Week 5">Scratch Variables and Lists - Coding Class Week 5 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Doug Tarr
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

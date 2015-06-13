@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>The suffix strategy for password generation is not secure - Douglas Tarr's Blog</title>
+  <meta name="author" content="Doug Tarr">
+
+  
+  <meta name="description" content="
+
+  
+  
+    
+      The suffix strategy for password generation is not secure
+    
+    
+      
+        
+
+
+
+
+
+        
+      
+    
+  
+
+
+One of the mo...">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.douglastarr.com/the-suffix-strategy-for-password-generation-is-not-secure">
+  <link href="/public/favicon.png" rel="icon">
+  <link href="/public/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Douglas Tarr's Blog" type="application/atom+xml">
+  <script src="/public/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18064705-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/public/">Douglas Tarr's Blog</a></h1>
+  
+    <h2>Coding and other things</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:http://www.douglastarr.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/public/">Home</a></li>
+  <li><a href="/public/resume.html">Resume</a></li>
+  <li><a href="/public/projects.html">Projects</a></li>
+  <li><a href="/public/contact.html">Contact</a></li>
+  <li><a href="/public/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">The suffix strategy for password generation is not secure</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content">One of the most common password strategies is to take some random, relatively secure, long base password, and then re-use it over and over by appending an easily recallable suffix to that string (usually related to the name of the domain of the password)<p /><div>Ie.., let&#39;s say you chose <b>jkfd$k#d251mf</b> as your base password.  You dutifully memorize this password.  Then when you go to various websites, you append an easily recognizable suffix to that password:</div> <p /><div><b>jkfd$k#d251mf</b>facebook</div><div><div><b>jkfd$k#d251mf</b>google</div></div><div><div><div><b>jkfd$k#d251mf</b>twitter</div></div></div><p /><div>The problem with this is that let&#39;s say you visit <a href="http://badguy.com">badguy.com</a> who is a criminal looking to harvest passwords.</div> <p /><div>So you enter your password:</div><div><b>jkfd$k#d251mf</b>badguy</div><p /><div>Now, <a href="http://badguy.com">badguy.com</a> knows this is pretty common, so he can just run a regex like so: (.*)badguy and find out your base password.  At that point, he&#39;s got access to any well-known website where you&#39;ve used that base password.</div> <p /><div>So, next, you say, well, I have two base passwords, one for websites I really trust (say, google, your bank, etc) and another for random sites I&#39;ve never heard of and don&#39;t care if they get cracked.</div> <p /><div>The problem now is that on the supposedly secure sites, you are relying on any one of them to secure all of them.  So a bad guy just picks the least secure of your most secure sites, and then he&#39;s got access to all of your really secure information.</div> <p /><div>The idea of simplifying your life with fewer passwords is a fallacy - once you have to recall more than four different passwords, you might as well have a strategy that allows you to call hundreds. <p /></div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Doug Tarr</span></span>
+
+      
+
+
+
+
+
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.douglastarr.com/the-suffix-strategy-for-password-generation-is-not-secure" data-via="tarr11" data-counturl="http://www.douglastarr.com/the-suffix-strategy-for-password-generation-is-not-secure" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/i-challenge-you-not-to-click-through-this-whole-thing" title="Previous Post: I challenge you not to click through this whole thing">&laquo; I challenge you not to click through this whole thing</a>
+      
+      
+        <a class="basic-alignment right" href="/thank-you-payscale" title="Next Post: Thank You, PayScale">Thank You, PayScale &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Doug Tarr -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

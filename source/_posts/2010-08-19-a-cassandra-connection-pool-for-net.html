@@ -1,0 +1,12 @@
+---
+layout: post
+title: A Cassandra Connection Pool for .NET
+published: true
+---
+<div>After playing around with Aquiles, HectorSharp, and FluentCassandra, all I really wanted was a Connection Pool and a Thrift Client. &nbsp;<a href="http://douglastarr.com/how-to-configure-a-cassandra-client-for-net">I borrowed the Thrift client from Aquiles</a>&nbsp;and now here's a code snippet with a Connection Pool for .NET.</div>
+<p />
+<div>I'm using some pretty heavy locking but it seems to stop the <a href="http://douglastarr.com/cassandra-net-connection-pools-and-tcpip-port">Port Exhaustion problem</a>. &nbsp;I also prefer a simple disposable model that relies on the new constructor + IDisposable, similar to how SqlConnection works. &nbsp;App code tends to look cleaner that way. &nbsp;I also want to avoid wrapping the core functionality of Cassandra, which is going to change rapidly. &nbsp;So the goal of the whole thing is to simply expose the Thrift client for anyone to use as they see fit, rather than simplify or abstract how it works.</div>
+<p />
+<div>Here it is, copy away:</div>
+<p />
+<p><script src="https://gist.github.com/538459.js"></script></p>

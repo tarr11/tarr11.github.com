@@ -1,0 +1,30 @@
+---
+layout: post
+title: Cassandra, .NET, Connection Pools and TCP/IP Port Exhaustion
+published: true
+---
+<div>The Cassandra Thrift client does not contain any connection pools. &nbsp;Since it connects via TCP/IP, you will inevitably run out of sockets if you call the Cassandra often.</div>
+<p />
+<div>The error you will see (at least in .NET) is:</div>
+<p />
+<div>"Only one usage of each socket address (protocol/network address/port) is normally permitted".</div>
+<p />
+<div>Here's some code that will cause this error:</div>
+<div><script src="https://gist.github.com/538029.js"></script></div>
+<p />
+<div>If you run netstat -n after you run this code, you'll see this:</div>
+<div><script src="https://gist.github.com/538032.js"></script></div>
+<p />
+<div>TCP/IP ports do not close right away. &nbsp;<a href="http://msdn.microsoft.com/en-us/library/aa560610(BTS.20).aspx">Instead, they go into a TIME_WAIT state</a>&nbsp;for 240 seconds. &nbsp;</div>
+<p />
+<div>So, in order to use Cassandra in any high volume application, you'll have to implement your own connection pool.</div>
+<p />
+<div>The three .NET cassandra clients seem to implement connection pooling.&nbsp;</div>
+<div>&nbsp;&nbsp;<a href=" <a href="http://aquiles.codeplex.com/SourceControl/changeset/view/64644#1232463">http://aquiles.codeplex.com/SourceControl/changeset/view/64644#1232463</a>">Aquiles Connection Pool Code</a></div>
+<p />
+<div>&nbsp;&nbsp;<a href="http://github.com/mattvv/hectorsharp/blob/master/Service/CassandraClientPoolFactory.cs">Hector Sharp Connection Pool Code</a>&nbsp;</div>
+<div>&nbsp;&nbsp; <a href="http://aquiles.codeplex.com/Thread/View.aspx?ThreadId=217616">This comment </a>seems to imply that the connection pooling code in Hector Sharp is problematic. &nbsp;After briefly looking at it, it made me nervous. &nbsp;Anyone have any experience with it?</div>
+<p />
+<div>&nbsp;&nbsp;<a href="http://github.com/managedfusion/fluentcassandra/blob/master/FluentCassandra/Connection/PooledConnectionProvider.cs">Fluent Cassandra Connection Pool Code</a>&nbsp;(requires .NET 4.0)</div>
+<p />
+<div>Alternatively, you can implement your own connection pooling mechanism.</div>
