@@ -1,21 +1,35 @@
 ---
-layout: home_page
-title: Home
+layout: new_default
+title: Doug Tarr's Home Page
 ---
-<div class="blogindex">
-        <article>
-            <p>This is the personal website of Douglas Tarr</p>
-            <p>I currently run MV Code Club based in Mill Valley, California.</p>
-            <p><a href="/contact.html">Contact me</a></p>
-    <h2>Latest Blog Entry</h2>
-    {% for post in site.posts limit: 1 %}
-    <h3><a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a></h3>
-{% endfor %}
-
-    <h2>Active Projects</h2>
-    <h3><a href="https://www.mvcodeclub.com">MV Code Club</a></h3>
-    <p>A coding club that I started with locations in Mill Valley and Greenbrae California</p>
-
-    <p><a href="/projects.html">All my projects</a></p>
+<article>
+    <h1>Doug Tarr's Home Page</h2>
+        <p>This is the personal website of Doug Tarr.</p>
+        <p>I currently run <a href="/mvcodeclub.html">MV Code Club</a> and live in Mill Valley, California</p>
     </article>
-</div>
+    <section id="work">
+        <h2>Work</h2>
+        <ul>
+          <li><a href="/mvcodeclub.html">MV Code Club</a></li>
+          <li><a href="/resume.html">Resume</a></li>
+      </ul>
+  </section>
+  <section id="projects">
+    <h2>Projects and Ideas</h2>
+    <ul>
+      <li><a href="/blog/archives">Blog</a></li>
+      <li><a href="/projects.html">Projects</a></li>
+  </ul>
+</section>
+<section id="projects">
+    <h2>Friends and Family</h2>
+    <ul>
+      <li><a href="/friends.html">Friends</a></li>
+  </ul>
+</section>
+<section id="contact">
+    <h2>Contact</h2>
+    <ul>
+      <li><a href="/contact.html">Contact Me</a></li>
+  </ul>
+</section>
