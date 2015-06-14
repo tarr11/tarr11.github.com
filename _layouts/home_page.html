@@ -1,10 +1,10 @@
-
+{% capture canonical %}{{ site.url }}{% if site.permalink contains '.html' %}{{ page.url }}{% else %}{{ page.url | remove:'index.html' | strip_slash }}{% endif %}{% endcapture %}
 <html>
 <head>
   <title>Doug Tarr's Home Page</title>
-  <link rel="canonical" href="http://www.douglastarr.com/">
+  <link rel="canonical" href="{{ canonical }}">
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> 
-  <link href="/stylesheets/homepage.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="{{ root_url }}/stylesheets/homepage.css" media="screen, projection" rel="stylesheet" type="text/css">
 </head>
 <body> 
   <article>
@@ -39,7 +39,7 @@
     </ul>
   </section>
   <footer>
-    <p>Last published on 2015-06-14
+    <p>Last published on {{ site.time | date: "%Y-%m-%d" }}
   </footer>
 </body>
 </html>
