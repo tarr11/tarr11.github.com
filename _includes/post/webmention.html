@@ -13,13 +13,13 @@ $(function(){
           ]
       };
       var ul = $(".webmentions");
-      data.links.forEach(function (item))
+      data.links.forEach(function (item)
       {
         if (item.verified)
         {
           ul.append("<li><a href=" + item.source + ">" + item.name</a>");
         }
-      }
+      });
 
   });
 });
