@@ -1,0 +1,9 @@
+<script type="text/javascript">
+$(function(){
+  $.getJSON("http://webmention.io/api/mentions?jsonp=?", {
+    target: "{{ page.url }} "
+  }, function(data){
+    console.log(data);
+  });
+});
+</script>
