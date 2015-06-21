@@ -9,7 +9,15 @@ $(function(){
           {
             source: "http://www.douglastarr.com",
             name: "Test Test",
-            verified: true
+            verified: true,
+            data:
+            {
+              author:
+              {
+                url: "http://douglastarr.com",
+                name: "Douglas Tarr"
+              }
+            }
           }
           ]
       };
@@ -18,14 +26,14 @@ $(function(){
       {
         if (item.verified)
         {
-          ul.append("<li><a href=" + item.source + ">" + item.name + "</a></li>");
+          ul.append("<li><a href=" + item.source + ">" + item.name + "</a> - " + "<a href=" + item.data.author.url">" + item.data.author.name + "</a></li>");
         }
       });
 
   });
 });
 </script>
-<h4>WebMentions (just trying this out)</h4>
+<h4><a href="http://www.webmention.io">WebMentions</a> (trying this out)</h4>
 <ul class="webmentions">
   <li></li>
 </ul>
