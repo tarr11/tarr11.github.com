@@ -44,6 +44,7 @@ I've looked at a few alternatives and they all seem to have a similar problem:
  * [Recurly](https://www.recurly.com) - Similar to  Chargify as far as I can tell. They seem to offer manual invoicing which can "mark as paid" via check.  But I don't think this works for subscription billing so you end up with a manual process.
  
 Some other alternatives I've seen but not evaluated:
+
  * [Zuora] (https://www.zuora.com)
  * [ChargeBee] (http://www.chargbee.com)
  * [BrainTree] (https://www.braintreepayments.com)
