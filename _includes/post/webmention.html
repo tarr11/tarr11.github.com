@@ -4,7 +4,27 @@ $(function(){
   $.getJSON("http://webmention.io/api/mentions?jsonp=?", {
     target: $("LINK[rel=canonical]").attr("href")
   }, function(data){
-    console.log(data);
+      data = {
+        links: [
+          {
+            source: "http://www.douglastarr.com",
+            name: "Test Test"
+          }
+          ]
+      };
+      var ul = $(".webmentions");
+      data.links.forEach(function (item))
+      {
+        if (item.verified)
+        {
+          ul.append("<li><a href=" + item.source + ">" + item.name</a>");
+        }
+      }
+
   });
 });
 </script>
+<h4>WebMentions (just trying this out)</h4>
+<ul class="webmentions">
+  <li></li>
+</ul>
