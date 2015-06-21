@@ -4,23 +4,6 @@ $(function(){
   $.getJSON("http://webmention.io/api/mentions?jsonp=?", {
     target: $("LINK[rel=canonical]").attr("href")
   }, function(data){
-      data = {
-        links: [
-          {
-            source: "http://www.douglastarr.com",
-            name: "Test Test",
-            verified: true,
-            "data" :
-            {
-              "author" :
-              {
-                "url" : "http://douglastarr.com",
-                "name" : "Douglas Tarr"
-              }
-            }
-          }
-          ]
-      };
       var ul = $(".webmentions");
       data.links.forEach(function (item)
       {
