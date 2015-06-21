@@ -2,7 +2,7 @@
 $(function(){
   
   $.getJSON("http://webmention.io/api/mentions?jsonp=?", {
-    target: $("LINK[rel=canonical]").href
+    target: $("LINK[rel=canonical]").attr("href")
   }, function(data){
     console.log(data);
   });
