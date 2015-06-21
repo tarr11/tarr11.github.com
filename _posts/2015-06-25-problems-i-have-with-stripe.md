@@ -28,7 +28,9 @@ Occasionally, because we are a "live" business, we have customers that come in a
 In this case, Stripe will throw an error that no valid card is on file.  The only solution is to have a "free plan" so that stripe will accept the charge.
 
 ## Manual overrides to subscription pricing is difficult
-Stripe requires that plans be immutable so that plans don't get cancelled or changed for existing customers who may be "grandfathered" in.  There is no override available for an individual plan, where you can just change the price for a single subscription without changing the plan.  This means, in practice, that you have to add additional one-time fees each month or discount coupons to raise or lower the price.  These show up as line items on invoices and can be confusing to customers.  I would prefer to be able to override an individual subscription.
+Stripe requires that plans be immutable so that plans don't get cancelled or changed for existing customers who may be "grandfathered" in.  There is no override available for an individual plan, where you can just change the price for a single subscription without changing the plan.  This means, in practice, that you have to add additional one-time fees each month or discount coupons to raise or lower the price.  These show up as line items on invoices and can be confusing to customers.  Alternatively, you end up with a proliferation of nearly identical plans in Stripe, except for price. 
+
+I would prefer to be able to override an individual subscription.
 
 ## Surprise Charges when changing plans
 Our customers change plans periodically, and there's no good way to know what's going to happen when you change.  I wish there was an API endpoint that gave you a summary of what would happen when you switch plans.  We've had several scenarios where customers were double-charged and then we had to refund them in this case.  In practice, what this means is that we have to reproduce Stripe's entire pro-rating and change plan logic in order to warn customers about what's going to happen.
