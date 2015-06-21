@@ -3,7 +3,9 @@ layout: post
 title: Problems I have with Stripe
 published: true
 ---
-I use [Stripe](https://www.stripe.com) for billing at [MV Code Club](https://www.mvcodeclub.com)  Apparently if you want to build your own billing system, an army of angry Saas vendors [will come at you with pitchforks](https://www.google.com/search?q=should+i+build+a+billing+system&oq=should+i+build+a+billing+system&aqs=chrome..69i57.7336j0j7&sourceid=chrome&es_sm=93&ie=UTF-8) and tell you it's a bad idea.   I don't disagree, but I'm wondering whether their exists an application that doesn't end up writing as much work-around code to support the unique business constraints of each business.
+I use [Stripe](https://www.stripe.com) for billing at [MV Code Club](https://www.mvcodeclub.com).
+
+Apparently if you want to build your own billing system, an army of angry Saas vendors [will come at you with pitchforks](https://www.google.com/search?q=should+i+build+a+billing+system&oq=should+i+build+a+billing+system&aqs=chrome..69i57.7336j0j7&sourceid=chrome&es_sm=93&ie=UTF-8) and tell you it's a bad idea.   I don't disagree, but I'm wondering whether their exists an application that doesn't end up writing as much work-around code to support the unique business constraints of each business.
 
 We are a bit of an abnormal use case for Stripe - we are neither a SaaS or an e-commerce site.  Instead, we run a membership based program for kids (which feels mostly like a SaaS, with some small changes)
 
