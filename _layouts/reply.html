@@ -1,0 +1,19 @@
+---
+layout: new_default
+single: true
+---
+
+<div>
+<article class="hentry" role="article">
+  
+  {% include article.html %}
+  <footer>
+    <p class="meta">
+      {% include post/author.html %}
+      {% include post/date.html %}{{ time }}{% if updated %} {{ updated }}{% endif %}
+      {% include post/categories.html %}
+    </p>
+  </footer>
+</article>
+<div>In Reply To <a rel="{% webmention %}"> {% webmention %}</a></div>
+{% include post/webmention.html %}
