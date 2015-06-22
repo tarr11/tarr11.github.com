@@ -1,5 +1,5 @@
 ---
-layout: new_default
+layout: reply.html
 title: Webmention Spam
 webmention: http://aaronparecki.com/replies/2015/06/21/4/
 ---
