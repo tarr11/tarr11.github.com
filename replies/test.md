@@ -1,6 +1,6 @@
 ---
 title: Test Reply
-layout: reply.html
+layout: reply
 ---
 
 This is a test ***reply***
