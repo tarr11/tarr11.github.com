@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="canonical" href="http://douglastarr.com/iis-express-does-not-respect-dynamic-routes">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> 
+  <link href="/stylesheets/homepage.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+  <title>IIS Express does not respect dynamic routes - Douglas Tarr's Blog</title>
+  <meta name="author" content="Doug Tarr">
+  <link rel="author" type="text/html" href="/" title="Doug Tarr" /
+
+  
+  <meta name="description" content="
+
+  
+  
+    
+      IIS Express does not respect dynamic routes
+    
+    
+      
+        
+
+
+
+
+
+        
+      
+    
+  
+
+
+If you are using IISExpress...">
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link href="/atom.xml" rel="alternate" title="Douglas Tarr's Blog" type="application/atom+xml">
+<link rel="webmention" href="https://webmention.herokuapp.com/api/webmention" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18064705-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+<body> 
+  <nav>
+    <a href="/">DouglasTarr.com Home</a> |
+    <a href="/resume.html">Resume</a> |
+    <a href="/projects.html">Projects</a> |
+    <a href="/contact.html">Contact</a> |
+    <a href="/blog/archives">Archives</a>
+  </nav>
+  <article>
+  <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">IIS Express does not respect dynamic routes</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>If you are using IISExpress for your web server during development, and you try to route static files to dynamic files, IISExpress will not respect rerouting those files.</p>
+<p />
+<div>Ie, if you have a dynamic robots.txt file like this:</div>
+<p />
+<div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; routes.MapRoute("Robots.txt",</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "robots.txt",</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; new { controller = "Home", action = "Robots" });</div>
+</div>
+<p />
+<div>You will get a standard 404 error which tries to map it to a static handler.</div>
+<p />
+<div>To fix, you need to configure web.config like so:</div>
+<div>
+<div class="CodeRay">
+  <div class="code"><pre>&lt;system.webServer&gt;
+    &lt;modules runAllManagedModulesForAllRequests=&quot;true&quot;&gt;
+    &lt;/modules&gt;
+  &lt;/system.webServer&gt;</pre></div>
+</div>
+
+</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+<span class="byline author vcard">Posted by <span class="fn">Doug Tarr</span></span>
+
+      
+
+
+
+
+
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://douglastarr.com/iis-express-does-not-respect-dynamic-routes" data-via="tarr11" data-counturl="http://douglastarr.com/iis-express-does-not-respect-dynamic-routes" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/featureshot-web-and-app-feature-snapshots" title="Previous Post: FeatureShot - Web and App Feature Snapshots">&laquo; FeatureShot - Web and App Feature Snapshots</a>
+      
+      
+        <a class="basic-alignment right" href="/how-to-solve-this-facebook-pages-error-our-automated-system-will-not-allow-the-name" title="Next Post: How to solve this Facebook Pages error - Our automated system will not allow the name">How to solve this Facebook Pages error - Our automated system will not allow the name &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+</aside>
+
+
+  </article>
+  <footer>
+    <p>Last published on 2016-05-07
+  </footer>
+</body>
+</html>

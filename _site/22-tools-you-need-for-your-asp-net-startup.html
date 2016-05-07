@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="canonical" href="http://douglastarr.com/22-tools-you-need-for-your-asp-net-startup">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> 
+  <link href="/stylesheets/homepage.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+  <title>22 tools you need for your ASP.NET Startup - Douglas Tarr's Blog</title>
+  <meta name="author" content="Doug Tarr">
+  <link rel="author" type="text/html" href="/" title="Doug Tarr" /
+
+  
+  <meta name="description" content="
+
+  
+  
+    
+      22 tools you need for your ASP.NET Startup
+    
+    
+      
+        
+
+
+
+
+
+        
+      
+    
+  
+
+
+My latest company, CorpQNA&n...">
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link href="/atom.xml" rel="alternate" title="Douglas Tarr's Blog" type="application/atom+xml">
+<link rel="webmention" href="https://webmention.herokuapp.com/api/webmention" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18064705-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+<body> 
+  <nav>
+    <a href="/">DouglasTarr.com Home</a> |
+    <a href="/resume.html">Resume</a> |
+    <a href="/projects.html">Projects</a> |
+    <a href="/contact.html">Contact</a> |
+    <a href="/blog/archives">Archives</a>
+  </nav>
+  <article>
+  <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">22 tools you need for your ASP.NET Startup</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div>My latest company, <a href="http://www.corpqna.com">CorpQNA</a>&nbsp;- Social Q&amp;A For Business, is built (mostly) on the .NET stack. This article explains some of the components I used to pull it together. &nbsp;</div>
+<p />
+<div><strong><a href="http://www.asp.net/mvc">ASP.NET MVC</a></strong></div>
+<div>If you are still using webforms, wean yourself away. &nbsp;When we first built <a href="http://www.payscale.com">PayScale</a>, we used classic ASP, which was closer to the right model than WebForms was. &nbsp;Later, I made the fateful decision to move to <a href="http://ASP.NET">ASP.NET</a> Webforms. &nbsp;I was not happy with this decision. &nbsp; Trying to debug <a href="http://ASP.NET">ASP.NET</a> Webform Lifecycle events (Page_load vs control_load vs onLoad vs ...) will make your head spin and send you fleeing to Django or Rails.</div>
+<p />
+<div><strong><a href="http://www.appharbor.com">AppHarbor</a></strong></div>
+<div>Right now, I like it better than <a href="https://www.windowsazure.com/en-us/home/scenarios/web-sites/">Azure Websites</a>&nbsp;and cheaper to start with than <a href="http://aws.amazon.com/net/">AWS Elastic Beanstalk</a>. &nbsp;It's the option that's most like <a href="http://www.heroku.com">Heroku</a> (which is the gold standard)</div>
+<p />
+<div><a href="http://social.msdn.microsoft.com/Forums/en-US/windowsazurewebsitespreview/thread/0218204f-7be3-4586-bfdb-831cde6b7937">Azure Websites doesn't support SSL yet</a>. &nbsp;All of your domains have to be on <a href="http://mysite.azurewebsites.com">mysite.azurewebsites.com</a>. &nbsp;Not a good way to project confidence. &nbsp;On the downside, appharbor only supports SNI for SSL ($10 / month) or IP based SSL ($100 / month) &nbsp;Hostname SSL (which Heroku supports for $20 / month) is not yet available. &nbsp; SNI is a problem because older browsers will give warnings when you are trying to use it. &nbsp;I'm using it, but eventually, I'll have to switch. &nbsp;I'm hoping that AppHarbor catches up before then.</div>
+<p />
+<div>AppHarbor is aware of your branching schemes, and you can tell it to listen on a particular branch. &nbsp;So if you are pushing to staging, just push your code to a staging branch and AppHarbor will only deploy changes that occur in that branch. &nbsp;AppHarbor also has a continuous integration server built it. &nbsp;If you use NUnit, this saves you time and helps you avoid breaking your site. &nbsp;&nbsp;AppHarbor seems to use <a href="http://support.appharbor.com/discussions/problems/5650-ms-sql-server-shared">SQL Express</a> as it's database, which seems like it will be less robust in the long term, than<a href="https://www.windowsazure.com/en-us/home/features/data-management/"> SQL Azure</a>. &nbsp; AWS has an <a href="http://aws.amazon.com/rds/sqlserver/">RDS implementation for SQL Server</a>, but I think it's the most expensive of the three.&nbsp;</div>
+<p />
+<div><strong><a href="http://bizspark.com/">BizSpark</a></strong></div>
+<div>Visual Studio and MS Office for free. &nbsp;The application process is a little bit burdensome but it's worth it. &nbsp; There's also a lot of goodies attached (free credits on Azure, opportunities for networking, promotion and guidance) so it should be a no brainer.</div>
+<p />
+<div><strong><a href="http://www.fogcreek.com/fogbugz/">FogBugz</a></strong></div>
+<div>An enterprise class bug tracking tool. &nbsp;I've used FogBugz for 8 years now, and it works very well.&nbsp;</div>
+<div>It's also free for "startups", which means for 2 users or less. &nbsp;So there's no reason to not get started on it.</div>
+<div>It comes with an integration with Kiln, which is Fog Creek's fork of Mercurial + code reviews. &nbsp;I haven't much used these features, but it's nice to associate my checkins with bugs.</div>
+<p />
+<div><strong><a href="http://nuget.org/">NuGet</a></strong></div>
+<div>Like <a href="http://rubygems.org/">RubyGems </a>for your <a href="http://ASP.NET">ASP.NET</a> application. &nbsp;It's super easy to install new functionality in your application. &nbsp;Install-Package EntityFramework and away you go.</div>
+<p />
+<div><strong><a href="https://github.com/jaredpar/VsVim">VsVim</a></strong></div>
+<div>If you haven't joined the keyboard revolution (vim, emacs, etc), it's time to get your hands off the mouse! &nbsp;You'll need to spend a few weeks learning how to use Vim (try the great Vimcasts website to get started). &nbsp;Download vim first. &nbsp;Once you are there, look at ViEmu($) or VsVim(github). &nbsp;These are "hybrid" vim solutions. &nbsp;Some commands are still missing and you can't use macros, but the core hjkl type navigation is there. &nbsp;</div>
+<p />
+<div><strong><a href="https://airbrake.io/">Airbrake</a> and <a href="http://newrelic.com/">NewRelic</a></strong></div>
+<div>Stop monitoring your own errors and performance. &nbsp; In the past, we've had to build these tools ourselves (error log monitors) or tried to hook together various open source toolsets (like Ganglia). &nbsp;Do yourself a favor. &nbsp;Until you get an IT professional working full time, use Airbrake and NewRelic. &nbsp;They are free to start and you won't think about that stuff for a long time.</div>
+<p />
+<div><strong><a href="http://www.mailgun.com/">Mailgun </a>or <a href="http://sendgrid.com/">SendGrid</a></strong></div>
+<div>Mailgun can send and receive mail for you. &nbsp;If you are hosted anywhere in a cloud environment (AWS, Azure, AppHarbor, Heroku, etc), &nbsp;using a service like Mailgun or SendGrid is a requirement, because otherwise, your email will get marked as spam. &nbsp;Simple as that. &nbsp;You can also you webhooks to let your users use email as an interface into your product (instead of having to visit a website). &nbsp;They also even parse out the junk from your email, so you don't have to. &nbsp;(signatures, Subject lines, etc)</div>
+<p />
+<div><a href="http://www.ninject.org/"><strong>Ninject</strong></a></div>
+<div>Ninject is <a href="http://stackoverflow.com/questions/21288/which-net-dependency-injection-frameworks-are-worth-looking-into">Dependency Injection</a> made easy. &nbsp;There are a lot of frameworks out there for dependency injection. &nbsp;Fortunately, they all require your code to look almost identical (lots of interfaces, avoiding instantiating objects directly). &nbsp;So which ever one you use, it's not that hard to swap out for another one. &nbsp;Ninject is super easy to get started with. &nbsp;So if you are no to <a href="http://msdn.microsoft.com/en-us/library/ff921087(v=pandp.20).aspx">IoC </a>or DI, it's a good place to start.&nbsp;</div>
+<p />
+<div>Also, If you are planning on doing any sort of testing, you'll need a Dependency Injection Framework. &nbsp;Otherwise, your test setup scripts will start to look like a mess.</div>
+<p />
+<div><a href="http://nspec.org/"><strong>NSpec</strong></a></div>
+<div>Still using <a href="http://www.nunit.org/">NUnit </a>for testing? &nbsp;Time to take a look at NSpec. &nbsp;This is based on the hugely popular RSpec library for Rails. &nbsp;Your tests will be a lot cleaner with NSpec. &nbsp;You can set up elaborate contexts to reproduce difficult errors. &nbsp;It's not as supported as NUnit, and <a href="http://stackoverflow.com/questions/307895/what-is-the-most-mature-bdd-framework-for-net">there are other BDD Frameworks available</a>&nbsp;which might be better.</div>
+<p />
+<div><strong><a href="http://Intercom.io">Intercom.io</a></strong></div>
+<div>I was looking for a customer feedback tool, and was originally planning on going with UserVoice or GetSatisfaction. &nbsp;But then my friend Lee mentioned Intercom. &nbsp;This is by far the best way to get feedback and communicate 1-1 with your users. &nbsp;It's not cheap but if you want a good relationship with your user base, this tool is a must have.</div>
+<p />
+<div><a href="http://twitter.github.com/bootstrap/"><strong>Twitter Bootstrap</strong></a></div>
+<div>The pre-eminent framework has lots of best practices built in. &nbsp;In addition to making your website easier to read and navigate, you'll learn a lot about usability and design simply by implementing the framework. &nbsp;There's also a growing ecosystem of tools, themes, and plug-ins that work with Bootstrap. &nbsp;Bootstrap has also <a href="http://techcrunch.com/2012/09/29/bootstraps-maintainers-leave-twitter-for-github-and-obvious-corp-will-move-it-into-its-own-organization/">recently moved into it's own foundation</a>, so it should be around for a while.</div>
+<p />
+<div><strong><a href="http://msdn.microsoft.com/en-us/data/ef.aspx">Entity Framework</a> or <a href="http://nhforge.org/">NHibernate</a></strong></div>
+<div>If you are developing a new MVC application, you are either going to choose Entity Framework or NHibernate. &nbsp;Frankly, for a long time, NHibernate was the better choice. &nbsp;It probably still is if you have classic N-Tier SOA application. &nbsp;It just works better with disconnected datasets. &nbsp;It has better support for caching semantics and more fine grained control over your apps. &nbsp;But it can't be a bear to get started with.</div>
+<p />
+<div>If you are just starting out, Entity Framework with Code First models will get you a long way quickly. &nbsp; The LINQ oriented syntax is clean and easy to understand. &nbsp;But there are still the occasional side effects related to how Entity Framework stores and manages objects under the hood. &nbsp;Hopefully this stuff will get resolved. &nbsp;The EF team seems to iterate very quickly and is able to get language-specific features into the .NET platform.</div>
+<p />
+<div>The other caveat is it is really hard to switch from one to the other. &nbsp;if you use a Repository pattern, this can help. &nbsp;But a repository pattern doesn't really work well with either ORM, and requires a LOT more code. &nbsp;So just plan on sticking with one or the other for a long time.</div>
+<p />
+<div><strong><a href="http://aboutcode.net/postal/">Postal </a>or <a href="https://github.com/smsohan/MvcMailer">MVC Mailer</a></strong></div>
+<div>Rails has <a href="http://guides.rubyonrails.org/action_mailer_basics.html">ActionMailer</a>, which lets you write emails using typical MVC semantics. &nbsp;Unfortunately, this is not yet built into <a href="http://ASP.NET">ASP.NET</a> MVC. &nbsp;But there are some good libraries to handle it. &nbsp;I use Postal, which leverages the open source RazorEngine library to create your own Razor views. &nbsp;The syntax is slightly less powerful than Razor for <a href="http://ASP.NET">ASP.NET</a> (ie, no Html helpers, layouts, etc) but it's better than concatenating strings together to produce your emails.</div>
+<p />
+<div><a href="http://getglimpse.com/"><strong>Glimpse</strong></a></div>
+<div>Like Firebug or Chrome Dev Tools, but for your <a href="http://ASP.NET">ASP.NET</a> website. &nbsp;This is a great way to visualize your performance. &nbsp;</div>
+<p />
+<div><strong><a href="http://lucene.apache.org/solr/">SOLR </a>and <a href="http://SOLR.NET">SOLR.NET</a></strong></div>
+<div>Microsoft doesn't offer a world class search engine. SOLR has all the features you'll need. &nbsp;<a href="http://SOLR.NET">SOLR.NET</a> is a wrapper around SOLR and makes it easy to integrate. &nbsp;Not as easy as Sunspot for Rails, but you can get going with SOLR in less than a day if you code well.</div>
+<p />
+<div><a href="http://www.linode.com"><strong>Linode</strong></a></div>
+<div>For $20 a month, you'll get your own linux server. &nbsp;Hard to beat. &nbsp;I use it for lots of utility functions, as well as hosting my own SOLR server. &nbsp;There are a ton of "cron jobs" masquerading as subscription cloud services. &nbsp;If you don't watch out, you can get dinged by 5 or 10 services that each cost $10 a month and all of the sudden, your hosting bill is through the roof. &nbsp; BTW - oddly enough, Azure is offering a linux VM even cheaper than linode, at $10-$15 a month. &nbsp;But it's only available in preview right now. &nbsp;</div>
+<p />
+<div><a href="http://news.ycombinator.com/item?id=4637293">Did I miss anything? &nbsp;Continue this conversation on Hacker News.</a></div>
+<p />
+<div><em>Like this? &nbsp;For more, follow me on Twitter&nbsp;<a href="http://twitter.com/tarr11">@tarr11</a>&nbsp;or on&nbsp;<a href="https://plus.google.com/107008262973272149670/posts">Google+</a>&nbsp;&nbsp;</em></div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+<span class="byline author vcard">Posted by <span class="fn">Doug Tarr</span></span>
+
+      
+
+
+
+
+
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://douglastarr.com/22-tools-you-need-for-your-asp-net-startup" data-via="tarr11" data-counturl="http://douglastarr.com/22-tools-you-need-for-your-asp-net-startup" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/is-google-talk-a-linkedin-killer" title="Previous Post: Is Google Talk a LinkedIn killer?">&laquo; Is Google Talk a LinkedIn killer?</a>
+      
+      
+        <a class="basic-alignment right" href="/stats-on-announcing-corpqna-to-seattletechstartups" title="Next Post: Stats on announcing CorpQNA to SeattleTechStartups">Stats on announcing CorpQNA to SeattleTechStartups &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+</aside>
+
+
+  </article>
+  <footer>
+    <p>Last published on 2016-05-07
+  </footer>
+</body>
+</html>

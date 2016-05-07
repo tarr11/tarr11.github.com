@@ -30,7 +30,9 @@
     <a href="{{ root_url }}/contact.html">Contact</a> |
     <a href="{{ root_url }}/blog/archives">Archives</a>
   </nav>
+  <article>
   {{ content | expand_urls: root_url }}
+  </article>
   <footer>
     <p>Last published on {{ site.time | date: "%Y-%m-%d" }}
   </footer>

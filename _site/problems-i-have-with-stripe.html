@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="canonical" href="http://douglastarr.com/problems-i-have-with-stripe">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> 
+  <link href="/stylesheets/homepage.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+  <title>Problems I have with Stripe - Douglas Tarr's Blog</title>
+  <meta name="author" content="Doug Tarr">
+  <link rel="author" type="text/html" href="/" title="Doug Tarr" /
+
+  
+  <meta name="description" content="
+
+  
+  
+    
+      Problems I have with Stripe
+    
+    
+      
+        
+
+
+
+
+
+        
+      
+    
+  
+
+
+We use Stripe for billing at MV Code Club.
+...">
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link href="/atom.xml" rel="alternate" title="Douglas Tarr's Blog" type="application/atom+xml">
+<link rel="webmention" href="https://webmention.herokuapp.com/api/webmention" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18064705-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+<body> 
+  <nav>
+    <a href="/">DouglasTarr.com Home</a> |
+    <a href="/resume.html">Resume</a> |
+    <a href="/projects.html">Projects</a> |
+    <a href="/contact.html">Contact</a> |
+    <a href="/blog/archives">Archives</a>
+  </nav>
+  <article>
+  <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Problems I have with Stripe</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>We use <a href="https://www.stripe.com">Stripe</a> for billing at <a href="https://www.mvcodeclub.com">MV Code Club</a>.</p>
+
+<p>Apparently if you want to build your own billing system, an army of angry Saas vendors <a href="https://www.google.com/search?q=should+i+build+a+billing+system&amp;oq=should+i+build+a+billing+system&amp;aqs=chrome..69i57.7336j0j7&amp;sourceid=chrome&amp;es_sm=93&amp;ie=UTF-8">will come at you with pitchforks</a> and tell you it&rsquo;s a bad idea.   I don&rsquo;t disagree, but I&rsquo;m wondering whether their exists an application that doesn&rsquo;t end up writing as much work-around code to support the unique business constraints of each business.</p>
+
+<p>We are a bit of an abnormal use case for Stripe - we are neither a SaaS or an e-commerce site.  Instead, we run a membership based program for kids (which feels mostly like a SaaS, with some small changes)</p>
+
+<p>Problems that I have with stripe mostly revolve around constraints for Subscription billing.</p>
+
+<h2>No Support for Checks or ACH</h2>
+
+<p>Stripe doesn&rsquo;t support checks or ACH.  This means that if you are using Stripe Subscriptions, you must replicate the entirety of Stripe&rsquo;s business logic for subscriptions, just to support checks.  Specifically, here are a few that come to mind:</p>
+
+<ul>
+<li>Recurring Billing and Retries</li>
+<li>Coupons</li>
+<li>Credits</li>
+<li>Invoices</li>
+<li>Refunds</li>
+</ul>
+
+
+<p>In reality, what I believe most people do is just do invoicing for checks or ACH via Quickbooks or whatever accounting system they use.  This has the benefit of immediately integrating with your accounting system and providing A/R aging and collections reports.  However, there is no billing portal for Quickbooks, so essentially, you get an old style invoice via email or snail mail, and that&rsquo;s it.  We use <a href="http://www.indinero.com">InDinero</a> which offers some invoicing functionality but doesn&rsquo;t really offer an API or integrate with our app.   What this also means in practice is that your A/R team must log in to your admin portal and input invoices into your software app to keep things synced.</p>
+
+<h2>No support for subscriptions without a credit card</h2>
+
+<p>Occasionally, because we are a &ldquo;live&rdquo; business, we have customers that come in and use our service without giving us a credit card up front. We want to subscribe them to our service (they&rsquo;ve agreed) and then enter their credit card info later.  This is different then <a href="http://stackoverflow.com/questions/19467287/stripe-how-to-handle-subscription-with-a-free-plan-and-no-credit-card-required">a free trial with no credit card</a> in that we want the billing date to start immediately.</p>
+
+<p>In this case, Stripe will throw an error that no valid card is on file.  The only solution is to have a &ldquo;free plan&rdquo; so that stripe will accept the charge.</p>
+
+<h2>Manual overrides to subscription pricing is difficult</h2>
+
+<p>Stripe requires that plans be immutable so that plans don&rsquo;t get cancelled or changed for existing customers who may be &ldquo;grandfathered&rdquo; in.  There is no override available for an individual plan, where you can just change the price for a single subscription without changing the plan.  This means, in practice, that you have to add additional one-time fees each month or discount coupons to raise or lower the price.  These show up as line items on invoices and can be confusing to customers.  Alternatively, you end up with a proliferation of nearly identical plans in Stripe, except for price.</p>
+
+<p>I would prefer to be able to override an individual subscription.</p>
+
+<h2>Surprise Charges when changing plans</h2>
+
+<p>Our customers change plans periodically, and there&rsquo;s no good way to know what&rsquo;s going to happen when you change.  I wish there was an API endpoint that gave you a summary of what would happen when you switch plans.  We&rsquo;ve had several scenarios where customers were double-charged and then we had to refund them in this case.  In practice, what this means is that we have to reproduce Stripe&rsquo;s entire pro-rating and change plan logic in order to warn customers about what&rsquo;s going to happen.</p>
+
+<h2>Pauses in middle of a plan</h2>
+
+<p>This is a pretty narrow case but it would be nice to have a pause function.  Because we handle kids and subscriptions, occasionally we need to pause a subscription for a period of time.  In practice, the way to do this with Stripe is by cancelling and restarting the plan.  There are lots of calculations on our side and in practice we have most of the business logic in our app, not in Stripe.</p>
+
+<h2>Alternatives</h2>
+
+<p>I&rsquo;ve looked at a few alternatives and they all seem to have a similar problem:</p>
+
+<ul>
+<li><p><a href="https://www.charigify.com">Chargify</a> - Seems to support ACH / eChecks but I&rsquo;d have to sign up for an Authorize.net account.  Not sure how this works for paper checks though.</p></li>
+<li><p><a href="https://www.recurly.com">Recurly</a> - Similar to  Chargify as far as I can tell. They seem to offer manual invoicing which can &ldquo;mark as paid&rdquo; via check.  But I don&rsquo;t think this works for subscription billing so you end up with a manual process.</p></li>
+</ul>
+
+
+<p>Some other alternatives I&rsquo;ve seen but not evaluated:</p>
+
+<ul>
+<li>[Zuora] (<a href="https://www.zuora.com">https://www.zuora.com</a>)</li>
+<li>[ChargeBee] (<a href="http://www.chargbee.com">http://www.chargbee.com</a>)</li>
+<li>[BrainTree] (<a href="https://www.braintreepayments.com">https://www.braintreepayments.com</a>)</li>
+</ul>
+
+
+<p>Finally, it looks like most larger accounting packages offer invoicing (<a href="https://www.netsuite.com">NetSuite</a>, <a href="http://quickbooks.intuit.com/online">Quickbooks Online</a>, <a href="https://www.xero.com">Xero</a> )   But these feel like overkill for a small business but perhaps this is the inevitable path in the longer term.  Not sure.</p>
+
+<h2>What&rsquo;s next</h2>
+
+<p>Despite the cries of all the vendors, we&rsquo;ll probably just end up ripping out the Stripe subscriptions and replacing them with our own custom subscription code in our Rails App.  If there are any other alternatives that can handle the problems that I&rsquo;ve described here, please let me know!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+<span class="byline author vcard">Posted by <span class="fn">Doug Tarr</span></span>
+
+      
+
+
+
+
+
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://douglastarr.com/problems-i-have-with-stripe" data-via="tarr11" data-counturl="http://douglastarr.com/problems-i-have-with-stripe" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/on-startup-advisors" title="Previous Post: On Startup Advisors">&laquo; On Startup Advisors</a>
+      
+      
+        <a class="basic-alignment right" href="/webmention-spam" title="Next Post: Webmention Spam">Webmention Spam &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+</aside>
+
+
+  </article>
+  <footer>
+    <p>Last published on 2016-05-07
+  </footer>
+</body>
+</html>
