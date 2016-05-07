@@ -3,8 +3,8 @@ layout: post
 title: Updates on MV Code Club
 published: true
 ---
-It's been a while since I've updated this blog on the latest news at MV
-Code Club.  
+It's been a while since I've updated this blog on the latest news at [MV
+Code Club](https://www.mvcodeclub.com)
 
 Back in 2013, I resolved to teach my [4th grade son and 11 of his
 friends to code](/Teaching-Coding-to-4th-graders)  
@@ -21,7 +21,8 @@ support from friends, family and schools.
 Since 2013, [MV Code Club](https://www.mvcodeclub.com) has expanded and we run 3 clubs in Mill
 Valley, Central Marin (Greenbrae) and San Francisco, CA.  We also teach
 coding 
-in a number of schools in San Francisco and Marin.
+in a number of schools in San Francisco and Marin. We also run camps
+during the summer and school year.
 
 Originally, when I had started, I had thought I would [put the coding
 lessons I used onto Github](/an-open-source-coding-curriculum)  I moved
@@ -37,7 +38,8 @@ github, they would be stored on our website.
 
 The website started to be focused on the clubs and programs we run
 with our staff, and we decided we needed to separate out the
-content so that it could be used by others.  
+content so that it could be used by others.  Our coding platform is also
+used by other programs, such as the iCanCode club in Rochester, NY.
 
 So, we launched
 [MVCode](https://www.mvcode.co) a few months ago and all of our
