@@ -29,7 +29,7 @@ email:
 root: 
 permalink: /:title
 destination: _site
-plugins: plugins
+#plugins: plugins
 code_dir: downloads/code
 category_dir: blog/categories
 markdown: rdiscount
@@ -38,7 +38,7 @@ rdiscount:
     - autolink
     - footnotes
     - smart
-highlighter: pygments # default python pygments have been replaced by pygments.rb
+#highlighter: pygments # default python pygments have been replaced by pygments.rb
 
 paginate: 10          # Posts per page on the blog index
 paginate_path: "posts/:num"  # Directory base for pagination URLs eg. /posts/2/
@@ -60,6 +60,7 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
 
 gems:
    - jekyll-gist
+   - jekyll-paginate
 # ----------------------- #
 #   3rd Party Settings    #
 # ----------------------- #

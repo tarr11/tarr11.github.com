@@ -2,6 +2,9 @@
 layout: post
 title: Updates on MV Code Club
 published: true
+tags:
+  - mvcoders
+
 ---
 It's been a while since I've updated this blog on the latest news at [MV
 Code Club](https://www.mvcodeclub.com)
