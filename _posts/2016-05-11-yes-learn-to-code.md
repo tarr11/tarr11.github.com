@@ -23,7 +23,7 @@ And yet - the analogies fall apart (all analogies do).  Coding is not plumbing. 
 
 So, the interesting question to me is not “should you learn to code” but “why does everyone want to learn to code”?
 
-# What does coding even mean anymore?
+## What does coding even mean anymore?
 
 The word “coding” has been stolen from software developers.  We developers don’t like it when you steal our words.  We trade in words.  We turn words into code, and code into work.  Words are sacred to us and we get really pissed when words are used in ways we don’t intend.
 
