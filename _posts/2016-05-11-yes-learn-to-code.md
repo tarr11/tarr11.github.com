@@ -27,7 +27,7 @@ So, the interesting question to me is not “should you learn to code” but “
 
 ## What does coding even mean anymore?
 
-The word “coding” has been stolen from software developers.  We developers don’t like it when you steal our words.  We trade in words.  We turn words into code, and code into work.  Words are sacred to us and we get really pissed when words are used in ways we don’t intend.
+The word “coding” has been stolen from software developers.  We developers don’t like it when you steal our words.  We trade in words.  We turn words into code, and code into work.  Words are sacred to us and we get really upset when words are used in ways we don’t intend.
 
 I’ve taught thousands of kids to code at this point.   It really is a phenomenon.  Kids want to learn, teachers want to learn,  parents want to learn, grandparents want to learn.  Everyone wants to learn.  
 
