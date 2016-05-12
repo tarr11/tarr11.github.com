@@ -6,9 +6,9 @@ tags:
   - mvcoders
 ---
 
-<iframe style="border:none; width:500px; height: 50px" src="/games/codegame.html">
-</iframe>
 [Please don’t learn to code](http://techcrunch.com/2016/05/10/please-dont-learn-to-code/) got me thinking.   There are a lot of articles out there that exhort everyone to learn to code, and a [few articles](http://blog.codinghorror.com/please-dont-learn-to-code/) suggesting that maybe you shouldn’t learn to code.   And yet, there’s a whiff of defensiveness to the “don’t learn to code” crowd.  
+
+<p style="text-align:center"><img src="/images/locked_door.jpg" style="width:300px"></p>
 
 But, there's no need to worry. Learning to code doesn’t make you a developer, as the author says.  Developers aren't coders (we dislike that word, nor are we programmers).  Being a developer doesn’t make you an engineer, which doesn’t make you a physicist, which doesn’t make you a mathematician, and [so on](https://xkcd.com/435/).
 
@@ -73,6 +73,9 @@ In addition to career opportunities, Coding teaches problem solving and forces y
 Most importantly, coding introduces a powerful new way of communicating digitally, and as long as
 we are human, communication is one of the most important things we can
 do.
+
+<iframe frameborder="0" style="border:none; border: 0; overflow: hidden; width:500px; height: 50px" src="/games/codegame.html">
+</iframe>
 
 
 ---
