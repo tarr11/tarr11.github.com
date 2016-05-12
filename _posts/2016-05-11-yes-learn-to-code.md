@@ -68,11 +68,11 @@ It's no surprise, lots of people in that club got fabulously wealthy. Access to 
 People aren’t learning to code to fix your database, or to build an iOS app.  
 
 ## The message
-In addition to career opportunities, Coding teaches problem solving and forces you to other core subjects like Math or Physics.
+In addition to career opportunities, coding teaches problem solving and forces you to learn core subjects like Math or Physics.
 
-Most importantly, coding introduces a powerful new way of communicating digitally, and as long as
-we are human, communication is one of the most important things we can
-do.
+Most importantly, coding introduces a powerful new way of communicating digitally.
+
+As long as we are human, communication is one of the most important things we can do.
 
 <iframe frameborder="0" style="border:none; border: 0; overflow: hidden; width:500px; height: 50px" src="/games/codegame.html">
 </iframe>
