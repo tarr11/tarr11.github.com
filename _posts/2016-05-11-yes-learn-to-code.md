@@ -6,6 +6,8 @@ tags:
   - mvcoders
 ---
 
+<iframe style="border:none; width:500px; height: 50px" src="/games/codegame.html">
+</iframe>
 [Please don’t learn to code](http://techcrunch.com/2016/05/10/please-dont-learn-to-code/) got me thinking.   There are a lot of articles out there that exhort everyone to learn to code, and a [few articles](http://blog.codinghorror.com/please-dont-learn-to-code/) suggesting that maybe you shouldn’t learn to code.   And yet, there’s a whiff of defensiveness to the “don’t learn to code” crowd.  
 
 But, there's no need to worry. Learning to code doesn’t make you a developer, as the author says.  Developers aren't coders (we dislike that word, nor are we programmers).  Being a developer doesn’t make you an engineer, which doesn’t make you a physicist, which doesn’t make you a mathematician, and [so on](https://xkcd.com/435/).
@@ -13,9 +15,9 @@ But, there's no need to worry. Learning to code doesn’t make you a developer, 
 ## Teach kids to code
 Confession: [I teach kids to code](https://www.mvcodeclub.com).  It happened to me like it happened to many other technologists.  I have kids, they play Minecraft.  There was a flood of demand, driven by the boom in tech, by visionary social entrepreneurs, and by the press.  
 
-It is hilarious watching kids coding.  They don't care, they are rude, they write Scratch programs with fart jokes.  They build elaborate websites dedicated to some arcane corner of Minecraft.  They aren't coding to get a job.  They are just doing it for fun, to build, to create and to communicate.
+It is hilarious watching kids coding.  They don't care, they are rude, they write Scratch programs with silly jokes and pictures of their friends.  They build elaborate websites dedicated to some arcane corner of Minecraft.  It's clear that they aren't coding to get a job.  They are just doing it for fun, to build something of their own, for the job of creating and to communicate.
 
-So, here I am, 3 years later, [with a burgeoning empire of coding clubs around San Francisco](http://douglastarr.com/updates-on-mvcodeclub).
+So, here I am, 3 years later, [with a burgeoning empire of coding clubs around San Francisco](/updates-on-mvcodeclub).
 
 I suppose that this feels like a conspiracy, pushed on you by the boundless enthusiasm of Hadi Partovi's [code.org](https://www.code.org), fueled Mark Zuckerberg’s fortune and flogged by a village of coding bootcamps, trying to turn us into a bunch of pasty drones cranking out python and rails code for the sake of the economy.
 
@@ -71,3 +73,8 @@ In addition to career opportunities, Coding teaches problem solving and forces y
 Most importantly, coding introduces a powerful new way of communicating digitally, and as long as
 we are human, communication is one of the most important things we can
 do.
+
+
+---
+Spritesheet from [geminidrake on DeviantArt](http://geminidrake.deviantart.com/art/RPG-Maker-VX-Sprite-Angry-Video-Game-Nerd-AVGN-290883242)
+
