@@ -23,7 +23,7 @@ And yet - the analogies fall apart (all analogies do).  Coding is not plumbing. 
 
 So, the interesting question to me is not “should you learn to code” but “why does everyone want to learn to code”?
 
-## What does coding even mean anymore?
+# What does coding even mean anymore?
 
 The word “coding” has been stolen from software developers.  We developers don’t like it when you steal our words.  We trade in words.  We turn words into code, and code into work.  Words are sacred to us and we get really pissed when words are used in ways we don’t intend.
 
@@ -33,24 +33,41 @@ I learned to code when i was a kid, on my Commodore 64.  It’s not the same.  T
 
 ## Coding :: !Coding
 
-Python?  Easy, coding.   C++?  Sure (really? in 2016?)  HTML.  That’s not coding, is it?  It’s just markup!  No, it’s coding now.  What about creating a Google Doc?  No, not coding.  What if i connected my Google doc to an IFTTT so it can spit out a tweet?  Coding!    Excel.  Not coding.  Wait, formulas?  Sure, that’s coding.  Playing Minecraft?  Not coding!  Command Blocks?  Coding!  Chatting on Slack? Not coding.  Using slack commands? Coding!  
+Python?  Easy, coding.   
 
+C++?  Sure (really? in 2016?)  
+
+HTML.  That’s not coding, is it?  It’s just markup!  No, it’s coding now.  
+
+What about creating a Google Doc?  No, not coding.  
+
+What if i connected my Google doc to an IFTTT so it can spit out a tweet?  Coding!    
+
+Excel.  Not coding.  
+
+Wait, formulas?  Sure, that’s coding.  
+
+Playing Minecraft?  Not coding!  
+
+Command Blocks?  Coding!  
+
+Chatting on Slack? Not coding.  
+
+Using slack commands? Coding!  
+
+You get the idea.  Coding is a big #808080 area.
 
 ## Coding is a glyph
 
-Coding doesn’t mean what it used to mean.  It represents a kind of rebellion, now.  People want to control their stuff.  Coding is a digital way to influence the world.
+Coding doesn’t mean what it used to mean.  It represents a kind of rebellion, now.  People want to control their stuff.  Coding is a digital way to influence the world.  Coding used to be an exclusive group that communicated in a secret language   Now, lots more people want into the club.
 
-Coding used to be an exclusive group that communicated in a secret language   Now, lots more people want into the club.
-
-It's no surprise, lots of people in that club got fabulously wealthy.
-
-Access to the code club brings a whole new set of possibilities and opportunities.  
-
-If we accept this new looser definition of what coding is, and what it means, then learning to code isn’t about engineering anymore, it’s about society.  
+It's no surprise, lots of people in that club got fabulously wealthy. Access to the code club brings a whole new set of possibilities and opportunities.   If we accept this new looser definition of what coding is, and what it means, then learning to code isn’t about engineering anymore, it’s about society.  
 
 People aren’t learning to code to fix your database, or to build an iOS app.  
 
-We aren’t trying to become e-plumbers.
+## The message
+In addition to career opportunities, Coding teaches problem solving and forces you to other core subjects like Math or Physics.
 
-We are learning to code to because code is how we communicate now.
-
+Most importantly, coding introduces a powerful new way of communicating digitally, and as long as
+we are human, communication is one of the most important things we can
+do.

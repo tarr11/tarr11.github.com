@@ -3,7 +3,7 @@
 # ----------------------- #
 
 url: http://douglastarr.com
-title:  Douglas Tarr's Blog
+title:  Doug Tarr's Blog
 subtitle: Coding and other things
 author: Doug Tarr
 simple_search: https://www.google.com/search
@@ -37,7 +37,7 @@ category_dir: blog/categories
 #  extensions:
 #    - autolink
 #    - footnotes
-    - smart
+#    - smart
 #highlighter: pygments # default python pygments have been replaced by pygments.rb
 
 paginate: 10          # Posts per page on the blog index
