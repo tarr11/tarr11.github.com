@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <title>Codegame</title>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/phaser/2.4.7/custom/phaser-arcade-physics.min.js"></script>
+    <style>
+      CANVAS {width: 500px; height: 400px }
+    </style>
+  
+  </head>
+  <body>
+    <div id="game"></div>
+    <script type="text/javascript">
+var game = new Phaser.Game(500,375,Phaser.AUTO, 'game' ); 
+var PhaserGame = function () { 
+   
+};
+ var steve;
+PhaserGame.prototype = { 
+    preload: function() { 
+        this.load.crossOrigin = "Anonymous"; 
+        this.load.tilemap('map', 'mc_tilemap.json', null, Phaser.Tilemap.TILED_JSON);
+        this.load.image('tiles', 'mc_tileset.png');
+        this.load.spritesheet('steve', 'steve.png', 32, 32);
+
+    },    
+    create: function () { 
+        this.stage.backgroundColor = '#0000FF';
+    this.physics.startSystem(Phaser.Physics.ARCADE);
+
+        var map = this.add.tilemap('map');
+
+        map.addTilesetImage('mc_tileset', 'tiles');
+        var layer = map.createLayer('Tile Layer 1');
+
+         steve = this.add.sprite(0, 100, 'steve');
+        steve.animations.add('fwd', [0, 1, 2]);
+        steve.animations.add('left', [3,4,5]);
+        steve.animations.add('right', [6,7,8]);
+
+        steve.animations.play('right', 5, true)
+        this.physics.arcade.enable(steve);
+        this.camera.follow(steve);
+
+    }, 
+    update: function() {
+       
+        if (steve.x > 300)
+        {
+            steve.body.velocity.x = -50;
+                    steve.animations.play('left', 5, true)
+
+        }
+        else if (steve.x < 50)
+        {
+            steve.body.velocity.x = 50;
+                    steve.animations.play('right', 5, true)
+
+        }
+
+    }
+}
+ 
+game.state.add('Game', PhaserGame, true);
+    </script>
+  </body>
+</html>
