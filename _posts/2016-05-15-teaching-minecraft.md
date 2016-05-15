@@ -6,6 +6,9 @@ og_image: http://www.douglastarr.com/images/teaching_mc.png
 tags:
   - mvcoders
 ---
+
+This is a technical description of some of the work we've done to make it easier to teach Minecraft at [MV Code Club](https://www.mvcodeclub.com)
+
 About half of the kids in MV Code Club love Minecraft and come to us wanting to learn to code mods and plugins because of Minecraft.  About two years ago, we made the decision to start building out infrastructure for Minecraft.
 
 <iframe frameborder="0" style="border:none; border: 0; overflow: hidden; width:500px; height: 375px" src="/games/2dmc">
