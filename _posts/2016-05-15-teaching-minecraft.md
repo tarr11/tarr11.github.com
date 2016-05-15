@@ -2,6 +2,7 @@
 layout: post
 title: Teaching Minecraft
 published: true
+og_image: http://www.douglastarr.com/images/teaching_mc.png
 tags:
   - mvcoders
 ---
