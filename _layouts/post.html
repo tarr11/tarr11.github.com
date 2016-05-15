@@ -3,7 +3,8 @@ layout: new_default
 single: true
 ---
 
-<div>
+<div class="container">
+  <div class="row">
 <article class="hentry" role="article">
   {% include article.html %}
   <footer>
@@ -11,6 +12,7 @@ single: true
       {% include post/author.html %}
       {% include post/date.html %}{{ time }}{% if updated %} {{ updated }}{% endif %}
       {% include post/categories.html %}
+      <p class="small text-muted">Last published on {{ site.time | date: "%Y-%m-%d" }}
     </p>
     {% unless page.sharing == false %}
       {% include post/sharing.html %}
@@ -36,3 +38,5 @@ single: true
 <aside class="sidebar">
 </aside>
 {% endunless %}
+</div>
+</div>
