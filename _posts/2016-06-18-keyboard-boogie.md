@@ -28,4 +28,4 @@ Generating a pleasing random color is slightly more challenging then just pickin
 
 Finally, I grabbed the dancing sprite from the [Fruity Dance Plugin](https://www.image-line.com/support/FLHelp/html/plugins/Fruity%20Dance.htm) and the [Disco Ball](http://geno2925.deviantart.com/art/Super-Mario-World-Disco-Ball-415470107) from user [geno2925](http://geno2925.deviantart.com/) on DeviantArt
 
-
+[Source for the game is on github](https://github.com/tarr11/tarr11.github.com/tree/master/games/keyboardboogie)
