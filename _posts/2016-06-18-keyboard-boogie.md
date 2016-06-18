@@ -2,7 +2,7 @@
 layout: post
 title: Keyboard Boogie
 published: true
-og_image: http://www.douglastarr.com/images/keyboard_boogie.jpg
+og_image: http://www.douglastarr.com/images/keyboardboogie.png
 tags:
   - games
 ---
