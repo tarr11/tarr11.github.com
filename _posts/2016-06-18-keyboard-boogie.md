@@ -10,7 +10,9 @@ tags:
 I had this idea for a silly game - I wanted to learn about HTML5 Audio.   
 
 I used [Tone.js](http://tonejs.org/) which is a javascript audio
-synthesizer library.  
+synthesizer library.  I still don't really understand much of what I'm
+doing with the synth library.  I mostly copy pasted some music code, and found it interesting that you
+can vary tempo and beat with code.  
 
 It is based on keyboard input, so won't work on your phone.
 
