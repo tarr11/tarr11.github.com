@@ -26,6 +26,7 @@ var speeds = [];
 var startText;
 var discoball;
 var rcolor;
+var titleText;
 PhaserGame.prototype = { 
     preload: function() { 
         this.load.crossOrigin = "Anonymous"; 
@@ -45,8 +46,20 @@ PhaserGame.prototype = {
         scoreText.visible = false;
         speedText.visible = false;
         keyText.visible = false;
-        var titleText  = this.add.text(100,450, "KEYBOARD BOOGIE");
-        startText  = this.add.text(50,250, "SMASH SOME KEYS TO BOOGIE");
+        titleText  = this.add.text(this.world.centerX,this.world.height - 50, "KEYBOARD BOOGIE");
+        titleText.anchor.set(0.5);
+        titleText.align = 'center';
+        titleText.font = 'Arial Black';
+        titleText.fontSize = 40;
+        titleText.fontWeight = 'bold';
+        initTitleColor();
+        var titletimer = game.time.create(false);
+        titletimer.loop(500, changeTitleColor, this);
+        titletimer.start();
+
+        startText  = this.add.text(this.world.centerX, this.world.centerY, "SMASH SOME KEYS TO BOOGIE");
+        startText.anchor.set(0.5);
+        startText.align = 'center';
         dancer = this.add.sprite(200, 300, 'dancer');
         anim = dancer.animations.add('dance', [16, 17, 18, 19, 20, 21, 22, 23], 5, true);
         discoball = this.add.sprite(225, 100, "discoball");
@@ -72,6 +85,36 @@ PhaserGame.prototype = {
     }, 
     update: function() {
     }
+}
+
+function initTitleColor(){
+  var tcolor = new RColor;
+  var c = tcolor.get(true);
+  titleText.strokeThickness = 6;
+  titleText.stroke = "000000";
+  for(var i = 0; i < titleText.text.length; i++)
+  {
+    var tcolor = new RColor;
+    var c = tcolor.get(true);
+    titleText.addColor(c, i);
+  }
+}
+
+function changeTitleColor(){
+  var colors = titleText.colors.slice();
+  for(var i = 1; i < titleText.text.length ; i++)
+  {
+    colors[i] = titleText.colors[i-1];
+  }
+
+  var tcolor = new RColor;
+  var c = tcolor.get(true);
+  colors[0] = c;
+  for(var i = 0; i < titleText.text.length; i++)
+  {
+    titleText.addColor(colors[i], i);
+  }
+
 }
 
 function startGame(){
