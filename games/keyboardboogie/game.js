@@ -32,6 +32,7 @@ var rcolor;
 var titleText;
 var filter;
 var background;
+var copyrightText;
 PhaserGame.prototype = { 
     preload: function() { 
         this.load.crossOrigin = "Anonymous"; 
@@ -96,6 +97,10 @@ PhaserGame.prototype = {
         titleText.fontSize = 40;
         titleText.fontWeight = 'bold';
         initTitleColor();
+        copyrightText = this.add.text(this.world.centerX,this.world.height - 15, "(c) Douglas Tarr, 2016.  All rights reserved.");
+        copyrightText.fontSize = 10;
+        copyrightText.anchor.set(0.5);
+        copyrightText.align = 'center';
         var titletimer = game.time.create(false);
         titletimer.loop(500, changeTitleColor, this);
         titletimer.start();
@@ -163,6 +168,7 @@ function changeTitleColor(){
 
 function startGame(){
 
+  copyrightText.visible = false;
   startText.visible = false;
 
   discoball.visible = true;
