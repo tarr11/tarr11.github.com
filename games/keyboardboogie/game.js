@@ -4,6 +4,7 @@ var game = new Phaser.Game(width,height,Phaser.AUTO, 'game' );
 var PhaserGame = function () { 
    
 };
+var graphics;
 var isStarted = false;
 var keyCount = 0;
 var keyText;
@@ -40,6 +41,18 @@ PhaserGame.prototype = {
         this.load.script('filter', 'plasma.js');
     },
     create: function () { 
+      graphics = game.add.graphics(0, 0);
+      graphics.beginFill(0xFF3300);
+      graphics.lineStyle(10, 0xffd900, 1);
+
+      // draw a shape
+      graphics.moveTo(0,0);
+      graphics.lineTo(width,0);
+      graphics.lineTo(width, 50);
+      graphics.lineTo(0, 50);
+      graphics.lineTo(0, 0);
+      graphics.endFill();
+      graphics.visible = false;
 
         background = this.add.sprite(0,0);
         background.width = width;
@@ -47,17 +60,6 @@ PhaserGame.prototype = {
         filter = this.add.filter('Plasma', width, height);
         background.filters = [ filter ] ;
 
-        var graphics = this.add.graphics(0, 0);
-        graphics.beginFill(0xFF3300);
-        graphics.lineStyle(10, 0xffd900, 1);
-
-        // draw a shape
-        graphics.moveTo(0,0);
-        graphics.lineTo(width,0);
-        graphics.lineTo(width, 50);
-        graphics.lineTo(0, 50);
-        graphics.lineTo(0, 0);
-        graphics.endFill();
         rcolor = new RColor;
         //this.stage.backgroundColor = '#ff69b4';
         this.physics.startSystem(Phaser.Physics.ARCADE);
@@ -72,14 +74,18 @@ PhaserGame.prototype = {
         keyText.anchor.set(0.5);
         keyText.align = 'center';
         keyText.fontSize = 14;
+        keyText.fill = "#00FFFF";
+        scoreText.fill = "#43d637";
         speedText.anchor.set(0.5);
         speedText.align = 'center';
         speedText.fontSize = 14;
+        speedText.fill = "#ffaa00";
         statusText = this.add.text(400,30, "DANCE NOOB")
         statusText.align = 'right';
         statusText.anchor.set(0.5);
         statusText.fontSize = 14;
         statusText.visible = false;
+        statusText.fill = "#7FFF00";
         scoreText.visible = false;
         speedText.visible = false;
         keyText.visible = false;
@@ -156,6 +162,7 @@ function changeTitleColor(){
 }
 
 function startGame(){
+
   startText.visible = false;
 
   discoball.visible = true;
