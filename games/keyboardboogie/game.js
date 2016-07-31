@@ -1,4 +1,6 @@
-var game = new Phaser.Game(500,500,Phaser.AUTO, 'game' ); 
+var width = 500;
+var height = 500;
+var game = new Phaser.Game(width,height,Phaser.AUTO, 'game' ); 
 var PhaserGame = function () { 
    
 };
@@ -27,21 +29,56 @@ var startText;
 var discoball;
 var rcolor;
 var titleText;
+var filter;
+var background;
 PhaserGame.prototype = { 
     preload: function() { 
         this.load.crossOrigin = "Anonymous"; 
         this.load.spritesheet('dancer', 'dancer.png', 110, 126,-1 ,3, 2);
         this.load.spritesheet('discoball', 'discoball.png', 18, 18,-1 ,1);
         this.load.audio('drums', 'drums.mp3');
+        this.load.script('filter', 'plasma.js');
     },
     create: function () { 
+
+        background = this.add.sprite(0,0);
+        background.width = width;
+        background.height = height;
+        filter = this.add.filter('Plasma', width, height);
+        background.filters = [ filter ] ;
+
+        var graphics = this.add.graphics(0, 0);
+        graphics.beginFill(0xFF3300);
+        graphics.lineStyle(10, 0xffd900, 1);
+
+        // draw a shape
+        graphics.moveTo(0,0);
+        graphics.lineTo(width,0);
+        graphics.lineTo(width, 50);
+        graphics.lineTo(0, 50);
+        graphics.lineTo(0, 0);
+        graphics.endFill();
         rcolor = new RColor;
-        this.stage.backgroundColor = '#ff69b4';
+        //this.stage.backgroundColor = '#ff69b4';
         this.physics.startSystem(Phaser.Physics.ARCADE);
-        scoreText  = this.add.text(0,0, "SCORE: " + score);
-        keyText = this.add.text(150,0, "KEYS: " + keyCount);
-        speedText  = this.add.text(300,0, "SPEED: " + keysPerSecond);
-        statusText = this.add.text(0,50, "RANK: DANCE NOOB")
+
+        scoreText  = this.add.text(50, 30, score);
+        keyText = this.add.text(150,30, "KEYS: " + keyCount);
+        speedText  = this.add.text(250, 30, keysPerSecond + " keys/sec");
+        scoreText.anchor.set(0.5);
+        scoreText.align = 'center';
+        scoreText.fontSize = 14;
+        scoreText.fill = "#43d637";
+        keyText.anchor.set(0.5);
+        keyText.align = 'center';
+        keyText.fontSize = 14;
+        speedText.anchor.set(0.5);
+        speedText.align = 'center';
+        speedText.fontSize = 14;
+        statusText = this.add.text(400,30, "DANCE NOOB")
+        statusText.align = 'right';
+        statusText.anchor.set(0.5);
+        statusText.fontSize = 14;
         statusText.visible = false;
         scoreText.visible = false;
         speedText.visible = false;
@@ -71,7 +108,7 @@ PhaserGame.prototype = {
             startGame();
           }
           keyCount++;
-          keyText.setText("KEYS: " + keyCount);
+          keyText.setText(keyCount + " keys");
           keyChar = String.fromCharCode(event.keyCode);
 
           var c = rcolor.get(true);
@@ -84,6 +121,7 @@ PhaserGame.prototype = {
         };
     }, 
     update: function() {
+      filter.update();
     }
 }
 
@@ -140,7 +178,7 @@ function startGame(){
 function checkSpeed(){
   keysPerSecond = keyCount - lastDrums;
   lastDrums = keyCount;
-  speedText.setText("SPEED:" + keysPerSecond);
+  speedText.setText(keysPerSecond + " keys/sec");
   if (keysPerSecond > 0)
   {
     if (stopped)
@@ -159,18 +197,18 @@ function checkSpeed(){
   }
 
   if (score > 2000){
-    statusText.setText("RANK: DANCING MACHINE");
+    statusText.setText("DANCING MACHINE");
     rank++;
   }
   else if (score > 1000){
-    statusText.setText("RANK: FANCY DANCER");
+    statusText.setText("FANCY DANCER");
     rank++;
 
   }else if (score > 500){
-    statusText.setText("RANK: SUPER DANCER");
+    statusText.setText("SUPER DANCER");
     rank++;
   }else if (score > 100){
-    statusText.setText("RANK: TINY DANCER");
+    statusText.setText("TINY DANCER");
     rank++;
   }
 
@@ -216,7 +254,6 @@ function checkAchievements(){
     var streak = 5;
     for (var i = speeds.length - streak; i < speeds.length; i++)
     {
-      console.log(speeds[i]);
       if (speeds[i] < 20) {
         isFast = false;
         break;
@@ -233,11 +270,13 @@ function checkAchievements(){
 
 function addAchievement(name, achievementScore){
   achievements.push(name);
-  var text  = game.add.text(650, 100, name + " " + achievementScore);
-  game.add.tween(text).to( { y: 500 }, 2000, "Linear", true);
+  var text  = game.add.text(game.world.centerX, 100, name + "\n +" + achievementScore + " boogies!");
+  game.add.tween(text).to( { y: height + 100 }, 2000, "Linear", true);
   text.font = 'Arial';
     text.fontWeight = 'bold';
     text.fontSize = 40;
+    text.align = 'center';
+        text.anchor.set(0.5);
 
     //  Here we create a linear gradient on the Text context.
     //  This uses the exact same method of creating a gradient as you do on a normal Canvas context.
@@ -253,8 +292,9 @@ function addAchievement(name, achievementScore){
     updateScore();
 }
 
+
 function updateScore(){
-  scoreText.setText("SCORE:" + score);
+  scoreText.setText(score + " boogies");
 }
 
 function startMusic(){
