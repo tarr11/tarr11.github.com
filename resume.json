@@ -1,0 +1,76 @@
+{
+  "basics": {
+    "name": "Doug Tarr",
+    "label": "Developer Lead and Manager",
+    "picture": "http://douglastarr.com/images/doug-headshot.jpg",
+    "email": "douglas.tarr@gmail.com",
+    "website": "http://douglastarr.com",
+    "summary": "I am a software developer at my core, and write code every day.  I provide business and highly technical leadership coupled with an entrepreneurial vision. I have experience in UI/UX, Software Architecture, Big Data, IT Architecture, Databases, and Search.  I enjoy mentoring people, learning new things, and managing software projects and products.",
+    "location": {
+      "postalCode": "CA 94941",
+      "city": "Mill Valley",
+      "countryCode": "US",
+      "region": "California"
+    },
+    "profiles": [
+      {
+      "network": "Twitter",
+      "username": "tarr11",
+      "url": "http://twitter.com/tarr11"
+    },
+      {
+      "network": "LinkedIn",
+      "username": "tarr11",
+      "url": "https://www.linkedin.com/in/douglastarr"
+    },
+      {
+      "network": "Github",
+      "username": "tarr11",
+      "url": "https://github.com/tarr11"
+    },
+      {
+      "network": "StackOverflow",
+      "url": "http://stackoverflow.com/users/story/142098"
+    }
+    ]
+  },
+  "work": [{
+    "company": "MVCode",
+    "position": "Founder, GM, Director of Hackery",
+    "website": "https://www.mvcodeclub.com",
+    "startDate": "2013-10-01",
+    "endDate": "2016-10-01",
+    "summary": "Founded an after school coding and robotics club for 1st-10th graders.\\n
+    Currently 6 clubs in SF Bay Area\\n",
+    "highlights": [
+      "Started the company"
+    ]
+  }],
+  "education": [{
+    "institution": "University of Chicago",
+    "area": "Mathematics",
+    "studyType": "Bachelor",
+    "startDate": "1991-09-01",
+    "endDate": "1995-06-01"
+  }],
+  "skills": [{
+    "name": "Web Development",
+    "level": "Master",
+    "keywords": [
+      "HTML",
+      "CSS",
+      "Javascript"
+    ]
+  }],
+  "languages": [{
+    "name": "English",
+    "level": "Native speaker"
+  }],
+  "interests": [{
+    "name": "Wildlife",
+    "keywords": [
+      "Ferrets",
+      "Unicorns"
+    ]
+  }]
+}
