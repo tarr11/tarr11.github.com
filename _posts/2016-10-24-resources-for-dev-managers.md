@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Development Managers Link Dump
-published: false
+published: true
 tags:
   - dev
 ---
