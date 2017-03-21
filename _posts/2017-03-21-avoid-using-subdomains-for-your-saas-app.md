@@ -36,7 +36,7 @@ You will need to implement permissions for your subdomain based on who can chang
 Users may also forget the subdomain when logging in.  You will need to have a page on your main site that lets them find their subdomain.  This is extra work for the user and may cause them to drop off.
 
 ### Forgot password
-If a user can have multiple accounts, then the forgot password page will either The login flow gets more complex when users first have to find their subdomain.  
+If a user can have multiple accounts, then the forgot password page will either require the subdomain, or have to find it (via the "Forgot Subdomain" page.  The login flow gets more complex when users first have to find their subdomain.  
 
 ## Development Complexity
 
