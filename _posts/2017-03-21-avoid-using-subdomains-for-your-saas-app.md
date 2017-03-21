@@ -16,8 +16,7 @@ My recommendation is that using subdomains for accounts creates a variety of nam
 You will need a wildcard SSL domain, which can cost $99 / year or more.  By contrast, single domain certs are now often free (via LetsEncrypt) or very cheap (<$10 / year)   If you use a cloud host like heroku, you may need to have multiple SSL endpoints which increases your cost.
 
 ## SEO: Information Leakage and Links
-You can easily guess a company's domain and see if someone has registered it
-Subdomains are often leaked via search engines. (search for *.slack.com on google for example)  You can also guess if a particular company has an account.
+Using subdomains will leak some subset of your customer list.  You can easily guess a company's domain and see if someone has registered it.  Subdomains are often leaked via search engines. (search for *.slack.com on google for example)  
 
 You will need a special "corporate" domain that contains corporate content (Blogs, FAQs, pricing and product info, etc) and ensure that it is the canonical version so you don't have duplicate content in search engines.
 
@@ -55,3 +54,5 @@ Your mail subsystem will need to ensure that hosts are handled correctly.  For e
 
 ### Development Servers
 In development, you will need to simulate subdomains.  This requires editing your hosts files so that you can have account1.local, account2.local.  Editing a host file often requires special permissions, and can make setting up a new development instance more difficult (since it is no longer a seed file with a database entry, but also an associated hosts entry)
+
+Have anything to add or correct for this blog entry?  Feel free to [create an issue](https://github.com/tarr11/tarr11.github.com/issues) or [submit a pull request](https://github.com/tarr11/tarr11.github.com/pulls) 
