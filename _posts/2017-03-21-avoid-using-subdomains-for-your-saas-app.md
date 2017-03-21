@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Avoid using subdomains for accounts in your saas app
-published: false
+published: true
 tags:
   - saas
 ---
