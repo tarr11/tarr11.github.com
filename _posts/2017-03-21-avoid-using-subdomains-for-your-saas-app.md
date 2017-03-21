@@ -46,8 +46,10 @@ You will need to whitelist subdomains that are typically reserved for the compan
 ### Revoking Subdomains
 Companies may complain if their subdomain has been taken by a 3rd party.  (ie, google.saasapp.com)  Though rare, you may need to be able to handle this situation, which could involve revoking someone else's account.  
 
-### Login and Cookies
+### Security, Login and Cookies
 If a user may associate a username or email with multiple accounts, you will require a "choose account" page eventually.  If this page is associated with a subdomain, you will need to find a way to pass credentials from one subdomain to another (usually using some sort of one-time token on a GET request) so that the appropriate cookies are set.
+
+More information on [cross-domain login security considerations here](https://security.stackexchange.com/questions/33851/protecting-against-cross-subdomain-cookie-attacks).
 
 ### Mailers
 Your mail subsystem will need to ensure that hosts are handled correctly.  For example, if you are using Rails and ActiveMailer, you will need to pass the host to each mailer.   If a user can belong to multiple accounts, you will need to change the default context of your request from a user to a "UserAccount" or similar object that contains enough information to allow you to construct URLs in your emails correctly.
