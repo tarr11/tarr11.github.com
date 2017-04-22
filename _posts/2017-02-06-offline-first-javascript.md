@@ -7,16 +7,36 @@ tags:
 ---
 I wanted to keep track off all the offline first javascript libraries I've been seeing and evaluating.
 
-IndexedDb
+## IndexedDb API
+https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API
 
-DexieJS - a thin wrapper around IndexedDb
+A full database supported by most major browsers.
 
+## DexieJS 
+http://dexie.org/
+A well designed, thin javascript wrapper around IndexedDb that makes IndexedDB easier to use cross-platform
 
-Client / Server Implemntations
-PouchDb / CouchDb
+## PouchDb / CouchDb
+https://pouchdb.com/
 
-Realm
+PouchDb is a fully JS compliant offline db that is backed by Indexeddb.  It syncs with CouchDB implementations and handles conflicts fairly well.  This is the only solution that I saw that handles most offline issues out of the box.  However, it does add more complexity as you now have to host a CouchDB server.   
 
-Firebase - has limited support for offline databases.  Designed for apps 
+## Realm
+http://www.realm.io
 
-Parse
+An offline-first database that is mostly designed for mobile, but not web.
+
+## GunJS
+http://www.realm.io
+
+An open source offline first database with javascript clients.  Focuses on simplicity of API.
+
+## Firebase 
+https://firebase.google.com/
+
+Has support for offline - not offline first, but can handle network disruptions.   
+
+## Parse
+https://github.com/ParsePlatform
+
+Open source platform similar to Firebase in that it can handle network disruptions, but is not designed for offline-first.
