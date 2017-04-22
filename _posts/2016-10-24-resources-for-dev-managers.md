@@ -47,9 +47,7 @@ XKCD Programming Comics
 Podcasts
 Programming http://techzinglive.com/
 
-PS - I'm looking for a new role!   I'm a Dev Lead / Manager / Exec looking for a new position in SF.
 
-Contact Me with Info
 
 
 
