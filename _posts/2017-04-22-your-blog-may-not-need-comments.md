@@ -17,7 +17,10 @@ Readers may often skim your article, and head directly to comments.  Some times,
 
 This kind of commentary already has a place on the internet - social media like Twitter or Facebook.  Instead of creating a mini-Twitter on your website, simply tweet a link to your post and send your users there (if you even care about this kind of comment).  
 
-### Using Pull Requests for Corrections and Enhancements
+### Use Github Issues for Disagreements
+Github Issues is a great example of a structured environment that lets you resolve problems.  If you disagree with something I've written, Github Issues are a "batteries included" place to have a structured conversation about it.  Github Issues (and most issue managers) have moderation, voting, following, and issue resolution.  I can also close the conversation if it is no longer productive.   The end result will either be a pull request or no activity.
+
+### Use Pull Requests for Corrections and Enhancements
 The main interactive feedback I receive on my blog is fixing mistakes or clarifications.  Since my blog is hosted on Github Pages, Pull Requests were the obvious solution for me.  
 
 This is a better solution than comments because the git workflow is much easier for me.  It also forces a "contributor" to overcome a set of barriers which makes it far more likely that the comments are coming:  They know how to use github, they know how to submit a pull request, and they are forced to structure their feedback in the form of a change to my document, which creates a higher quality result.
