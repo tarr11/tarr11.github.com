@@ -5,6 +5,8 @@ single: true
 
 <div class="container">
   <div class="row">
+    <div class="col-md-12">
+
 <article class="hentry" role="article">
   {% include article.html %}
   <footer>
@@ -28,16 +30,11 @@ single: true
   </footer>
 </article>
 <div class="small text-muted">Find a problem or mistake?  <a href="https://github.com/tarr11/tarr11.github.com/issues">File a bug</a> or better yet, <a href="https://github.com/tarr11/tarr11.github.com/pulls">submit a pull request</a>
-{% if site.disqus_short_name and page.comments == true %}
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite">{% include post/disqus_thread.html %}</div>
-  </section>
-{% endif %}
 </div>
 {% unless page.sidebar == false %}
 <aside class="sidebar">
 </aside>
 {% endunless %}
+</div>
 </div>
 </div>
