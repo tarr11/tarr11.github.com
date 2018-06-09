@@ -14,7 +14,7 @@ single: true
       {% include post/author.html %}
       {% include post/date.html %}{{ time }}{% if updated %} {{ updated }}{% endif %}
       {% include post/categories.html %}
-      <p class="small text-muted">Last published on {{ site.time | date: "%Y-%m-%d" }}
+      <p class="small text-muted">Last published on {{ page.date | date: "%Y-%m-%d" }}
     </p>
     {% unless page.sharing == false %}
       {% include post/sharing.html %}
