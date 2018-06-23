@@ -4,6 +4,7 @@ title: "Intro to Scratch - Coding Class Week 2"
 date: 2013-11-08 09:03
 comments: true
 categories: mvcoders
+category: mvcode
 ---
 This was the second week of my [8 Week Coding Class for 4th Graders](/categories/mvcoders)  
 

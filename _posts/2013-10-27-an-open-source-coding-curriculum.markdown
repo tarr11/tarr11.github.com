@@ -3,7 +3,7 @@ layout: post
 title: "An Open Source Coding Curriculum"
 date: 2013-10-27 11:48
 comments: true
-categories: mvcoders
+category: mvcode
 ---
 ![Github Teacher Logo](https://github.global.ssl.fastly.net/images/modules/training/professortocat.png)
 

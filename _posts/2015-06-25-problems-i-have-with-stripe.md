@@ -2,6 +2,7 @@
 layout: post
 title: Problems I have with Stripe
 published: true
+category: tech
 ---
 We use [Stripe](https://www.stripe.com) for billing at [MV Code Club](https://www.mvcodeclub.com).
 

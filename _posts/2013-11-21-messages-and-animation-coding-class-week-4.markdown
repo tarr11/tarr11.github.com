@@ -3,7 +3,7 @@ layout: post
 title: "Messages and Animation - Coding Class Week 4"
 date: 2013-11-21 08:30
 comments: true
-categories: mvcoders
+category: mvcode
 ---
 The past 3 weeks, the kids have been learning a lot of things.  How to interact with Scratch, basic programming concepts, and some basic computer skills.
 

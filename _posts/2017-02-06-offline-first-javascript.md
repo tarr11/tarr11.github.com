@@ -2,8 +2,7 @@
 layout: post
 title: Offline First Javascript Libraries
 published: true
-tags:
-  - javascript
+category: coding
 ---
 I wanted to keep track off all the offline first javascript libraries I've been seeing and evaluating.
 

@@ -3,7 +3,7 @@ layout: post
 title: "3 Types of Programming Classes for Kids"
 date: 2013-10-24 09:43
 comments: true
-categories: mvcoders
+category: mvcode
 ---
 
 I've been doing a lot of research on how to effectively make a curriculum for the 4th Graders that I am teaching.  Turns out, it's not easy! 

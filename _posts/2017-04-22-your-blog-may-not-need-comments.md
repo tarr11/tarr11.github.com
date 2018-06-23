@@ -2,8 +2,6 @@
 layout: post
 title: Your blog needs contributors, not commenters
 published: true
-tags:
-  - javascript
 ---
 I just read [this idea](http://donw.io/post/github-comments/) about using Github Issues to replace Disqus.  [I decided last year to remove comments altogether](http://douglastarr.com/no-comment) from this blog.   In addition to the performance issues, and tracking issues of Disqus, most of the comments were low value, and the specific conversations that were taking place could have taken place on any website or social network.
 

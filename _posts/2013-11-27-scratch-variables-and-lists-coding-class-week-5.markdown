@@ -3,7 +3,7 @@ layout: post
 title: "Scratch Variables and Lists - Coding Class Week 5"
 date: 2013-11-27 13:44
 comments: true
-categories: mvcoders
+category: mvcode
 ---
 This week we learned about variables and lists.
 

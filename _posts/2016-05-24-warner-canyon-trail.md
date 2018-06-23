@@ -4,8 +4,7 @@ title: Warner Canyon Fire Trail Mill Valley
 published: true
 og_image: http://www.douglastarr.com/images/warner1.jpg
 map: https://www.google.com/maps/place/Glen+Dr,+Mill+Valley,+CA+94941/@37.9180839,-122.5420974,18.63z/data=!4m5!3m4!1s0x80859077f33c9947:0x67e63147b5a23e2e!8m2!3d37.9159063!4d-122.5386406
-tags:
-  - millvalley
+category: mill-valley
 ---
 
 I recently hiked up to the Warner Canyon Fire Trail in Mill Valley.

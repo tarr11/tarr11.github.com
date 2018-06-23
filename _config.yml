@@ -28,10 +28,10 @@ email:
 # If publishing to a subdirectory as in http://site.com/project set 'root: /project'
 root: 
 permalink: /:title
-destination: _site
+#destination: _site
 #plugins: plugins
 code_dir: downloads/code
-category_dir: blog/categories
+category_dir: /blog/categories
 #markdown: rdiscount
 #jrdiscount:
 #  extensions:

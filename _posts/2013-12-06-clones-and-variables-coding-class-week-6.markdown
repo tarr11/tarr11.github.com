@@ -3,7 +3,7 @@ layout: post
 title: "Clones and variables - Coding Class Week 6"
 date: 2013-12-06 08:58
 comments: true
-categories: mvcoders
+category: mvcode
 ---
 
 This week was a bit of a stretch.  I wanted to teach the kids about clones.  This is a concept that's used fairly extensively in video games.  

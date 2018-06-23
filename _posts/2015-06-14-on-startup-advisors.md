@@ -2,6 +2,7 @@
 layout: post
 title: On Startup Advisors
 published: true
+categories: startups
 ---
 Advising startups is an industry.  People seem to go into it when they don't have a startup going on, or they don't have the energy to get back into startups.  Occasionally, they do it because they want to keep tabs on a startup, either to invest or to join.  These are all decent reasons.
 

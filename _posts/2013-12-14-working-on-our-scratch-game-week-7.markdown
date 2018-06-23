@@ -3,7 +3,7 @@ layout: post
 title: "Working on our Scratch game - Week 7"
 date: 2013-12-14 09:50
 comments: true
-categories: mvcoders
+category: mvcode
 ---
 The promise of this class is that kids would have their own working game.  So, this week, they just got to work on their game using all that they knew about Scratch.
 

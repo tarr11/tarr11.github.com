@@ -3,8 +3,7 @@ layout: post
 title: Shavery Mill Valley Review
 published: true
 og_image: http://static1.squarespace.com/static/57046ac72fe131860c1ec0ec/t/57046dca07eaa0af124da552/1462332921750/?format=1500w
-tags:
-  - millvalley
+category: mill-valley
 ---
 
 <a href="http://www.shaverybarbershop.com/"><img src="http://static1.squarespace.com/static/57046ac72fe131860c1ec0ec/t/57046dca07eaa0af124da552/1462332921750/?format=1500w" style="width:300px"></a>

@@ -3,7 +3,8 @@ layout: post
 title: "A call to application developers - the cloud needs to go"
 date: 2013-11-09 08:31
 comments: true
-categories: [startups, saas,dev]
+category: startups
+category: mvcode
 ---
 As software proliferates, customers have more and more choices as to where they put their data.  Why would they choose your service?  As software developers, we think that this is mostly an issue of feature parity.  But there are other factors that go into the decision - business relationships, price, and most relevant to this article, trust.
 

@@ -3,8 +3,7 @@ layout: post
 title: Keyboard Boogie
 published: true
 og_image: http://www.douglastarr.com/images/keyboardboogie.png
-tags:
-  - games
+category: games
 ---
 
 I had this idea for a silly game - I wanted to learn about HTML5 Audio.   

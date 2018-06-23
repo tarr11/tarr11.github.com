@@ -2,6 +2,7 @@
 layout: post
 title: Migrating a Rails application from Heroku to Kubernetes on GKE
 published: true
+category: coding
 ---
 This is my info-dump on how I migrated a Rails website from Heroku to GKE.
 

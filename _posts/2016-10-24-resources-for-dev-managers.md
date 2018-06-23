@@ -2,8 +2,7 @@
 layout: post
 title: Development Managers Link Dump
 published: true
-tags:
-  - dev
+category: leadership
 ---
 Over the years, I've collected some resources for managing software development and software development teams
 

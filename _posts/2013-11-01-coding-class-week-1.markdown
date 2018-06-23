@@ -4,6 +4,7 @@ title: "Coding Class Week 1"
 date: 2013-11-01 09:21
 comments: true
 categories: mvcoders
+category: mvcode
 ---
 
 This was the first week of my [8 Week Coding Class for 4th Graders](/categories/mvcoders)  

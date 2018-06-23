@@ -2,8 +2,7 @@
 layout: post
 title: Yes, learn to code
 published: true
-tags:
-  - mvcoders
+category: mvcode
 ---
 
 [Please don’t learn to code](http://techcrunch.com/2016/05/10/please-dont-learn-to-code/) got me thinking.   There are a lot of articles out there that exhort everyone to learn to code, and a [few articles](http://blog.codinghorror.com/please-dont-learn-to-code/) suggesting that maybe you shouldn’t learn to code.   And yet, there’s a whiff of defensiveness to the “don’t learn to code” crowd.  

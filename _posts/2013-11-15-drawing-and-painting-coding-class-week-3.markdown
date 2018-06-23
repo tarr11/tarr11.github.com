@@ -4,6 +4,7 @@ title: "Drawing and Painting - Coding Class Week 3"
 date: 2013-11-15 08:52
 comments: true
 categories: mvcoders
+category: mvcode
 ---
 Originally, my plan for this week was to run a series of Scratch Challenges (make an animated story, a maze, etc). 
 

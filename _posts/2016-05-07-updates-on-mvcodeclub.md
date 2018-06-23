@@ -4,6 +4,7 @@ title: Updates on MV Code Club
 published: true
 tags:
   - mvcoders
+category: mvcode
 
 ---
 It's been a while since I've updated this blog on the latest news at [MV

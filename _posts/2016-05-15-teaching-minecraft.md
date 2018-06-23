@@ -3,8 +3,7 @@ layout: post
 title: Teaching Minecraft
 published: true
 og_image: http://www.douglastarr.com/images/teaching_mc.png
-tags:
-  - mvcoders
+category: mvcoder
 ---
 
 This is a technical description of some of the work we've done to make it easier to teach Minecraft at [MV Code Club](https://www.mvcodeclub.com)

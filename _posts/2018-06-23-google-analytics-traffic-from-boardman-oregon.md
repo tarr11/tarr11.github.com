@@ -2,6 +2,7 @@
 layout: post
 title: Google Analytics Traffic from Boardman, Oregon
 published: true
+category: tech
 ---
 
 I've been noticing a trend on several sites using Google Analytics.  There seems to be a lot of traffic coming from Boardman, Oregon.

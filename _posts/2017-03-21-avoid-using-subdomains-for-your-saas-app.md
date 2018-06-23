@@ -2,8 +2,7 @@
 layout: post
 title: Avoid using subdomains for accounts in your saas app
 published: true
-tags:
-  - saas
+category: startups
 ---
 
 When developing your SaaS application, you will hit a decision on how to implement accounts for companies or other organizations who may be your customers.  

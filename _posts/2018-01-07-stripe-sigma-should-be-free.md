@@ -2,8 +2,7 @@
 layout: post
 title: Stripe Sigma Should be Free
 published: true
-tags:
-  - stripe
+category: tech
 ---
 
 [Stripe Sigma](https://stripe.com/us/sigma) is tool for analyzing your Stripe data, targeted at Finance Teams.
