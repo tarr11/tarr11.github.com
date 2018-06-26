@@ -3,8 +3,11 @@ layout: post
 title: A hippocratic oath for software developers
 date: 2018-06-26
 category: coding
+og_image: https://douglastarr.com/images/hippocrates2.jpg
 published: true
 ---
+
+![alt text](/images/hippocrates2.jpg "Hippocrates")
 
 I swear by Apollo the Logical, by Athena the Wise, by Harmonia, by Eris, and by all the gods and goddesses, making them my witnesses, that I will carry out, according to my ability and judgment, this oath and this indenture.
 
