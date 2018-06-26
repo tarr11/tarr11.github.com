@@ -1,7 +1,7 @@
 ---
 layout: post
 title: A hippocratic oath for software developers
-date: 2018-06-24 10:49 -0700
+date: 2018-06-26
 category: coding
 published: true
 ---
