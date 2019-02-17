@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Demand Better Information
-date: 2018-06-26
-category: productivity
+date: 2019-02-18
+category: tech
 published: true
 ---
 
