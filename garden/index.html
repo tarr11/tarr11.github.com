@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>My first three.js app</title>
+	<style>
+		body {
+			margin: 0;
+		}
+	</style>
+</head>
+
+<body>
+	<script type="module">
+
+		// Find the latest version by visiting https://cdn.skypack.dev/three.
+
+		import * as THREE from 'https://cdn.skypack.dev/three';
+		import { GLTFLoader } from 'https://cdn.skypack.dev/three/examples/jsm/loaders/GLTFLoader.js';
+		     import { OrbitControls } from 'https://unpkg.com/three@0.120.1/examples/jsm/controls/OrbitControls.js'
+
+
+
+		const scene = new THREE.Scene();
+		const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+		const renderer = new THREE.WebGLRenderer();
+		renderer.setSize(window.innerWidth, window.innerHeight);
+		document.body.appendChild(renderer.domElement);
+		     scene.background = new THREE.Color(0xdddddd);
+
+		             const controls = new OrbitControls(camera, renderer.domElement);
+			         const directionalLight = new THREE.DirectionalLight(0xffffff,100);
+        directionalLight.position.set(0,1,0);
+        directionalLight.castShadow = true;
+        scene.add(directionalLight);
+
+
+
+		const geometry = new THREE.BoxGeometry();
+		const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+		const cube = new THREE.Mesh(geometry, material);
+		//scene.add(cube);
+
+		const loader = new GLTFLoader();
+		loader.load( 'output.glb', function ( gltf ) {
+			scene.add( gltf.scene);
+			} );
+
+		camera.position.z = 2;
+
+			const animate = function () {
+				requestAnimationFrame( animate );
+
+				cube.rotation.x += 0.01;
+				cube.rotation.y += 0.01;
+
+				renderer.render( scene, camera );
+			};
+
+			animate();
+
+	</script>
+</body>
+
+</html>
