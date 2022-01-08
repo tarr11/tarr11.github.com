@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row" style="padding:30px">
     <ul class="list-inline text-muted">
-      <li>Copyright &copy; {{ site.time | date: "%Y" }} - {{ site.author }}</li>
       <li><a href="{{ root_url }}/">Home</a></li>
       <li><a href="{{ root_url }}/resume.html">Resume</a></li>
       <li><a href="{{ root_url }}/bio.html">Bio</a></li>
@@ -9,5 +8,8 @@
       <li><a href="{{ root_url }}/contact.html">Contact</a></li>
       <li><a href="{{ root_url }}/blog/archives">Blog</a></li>
     <ul>
+  </div>
+  <div class="row text-muted">
+    Copyright &copy; 2010 - {{ site.time | date: "%Y" }} - {{ site.author }}
   </div>
 </div>
