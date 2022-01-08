@@ -22,6 +22,9 @@ title: Doug Tarr's Home Page
     <h3>
       <a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a>
     </h3>
+    {% if post.excerpt %}
+      <p>{{ post.excerpt }}</p>
+    {% endif %}
   {% endif %}
     </div>
     </div>
