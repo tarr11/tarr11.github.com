@@ -3,12 +3,14 @@ layout: post
 title: Learning 3D Design
 date: 2022-01-05
 category: 3d
+excerpt_separator: <!--more-->
 published: true
 ---
 
 I have had this hobby over the past few years of learning 3D Modeling and Design.   
 
 Originally, a lot of my efforts were geared towards making a game in Unity.  I quickly realized that a lot of the work in game development revolved around asset creation.  So, I got distracted from the idea of making a game and instead wanted to design assets.
+<!--more-->
 
 I had previously done a little bit of asset creation in Blender before, and then I discovered Houdini.
 
