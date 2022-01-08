@@ -10,54 +10,20 @@ title: Doug Tarr's Home Page
         <p>This is the personal website of Doug Tarr.</p>
         <p>I am Director of Engineering for <a href="https://www.mongodb.com/atlas/search">Atlas Search</a> at
           <a href="https://www.mongodb.com">MongoDB</a></p>
-        <p>I am writing an Young Adult Science Fiction book (online) called
-          <a href="http://www.magicode.world">Magicode</a>
         </p>
-        <p>My wife is
-          <a href="https://jamytarr.com">J'Amy Tarr</a>, an award-winning women's outerwear designer</p>
       </article>
-      <section id="work">
-        <h2>Work</h2>
-        <ul>
-          <li>
-            <a href="https://www.mongodb.com">MongoDB</a>
-          </li>
-           <li>
-            <a href="/resume.html">Resume</a>
-          </li>
-        </ul>
-      </section>
-      <section id="projects">
-        <h2>Projects and Ideas</h2>
-        <ul>
-          <li>
-            <a href="/blog/archives">Blog</a>
-          </li>
-          <li>
-            <a href="/projects.html">Projects</a>
-          </li>
-        </ul>
-      </section>
-      <section id="contact">
-        <h2>Contact</h2>
-        <ul>
-          <li>
-            <a href="/contact.html">Contact Me</a>
-          </li>
-          <li>
-            <a href="https://twitter.com/doug_tarr" rel="me">@doug_tarr on Twitter</a>
-          </li>
-          <li>
-            <a href="https://github.com/tarr11" rel="me">Github</a>
-          </li>
-          <li>
-            <a href="http://www.linkedin.com/in/douglastarr/" rel="me">LinkedIn</a>
-          </li>
-          <li>
-            <a href="mailto:douglas.tarr@gmail.com" rel="me">douglas.tarr@gmail.com</a>
-          </li>
-        </ul>
-      </section>
+      <div class="blog-index">  
+  {% assign post = site.posts.first %}
+  {% assign content = post.content %}
+  {% if post.title %}
+    <h2>
+      Latest Post
+    </h2>
+    <h3>
+      <a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a>
+    </h3>
+  {% endif %}
+    </div>
     </div>
   </div>
 </div>
