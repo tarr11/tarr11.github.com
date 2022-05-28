@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Requirements for a Todo App
+description: A list of must haves for any todo app
 date: 2022-05-28
 category: productivity
 excerpt_separator: <!--more-->
