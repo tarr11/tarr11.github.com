@@ -8,7 +8,7 @@ excerpt_separator: <!--more-->
 published: true
 ---
 
-A general purpose todo app has several requirements:
+A general purpose todo app has several requirements.
 
 <!--more-->
 
