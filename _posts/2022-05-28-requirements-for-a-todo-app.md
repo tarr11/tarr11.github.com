@@ -10,7 +10,7 @@ published: true
 # Requirements for a Todo App
 A general purpose todo app has several requirements:
 
-<~-more-->
+<~--more-->
 
 - It must be frictionless to create a new task
 - It must have an uncluttered interface where I can see today's tasks
