@@ -7,7 +7,6 @@ excerpt_separator: <!--more-->
 published: true
 ---
 
-# Requirements for a Todo App
 A general purpose todo app has several requirements:
 
 <~--more-->
