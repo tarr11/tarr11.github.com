@@ -6,7 +6,7 @@ url: https://douglastarr.com # root address of the site
 permalink: /:slug.html
 theme_config:
   appearance: "auto" # can be "light", "dark" or "auto"
-  back_home_text: ".." # customize text for homepage link in post layout
+  back_home_text: "Doug Tarr" # customize text for homepage link in post layout
   date_format: "%Y-%m-%d" # customize how date is formatted
   show_description: false # show blog description in home page
   lowercase_titles: true # show titles in lowercase in lists
