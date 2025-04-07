@@ -7,7 +7,9 @@
         {{ content }}
       </div>
     </main>
-
+    <footer>
+      <small>&copy; {{ site.author }} {{ site.time | date: "%Y" }}</small>
+    </footer>
     {%-if site.goat_counter and jekyll.environment == "production"-%}
       {%-include goat_counter.html-%}
     {%-endif-%}
@@ -17,8 +19,6 @@
         <script type="text/javascript" src="{{ site.baseurl }}/assets/js/{{ js_file }}.js"></script>
       {% endfor %}
     {% endif %}
-    <footer>
-      <small>&copy; {{ site.author }} {{ site.time | date: "%Y" }}</small>
-    </footer>
+
   </body>
 </html>
