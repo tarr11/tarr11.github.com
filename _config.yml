@@ -2,7 +2,17 @@ title: Doug Tarr's Blog
 author: Doug Tarr
 description: Coding and other things
 remote_theme: riggraz/no-style-please
+url: https://douglastarr.com # root address of the site
+permalink: /:slug.html
+theme_config:
+  appearance: "auto" # can be "light", "dark" or "auto"
+  back_home_text: ".." # customize text for homepage link in post layout
+  date_format: "%Y-%m-%d" # customize how date is formatted
+  show_description: false # show blog description in home page
+  lowercase_titles: true # show titles in lowercase in lists
 
+sass:
+  style: compressed
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
