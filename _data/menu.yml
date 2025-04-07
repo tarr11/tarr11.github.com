@@ -5,8 +5,15 @@ entries:
   - title: info
     entries:
       - title: Doug Tarr's Home Page
-      - title: github repo
         url: https://douglastarr.com
+      - title: Resume
+        url: /resume.html
+      - title: Bio
+        url: /bio.html
+      - title: Projects
+        url: /projects.html              
+      - title: Contact
+        url: /contact.html      
 
   - title: all posts
     post_list:
