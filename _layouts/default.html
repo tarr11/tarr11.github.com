@@ -6,10 +6,7 @@
       <div class="w">
         {{ content }}
       </div>
-      <footer style="margin-top: 4rem; text-align: center; font-size: 0.9em; color: #555;">
-        <hr style="margin-bottom: 1rem;" />
-        <p>&copy; {{ site.author }} {{ site.time | date: "%Y" }}</p>
-      </footer>
+
     </main>
 
     {%-if site.goat_counter and jekyll.environment == "production"-%}
@@ -21,6 +18,9 @@
         <script type="text/javascript" src="{{ site.baseurl }}/assets/js/{{ js_file }}.js"></script>
       {% endfor %}
     {% endif %}
-
+    <footer style="margin-top: 4rem; text-align: center; font-size: 0.9em; color: #555;">
+      <hr style="margin-bottom: 1rem;" />
+      <p>&copy; {{ site.author }} {{ site.time | date: "%Y" }}</p>
+    </footer>
   </body>
 </html>
