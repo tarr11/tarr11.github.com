@@ -8,8 +8,6 @@ entries:
         url: /resume.html
       - title: Bio
         url: /bio.html
-      - title: Projects
-        url: /projects.html              
       - title: Contact
         url: /contact.html      
 
