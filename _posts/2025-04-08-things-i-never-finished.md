@@ -30,8 +30,7 @@ In my 20s, I was fascinated by early web-based 3D like VRML. I even made a littl
 
 Then, during COVID, when MV Code Club shut down, I had time to explore Houdini. It was a great mix of math, programming, and art. I was excited by it because you could make Hollywood-style VFX or just weird, beautiful procedural art.
 
-It brought together everything I love—procedural modeling, simulations, systems thinking, linear algebra. And like with guitar, I’ll never master it. But it gives me something to think about when I see work like the opening credits to *Severance*, which were at least partially done in Houdini.  
-[Read more about that project](https://www.itsnicethat.com/articles/oliver-latta-severance-project-animation-051022)
+It brought together everything I love—procedural modeling, simulations, systems thinking, linear algebra. And like with guitar, I’ll never master it. But it gives me something to think about when I see work like the opening credits to *Severance*, [which were at least partially done in Houdini](https://www.itsnicethat.com/articles/oliver-latta-severance-project-animation-051022)
 
 Even now, with AI rapidly automating 3D workflows, it doesn’t bother me. It actually makes the time I spend doing it manually more meaningful. I’m not doing it to ship anything. I’m doing it because it pulls at me.
 
