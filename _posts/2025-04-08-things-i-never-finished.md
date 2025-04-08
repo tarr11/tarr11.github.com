@@ -1,7 +1,9 @@
 ---
 layout: post
 title: Things I Never Finished
+image: /images/flower.png
 ---
+
 I have these projects I keep returning to. They don’t earn anything, and no one’s waiting for me to finish them. I drop them for years at a time. I don’t think of them as goals. They just feel like part of who I am.
 
 ---
