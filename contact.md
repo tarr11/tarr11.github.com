@@ -5,7 +5,7 @@ title: "contact"
 * Email
   * douglas.tarr+hp@gmail.com
 * LinkedIn
-  * https://www.linkedin.com/in/douglastarr
+  * <a href="https://www.linkedin.com/in/douglastarr">https://www.linkedin.com/in/douglastarr</a>
 
 * Github
   * <a href="https://www.github.com/tarr11">tarr11</a>
