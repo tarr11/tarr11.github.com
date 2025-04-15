@@ -5,6 +5,7 @@ title: "contact"
 * Email
   * douglas.tarr+hp@gmail.com
 * LinkedIn
-  * My LinkedIn account has been hacked.  Temporarily removing this link until it has been restored.
+  * https://www.linkedin.com/in/douglastarr
+
 * Github
-  * <a href="http://www.github.com/tarr11">tarr11</a>
+  * <a href="https://www.github.com/tarr11">tarr11</a>
