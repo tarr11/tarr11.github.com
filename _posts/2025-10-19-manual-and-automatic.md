@@ -11,6 +11,6 @@ Eventually, my lease ran out, and I handed back the Audi.  I have not had a manu
 
 Building things can be like that; most times I want the thing to just work automatically, but every once in a while, I need some more control, and I take the tradeoffs to work harder to get there.    It's also nice to be able to "drop-in" to manual when you need it, but mostly stay in automatic.  The learning curve is steep; dropping in to manual requires months or years of training.  
 
-If I've not done that, you are stuck with what the car (or tool) wants to do.  In the case of driving, that's usually ok; I'm not trying to express my creativity or solving a unique problem there.  But if I'm building something, creativity and unique capabilities are often a key differentiator.
+If I've not done that, I am stuck with what the car (or tool) wants to do.  In the case of driving, that's usually ok; I'm not trying to express my creativity or solving a unique problem there.  But if I'm building something, creativity and unique capabilities are often a key differentiator.
 
 So, when I am doing undifferentiated work, I just use the easiest tools.  For the things that are important to what I am doing,  I like to become more skilled in how to do those things - even if I don't use them that often.  AI is a kind of automatic transmission for "creative" work.  Most of the time that's fine, but it doesn't really represent my creativity.  I am excited by AI because I don't have the time as a single person to build every piece, and AI lets me focus on the things I care about.
