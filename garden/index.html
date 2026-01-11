@@ -1,66 +1,74 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-	<meta charset="utf-8">
-	<title>My first three.js app</title>
-	<style>
-		body {
-			margin: 0;
-		}
-	</style>
+  <meta charset="utf-8" />
+  <title>My first three.js app</title>
+  <style>
+    body { margin: 0; }
+    canvas { display: block; }
+  </style>
+
+  <!-- Import map MUST come before any type="module" scripts -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
 </head>
 
 <body>
-	<script type="module">
+  <script type="module">
+    import * as THREE from "three";
+    import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+    import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
-		// Find the latest version by visiting https://cdn.skypack.dev/three.
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xdddddd);
 
-	   import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
-	   import { GLTFLoader } from "https://unpkg.com/three@0.160.0/examples/jsm/loaders/GLTFLoader.js";
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
+    camera.position.z = 2;
 
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
 
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
 
-		const scene = new THREE.Scene();
-		const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+    directionalLight.position.set(0, 1, 0);
+    scene.add(directionalLight);
 
-		const renderer = new THREE.WebGLRenderer();
-		renderer.setSize(window.innerWidth, window.innerHeight);
-		document.body.appendChild(renderer.domElement);
-		     scene.background = new THREE.Color(0xdddddd);
+    const loader = new GLTFLoader();
+    loader.load(
+      "./output.glb",
+      (gltf) => {
+        scene.add(gltf.scene);
+      },
+      undefined,
+      (err) => console.error("GLB load failed:", err)
+    );
 
-		             const controls = new OrbitControls(camera, renderer.domElement);
-			         const directionalLight = new THREE.DirectionalLight(0xffffff,100);
-        directionalLight.position.set(0,1,0);
-        directionalLight.castShadow = true;
-        scene.add(directionalLight);
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
 
-
-
-		const geometry = new THREE.BoxGeometry();
-		const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-		const cube = new THREE.Mesh(geometry, material);
-		//scene.add(cube);
-
-		const loader = new GLTFLoader();
-		loader.load( 'output.glb', function ( gltf ) {
-			scene.add( gltf.scene);
-			} );
-
-		camera.position.z = 2;
-
-			const animate = function () {
-				requestAnimationFrame( animate );
-
-				cube.rotation.x += 0.01;
-				cube.rotation.y += 0.01;
-
-				renderer.render( scene, camera );
-			};
-
-			animate();
-
-	</script>
+    window.addEventListener("resize", () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
 </body>
-
 </html>
