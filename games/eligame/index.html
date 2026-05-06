@@ -1961,6 +1961,73 @@ function drawHorizonStadium() {
   ctx.fillRect(0, HORIZON_H - 2, VIEW_W, 2);
 }
 
+// Norway / Iceland — aurora over fjord cliffs, summer night sky
+function drawHorizonNorway() {
+  // deep night sky gradient
+  const grad = ctx.createLinearGradient(0, 0, 0, HORIZON_H);
+  grad.addColorStop(0, '#0a0e2a');
+  grad.addColorStop(0.7, '#1a2a4a');
+  grad.addColorStop(1, '#2a3a5a');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, VIEW_W, HORIZON_H);
+  // stars
+  ctx.fillStyle = '#ffffff';
+  for (let i = 0; i < 30; i++) {
+    const x = (i * 31 + 7) % VIEW_W;
+    const y = (i * 13 + 3) % 22;
+    if ((i * 17) % 5 < 3) ctx.fillRect(x, y, 1, 1);
+  }
+  // aurora ribbons — flowing green/purple bands
+  const auroraColors = ['rgba(80,255,140,0.35)', 'rgba(120,255,100,0.25)', 'rgba(180,80,200,0.30)', 'rgba(80,180,255,0.20)'];
+  for (let band = 0; band < 4; band++) {
+    ctx.fillStyle = auroraColors[band];
+    const baseY = 4 + band * 3;
+    for (let x = 0; x < VIEW_W; x++) {
+      const wave = Math.sin((x + band * 40) / 18) * 4 + Math.sin((x + band * 20) / 8) * 2;
+      ctx.fillRect(x, baseY + wave + 4, 1, 5);
+    }
+  }
+  // distant snowy mountains
+  ctx.fillStyle = '#2a3a52';
+  const peaks = [
+    [0, 32], [25, 24], [55, 18], [85, 26], [115, 16],
+    [150, 22], [185, 14], [215, 24], [245, 18], [275, 28], [310, 22], [VIEW_W, 30],
+  ];
+  ctx.beginPath();
+  ctx.moveTo(0, HORIZON_H);
+  for (const [x, y] of peaks) ctx.lineTo(x, y);
+  ctx.lineTo(VIEW_W, HORIZON_H);
+  ctx.closePath(); ctx.fill();
+  // snow caps
+  ctx.fillStyle = '#d8e0f0';
+  for (const [x, y] of peaks) {
+    if (y < 22) ctx.fillRect(x - 4, y, 8, 2);
+  }
+  // foreground fjord cliffs (darker, sharper silhouette)
+  ctx.fillStyle = '#0a1224';
+  const cliffs = [
+    [0, 38], [30, 30], [60, 36], [90, 28], [125, 32],
+    [160, 26], [195, 34], [230, 28], [265, 36], [VIEW_W, 32],
+  ];
+  ctx.beginPath();
+  ctx.moveTo(0, HORIZON_H);
+  for (const [x, y] of cliffs) ctx.lineTo(x, y);
+  ctx.lineTo(VIEW_W, HORIZON_H);
+  ctx.closePath(); ctx.fill();
+  // fjord water reflecting aurora
+  ctx.fillStyle = '#0a1a2a';
+  ctx.fillRect(0, HORIZON_H - 4, VIEW_W, 4);
+  ctx.fillStyle = 'rgba(80, 220, 160, 0.28)';
+  for (let x = 0; x < VIEW_W; x += 6) {
+    ctx.fillRect(x + ((x / 3) | 0) % 3, HORIZON_H - 3, 4, 1);
+  }
+  // tiny lit cabin on a far shore
+  ctx.fillStyle = '#3a2a20';
+  ctx.fillRect(48, HORIZON_H - 8, 6, 4);
+  ctx.fillStyle = '#fff0a0';
+  ctx.fillRect(50, HORIZON_H - 6, 1, 1);
+}
+
 function drawHorizon() {
   if (!currentScene || !currentScene.horizon) return;
   const id = currentScene.horizon;
@@ -1975,6 +2042,7 @@ function drawHorizon() {
   else if (id === 'hirise') drawHorizonHiRise();
   else if (id === 'rome') drawHorizonRome();
   else if (id === 'stadium') drawHorizonStadium();
+  else if (id === 'norway') drawHorizonNorway();
 }
 
 // Plane on tarmac
@@ -3752,7 +3820,7 @@ const SCENES = {
   // ========== CHAPTER 1: Mill Valley & Tam High Graduation ==========
   'mill-valley': {
     id: 'mill-valley',
-    chapterNum: '1 / 11',
+    chapterNum: '1 / 12',
     title: 'Mill Valley',
     subtitle: 'Tam High Graduation — June 2022',
     banner: 'TAM HIGH 2022',
@@ -3806,7 +3874,7 @@ const SCENES = {
   // ========== CHAPTER 2: Europe Bus Tour ==========
   'europe': {
     id: 'europe',
-    chapterNum: '2 / 11',
+    chapterNum: '2 / 12',
     title: 'Europe',
     subtitle: 'Rick Steves Family Tour — Summer 2022 (3 weeks)',
     banner: 'EUROPE 2022',
@@ -3862,7 +3930,7 @@ const SCENES = {
   // ========== CHAPTER 3: Smith Hall, Freshman Year ==========
   'smith-hall': {
     id: 'smith-hall',
-    chapterNum: '3 / 11',
+    chapterNum: '3 / 12',
     title: 'Smith Hall',
     subtitle: 'Freshman Year — Fall 2022',
     banner: 'SMITH HALL',
@@ -3913,7 +3981,7 @@ const SCENES = {
   // ========== CHAPTER 4: Marching Band at Bobby Dodd Stadium ==========
   'marching-band': {
     id: 'marching-band',
-    chapterNum: '4 / 11',
+    chapterNum: '4 / 12',
     title: 'Bobby Dodd Stadium',
     subtitle: 'Yellow Jacket Marching Band — Game Day',
     banner: 'GAME DAY',
@@ -3970,7 +4038,7 @@ const SCENES = {
   // ========== CHAPTER 5: DU House — The Attic Loft ==========
   'du-house': {
     id: 'du-house',
-    chapterNum: '5 / 11',
+    chapterNum: '5 / 12',
     title: 'The DU House',
     subtitle: 'Sophomore + Junior — 2023-25',
     banner: '   DU HOUSE   ',
@@ -4017,7 +4085,7 @@ const SCENES = {
   // ========== CHAPTER 5: Paris Study Abroad ==========
   'paris': {
     id: 'paris',
-    chapterNum: '6 / 11',
+    chapterNum: '6 / 12',
     title: 'Paris',
     subtitle: 'Cité Universitaire — Summer 2024',
     banner: '    PARIS    ',
@@ -4064,7 +4132,7 @@ const SCENES = {
   // ========== CHAPTER 6: Machu Picchu ==========
   'machu-picchu': {
     id: 'machu-picchu',
-    chapterNum: '7 / 11',
+    chapterNum: '7 / 12',
     title: 'Machu Picchu',
     subtitle: 'Spring Break — March 2025',
     banner: 'MACHU PICCHU',
@@ -4111,14 +4179,14 @@ const SCENES = {
   // ========== CHAPTER 7: Quantum Lab — Junior Year ==========
   'quantum-lab': {
     id: 'quantum-lab',
-    chapterNum: '8 / 11',
+    chapterNum: '8 / 12',
     title: 'The Quantum Lab',
     subtitle: 'Junior Year — Fall 2024',
     banner: 'QUANTUM LAB',
     bannerColor: '#80c0ff',
     bannerBg: '#001a30',
     eli: 'beard',
-    next: 'hi-rise',
+    next: 'norway-iceland',
     base: 'wood',
     useStage: false,
     horizon: 'qlab',
@@ -4157,10 +4225,60 @@ const SCENES = {
     ],
   },
 
-  // ========== CHAPTER 8: Hi Rise Connector — Senior Year ==========
+  // ========== CHAPTER 9: Norway & Iceland — Family Trip Summer 2025 ==========
+  'norway-iceland': {
+    id: 'norway-iceland',
+    chapterNum: '9 / 12',
+    title: 'Norway & Iceland',
+    subtitle: 'Family Trip — Summer 2025',
+    banner: 'NORWAY/ICELAND',
+    bannerColor: '#80ff90',
+    bannerBg: '#0a1a3a',
+    bannerY: 88,
+    horizon: 'norway',
+    eli: 'beard',
+    next: 'hi-rise',
+    base: 'cobble',
+    useStage: false,
+    hint: "Find the family — fjords, geysers, aurora — then continue.",
+    eliStart: { x: 9, y: 10, dir: 'up' },
+    map: [
+      "....................",
+      "....................",
+      "....................",
+      "TTZZZZZZZZZZZZZZZZTT",
+      "TZZZZZZZZZZZZZZZZZZT",
+      "TZZZZZZZZZZZZZZZZZZT",
+      "TZZZZZZZZZZZZZZZZZZT",
+      "TZZZZZZZZZZZZZZZZZZT",
+      "TZZZZZZZZZZZZZZZZZZT",
+      "TZZZZZZZZZZZZZZZZZXT",
+      "TZZZZZZZZZZZZZZZZZZT",
+      "TTTTTTTTTTTTTTTTTTTT",
+    ],
+    npcs: [
+      { name: "Mom (J'Amy)", sprite: 'MOM', x: 4, y: 5, dir: 'down', lines: [
+          "Norway and Iceland — you can't believe the colors until you see them.",
+          "We stood on a fjord cliff at 11pm in full daylight. Surreal.",
+          "Aurora in summer — barely there, but THERE.",
+          "Best family trip we've taken. Top three for sure." ] },
+      { name: "Dad", sprite: 'DAD', x: 14, y: 5, dir: 'down', lines: [
+          "We hiked. We hiked SO MUCH.",
+          "Iceland: Strokkur erupting every six minutes. We watched it nineteen times.",
+          "Blue Lagoon: religious experience. My knees forgave me for one afternoon.",
+          "Plus glaciers. Real glaciers. You'll never forget them." ] },
+      { name: "Delilah", sprite: 'SIS', x: 7, y: 7, dir: 'down', lines: [
+          "Norway = rain. Iceland = WIND. Welcome to Scandinavia.",
+          "Eli got obsessed with the geysers. I was obsessed with the puffins.",
+          "I drew a comic about you yelling at puffins. They DID start it.",
+          "Best summer though. Don't tell Mom I said that." ] },
+    ],
+  },
+
+  // ========== CHAPTER 10: Hi Rise Connector — Senior Year ==========
   'hi-rise': {
     id: 'hi-rise',
-    chapterNum: '9 / 11',
+    chapterNum: '10 / 12',
     title: 'The Hi Rise Connector',
     subtitle: 'Senior Year Apartment — 2025-26',
     banner: 'HI RISE',
@@ -4211,7 +4329,7 @@ const SCENES = {
   // ========== CHAPTER 9: The Rome Misadventure ==========
   'rome': {
     id: 'rome',
-    chapterNum: '10 / 11',
+    chapterNum: '11 / 12',
     title: 'The Rome Misadventure',
     subtitle: 'Two weeks before finals — April 2026',
     banner: ' ROME TO ATL ',
@@ -4258,7 +4376,7 @@ const SCENES = {
   // ========== CHAPTER 10: GT Graduation (Finale) ==========
   'gt-grad': {
     id: 'gt-grad',
-    chapterNum: '11 / 11',
+    chapterNum: '12 / 12',
     title: 'Georgia Tech',
     subtitle: 'Graduation Day — May 2026',
     banner: 'GA TECH 2026',
@@ -4341,7 +4459,7 @@ const chooseChBtn = document.getElementById('chooseChBtn');
 const menuBtn = document.getElementById('menuBtn');
 const SCENE_ORDER = [
   'mill-valley', 'europe', 'smith-hall', 'marching-band', 'du-house', 'paris',
-  'machu-picchu', 'quantum-lab', 'hi-rise', 'rome', 'gt-grad',
+  'machu-picchu', 'quantum-lab', 'norway-iceland', 'hi-rise', 'rome', 'gt-grad',
 ];
 
 function buildChapterList() {
