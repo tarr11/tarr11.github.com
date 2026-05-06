@@ -1961,34 +1961,23 @@ function drawHorizonStadium() {
   ctx.fillRect(0, HORIZON_H - 2, VIEW_W, 2);
 }
 
-// Norway / Iceland — aurora over fjord cliffs, summer night sky
+// Norway / Iceland — summer midnight-sun fjord with kayaks (no aurora; summer = no aurora)
 function drawHorizonNorway() {
-  // deep night sky gradient
+  // pastel midnight-sun sky — pinks, lavender, soft blues
   const grad = ctx.createLinearGradient(0, 0, 0, HORIZON_H);
-  grad.addColorStop(0, '#0a0e2a');
-  grad.addColorStop(0.7, '#1a2a4a');
-  grad.addColorStop(1, '#2a3a5a');
+  grad.addColorStop(0, '#cfe0f0');
+  grad.addColorStop(0.4, '#f0c8d8');
+  grad.addColorStop(0.7, '#f8d4a8');
+  grad.addColorStop(1, '#ccd8e0');
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, VIEW_W, HORIZON_H);
-  // stars
-  ctx.fillStyle = '#ffffff';
-  for (let i = 0; i < 30; i++) {
-    const x = (i * 31 + 7) % VIEW_W;
-    const y = (i * 13 + 3) % 22;
-    if ((i * 17) % 5 < 3) ctx.fillRect(x, y, 1, 1);
-  }
-  // aurora ribbons — flowing green/purple bands
-  const auroraColors = ['rgba(80,255,140,0.35)', 'rgba(120,255,100,0.25)', 'rgba(180,80,200,0.30)', 'rgba(80,180,255,0.20)'];
-  for (let band = 0; band < 4; band++) {
-    ctx.fillStyle = auroraColors[band];
-    const baseY = 4 + band * 3;
-    for (let x = 0; x < VIEW_W; x++) {
-      const wave = Math.sin((x + band * 40) / 18) * 4 + Math.sin((x + band * 20) / 8) * 2;
-      ctx.fillRect(x, baseY + wave + 4, 1, 5);
-    }
-  }
-  // distant snowy mountains
-  ctx.fillStyle = '#2a3a52';
+  // soft sun low on the horizon
+  ctx.fillStyle = 'rgba(255,240,200,0.7)';
+  ctx.beginPath(); ctx.arc(280, 22, 8, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = 'rgba(255,250,220,0.4)';
+  ctx.beginPath(); ctx.arc(280, 22, 13, 0, Math.PI * 2); ctx.fill();
+  // distant snowy peaks (still some snow even in summer)
+  ctx.fillStyle = '#7a8aa4';
   const peaks = [
     [0, 32], [25, 24], [55, 18], [85, 26], [115, 16],
     [150, 22], [185, 14], [215, 24], [245, 18], [275, 28], [310, 22], [VIEW_W, 30],
@@ -1999,12 +1988,12 @@ function drawHorizonNorway() {
   ctx.lineTo(VIEW_W, HORIZON_H);
   ctx.closePath(); ctx.fill();
   // snow caps
-  ctx.fillStyle = '#d8e0f0';
+  ctx.fillStyle = '#ffffff';
   for (const [x, y] of peaks) {
     if (y < 22) ctx.fillRect(x - 4, y, 8, 2);
   }
-  // foreground fjord cliffs (darker, sharper silhouette)
-  ctx.fillStyle = '#0a1224';
+  // foreground green-tinged fjord cliffs (warm summer light)
+  ctx.fillStyle = '#3a4a3a';
   const cliffs = [
     [0, 38], [30, 30], [60, 36], [90, 28], [125, 32],
     [160, 26], [195, 34], [230, 28], [265, 36], [VIEW_W, 32],
@@ -2014,18 +2003,42 @@ function drawHorizonNorway() {
   for (const [x, y] of cliffs) ctx.lineTo(x, y);
   ctx.lineTo(VIEW_W, HORIZON_H);
   ctx.closePath(); ctx.fill();
-  // fjord water reflecting aurora
-  ctx.fillStyle = '#0a1a2a';
-  ctx.fillRect(0, HORIZON_H - 4, VIEW_W, 4);
-  ctx.fillStyle = 'rgba(80, 220, 160, 0.28)';
-  for (let x = 0; x < VIEW_W; x += 6) {
-    ctx.fillRect(x + ((x / 3) | 0) % 3, HORIZON_H - 3, 4, 1);
+  // moss/forest highlights on cliffs
+  ctx.fillStyle = '#4a6a4a';
+  for (const [x, y] of cliffs) {
+    if (y < 32) ctx.fillRect(x, y + 2, 4, 4);
   }
-  // tiny lit cabin on a far shore
-  ctx.fillStyle = '#3a2a20';
-  ctx.fillRect(48, HORIZON_H - 8, 6, 4);
-  ctx.fillStyle = '#fff0a0';
-  ctx.fillRect(50, HORIZON_H - 6, 1, 1);
+  // fjord water — deep blue-green
+  ctx.fillStyle = '#2a5a6a';
+  ctx.fillRect(0, HORIZON_H - 5, VIEW_W, 5);
+  // ripples
+  ctx.fillStyle = '#5a8a9a';
+  for (let x = 0; x < VIEW_W; x += 6) {
+    ctx.fillRect(x + ((x * 3) | 0) % 3, HORIZON_H - 3, 4, 1);
+  }
+  // two tiny kayaks on the water (Eli + Delilah)
+  // kayak 1 — yellow
+  ctx.fillStyle = '#f0c060';
+  ctx.fillRect(80, HORIZON_H - 4, 8, 2);
+  ctx.fillStyle = '#3a2410';
+  ctx.fillRect(83, HORIZON_H - 5, 1, 1);   // tiny paddler
+  ctx.fillStyle = '#1a1a1a';
+  ctx.fillRect(80, HORIZON_H - 6, 1, 2); ctx.fillRect(87, HORIZON_H - 6, 1, 2);  // paddle
+  // kayak 2 — red
+  ctx.fillStyle = '#cc4040';
+  ctx.fillRect(105, HORIZON_H - 4, 8, 2);
+  ctx.fillStyle = '#9a5028';
+  ctx.fillRect(108, HORIZON_H - 5, 1, 1);
+  ctx.fillStyle = '#1a1a1a';
+  ctx.fillRect(105, HORIZON_H - 6, 1, 2); ctx.fillRect(112, HORIZON_H - 6, 1, 2);
+  // tiny red wooden village on far shore (Norwegian-style)
+  for (let i = 0; i < 4; i++) {
+    const hx = 200 + i * 8;
+    ctx.fillStyle = ['#a04030', '#7a3030', '#a04030', '#7a3030'][i];
+    ctx.fillRect(hx, HORIZON_H - 8, 6, 4);
+    ctx.fillStyle = '#3a2410';
+    ctx.fillRect(hx + 1, HORIZON_H - 9, 4, 1);   // pitched roof
+  }
 }
 
 function drawHorizon() {
@@ -4258,20 +4271,20 @@ const SCENES = {
     ],
     npcs: [
       { name: "Mom (J'Amy)", sprite: 'MOM', x: 4, y: 5, dir: 'down', lines: [
-          "Norway and Iceland — you can't believe the colors until you see them.",
-          "We stood on a fjord cliff at 11pm in full daylight. Surreal.",
-          "Aurora in summer — barely there, but THERE.",
-          "Best family trip we've taken. Top three for sure." ] },
+          "Norway in summer. Hot, sunny, daylight at 11pm.",
+          "We took the train across the whole country — fjords out every window.",
+          "No aurora — wrong season — but who needs aurora when the sky stays gold all night?",
+          "Iceland was the second half. Geysers, glaciers, lagoons. Top three trips we've taken." ] },
       { name: "Dad", sprite: 'DAD', x: 14, y: 5, dir: 'down', lines: [
-          "We hiked. We hiked SO MUCH.",
-          "Iceland: Strokkur erupting every six minutes. We watched it nineteen times.",
-          "Blue Lagoon: religious experience. My knees forgave me for one afternoon.",
-          "Plus glaciers. Real glaciers. You'll never forget them." ] },
+          "Eli, you and I jumped into the fjord at Flåm.",
+          "It was 50 degrees in the water. MAYBE.",
+          "Best decision of the trip. Possibly of my forties.",
+          "Then Iceland — Strokkur erupting every six minutes. We watched it nineteen times." ] },
       { name: "Delilah", sprite: 'SIS', x: 7, y: 7, dir: 'down', lines: [
-          "Norway = rain. Iceland = WIND. Welcome to Scandinavia.",
-          "Eli got obsessed with the geysers. I was obsessed with the puffins.",
-          "I drew a comic about you yelling at puffins. They DID start it.",
-          "Best summer though. Don't tell Mom I said that." ] },
+          "Eli and I kayaked the fjords. He's tall enough to be his OWN paddle.",
+          "It was hot. Like, actually hot. In Norway. Make it make sense.",
+          "Dad and Eli swimming at Flåm? Insane. Delightful. I documented it.",
+          "I drew a whole comic. You're in it. You're blue." ] },
     ],
   },
 
