@@ -1,0 +1,4452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#003057">
+<title>Congrats Elijah Orion Tarr! GT 2026</title>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    width: 100%; height: 100%;
+    background: #2a5a2a;
+    color: #fff;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+    overscroll-behavior: none;
+  }
+  #stage {
+    position: fixed; inset: 0;
+    background: #2a5a2a;
+    overflow: hidden;
+  }
+  canvas {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    background: #5a8c4a;
+    display: block;
+    position: absolute;
+    /* fitCanvas() sets width/height/left/top to cover the viewport */
+  }
+  /* ---------- Title overlay ---------- */
+  #title {
+    position: fixed; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    background: linear-gradient(180deg, #001a30 0%, #003057 60%, #B3A369 100%);
+    z-index: 50;
+    text-align: center;
+    padding: 20px;
+    transition: opacity 0.6s;
+  }
+  #title.hidden { opacity: 0; pointer-events: none; }
+  #title h1 {
+    font-size: clamp(28px, 8vw, 64px);
+    color: #EAAA00;
+    text-shadow: 4px 4px 0 #001a30, 0 0 20px rgba(234,170,0,0.6);
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    line-height: 1.1;
+  }
+  #title h2 {
+    font-size: clamp(14px, 3.5vw, 24px);
+    color: #fff;
+    text-shadow: 2px 2px 0 #001a30;
+    margin-bottom: 30px;
+    font-weight: normal;
+  }
+  #title .name {
+    font-size: clamp(40px, 12vw, 96px);
+    color: #fff;
+    text-shadow: 4px 4px 0 #B3A369, 8px 8px 0 #001a30;
+    margin: 10px 0 30px;
+    letter-spacing: 4px;
+  }
+  #startBtn {
+    background: #EAAA00;
+    color: #001a30;
+    border: 4px solid #001a30;
+    box-shadow: 4px 4px 0 #001a30;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: clamp(16px, 4vw, 22px);
+    padding: 14px 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: transform 0.1s;
+  }
+  #startBtn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #001a30; }
+  #title .hint {
+    margin-top: 24px;
+    font-size: clamp(11px, 2.5vw, 14px);
+    color: rgba(255,255,255,0.85);
+  }
+  /* ---------- Controls ---------- */
+  .controls {
+    position: fixed;
+    z-index: 30;
+    pointer-events: none;
+  }
+  #dpad {
+    bottom: max(20px, env(safe-area-inset-bottom));
+    left: 20px;
+    width: 150px; height: 150px;
+  }
+  #actionBtn {
+    bottom: max(40px, env(safe-area-inset-bottom));
+    right: 30px;
+    width: 80px; height: 80px;
+    background: rgba(234,170,0,0.85);
+    border: 4px solid rgba(0,26,48,0.9);
+    border-radius: 50%;
+    color: #001a30;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 14px;
+    pointer-events: auto;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  }
+  #actionBtn:active { background: rgba(234,170,0,1); transform: scale(0.95); }
+  .dpad-btn {
+    position: absolute;
+    width: 50px; height: 50px;
+    background: rgba(0,26,48,0.7);
+    border: 3px solid rgba(234,170,0,0.85);
+    pointer-events: auto;
+    display: flex; align-items: center; justify-content: center;
+    color: #EAAA00;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .dpad-btn:active { background: rgba(234,170,0,0.6); color: #001a30; }
+  .dpad-btn.up { top: 0; left: 50px; border-radius: 8px 8px 0 0; }
+  .dpad-btn.down { bottom: 0; left: 50px; border-radius: 0 0 8px 8px; }
+  .dpad-btn.left { left: 0; top: 50px; border-radius: 8px 0 0 8px; }
+  .dpad-btn.right { right: 0; top: 50px; border-radius: 0 8px 8px 0; }
+
+  /* ---------- Dialog box ---------- */
+  #dialog {
+    position: fixed;
+    bottom: max(20px, env(safe-area-inset-bottom));
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(90%, 560px);
+    background: rgba(255, 250, 235, 0.97);
+    border: 4px solid #003057;
+    box-shadow: 0 0 0 2px #EAAA00, 0 8px 24px rgba(0,0,0,0.5);
+    border-radius: 8px;
+    padding: 14px 18px;
+    color: #001a30;
+    font-size: clamp(14px, 3.5vw, 16px);
+    line-height: 1.45;
+    z-index: 40;
+    display: none;
+    pointer-events: auto;
+    cursor: pointer;
+  }
+  #dialog.show { display: block; animation: dialogIn 0.2s ease-out; }
+  @keyframes dialogIn { from { transform: translateX(-50%) translateY(20px); opacity: 0; } to { transform: translateX(-50%) translateY(0); opacity: 1; } }
+  #dialog .speaker {
+    font-weight: bold;
+    color: #003057;
+    font-size: clamp(13px, 3vw, 15px);
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+  #dialog .arrow {
+    display: inline-block;
+    margin-left: 6px;
+    color: #B3A369;
+    animation: blink 0.8s infinite;
+  }
+  @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0.2; } }
+
+  /* ---------- Hint banner ---------- */
+  #hint {
+    position: fixed;
+    /* center vertically so it doesn't sit on top of the horizon */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,48,87,0.92);
+    color: #EAAA00;
+    border: 2px solid #EAAA00;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: clamp(12px, 3vw, 15px);
+    z-index: 35;
+    pointer-events: none;
+    transition: opacity 0.4s;
+    text-align: center;
+    max-width: 80%;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  }
+  #hint.hidden { opacity: 0; }
+
+  /* ---------- Final message overlay ---------- */
+  #finale {
+    position: fixed; inset: 0;
+    background: rgba(0,12,28,0.92);
+    z-index: 45;
+    display: none;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 24px;
+    text-align: center;
+    overflow-y: auto;
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
+  }
+  #finale.show { display: flex; animation: fadeIn 1.2s ease; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  #finale .cap {
+    font-size: clamp(36px, 10vw, 64px);
+    margin-bottom: 8px;
+  }
+  #finale h2 {
+    font-size: clamp(22px, 6vw, 36px);
+    color: #EAAA00;
+    text-shadow: 3px 3px 0 #001a30;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+  }
+  #finale .msg {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(15px, 3.8vw, 19px);
+    color: #fff;
+    max-width: 600px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+    padding: 0 10px;
+  }
+  #finale .sig {
+    font-size: clamp(18px, 4.5vw, 26px);
+    color: #B3A369;
+    margin-top: 8px;
+    font-style: italic;
+  }
+  #finale .family-photo {
+    margin: 20px auto 18px;
+    max-width: 320px;
+    background: #f8f4ec;
+    padding: 10px 10px 14px;
+    border-radius: 4px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,0,0,0.2);
+    transform: rotate(-1.5deg);
+    transition: transform 0.3s;
+  }
+  #finale .family-photo:hover { transform: rotate(0deg) scale(1.02); }
+  #finale .family-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 2px;
+  }
+  #finale .photo-fallback {
+    display: block;
+    padding: 60px 16px;
+    color: #444;
+    font-size: 14px;
+    background: linear-gradient(135deg, #ddd 0%, #ccc 100%);
+    border-radius: 2px;
+    border: 2px dashed #888;
+    text-align: center;
+    font-family: ui-monospace, monospace;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  #finale .photo-fallback:hover { background: linear-gradient(135deg, #e8e8e8 0%, #d8d8d8 100%); }
+  #finale .photo-caption {
+    text-align: center;
+    color: #444;
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-size: 13px;
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+  }
+  #finale .note {
+    background: rgba(255,255,255,0.04);
+    border-left: 3px solid #B3A369;
+    padding: 14px 18px;
+    margin: 12px auto;
+    max-width: 600px;
+    text-align: left;
+    border-radius: 0 6px 6px 0;
+  }
+  #finale .note .from {
+    font-size: clamp(13px, 3vw, 15px);
+    color: #EAAA00;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    font-weight: bold;
+  }
+  #finale .note .body {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(14px, 3.6vw, 17px);
+    color: #fff;
+    line-height: 1.55;
+  }
+  #finale button {
+    margin-top: 24px;
+    background: transparent;
+    color: #EAAA00;
+    border: 2px solid #EAAA00;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-family: inherit;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  #finale button:active { background: rgba(234,170,0,0.2); }
+
+  /* d-pad and A button hidden — controls are tap-to-walk on the canvas */
+  #dpad, #actionBtn { display: none !important; }
+  /* fade controls while dialog is up so they don't compete with the text */
+  body:has(#dialog.show) #dpad,
+  body:has(#dialog.show) #actionBtn {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s;
+  }
+  /* tap-target hint cursor on canvas */
+  canvas { cursor: pointer; }
+
+  /* ---------- Rotate-to-landscape overlay ---------- */
+  #rotate {
+    position: fixed; inset: 0;
+    background: linear-gradient(180deg, #001a30 0%, #003057 100%);
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 32px;
+    color: #fff;
+  }
+  #rotate .icon {
+    font-size: clamp(60px, 16vw, 96px);
+    margin-bottom: 18px;
+    animation: rotateHint 2.4s ease-in-out infinite;
+    transform-origin: center;
+  }
+  @keyframes rotateHint {
+    0%, 30% { transform: rotate(0deg); }
+    50%, 80% { transform: rotate(-90deg); }
+    100% { transform: rotate(0deg); }
+  }
+  #rotate h2 {
+    color: #EAAA00;
+    font-size: clamp(22px, 6vw, 32px);
+    text-shadow: 3px 3px 0 #001a30;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+  #rotate p {
+    color: #fff;
+    font-size: clamp(13px, 3.5vw, 16px);
+    line-height: 1.5;
+    max-width: 320px;
+  }
+  /* show overlay only when device is in portrait orientation */
+  @media (orientation: portrait) {
+    #rotate { display: flex; }
+  }
+
+  /* ---------- Chapter picker (jump-to-chapter overlay) ---------- */
+  #chapterPicker {
+    position: fixed; inset: 0;
+    background: rgba(0, 6, 16, 0.92);
+    z-index: 70;
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 24px 16px;
+    overflow-y: auto;
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
+  }
+  #chapterPicker.show { display: flex; animation: fadeIn 0.2s ease; }
+  #chapterPicker .cp-card {
+    max-width: 480px;
+    width: 100%;
+    background: linear-gradient(180deg, #003057 0%, #001a30 100%);
+    border: 4px solid #EAAA00;
+    border-radius: 12px;
+    padding: 14px;
+    touch-action: pan-y;
+  }
+  #chapterPicker h3 {
+    color: #EAAA00;
+    font-size: clamp(14px, 3.2vw, 16px);
+    margin: 0 0 2px;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+  #chapterPicker .cp-sub {
+    color: #b8c8d8;
+    font-size: clamp(10px, 2.4vw, 12px);
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  #chapterPicker .cp-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  #chapterPicker .cp-item {
+    background: rgba(234, 170, 0, 0.08);
+    color: #fff;
+    border: 2px solid #B3A369;
+    border-radius: 6px;
+    padding: 8px 12px;
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: clamp(12px, 2.8vw, 14px);
+    transition: background 0.1s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1.3;
+  }
+  #chapterPicker .cp-item:hover, #chapterPicker .cp-item:active {
+    background: rgba(234, 170, 0, 0.25);
+  }
+  #chapterPicker .cp-item .cp-num {
+    color: #EAAA00;
+    font-weight: bold;
+    flex-shrink: 0;
+    min-width: 36px;
+    font-family: ui-monospace, monospace;
+    white-space: nowrap;
+    font-size: 0.9em;
+  }
+  #chapterPicker .cp-item .cp-title {
+    flex: 1;
+    color: #fff;
+  }
+  #chapterPicker .cp-item .cp-when {
+    color: #b8c8d8;
+    font-size: 0.85em;
+    font-style: italic;
+    display: block;
+    margin-top: 2px;
+  }
+  #chapterPicker .cp-close {
+    margin-top: 14px;
+    width: 100%;
+    background: transparent;
+    color: #b8c8d8;
+    border: 1px solid #4a6080;
+    padding: 8px;
+    border-radius: 6px;
+    font-family: inherit;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  /* In-game floating "menu" button */
+  #menuBtn {
+    position: fixed;
+    top: max(14px, env(safe-area-inset-top));
+    right: 14px;
+    width: 40px; height: 40px;
+    background: rgba(0, 26, 48, 0.85);
+    border: 2px solid #EAAA00;
+    border-radius: 50%;
+    color: #EAAA00;
+    font-family: inherit;
+    font-size: 18px;
+    z-index: 36;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+  #menuBtn.show { display: flex; }
+  #menuBtn:active { background: #EAAA00; color: #001a30; }
+
+  /* ---------- Chapter title card ---------- */
+  #chapter {
+    position: fixed; inset: 0;
+    background: #000;
+    z-index: 60;
+    display: none;
+    align-items: center; justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 24px;
+    color: #fff;
+  }
+  #chapter.show { display: flex; animation: chapterFade 0.6s ease-out; }
+  @keyframes chapterFade { from { opacity: 0; } to { opacity: 1; } }
+  #chapter .ch-num {
+    font-size: clamp(11px, 2.6vw, 14px);
+    color: #B3A369;
+    letter-spacing: 4px;
+    margin-bottom: 12px;
+    font-weight: bold;
+  }
+  #chapter .ch-title {
+    font-size: clamp(22px, 6.5vw, 38px);
+    color: #EAAA00;
+    text-shadow: 3px 3px 0 #001a30;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+  #chapter .ch-sub {
+    font-size: clamp(13px, 3.5vw, 17px);
+    color: #fff;
+    opacity: 0.8;
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+  #chapter .ch-tap {
+    font-size: clamp(11px, 2.4vw, 13px);
+    color: #B3A369;
+    opacity: 0.6;
+    animation: blink 1s infinite;
+  }
+
+  /* ---------- Character dialog modal (zoomed portrait + speech bubble) ---------- */
+  #charDialog {
+    position: fixed; inset: 0;
+    background: rgba(0, 6, 16, 0.65);
+    backdrop-filter: blur(2px);
+    z-index: 47;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+  #charDialog.show { display: flex; animation: fadeIn 0.25s ease; }
+  .cd-card {
+    display: block;
+    max-width: 600px;
+    width: 100%;
+    background: linear-gradient(180deg, #003057 0%, #001a30 100%);
+    border: 4px solid #EAAA00;
+    box-shadow: 0 0 0 2px #001a30, 0 12px 36px rgba(0, 0, 0, 0.6);
+    border-radius: 14px;
+    padding: 18px 18px 14px;
+    text-align: center;
+  }
+  .cd-portrait {
+    width: 120px;
+    height: 120px;
+    max-width: 30vw;
+    max-height: 30vw;
+    background: #B3A369;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    border: 3px solid #EAAA00;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto 14px;
+    box-sizing: border-box;
+    flex: none;
+    position: static;
+  }
+  .cd-right {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  .cd-name {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    color: #EAAA00;
+    font-size: clamp(13px, 3vw, 16px);
+    letter-spacing: 1px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  .cd-bubble {
+    background: #fef8e4;
+    color: #001a30;
+    border: 2px solid #B3A369;
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: clamp(14px, 3.6vw, 17px);
+    line-height: 1.5;
+    text-align: left;
+    box-sizing: border-box;
+    margin: 0;
+    display: block;
+  }
+  .cd-arrow {
+    margin-top: 6px;
+    font-size: clamp(11px, 2.4vw, 14px);
+    color: #B3A369;
+    text-align: right;
+    animation: blink 1s infinite;
+  }
+
+  /* ---------- Fade overlay (for between-scene transitions) ---------- */
+  #fade {
+    position: fixed; inset: 0;
+    background: #000;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 55;
+    transition: opacity 0.6s ease;
+  }
+  #fade.on { opacity: 1; pointer-events: auto; }
+</style>
+</head>
+<body>
+<div id="rotate">
+  <div class="icon">📱</div>
+  <h2>Please rotate your phone</h2>
+  <p>This game is meant to be played in landscape mode. Turn your phone sideways to continue.</p>
+</div>
+
+<div id="title">
+  <h1>GEORGIA TECH</h1>
+  <h2>~ Class of 2026 ~</h2>
+  <div class="name">ELI</div>
+  <button id="startBtn">▶ TAP TO BEGIN</button>
+  <button id="continueBtn" style="display:none;background:#001a30;color:#EAAA00;border:4px solid #EAAA00;box-shadow:4px 4px 0 #EAAA00;font-family:inherit;font-weight:bold;font-size:clamp(14px,3.5vw,20px);padding:12px 26px;border-radius:8px;cursor:pointer;letter-spacing:1px;margin-top:12px;">▶ CONTINUE</button>
+  <button id="chooseChBtn" style="background:transparent;color:#EAAA00;border:2px solid #EAAA00;font-family:inherit;font-size:clamp(12px,2.8vw,14px);padding:8px 18px;border-radius:6px;cursor:pointer;margin-top:10px;letter-spacing:1px;">📖 JUMP TO CHAPTER</button>
+  <button id="restartBtn" style="display:none;background:transparent;color:#fff;border:none;font-family:inherit;font-size:clamp(11px,2.5vw,13px);padding:8px 16px;cursor:pointer;margin-top:6px;text-decoration:underline;opacity:0.7;">start over</button>
+  <div class="hint">
+    🔒 Best in <strong style="color:#EAAA00">landscape</strong> — keep your phone sideways.<br><br>
+    Tap anywhere to walk. Tap a person to talk.
+  </div>
+</div>
+
+<div id="chapterPicker">
+  <div class="cp-card">
+    <h3>📖 Jump to Chapter</h3>
+    <div class="cp-sub">Pick any scene to play it</div>
+    <div class="cp-list" id="cpList"></div>
+    <button class="cp-close" id="cpCloseBtn">Cancel</button>
+  </div>
+</div>
+
+<button id="menuBtn" title="Menu">≡</button>
+
+<div id="stage">
+  <canvas id="c" width="320" height="192"></canvas>
+</div>
+
+<div id="hint" class="hidden">Talk to everyone, then walk to the stage!</div>
+
+<div id="dpad" class="controls">
+  <div class="dpad-btn up" data-dir="up">▲</div>
+  <div class="dpad-btn down" data-dir="down">▼</div>
+  <div class="dpad-btn left" data-dir="left">◀</div>
+  <div class="dpad-btn right" data-dir="right">▶</div>
+</div>
+<button id="actionBtn" class="controls">A</button>
+
+<div id="dialog">
+  <div class="speaker"></div>
+  <div class="text"></div>
+  <span class="arrow">▼</span>
+</div>
+
+<div id="charDialog">
+  <div class="cd-card">
+    <canvas class="cd-portrait" id="cdPortrait" width="32" height="32"></canvas>
+    <div class="cd-right">
+      <div class="cd-name" id="cdName"></div>
+      <div class="cd-bubble" id="cdText"></div>
+      <div class="cd-arrow">tap to continue ▼</div>
+    </div>
+  </div>
+</div>
+
+<div id="chapter">
+  <div class="ch-num" id="chapterNum">CHAPTER 1</div>
+  <div class="ch-title" id="chapterTitle">Mill Valley</div>
+  <div class="ch-sub" id="chapterSub">June 2022</div>
+  <div class="ch-tap">tap to continue ▼</div>
+</div>
+
+<div id="fade"></div>
+
+<div id="finale">
+  <div class="cap">🎓</div>
+  <h2>CONGRATULATIONS, ELI!</h2>
+  <div class="msg" id="finaleMsg"></div>
+  <div class="family-photo">
+    <img src="family.jpg" alt="The family" id="familyPhoto"
+         onerror="this.style.display='none'; document.getElementById('photoFallback').style.display='block';">
+    <div class="photo-fallback" id="photoFallback" style="display:none">
+      📷 (family.jpg not found)
+    </div>
+    <div class="photo-caption">— Mom, Dad, Eli, Delilah & Hazel —</div>
+  </div>
+  <div id="finaleNotes"></div>
+  <button id="replayBtn">▶ Play again</button>
+</div>
+
+<script>
+'use strict';
+
+// =============================================================
+// CONSTANTS & PALETTE
+// =============================================================
+const TILE = 16;
+const MAP_W = 20;
+const MAP_H = 12;
+const VIEW_W = MAP_W * TILE;   // 320
+const VIEW_H = MAP_H * TILE;   // 192
+
+const C = {
+  black:'#0a0a0a', dark:'#1a1a1a', shadow:'#2a2a2a',
+  white:'#ffffff', cream:'#fef8e4', off:'#e8e0c8',
+  skin:'#fdcfa1', skinSh:'#e0a574', skinDk:'#a8744a',
+  hairBlk:'#1a1a1a', hairBrn:'#5a3a1f', hairLt:'#a87040', hairGr:'#888888',
+  // grass
+  g1:'#5a8c4a', g2:'#4a7c3a', g3:'#6c9c5a', g4:'#3a6c30',
+  // path - red brick GT
+  brick:'#a04030', brickDk:'#702a20', brickLt:'#c05040',
+  brickGr:'#5a2020',
+  // trees
+  trunk:'#5a3a1f', trunkDk:'#3a2410',
+  leaf:'#2a5a2a', leafDk:'#1a3a1a', leafLt:'#3a7a3a',
+  // GT colors
+  gold:'#EAAA00', goldDk:'#B3A369', goldLt:'#ffd040',
+  navy:'#003057', navyDk:'#001a30', navyLt:'#1a508a',
+  // stage / wood
+  wood:'#c89070', woodDk:'#8b5a3a', woodLt:'#e8b090',
+  // misc
+  red:'#cc3030', redDk:'#801a1a',
+  blue:'#3060c0', blueDk:'#1a3070',
+  // flowers
+  fpink:'#ff80b8', fpurp:'#a070d0', fwhite:'#fff4f4',
+  fyellow:'#ffe040', fgrn:'#3a8030',
+  // stone
+  stn:'#a09080', stnDk:'#605040', stnLt:'#c0b0a0',
+};
+
+// =============================================================
+// CANVAS
+// =============================================================
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+ctx.imageSmoothingEnabled = false;
+
+function fitCanvas() {
+  // Cover-fill the viewport: uniform scale, center on screen, crop overflow.
+  const sw = window.innerWidth;
+  const sh = window.innerHeight;
+  const scale = Math.max(sw / VIEW_W, sh / VIEW_H);
+  const w = VIEW_W * scale;
+  const h = VIEW_H * scale;
+  canvas.style.width = w + 'px';
+  canvas.style.height = h + 'px';
+  canvas.style.left = ((sw - w) / 2) + 'px';
+  canvas.style.top = ((sh - h) / 2) + 'px';
+}
+fitCanvas();
+window.addEventListener('resize', fitCanvas);
+window.addEventListener('orientationchange', () => setTimeout(fitCanvas, 200));
+
+// =============================================================
+// SPRITE DRAWING (procedural pixel art)
+// =============================================================
+function px(x, y, color, w, h) {
+  ctx.fillStyle = color;
+  ctx.fillRect(x | 0, y | 0, (w || 1), (h || 1));
+}
+
+// ---------- Tile drawers ----------
+function drawGrass(x, y, variant) {
+  px(x, y, C.g1, TILE, TILE);
+  // dithered shading
+  for (let dy = 0; dy < TILE; dy += 2) {
+    for (let dx = 0; dx < TILE; dx += 2) {
+      const v = ((dx * 7 + dy * 13 + variant * 31) % 11);
+      if (v === 0) px(x + dx, y + dy, C.g2);
+      else if (v === 3) px(x + dx, y + dy, C.g3);
+    }
+  }
+  // small grass blades
+  if (variant % 4 === 0) {
+    px(x + 3, y + 5, C.g4); px(x + 4, y + 4, C.g4); px(x + 4, y + 5, C.g4);
+  }
+  if (variant % 5 === 1) {
+    px(x + 11, y + 11, C.g4); px(x + 12, y + 10, C.g4); px(x + 12, y + 11, C.g4);
+  }
+  if (variant % 7 === 2) {
+    px(x + 8, y + 2, C.g3); px(x + 9, y + 2, C.g3);
+  }
+}
+
+function drawBrick(x, y) {
+  // GT red-brick walkway, flat top-down view (lighter so it reads as ground, not wall)
+  // base color
+  px(x, y, '#cb846c', TILE, TILE);
+  // staggered brick pattern with light grout lines
+  // row 1 (cols 0-15, single full brick)
+  px(x, y + 0, '#a85a48', TILE, 1);  // top edge shadow
+  px(x, y + 4, '#e8a890', TILE, 1);  // grout line (light)
+  px(x, y + 8, '#a85a48', TILE, 1);  // grout shadow
+  px(x, y + 12, '#e8a890', TILE, 1); // grout line
+  // vertical grout lines, staggered
+  // top stripe (rows 1-3): seam at col 8
+  px(x + 8, y + 1, '#a85a48', 1, 3);
+  // middle stripe (rows 5-7): seams at col 4 and 12
+  px(x + 4, y + 5, '#a85a48', 1, 3);
+  px(x + 12, y + 5, '#a85a48', 1, 3);
+  // lower stripe (rows 9-11): seam at col 8
+  px(x + 8, y + 9, '#a85a48', 1, 3);
+  // bottom stripe (rows 13-15): seams at col 4 and 12
+  px(x + 4, y + 13, '#a85a48', 1, 3);
+  px(x + 12, y + 13, '#a85a48', 1, 3);
+  // tiny lighter highlights to add subtle texture
+  px(x + 2, y + 2, '#dc9a82');
+  px(x + 11, y + 6, '#dc9a82');
+  px(x + 6, y + 10, '#dc9a82');
+  px(x + 14, y + 14, '#dc9a82');
+}
+
+function drawTree(x, y) {
+  // base grass
+  drawGrass(x, y, 0);
+  // trunk
+  px(x + 7, y + 11, C.trunkDk, 2, 5);
+  px(x + 7, y + 11, C.trunk, 1, 5);
+  // canopy
+  const cv = [
+    "....LLL....",
+    "...LLLLL...",
+    "..LDDLDDL..",
+    ".LDLLLLLDL.",
+    "LDLDLLLDLDL",
+    "LDLLDLDLLDL",
+    "LDLLLDLLLDL",
+    ".LDLLLLLDL.",
+    "..LDDLDDL..",
+    "...DDDDD...",
+  ];
+  for (let r = 0; r < cv.length; r++) {
+    for (let c = 0; c < cv[r].length; c++) {
+      const ch = cv[r][c];
+      const px0 = x + 2 + c;
+      const py0 = y + 1 + r;
+      if (ch === 'L') px(px0, py0, C.leafLt);
+      else if (ch === 'D') px(px0, py0, C.leafDk);
+    }
+  }
+  // overlay main green
+  for (let r = 0; r < cv.length; r++) {
+    for (let c = 0; c < cv[r].length; c++) {
+      const ch = cv[r][c];
+      const px0 = x + 2 + c;
+      const py0 = y + 1 + r;
+      if (ch !== '.' && (r * 3 + c * 5) % 4 === 0) px(px0, py0, C.leaf);
+    }
+  }
+}
+
+function drawBush(x, y) {
+  drawGrass(x, y, 0);
+  px(x + 3, y + 7, C.leafDk, 11, 7);
+  px(x + 4, y + 6, C.leafDk, 9, 1);
+  px(x + 5, y + 5, C.leaf, 7, 1);
+  px(x + 4, y + 7, C.leaf, 9, 5);
+  px(x + 5, y + 8, C.leafLt, 4, 2);
+  px(x + 9, y + 9, C.leafLt, 3, 2);
+  // berries / dots
+  px(x + 6, y + 10, C.fpink);
+  px(x + 11, y + 8, C.fpink);
+  px(x + 8, y + 12, C.fpink);
+}
+
+function drawFlowers(x, y) {
+  drawGrass(x, y, 0);
+  const flowers = [
+    [3, 5, C.fpink], [4, 4, C.fpink], [4, 5, C.fpink], [3, 6, C.fpink],
+    [4, 6, C.fyellow],
+    [10, 8, C.fpurp], [11, 7, C.fpurp], [11, 8, C.fpurp], [10, 9, C.fpurp],
+    [11, 9, C.fyellow],
+    [6, 11, C.fwhite], [7, 10, C.fwhite], [7, 11, C.fwhite],
+    [7, 12, C.fyellow],
+  ];
+  for (const f of flowers) px(x + f[0], y + f[1], f[2]);
+  // stems
+  px(x + 4, y + 7, C.fgrn); px(x + 4, y + 8, C.fgrn);
+  px(x + 11, y + 10, C.fgrn); px(x + 11, y + 11, C.fgrn);
+  px(x + 7, y + 13, C.fgrn);
+}
+
+// Stage tile (wooden plank) — used to build the graduation stage
+function drawStage(x, y) {
+  px(x, y, C.woodDk, TILE, TILE);
+  // planks running horizontally
+  for (let p = 0; p < 4; p++) {
+    const py0 = y + p * 4;
+    px(x, py0, C.wood, TILE, 3);
+    px(x, py0 + 3, C.woodDk, TILE, 1);
+    // grain
+    px(x + 2, py0 + 1, C.woodLt, 4, 1);
+    px(x + 9, py0 + 1, C.woodLt, 3, 1);
+  }
+  // edge nails
+  px(x + 1, y + 1, C.dark);
+  px(x + 14, y + 1, C.dark);
+  px(x + 1, y + 13, C.dark);
+  px(x + 14, y + 13, C.dark);
+}
+
+function drawStageEdge(x, y) {
+  // front edge of stage with shadow
+  drawStage(x, y);
+  px(x, y + 14, C.woodDk, TILE, 2);
+  px(x, y + 15, C.dark, TILE, 1);
+}
+
+// Audience chair (small folding chair sprite)
+function drawChair(x, y) {
+  drawGrass(x, y, 3);
+  // chair: navy blue folding chair
+  px(x + 5, y + 4, C.navyDk, 6, 1); // top of back
+  px(x + 5, y + 5, C.navy, 6, 4);   // back
+  px(x + 4, y + 9, C.navyDk, 8, 2); // seat
+  px(x + 4, y + 11, C.navyLt, 8, 1);
+  px(x + 4, y + 12, C.navyDk, 1, 3); // legs
+  px(x + 11, y + 12, C.navyDk, 1, 3);
+  // gold accent
+  px(x + 6, y + 6, C.gold, 4, 1);
+}
+
+function drawTechTower(x, y) {
+  // an iconic-ish small Tech Tower (3 tiles tall, 2 tiles wide)
+  // background
+  px(x, y, C.skin === C.skin ? C.brickDk : C.brickDk, TILE * 2, TILE * 3);
+  // walls
+  px(x + 2, y + 2, C.brick, TILE * 2 - 4, TILE * 3 - 4);
+  // brick lines
+  for (let r = 0; r < 12; r++) {
+    px(x + 2, y + 2 + r * 4, C.brickDk, TILE * 2 - 4, 1);
+  }
+  // roof (gold)
+  px(x + 1, y, C.goldDk, TILE * 2 - 2, 3);
+  px(x + 3, y - 1, C.goldDk, TILE * 2 - 6, 1);
+  // clock
+  px(x + 12, y + 8, C.cream, 8, 8);
+  px(x + 12, y + 8, C.dark, 8, 1);
+  px(x + 12, y + 15, C.dark, 8, 1);
+  px(x + 12, y + 8, C.dark, 1, 8);
+  px(x + 19, y + 8, C.dark, 1, 8);
+  // clock hands
+  px(x + 15, y + 11, C.dark, 2, 1);
+  px(x + 15, y + 11, C.dark, 1, 3);
+  // windows
+  for (let i = 0; i < 3; i++) {
+    px(x + 4 + i * 7, y + 8, C.navy, 4, 5);
+    px(x + 4 + i * 7, y + 8, C.navyDk, 4, 1);
+    px(x + 4 + i * 7 + 2, y + 9, C.navyLt, 1, 3);
+  }
+  // top decoration
+  px(x + 14, y - 4, C.gold, 4, 4);
+  px(x + 15, y - 6, C.gold, 2, 2);
+}
+
+// ---------- Additional tile drawers (used by scenes 2-9) ----------
+
+// Wood floor (interior) — used inside dorm/apt/lab scenes
+function drawWoodFloor(x, y) {
+  px(x, y, '#a87850', TILE, TILE);
+  px(x, y, '#704020', TILE, 1);
+  // plank lines every 4 px
+  for (let dy = 4; dy < TILE; dy += 4) {
+    px(x, y + dy, '#603010', TILE, 1);
+  }
+  // grain
+  px(x + 2, y + 1, '#c89870');
+  px(x + 11, y + 5, '#c89870');
+  px(x + 5, y + 9, '#c89870');
+  px(x + 13, y + 13, '#c89870');
+}
+
+// Wall (interior) — gray plaster with baseboard
+function drawWall(x, y) {
+  px(x, y, '#d8c8a8', TILE, TILE);
+  px(x, y + TILE - 3, '#604020', TILE, 1);
+  px(x, y + TILE - 2, '#805030', TILE, 2);
+  // a few faint dots for texture
+  px(x + 3, y + 4, '#bdb088');
+  px(x + 11, y + 8, '#bdb088');
+}
+
+// Kitchen counter
+function drawKitchenCounter(x, y) {
+  drawWoodFloor(x, y);
+  // counter top
+  px(x, y + 2, '#404040', TILE, 5);
+  px(x, y + 2, '#202020', TILE, 1);
+  px(x, y + 6, '#606060', TILE, 1);
+  // cabinet front
+  px(x, y + 8, '#a07050', TILE, 7);
+  px(x, y + 8, '#604020', TILE, 1);
+  px(x + 7, y + 10, '#604020', 2, 4);
+}
+
+// Stove
+function drawStove(x, y) {
+  drawWoodFloor(x, y);
+  px(x + 1, y + 1, '#202020', 14, 14);
+  px(x + 2, y + 2, '#404040', 12, 5);  // top
+  // burners
+  px(x + 4, y + 3, '#1a1a1a', 3, 3);
+  px(x + 9, y + 3, '#1a1a1a', 3, 3);
+  px(x + 5, y + 4, '#cc4040', 1);     // glowing burner
+  px(x + 10, y + 4, '#cc4040', 1);
+  // oven door
+  px(x + 3, y + 9, '#606060', 10, 4);
+  px(x + 4, y + 10, '#1a1a1a', 8, 2);  // window
+  px(x + 7, y + 13, '#a0a0a0', 2, 1);  // handle
+}
+
+// Fridge
+function drawFridge(x, y) {
+  drawWoodFloor(x, y);
+  px(x + 1, y, '#e0e0e0', 14, TILE);
+  px(x + 1, y, '#a0a0a0', 14, 1);
+  px(x + 1, y + 7, '#404040', 14, 1);  // door split
+  px(x + 12, y + 3, '#606060', 1, 3);   // handle top
+  px(x + 12, y + 11, '#606060', 1, 3);  // handle bottom
+}
+
+// Bed (interior dorm)
+function drawBed(x, y) {
+  drawWoodFloor(x, y);
+  // mattress
+  px(x + 1, y + 4, '#fff0e0', 14, 9);
+  px(x + 1, y + 4, '#cccccc', 14, 1);
+  // pillow
+  px(x + 2, y + 5, '#ffffff', 6, 3);
+  px(x + 2, y + 5, '#dddddd', 6, 1);
+  // blanket
+  px(x + 1, y + 9, '#3060c0', 14, 4);
+  px(x + 1, y + 10, '#1a3060', 14, 1);
+  // frame
+  px(x + 1, y + 13, '#604020', 14, 2);
+}
+
+// Desk
+function drawDesk(x, y) {
+  drawWoodFloor(x, y);
+  px(x + 1, y + 4, '#704020', 14, 8);
+  px(x + 1, y + 4, '#503010', 14, 1);
+  px(x + 1, y + 12, '#503010', 14, 1);
+  px(x + 2, y + 13, '#503010', 2, 3);
+  px(x + 12, y + 13, '#503010', 2, 3);
+  // laptop on desk
+  px(x + 4, y + 6, '#404040', 8, 4);
+  px(x + 5, y + 7, '#80c0ff', 6, 2);   // glowing screen
+}
+
+// Trumpet (cute prop)
+function drawTrumpet(x, y) {
+  drawWoodFloor(x, y);
+  // body
+  px(x + 2, y + 7, '#EAAA00', 9, 3);
+  px(x + 11, y + 6, '#EAAA00', 4, 5);  // bell
+  px(x + 11, y + 5, '#cc8800', 4, 1);
+  px(x + 11, y + 11, '#cc8800', 4, 1);
+  // mouthpiece
+  px(x + 1, y + 8, '#888888', 1);
+  // valves
+  px(x + 5, y + 6, '#cc8800', 1, 1);
+  px(x + 7, y + 6, '#cc8800', 1, 1);
+  px(x + 9, y + 6, '#cc8800', 1, 1);
+}
+
+// Low-ceiling rafter (DU attic) — visual: dark wood beam crossing
+function drawRafter(x, y) {
+  drawWoodFloor(x, y);
+  // diagonal beam
+  px(x, y + 6, '#3a2410', TILE, 4);
+  px(x, y + 6, '#1a0a05', TILE, 1);
+  px(x, y + 9, '#1a0a05', TILE, 1);
+}
+
+// Quantum computer (chandelier-like cylinder)
+function drawQuantumProp(x, y) {
+  drawWoodFloor(x, y);
+  // dark cylinder frame
+  px(x + 5, y + 1, '#202020', 6, 12);
+  px(x + 5, y + 1, '#404040', 6, 1);
+  // hanging filaments
+  for (let i = 0; i < 4; i++) {
+    px(x + 6 + i, y + 2, '#80c0ff', 1, 11);
+    if (i % 2 === 0) px(x + 6 + i, y + 4, '#a0e0ff', 1, 1);
+  }
+  // gold base
+  px(x + 4, y + 13, '#EAAA00', 8, 2);
+  px(x + 4, y + 13, '#cc8800', 8, 1);
+  // glow halo
+  px(x + 7, y, '#80c0ff', 2, 1);
+}
+
+// Lab equipment (whiteboard with QC equations)
+function drawLabBoard(x, y) {
+  drawWoodFloor(x, y);
+  // whiteboard
+  px(x + 1, y + 1, '#f0f0f0', 14, 12);
+  px(x + 1, y + 1, '#a0a0a0', 14, 1);
+  px(x + 1, y + 12, '#a0a0a0', 14, 1);
+  px(x + 1, y + 1, '#a0a0a0', 1, 12);
+  px(x + 14, y + 1, '#a0a0a0', 1, 12);
+  // scribbles in green/blue/red
+  px(x + 3, y + 3, '#202020', 2, 1);
+  px(x + 6, y + 3, '#202020', 4, 1);
+  px(x + 3, y + 6, '#0080cc', 5, 1);
+  px(x + 9, y + 6, '#0080cc', 4, 1);
+  px(x + 3, y + 9, '#cc4040', 3, 1);
+  px(x + 7, y + 9, '#cc4040', 5, 1);
+  // Bloch sphere icon
+  px(x + 11, y + 4, '#3a608a', 2, 2);
+  px(x + 11, y + 4, '#80c0ff', 1);
+}
+
+// Mountain (Machu Picchu / Alps)
+function drawMountain(x, y) {
+  px(x, y, '#5a8c4a', TILE, TILE);
+  // distant peak
+  px(x + 4, y + 2, '#7a7060', 8, 12);
+  px(x + 5, y + 3, '#9a9080', 6, 1);
+  // snow cap
+  px(x + 6, y + 1, '#f0f0f0', 4, 3);
+  px(x + 5, y + 4, '#e0e0e0', 6, 1);
+  // shading
+  px(x + 4, y + 6, '#5a4a3a', 3, 6);
+  px(x + 11, y + 6, '#9a9080', 1, 6);
+}
+
+// Inca stone wall (Machu Picchu)
+function drawIncaStone(x, y) {
+  px(x, y, '#8a7060', TILE, TILE);
+  // irregular stone blocks
+  px(x + 1, y + 1, '#a08070', 6, 5);
+  px(x + 8, y + 1, '#9a7868', 6, 4);
+  px(x + 1, y + 7, '#9a7868', 4, 4);
+  px(x + 6, y + 6, '#a08070', 5, 5);
+  px(x + 12, y + 6, '#a08070', 3, 5);
+  px(x + 1, y + 12, '#9a7868', 8, 3);
+  px(x + 10, y + 12, '#a08070', 5, 3);
+  // mortar lines (slight darker outline)
+  px(x, y + 6, '#604020', TILE, 1);
+  px(x, y + 11, '#604020', TILE, 1);
+  px(x + 7, y, '#604020', 1, 6);
+  px(x + 5, y + 7, '#604020', 1, 5);
+}
+
+// Eiffel-tower silhouette (Paris)
+function drawEiffelBase(x, y, kind) {
+  // kind: 'top', 'mid', 'bot' for stacking 3 tiles tall
+  px(x, y, C.g1, TILE, TILE);
+  if (kind === 'top') {
+    // antenna + crown
+    px(x + 7, y, '#202020', 2, 4);
+    px(x + 7, y - 2, '#202020', 1, 2);
+    px(x + 5, y + 4, '#202020', 6, 2);
+    px(x + 4, y + 6, '#202020', 8, 2);
+    px(x + 4, y + 8, '#202020', 8, 1);
+    px(x + 3, y + 9, '#202020', 10, 2);
+    // criss-cross beams
+    px(x + 6, y + 11, '#202020', 4, 5);
+    px(x + 5, y + 13, '#202020', 6, 1);
+  } else if (kind === 'mid') {
+    px(x + 3, y, '#202020', 10, 2);
+    px(x + 4, y + 2, '#202020', 8, 1);
+    px(x + 3, y + 4, '#202020', 10, 1);
+    // legs spreading
+    px(x + 3, y + 5, '#202020', 2, 5);
+    px(x + 11, y + 5, '#202020', 2, 5);
+    px(x + 6, y + 6, '#202020', 1, 5);
+    px(x + 9, y + 6, '#202020', 1, 5);
+    // X bracing
+    px(x + 5, y + 11, '#202020', 1, 4);
+    px(x + 10, y + 11, '#202020', 1, 4);
+    px(x + 6, y + 13, '#202020', 4, 1);
+  } else {  // bot
+    // wide base / arches
+    px(x + 1, y, '#202020', 1, 6);
+    px(x + 14, y, '#202020', 1, 6);
+    px(x + 6, y, '#202020', 1, 6);
+    px(x + 9, y, '#202020', 1, 6);
+    // arch bottoms
+    px(x + 2, y + 5, '#202020', 4, 1);
+    px(x + 10, y + 5, '#202020', 4, 1);
+    // ground/lawn at base
+    px(x, y + 6, C.g3, TILE, 10);
+    px(x + 1, y + 13, '#202020', 14, 1);
+  }
+}
+
+// Canal water (Amsterdam, generic water)
+function drawWater(x, y) {
+  px(x, y, '#3a608a', TILE, TILE);
+  // ripples
+  for (let dy = 2; dy < TILE; dy += 4) {
+    for (let dx = 0; dx < TILE; dx += 6) {
+      const off = ((dy / 2) | 0) % 2 === 0 ? 0 : 3;
+      px(x + dx + off, y + dy, '#5a80a8', 3, 1);
+    }
+  }
+  px(x + 3, y + 5, '#7aa0c8', 2, 1);
+  px(x + 11, y + 11, '#7aa0c8', 2, 1);
+}
+
+// Cobblestone (Europe streets)
+function drawCobble(x, y) {
+  px(x, y, '#8a8070', TILE, TILE);
+  // cobbles
+  for (let r = 0; r < 4; r++) {
+    for (let c = 0; c < 4; c++) {
+      const cx = c * 4 + (r % 2 ? 2 : 0);
+      const cy = r * 4;
+      px(x + cx, y + cy, '#9a9080', 3, 3);
+      px(x + cx, y + cy + 2, '#7a7060', 3, 1);
+    }
+  }
+}
+
+// Sand/dirt path (Machu Picchu / outdoors)
+function drawDirt(x, y) {
+  px(x, y, '#a88a5a', TILE, TILE);
+  px(x, y, '#8a6a3a', TILE, 1);
+  for (let i = 0; i < 6; i++) {
+    const dx = (i * 11) % TILE;
+    const dy = (i * 7) % TILE;
+    px(x + dx, y + dy, '#c0a070');
+  }
+}
+
+// House / home (Mill Valley)
+function drawHouse(x, y, kind) {
+  // kind: 'roof', 'wall', 'door'
+  if (kind === 'roof') {
+    px(x, y, C.g1, TILE, 4);
+    px(x, y + 4, '#7a4030', TILE, TILE - 4);
+    px(x, y + 4, '#5a2010', TILE, 1);
+    px(x, y + 10, '#5a2010', TILE, 1);
+  } else if (kind === 'wall') {
+    px(x, y, '#e0c8a0', TILE, TILE);
+    px(x, y, '#a08060', TILE, 1);
+    px(x + 2, y + 3, '#3060c0', 5, 5);   // window
+    px(x + 2, y + 3, '#1a3060', 5, 1);
+  } else if (kind === 'door') {
+    px(x, y, '#e0c8a0', TILE, TILE);
+    px(x + 5, y + 2, '#604020', 6, 14);
+    px(x + 5, y + 2, '#3a2410', 6, 1);
+    px(x + 9, y + 9, '#EAAA00', 1);     // doorknob
+  }
+}
+
+// Redwood (taller tree for Mill Valley)
+function drawRedwood(x, y) {
+  drawGrass(x, y, 0);
+  px(x + 7, y + 10, '#3a2410', 2, 6);
+  // foliage darker green, narrower
+  const foliage = [
+    "....X....",
+    "...XXX...",
+    "..XXXXX..",
+    ".XXXXXXX.",
+    "..XXXXX..",
+    "...XXX...",
+    "....X....",
+  ];
+  for (let r = 0; r < foliage.length; r++) {
+    for (let c = 0; c < foliage[r].length; c++) {
+      if (foliage[r][c] === 'X') px(x + 3 + c, y + r, C.leafDk);
+    }
+  }
+}
+
+// Coach bus (Rick Steves tour bus). 'front' / 'mid' / 'back' tiles, side view.
+// Body is a clean tall coach with a dark stripe along the windowline,
+// large tinted side windows, white belt, and dark mirrored windshield.
+function drawBus(x, y, part) {
+  drawCobble(x, y);
+  const BODY = '#f2f2f2';     // off-white coach body
+  const DARK = '#202c44';     // dark navy stripe
+  const WIN  = '#3a608a';     // tinted window
+  const WINHL= '#5a90c0';     // window highlight
+  const WHEEL= '#101010';
+  const HUB  = '#606060';
+  const TIRE = '#404040';
+  const ROOF = '#cccccc';
+  // common: roof line + body + wheels base
+  if (part === 'front') {
+    // roof
+    px(x + 2, y + 1, ROOF, TILE - 2, 1);
+    // body
+    px(x + 2, y + 2, BODY, TILE - 2, 11);
+    // dark stripe along bottom of windowline
+    px(x + 2, y + 9, DARK, TILE - 2, 1);
+    // rounded nose: shave top-left corner
+    px(x + 2, y + 2, C.g1, 1, 1);   // remove corner pixel
+    px(x + 3, y + 2, ROOF, 1, 1);
+    // big windshield (mirror-tinted)
+    px(x + 3, y + 3, WIN, 9, 5);
+    px(x + 3, y + 3, '#1a304a', 9, 1);
+    px(x + 3, y + 7, '#1a304a', 9, 1);
+    px(x + 4, y + 4, WINHL, 7, 1);
+    // wipers
+    px(x + 5, y + 7, '#101010', 4, 1);
+    // door at right edge of front tile
+    px(x + 13, y + 2, DARK, 2, 11);
+    px(x + 13, y + 4, WIN, 2, 4);
+    px(x + 13, y + 4, '#1a304a', 2, 1);
+    // headlight
+    px(x + 2, y + 10, '#fff0a0', 2, 2);
+    px(x + 1, y + 10, '#fff0a0', 1, 1);
+    // belly (under windowline)
+    px(x + 2, y + 10, BODY, TILE - 2, 3);   // hmm overrides headlight, redo
+    px(x + 1, y + 10, '#fff0a0', 2, 2);
+    // dark side stripe under windowline
+    px(x + 2, y + 12, DARK, TILE - 2, 1);
+    // wheel well
+    px(x + 9, y + 13, WHEEL, 4, 3);
+    px(x + 9, y + 13, TIRE, 4, 1);
+    px(x + 10, y + 14, HUB, 2, 1);
+  } else if (part === 'mid') {
+    px(x, y + 1, ROOF, TILE, 1);
+    px(x, y + 2, BODY, TILE, 11);
+    px(x, y + 9, DARK, TILE, 1);
+    px(x, y + 12, DARK, TILE, 1);
+    // 3 large tinted windows
+    for (let i = 0; i < 3; i++) {
+      const wx = x + i * 5 + 1;
+      px(wx, y + 3, WIN, 4, 5);
+      px(wx, y + 3, '#1a304a', 4, 1);
+      px(wx, y + 7, '#1a304a', 4, 1);
+      px(wx, y + 4, WINHL, 1, 3);
+      px(wx + 3, y + 4, '#1a304a', 1, 3);
+    }
+    // tiny luggage hatch in lower body
+    px(x + 4, y + 11, '#1a304a', 8, 1);
+  } else {  // back
+    px(x, y + 1, ROOF, TILE - 2, 1);
+    px(x, y + 2, BODY, TILE - 2, 11);
+    px(x, y + 9, DARK, TILE - 2, 1);
+    px(x, y + 12, DARK, TILE - 2, 1);
+    // back window (one big one)
+    px(x + 1, y + 3, WIN, 8, 5);
+    px(x + 1, y + 3, '#1a304a', 8, 1);
+    px(x + 1, y + 7, '#1a304a', 8, 1);
+    // RICK STEVES "RS" badge
+    drawTinyText('RS', x + 10, y + 4, DARK);
+    // tail lights
+    px(x + 13, y + 10, '#cc4040', 1, 2);
+    // wheel well
+    px(x + 2, y + 13, WHEEL, 4, 3);
+    px(x + 2, y + 13, TIRE, 4, 1);
+    px(x + 3, y + 14, HUB, 2, 1);
+  }
+}
+
+// Sky tile (background for travel scenes)
+function drawSkyTile(x, y) {
+  px(x, y, '#80a0d0', TILE, TILE);
+  // clouds
+  for (let i = 0; i < 3; i++) {
+    const cx = (x + i * 5 + (y * 3) % 7) % (320 - 6);
+    px(cx, y + 2 + (i % 3), '#fff0f0', 4, 1);
+  }
+}
+
+// =============================================================
+// HORIZON BACKDROPS — drawn before the map tiles, in the top ~28 px of canvas
+// =============================================================
+// Horizon strip is HORIZON_H px tall (3 tile rows). Maps reserve their top 3
+// rows as walkable-but-empty so the backdrop shows through.
+const HORIZON_H = 48;
+
+function drawHorizonSky(top, bot) {
+  const grad = ctx.createLinearGradient(0, 0, 0, HORIZON_H);
+  grad.addColorStop(0, top);
+  grad.addColorStop(1, bot);
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, VIEW_W, HORIZON_H);
+}
+
+// Mt Tam — Mill Valley horizon
+function drawHorizonMtTam() {
+  drawHorizonSky('#9bc4dc', '#f4dca4');
+  // sun
+  ctx.fillStyle = '#fff8c8';
+  ctx.beginPath();
+  ctx.arc(44, 16, 7, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = 'rgba(255,240,180,0.4)';
+  ctx.beginPath(); ctx.arc(44, 16, 11, 0, Math.PI * 2); ctx.fill();
+  // a few thin clouds
+  ctx.fillStyle = 'rgba(255,255,255,0.6)';
+  ctx.fillRect(80, 8, 18, 2); ctx.fillRect(86, 10, 14, 1);
+  ctx.fillRect(220, 14, 22, 2); ctx.fillRect(228, 16, 14, 1);
+  // back ridge (lighter, lower contrast)
+  const back = [
+    8, 9, 11, 13, 15, 16, 17, 18, 19, 19, 18, 16, 14, 13, 14, 16, 19, 22, 23, 22,
+    21, 19, 18, 17, 16, 14, 13, 11, 10, 9, 8, 8, 7, 6, 6, 5, 5, 4, 4, 3,
+  ];
+  ctx.fillStyle = '#5a7a5a';
+  for (let i = 0; i < back.length; i++) {
+    ctx.fillRect(i * 8, HORIZON_H - back[i] - 2, 8, back[i] + 4);
+  }
+  // foreground Mt Tam silhouette (taller, two peaks, east-leaning)
+  const heights = [
+    8, 9, 11, 13, 15, 17, 20, 22, 23, 22, 20, 18, 16, 17, 20, 23, 27, 30, 32, 30,
+    27, 23, 20, 22, 28, 35, 38, 36, 31, 25, 19, 14, 11, 9, 8, 7, 6, 5, 4, 3,
+  ];
+  ctx.fillStyle = '#2a4a32';
+  for (let i = 0; i < heights.length; i++) {
+    ctx.fillRect(i * 8, HORIZON_H - heights[i], 8, heights[i] + 2);
+  }
+  // sun-side highlight (right slope of each rise)
+  ctx.fillStyle = '#3a6a3e';
+  for (let i = 0; i < heights.length; i++) {
+    if (i > 0 && heights[i] > heights[i-1]) {
+      ctx.fillRect(i * 8 + 4, HORIZON_H - heights[i], 4, Math.min(4, heights[i]));
+    }
+  }
+  // a couple tiny redwood silhouettes on the foreground ridge
+  ctx.fillStyle = '#1a2a18';
+  for (const fx of [70, 158, 250]) {
+    ctx.fillRect(fx, HORIZON_H - 6, 2, 4);
+    ctx.fillRect(fx - 1, HORIZON_H - 8, 4, 2);
+  }
+}
+
+// Andes — Machu Picchu horizon
+function drawHorizonAndes() {
+  drawHorizonSky('#9aafd0', '#dcd0a8');
+  // back ridge of distant peaks (lower contrast)
+  const backPeaks = [
+    [0, 36], [30, 28], [60, 22], [95, 16], [130, 14], [165, 18],
+    [200, 14], [235, 22], [270, 28], [305, 32], [VIEW_W, 38],
+  ];
+  ctx.fillStyle = '#7888a0';
+  ctx.beginPath();
+  ctx.moveTo(0, HORIZON_H);
+  for (const [x, y] of backPeaks) ctx.lineTo(x, y);
+  ctx.lineTo(VIEW_W, HORIZON_H);
+  ctx.closePath(); ctx.fill();
+  // back snow
+  ctx.fillStyle = 'rgba(250,250,255,0.7)';
+  for (const [x, y] of backPeaks) if (y < 20) ctx.fillRect(x - 3, y, 6, 2);
+  // foreground jagged peaks (taller, darker)
+  const peaks = [
+    [0, 44], [20, 32], [50, 24], [85, 14], [120, 6], [155, 12],
+    [190, 4], [225, 14], [260, 22], [295, 30], [VIEW_W, 38],
+  ];
+  ctx.fillStyle = '#5a4a3a';
+  ctx.beginPath();
+  ctx.moveTo(0, HORIZON_H);
+  for (const [x, y] of peaks) ctx.lineTo(x, y);
+  ctx.lineTo(VIEW_W, HORIZON_H);
+  ctx.closePath(); ctx.fill();
+  // shading
+  ctx.fillStyle = '#7a604a';
+  for (const [x, y] of peaks) {
+    if (y < 20) ctx.fillRect(x, y + 2, 4, 6);
+  }
+  // snow caps
+  ctx.fillStyle = '#ffffff';
+  for (const [x, y] of peaks) {
+    if (y < 16) ctx.fillRect(x - 5, y, 10, 3);
+  }
+  // a couple of soaring birds
+  ctx.fillStyle = '#1a1a1a';
+  ctx.fillRect(60, 20, 1, 1); ctx.fillRect(61, 19, 1, 1); ctx.fillRect(62, 20, 1, 1);
+  ctx.fillRect(190, 12, 1, 1); ctx.fillRect(191, 11, 1, 1); ctx.fillRect(192, 12, 1, 1);
+}
+
+// Generic European skyline — Europe scene (Amsterdam canal-houses + far Eiffel)
+function drawHorizonEuro() {
+  drawHorizonSky('#a8c8e0', '#e8d8a8');
+  // soft cloud band
+  ctx.fillStyle = 'rgba(255,255,255,0.55)';
+  for (let i = 0; i < 6; i++) ctx.fillRect(20 + i * 50, 8 + (i % 2) * 3, 28, 2);
+  // distant rolling hills
+  ctx.fillStyle = '#6a7a7a';
+  ctx.beginPath();
+  ctx.moveTo(0, 32);
+  for (let x = 0; x <= VIEW_W; x += 16) {
+    const h = 32 - 4 * Math.sin(x / 28);
+    ctx.lineTo(x, h);
+  }
+  ctx.lineTo(VIEW_W, HORIZON_H); ctx.lineTo(0, HORIZON_H);
+  ctx.closePath(); ctx.fill();
+  // canal-house rooftops (Amsterdam style — narrow, stepped gables)
+  const colors = ['#7a4040', '#5a4a30', '#704530', '#604040', '#553530', '#7a5040'];
+  for (let i = 0; i < 14; i++) {
+    const x = 4 + i * 18;
+    if (x > 130 && x < 200) continue;        // gap for Eiffel
+    const baseH = 18 + ((i * 7) % 6);
+    ctx.fillStyle = colors[i % colors.length];
+    ctx.fillRect(x, HORIZON_H - baseH, 16, baseH);
+    // stepped gable
+    ctx.fillStyle = '#3a2820';
+    ctx.fillRect(x + 5, HORIZON_H - baseH - 3, 6, 3);
+    ctx.fillRect(x + 3, HORIZON_H - baseH - 1, 10, 1);
+    // windows
+    ctx.fillStyle = '#fff0c0';
+    ctx.fillRect(x + 3, HORIZON_H - baseH + 4, 3, 3);
+    ctx.fillRect(x + 10, HORIZON_H - baseH + 4, 3, 3);
+    ctx.fillRect(x + 6, HORIZON_H - baseH + 12, 4, 4);
+  }
+  // Eiffel Tower silhouette in the gap
+  drawSmallEiffel(155, 2, 0.9);
+}
+
+// Paris horizon — bigger Eiffel + Haussmann rooftops + Seine glimmer
+function drawHorizonParis() {
+  drawHorizonSky('#bcd4e8', '#f8d4a4');
+  // sun setting
+  ctx.fillStyle = 'rgba(255,200,140,0.7)';
+  ctx.beginPath(); ctx.arc(60, 28, 9, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = 'rgba(255,220,160,0.4)';
+  ctx.beginPath(); ctx.arc(60, 28, 14, 0, Math.PI * 2); ctx.fill();
+  // distant rooftops behind
+  ctx.fillStyle = '#806060';
+  for (let x = 0; x < VIEW_W; x += 12) {
+    const h = 8 + ((x * 5) % 5);
+    ctx.fillRect(x, HORIZON_H - 12 - h, 12, h + 12);
+  }
+  // Haussmann rooftops in front
+  for (let x = 0; x < VIEW_W; x += 24) {
+    if (x > 130 && x < 200) continue;        // gap for big Eiffel
+    ctx.fillStyle = '#3a2820';
+    ctx.fillRect(x, HORIZON_H - 16, 22, 16);
+    ctx.fillStyle = '#604030';
+    ctx.fillRect(x + 1, HORIZON_H - 14, 20, 4);
+    ctx.fillStyle = '#a08070';
+    ctx.fillRect(x + 1, HORIZON_H - 10, 20, 8);
+    // chimneys
+    ctx.fillStyle = '#3a2820';
+    ctx.fillRect(x + 3, HORIZON_H - 18, 2, 4);
+    ctx.fillRect(x + 17, HORIZON_H - 18, 2, 4);
+    // windows
+    ctx.fillStyle = '#fff0c0';
+    for (let i = 0; i < 4; i++) ctx.fillRect(x + 3 + i * 5, HORIZON_H - 7, 3, 3);
+  }
+  // BIG Eiffel Tower in middle
+  drawBigEiffel(150, 0);
+  // Seine glimmer at very bottom of horizon strip
+  ctx.fillStyle = 'rgba(140,170,200,0.7)';
+  ctx.fillRect(0, HORIZON_H - 2, VIEW_W, 2);
+}
+
+// GT Tech Tower — Atlanta / GT campus skyline (taller version)
+function drawHorizonGT() {
+  drawHorizonSky('#9ab4d0', '#e0c4a4');
+  // distant skyline
+  ctx.fillStyle = '#506880';
+  for (let x = 0; x < VIEW_W; x += 18) {
+    const h = 8 + ((x * 11) % 6);
+    ctx.fillRect(x, HORIZON_H - 18 - h, 18, h + 4);
+  }
+  // tree line / campus green
+  ctx.fillStyle = '#3a5a3a';
+  ctx.fillRect(0, HORIZON_H - 6, VIEW_W, 6);
+  ctx.fillStyle = '#2a4a2a';
+  for (let x = 0; x < VIEW_W; x += 6) ctx.fillRect(x, HORIZON_H - 8, 4, 4);
+  // GT campus buildings on either side
+  ctx.fillStyle = '#604030';
+  ctx.fillRect(40, HORIZON_H - 18, 36, 18);
+  ctx.fillRect(70, HORIZON_H - 26, 14, 26);
+  ctx.fillStyle = '#604030';
+  ctx.fillRect(225, HORIZON_H - 16, 50, 16);
+  ctx.fillRect(248, HORIZON_H - 24, 12, 24);
+  // windows
+  ctx.fillStyle = '#a8c0e0';
+  for (let x = 44; x < 76; x += 4) for (let y = HORIZON_H - 16; y < HORIZON_H - 4; y += 4) ctx.fillRect(x, y, 2, 2);
+  for (let x = 230; x < 274; x += 4) for (let y = HORIZON_H - 14; y < HORIZON_H - 4; y += 4) ctx.fillRect(x, y, 2, 2);
+  // Tech Tower in the center — taller, more iconic
+  const tx = 145;
+  // body
+  ctx.fillStyle = '#7a2a20';
+  ctx.fillRect(tx, HORIZON_H - 38, 28, 38);
+  // brick pattern
+  ctx.fillStyle = '#5a1a14';
+  for (let y = HORIZON_H - 36; y < HORIZON_H; y += 4) ctx.fillRect(tx, y, 28, 1);
+  // gold "TECH" letters
+  ctx.fillStyle = '#EAAA00';
+  // T
+  ctx.fillRect(tx + 3, HORIZON_H - 33, 5, 1); ctx.fillRect(tx + 5, HORIZON_H - 33, 1, 6);
+  // E
+  ctx.fillRect(tx + 9, HORIZON_H - 33, 4, 1); ctx.fillRect(tx + 9, HORIZON_H - 33, 1, 6);
+  ctx.fillRect(tx + 9, HORIZON_H - 30, 3, 1); ctx.fillRect(tx + 9, HORIZON_H - 28, 4, 1);
+  // C
+  ctx.fillRect(tx + 14, HORIZON_H - 33, 4, 1); ctx.fillRect(tx + 14, HORIZON_H - 33, 1, 6);
+  ctx.fillRect(tx + 14, HORIZON_H - 28, 4, 1);
+  // H
+  ctx.fillRect(tx + 19, HORIZON_H - 33, 1, 6); ctx.fillRect(tx + 23, HORIZON_H - 33, 1, 6);
+  ctx.fillRect(tx + 19, HORIZON_H - 30, 5, 1);
+  // gold cap (multi-tier)
+  ctx.fillStyle = '#EAAA00';
+  ctx.fillRect(tx - 2, HORIZON_H - 41, 32, 3);
+  ctx.fillRect(tx + 2, HORIZON_H - 44, 24, 3);
+  ctx.fillRect(tx + 6, HORIZON_H - 47, 16, 3);
+  ctx.fillStyle = '#cc8800';
+  ctx.fillRect(tx - 2, HORIZON_H - 38, 32, 1);
+  // cap tip
+  ctx.fillStyle = '#EAAA00';
+  ctx.fillRect(tx + 13, HORIZON_H - 48, 2, 2);
+}
+
+// Reusable Eiffel sprite (small) — base at given x, top at y
+function drawSmallEiffel(x, y, scale) {
+  ctx.fillStyle = '#1a1a1a';
+  // antenna
+  ctx.fillRect(x + 8, y, 1, 4);
+  // top sections
+  ctx.fillRect(x + 6, y + 4, 5, 2);
+  ctx.fillRect(x + 7, y + 6, 3, 3);
+  // narrow upper
+  ctx.fillRect(x + 7, y + 9, 3, 6);
+  ctx.fillRect(x + 6, y + 15, 5, 1);
+  // legs spreading
+  ctx.fillRect(x + 5, y + 16, 1, 14);
+  ctx.fillRect(x + 11, y + 16, 1, 14);
+  ctx.fillRect(x + 7, y + 18, 3, 1);
+  ctx.fillRect(x + 7, y + 22, 3, 1);
+  ctx.fillRect(x + 4, y + 24, 1, 6);
+  ctx.fillRect(x + 12, y + 24, 1, 6);
+  ctx.fillRect(x + 6, y + 28, 5, 1);
+  // base
+  ctx.fillRect(x + 3, y + 30, 11, 2);
+}
+
+// Big Eiffel Tower (Paris scene)
+function drawBigEiffel(x, y) {
+  ctx.fillStyle = '#1a1a1a';
+  // antenna + spire
+  ctx.fillRect(x + 9, y, 2, 5);
+  ctx.fillRect(x + 8, y + 5, 4, 2);
+  // top observation deck
+  ctx.fillRect(x + 6, y + 7, 8, 3);
+  ctx.fillRect(x + 8, y + 10, 4, 1);
+  // upper narrow tower
+  ctx.fillRect(x + 8, y + 11, 4, 6);
+  ctx.fillRect(x + 6, y + 17, 8, 1);
+  // mid section
+  ctx.fillRect(x + 5, y + 18, 1, 12);
+  ctx.fillRect(x + 14, y + 18, 1, 12);
+  ctx.fillRect(x + 7, y + 21, 6, 1);
+  ctx.fillRect(x + 7, y + 25, 6, 1);
+  ctx.fillRect(x + 7, y + 29, 6, 1);
+  // legs spreading to base
+  ctx.fillRect(x + 3, y + 30, 1, 14);
+  ctx.fillRect(x + 16, y + 30, 1, 14);
+  ctx.fillRect(x + 8, y + 32, 1, 12);
+  ctx.fillRect(x + 11, y + 32, 1, 12);
+  // arches
+  ctx.fillRect(x + 5, y + 36, 10, 1);
+  ctx.fillRect(x + 4, y + 40, 12, 1);
+  ctx.fillRect(x + 3, y + 44, 14, 2);
+}
+
+// Smith Hall — view through the dorm window of GT campus quad
+function drawHorizonSmithHall() {
+  // wood/plaster wall band at the very top
+  ctx.fillStyle = '#704530';
+  ctx.fillRect(0, 0, VIEW_W, HORIZON_H);
+  // window frame in the middle
+  const wx = 60, wy = 4, ww = 200, wh = HORIZON_H - 8;
+  // sky inside the window
+  const grad = ctx.createLinearGradient(wx, wy, wx, wy + wh);
+  grad.addColorStop(0, '#9ec0dc');
+  grad.addColorStop(1, '#e0d0a0');
+  ctx.fillStyle = grad;
+  ctx.fillRect(wx, wy, ww, wh);
+  // distant GT campus
+  ctx.fillStyle = '#3a5a3a';
+  ctx.fillRect(wx, wy + wh - 10, ww, 10);
+  // a couple of GT brick buildings
+  ctx.fillStyle = '#7a2a20';
+  ctx.fillRect(wx + 20, wy + wh - 22, 36, 14);
+  ctx.fillRect(wx + 70, wy + wh - 28, 28, 20);
+  ctx.fillRect(wx + 140, wy + wh - 24, 32, 16);
+  // tiny tech tower on the right
+  ctx.fillStyle = '#7a2a20';
+  ctx.fillRect(wx + 175, wy + wh - 32, 8, 24);
+  ctx.fillStyle = '#EAAA00';
+  ctx.fillRect(wx + 174, wy + wh - 35, 10, 3);
+  // building windows
+  ctx.fillStyle = '#fff0a0';
+  for (let x = wx + 22; x < wx + 172; x += 6) {
+    for (let y = wy + wh - 22; y < wy + wh - 10; y += 6) ctx.fillRect(x, y, 2, 2);
+  }
+  // window frame (cross)
+  ctx.fillStyle = '#3a2410';
+  ctx.fillRect(wx + ww/2 - 1, wy, 2, wh);
+  ctx.fillRect(wx, wy + wh/2 - 1, ww, 2);
+  // window border
+  ctx.strokeStyle = '#3a2410';
+  ctx.lineWidth = 3;
+  ctx.strokeRect(wx, wy, ww, wh);
+  // wall trim
+  ctx.fillStyle = '#3a2410';
+  ctx.fillRect(0, HORIZON_H - 2, VIEW_W, 2);
+  // a small Tam High pennant on the wall (Eli's nostalgia)
+  ctx.fillStyle = '#7a1f1f';
+  ctx.beginPath();
+  ctx.moveTo(20, 8); ctx.lineTo(20, 32); ctx.lineTo(40, 20);
+  ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#EAAA00';
+  drawTinyText('TAM', 22, 14, '#EAAA00');
+}
+
+// DU House — slanted attic ceiling beams + round window
+function drawHorizonDU() {
+  // slanted dark ceiling
+  ctx.fillStyle = '#2a1a0a';
+  ctx.fillRect(0, 0, VIEW_W, HORIZON_H);
+  // wood beam pattern - converging lines giving "attic peak" feel
+  ctx.fillStyle = '#604030';
+  for (let x = 0; x <= VIEW_W; x += 24) {
+    // diagonal beams
+    const slope = (x - VIEW_W / 2) / 8;
+    for (let i = 0; i < HORIZON_H; i++) {
+      ctx.fillRect(x + (slope * i / HORIZON_H) | 0, i, 2, 1);
+    }
+  }
+  // central peak beam
+  ctx.fillStyle = '#3a2410';
+  ctx.fillRect(VIEW_W / 2 - 2, 0, 4, HORIZON_H);
+  // round window (porthole) in the middle
+  const cx = VIEW_W / 2, cy = HORIZON_H / 2 + 4, rad = 12;
+  // sky inside porthole
+  ctx.fillStyle = '#5a7090';
+  ctx.beginPath(); ctx.arc(cx, cy, rad, 0, Math.PI * 2); ctx.fill();
+  // a few stars
+  ctx.fillStyle = '#fff8c8';
+  ctx.fillRect(cx - 5, cy - 6, 1, 1);
+  ctx.fillRect(cx + 4, cy - 3, 1, 1);
+  ctx.fillRect(cx - 2, cy + 4, 1, 1);
+  ctx.fillRect(cx + 6, cy + 5, 1, 1);
+  // window frame
+  ctx.strokeStyle = '#3a2410'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(cx, cy, rad, 0, Math.PI * 2); ctx.stroke();
+  ctx.fillRect(cx - rad, cy - 1, rad * 2, 2);
+  ctx.fillRect(cx - 1, cy - rad, 2, rad * 2);
+  // DU letters on the wall
+  ctx.fillStyle = '#EAAA00';
+  drawTinyText('DELTA  UPSILON', 100, HORIZON_H - 8, '#EAAA00');
+  // ceiling trim at bottom of horizon
+  ctx.fillStyle = '#3a2410';
+  ctx.fillRect(0, HORIZON_H - 2, VIEW_W, 2);
+}
+
+// Quantum Lab — giant quantum-computer chandelier hanging from ceiling
+function drawHorizonQuantumLab() {
+  // dark lab ceiling with subtle blue ambient
+  const grad = ctx.createLinearGradient(0, 0, 0, HORIZON_H);
+  grad.addColorStop(0, '#0a0a18');
+  grad.addColorStop(1, '#101a30');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, VIEW_W, HORIZON_H);
+  // suspension cables
+  ctx.fillStyle = '#404040';
+  ctx.fillRect(VIEW_W / 2 - 30, 0, 1, 6);
+  ctx.fillRect(VIEW_W / 2 + 29, 0, 1, 6);
+  ctx.fillRect(VIEW_W / 2, 0, 1, 6);
+  // top mount plate
+  ctx.fillStyle = '#606060';
+  ctx.fillRect(VIEW_W / 2 - 32, 6, 64, 4);
+  // chandelier coils — concentric platters
+  const cx = VIEW_W / 2;
+  // top plate (widest)
+  ctx.fillStyle = '#cca800';
+  ctx.fillRect(cx - 32, 10, 64, 4);
+  ctx.fillStyle = '#EAAA00';
+  ctx.fillRect(cx - 32, 10, 64, 1);
+  // mid plate
+  ctx.fillStyle = '#806000';
+  ctx.fillRect(cx - 26, 14, 52, 4);
+  ctx.fillStyle = '#a07800';
+  ctx.fillRect(cx - 26, 14, 52, 1);
+  // hanging filaments (cooling tubes glowing blue)
+  for (let i = 0; i < 9; i++) {
+    const x = cx - 20 + i * 5;
+    ctx.fillStyle = '#80c0ff';
+    ctx.fillRect(x, 18, 2, 18);
+    // glow highlight
+    if (i % 2 === 0) {
+      ctx.fillStyle = '#c0e0ff';
+      ctx.fillRect(x, 22 + (i % 3) * 2, 2, 3);
+    }
+  }
+  // bottom gold cap
+  ctx.fillStyle = '#cca800';
+  ctx.fillRect(cx - 22, 36, 44, 4);
+  ctx.fillStyle = '#EAAA00';
+  ctx.fillRect(cx - 22, 36, 44, 1);
+  // qubit nodes (small bright dots) at the bottom
+  ctx.fillStyle = '#80c0ff';
+  for (let i = 0; i < 5; i++) ctx.fillRect(cx - 16 + i * 8, 41, 2, 2);
+  // ambient lights along the wall on either side
+  ctx.fillStyle = '#3060c0';
+  for (let x = 16; x < cx - 38; x += 26) ctx.fillRect(x, HORIZON_H - 6, 18, 2);
+  for (let x = cx + 28; x < VIEW_W - 16; x += 26) ctx.fillRect(x, HORIZON_H - 6, 18, 2);
+  ctx.fillStyle = '#80c0ff';
+  for (let x = 18; x < cx - 38; x += 26) ctx.fillRect(x, HORIZON_H - 5, 14, 1);
+  for (let x = cx + 30; x < VIEW_W - 16; x += 26) ctx.fillRect(x, HORIZON_H - 5, 14, 1);
+  // labels (tiny equations)
+  drawTinyText('H', 24, 8, '#80c0ff');
+  drawTinyText('CNOT', VIEW_W - 50, 8, '#80c0ff');
+}
+
+// Hi Rise — Atlanta skyline view from senior-year apartment
+function drawHorizonHiRise() {
+  // sunrise/sunset sky
+  const grad = ctx.createLinearGradient(0, 0, 0, HORIZON_H);
+  grad.addColorStop(0, '#1a2848');
+  grad.addColorStop(0.6, '#a06860');
+  grad.addColorStop(1, '#f0a878');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, VIEW_W, HORIZON_H);
+  // distant skyline silhouette (back layer)
+  ctx.fillStyle = '#1a1a30';
+  for (let x = 0; x < VIEW_W; x += 14) {
+    const h = 14 + ((x * 11) % 8);
+    ctx.fillRect(x, HORIZON_H - h - 4, 14, h);
+  }
+  // foreground tall buildings (Atlanta-style)
+  const buildings = [
+    [10, 28], [38, 36], [70, 40], [108, 32], [140, 44], [170, 38],
+    [200, 30], [232, 42], [266, 34], [294, 28],
+  ];
+  ctx.fillStyle = '#0a0a16';
+  for (const [x, h] of buildings) {
+    ctx.fillRect(x, HORIZON_H - h, 22, h);
+  }
+  // illuminated windows
+  ctx.fillStyle = '#fff0a0';
+  for (const [x, h] of buildings) {
+    for (let dx = 2; dx < 20; dx += 4) {
+      for (let dy = 4; dy < h - 2; dy += 4) {
+        if (((x + dx) * (HORIZON_H - dy)) % 7 < 4) ctx.fillRect(x + dx, HORIZON_H - h + dy, 2, 2);
+      }
+    }
+  }
+  // a couple of red antenna lights blinking
+  ctx.fillStyle = '#ff4040';
+  ctx.fillRect(81, HORIZON_H - 42, 1, 1);
+  ctx.fillRect(151, HORIZON_H - 46, 1, 1);
+  // window frame (looking out from the apt)
+  ctx.fillStyle = '#3a2410';
+  ctx.fillRect(0, 0, 4, HORIZON_H);
+  ctx.fillRect(VIEW_W - 4, 0, 4, HORIZON_H);
+  ctx.fillRect(0, HORIZON_H - 2, VIEW_W, 2);
+  ctx.fillRect(0, 0, VIEW_W, 2);
+  // central frame divider
+  ctx.fillRect(VIEW_W / 2 - 1, 0, 2, HORIZON_H);
+}
+
+// Rome airport horizon — Roman skyline + plane silhouette
+function drawHorizonRome() {
+  drawHorizonSky('#a8c0d8', '#e8c8a0');
+  // distant Roman hills
+  ctx.fillStyle = '#7a8870';
+  ctx.beginPath();
+  ctx.moveTo(0, HORIZON_H - 8);
+  for (let x = 0; x <= VIEW_W; x += 16) {
+    const y = HORIZON_H - 12 - 4 * Math.sin(x / 20);
+    ctx.lineTo(x, y);
+  }
+  ctx.lineTo(VIEW_W, HORIZON_H);
+  ctx.lineTo(0, HORIZON_H);
+  ctx.closePath(); ctx.fill();
+  // Colosseum silhouette
+  const cx = 130;
+  ctx.fillStyle = '#604530';
+  ctx.fillRect(cx, HORIZON_H - 22, 50, 18);
+  // arches
+  ctx.fillStyle = '#a08070';
+  for (let i = 0; i < 7; i++) {
+    ctx.fillRect(cx + 2 + i * 7, HORIZON_H - 18, 4, 8);
+  }
+  for (let i = 0; i < 6; i++) {
+    ctx.fillRect(cx + 5 + i * 7, HORIZON_H - 10, 4, 4);
+  }
+  // top arches (eroded part)
+  ctx.fillStyle = '#604530';
+  ctx.fillRect(cx, HORIZON_H - 26, 26, 4);
+  // dome of St. Peter's — far right
+  const sx = 240;
+  ctx.fillStyle = '#9a8870';
+  ctx.fillRect(sx, HORIZON_H - 14, 32, 10);
+  ctx.beginPath();
+  ctx.arc(sx + 16, HORIZON_H - 14, 12, Math.PI, 2 * Math.PI);
+  ctx.fill();
+  // cross on top
+  ctx.fillStyle = '#3a2410';
+  ctx.fillRect(sx + 15, HORIZON_H - 28, 2, 4);
+  ctx.fillRect(sx + 13, HORIZON_H - 26, 6, 2);
+  // commercial plane in the sky (heading right, leaving Rome)
+  ctx.fillStyle = '#e0e0e0';
+  ctx.fillRect(60, 14, 16, 3);
+  ctx.fillRect(72, 13, 6, 1);          // nose
+  ctx.fillRect(58, 13, 2, 5);          // tail fin
+  ctx.fillRect(64, 11, 8, 1);          // wings (top)
+  ctx.fillRect(64, 18, 8, 1);          // wings (bottom)
+  // contrail
+  ctx.fillStyle = 'rgba(255,255,255,0.6)';
+  ctx.fillRect(20, 15, 38, 1);
+  // sun
+  ctx.fillStyle = '#fff0c0';
+  ctx.beginPath(); ctx.arc(290, 12, 6, 0, Math.PI * 2); ctx.fill();
+}
+
+// Stadium horizon — Bobby Dodd: stands full of fans + scoreboard
+function drawHorizonStadium() {
+  drawHorizonSky('#9ec0dc', '#dccca0');
+  // distant skyline of Atlanta
+  ctx.fillStyle = '#506880';
+  for (let x = 0; x < VIEW_W; x += 14) {
+    const h = 4 + ((x * 7) % 4);
+    ctx.fillRect(x, 18 - h, 14, h);
+  }
+  // stadium structure — concrete band along the back of the stands
+  ctx.fillStyle = '#a0a0a0';
+  ctx.fillRect(0, 18, VIEW_W, 4);
+  ctx.fillStyle = '#808080';
+  ctx.fillRect(0, 22, VIEW_W, 1);
+  // stands — multiple rows of seated fans (mostly gold + navy = GT colors)
+  for (let row = 0; row < 5; row++) {
+    const y = 24 + row * 4;
+    // seat bench color
+    ctx.fillStyle = '#3a3a4a';
+    ctx.fillRect(0, y, VIEW_W, 3);
+    // tiny fans (alternating gold and navy and white)
+    for (let x = 0; x < VIEW_W; x += 3) {
+      const c = (x + row * 7) % 4;
+      ctx.fillStyle = c === 0 ? '#EAAA00' : c === 1 ? '#003057' : c === 2 ? '#ffffff' : '#EAAA00';
+      ctx.fillRect(x, y, 2, 2);
+    }
+  }
+  // scoreboard on the right
+  ctx.fillStyle = '#202020';
+  ctx.fillRect(220, 4, 70, 16);
+  ctx.fillStyle = '#3a3a4a';
+  ctx.fillRect(218, 2, 74, 4);
+  // scoreboard text — GT vs (rival) and score
+  drawTinyText('GT', 226, 7, '#EAAA00');
+  drawTinyText('21', 240, 7, '#ffffff');
+  drawTinyText('UVA', 252, 7, '#EAAA00');
+  drawTinyText('14', 268, 7, '#ffffff');
+  // pennants flying
+  ctx.fillStyle = '#EAAA00';
+  ctx.beginPath(); ctx.moveTo(40, 6); ctx.lineTo(48, 12); ctx.lineTo(40, 14); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#003057';
+  ctx.beginPath(); ctx.moveTo(180, 4); ctx.lineTo(188, 10); ctx.lineTo(180, 12); ctx.closePath(); ctx.fill();
+  // trim at bottom of horizon
+  ctx.fillStyle = '#001a30';
+  ctx.fillRect(0, HORIZON_H - 2, VIEW_W, 2);
+}
+
+function drawHorizon() {
+  if (!currentScene || !currentScene.horizon) return;
+  const id = currentScene.horizon;
+  if (id === 'mt-tam') drawHorizonMtTam();
+  else if (id === 'andes') drawHorizonAndes();
+  else if (id === 'euro') drawHorizonEuro();
+  else if (id === 'paris') drawHorizonParis();
+  else if (id === 'gt') drawHorizonGT();
+  else if (id === 'smith') drawHorizonSmithHall();
+  else if (id === 'du') drawHorizonDU();
+  else if (id === 'qlab') drawHorizonQuantumLab();
+  else if (id === 'hirise') drawHorizonHiRise();
+  else if (id === 'rome') drawHorizonRome();
+  else if (id === 'stadium') drawHorizonStadium();
+}
+
+// Plane on tarmac
+function drawPlane(x, y, part) {
+  drawCobble(x, y);
+  // simplified plane silhouette
+  if (part === 'nose') {
+    px(x + 8, y + 6, '#e0e0e0', 8, 4);
+    px(x + 8, y + 6, '#a0a0a0', 8, 1);
+    px(x + 14, y + 5, '#e0e0e0', 2, 1);  // tip
+  } else if (part === 'mid') {
+    px(x, y + 6, '#e0e0e0', TILE, 4);
+    px(x, y + 6, '#a0a0a0', TILE, 1);
+    // windows
+    for (let i = 0; i < 4; i++) px(x + i * 4 + 1, y + 7, '#80c0ff', 2, 1);
+    // wing
+    px(x, y + 4, '#c0c0c0', TILE, 1);
+    px(x, y + 10, '#c0c0c0', TILE, 1);
+  } else {  // tail
+    px(x, y + 6, '#e0e0e0', 8, 4);
+    px(x, y + 6, '#a0a0a0', 8, 1);
+    // tail fin
+    px(x + 4, y + 1, '#cc4040', 4, 5);
+    px(x + 4, y + 1, '#801a1a', 4, 1);
+    px(x + 4, y + 5, '#801a1a', 4, 1);
+  }
+}
+
+// ---------- Character sprites ----------
+// Each character defined by walk frames per direction.
+// 16x16 cell. Letters map to a per-character palette.
+
+function drawSpriteData(data, x, y, palette) {
+  for (let r = 0; r < data.length; r++) {
+    const row = data[r];
+    for (let c = 0; c < row.length; c++) {
+      const ch = row[c];
+      if (ch === '.') continue;
+      const col = palette[ch];
+      if (col) px(x + c, y + r, col);
+    }
+  }
+}
+
+// Eli — graduate in black gown with gold stole and mortarboard
+const ELI_PAL = {
+  k: C.dark, K: C.black,
+  s: C.skin, S: C.skinSh, D: C.skinDk,
+  h: C.hairBrn, H: '#3a2410',
+  g: '#202020', G: '#0c0c0c',          // gown
+  y: C.gold, Y: C.goldDk,              // stole / tassel
+  e: C.dark,
+  m: C.redDk,
+  w: C.white,
+};
+
+const ELI_FRAMES = {
+  // Each row exactly 16 chars. Cap=k (black), tassel=y (gold), hair=h, face=s, eye=e,
+  // mouth=m, gown=g, gold stole=y, shoe=k.
+  down0: [
+    "................",
+    "................",
+    "....kkkkkkk.....",
+    "...kkkkkkkkk....",
+    "...kkkkkkkkky...",
+    "....kkkkkkk.y...",
+    "....hhhhhhh.....",
+    "...hsesssesh....",
+    "...hsssssssh....",
+    "....smmmmms.....",
+    "....DsssssD.....",
+    "...gggggggg.....",
+    "..ggyyyyyygg....",
+    "..gggyyyygggg...",
+    "..ggg....ggg....",
+    "..kkk....kkk....",
+  ],
+  down1: [
+    "................",
+    "................",
+    "....kkkkkkk.....",
+    "...kkkkkkkkk....",
+    "...kkkkkkkkky...",
+    "....kkkkkkk.y...",
+    "....hhhhhhh.....",
+    "...hsesssesh....",
+    "...hsssssssh....",
+    "....smmmmms.....",
+    "....DsssssD.....",
+    "...gggggggg.....",
+    "..ggyyyyyygg....",
+    "..gggyyyygggg...",
+    "..gggg..gggg....",
+    "..kk......kk....",
+  ],
+  up0: [
+    "................",
+    "................",
+    "....kkkkkkk.....",
+    "...kkkkkkkkk....",
+    "...kkkkkkkkk....",
+    "....kkkkkkk.....",
+    "....HHHHHHH.....",
+    "...hHHHHHHHh....",
+    "...hhhhhhhhh....",
+    "....DsssssD.....",
+    "...gggggggg.....",
+    "..ggyyyyyygg....",
+    "..gggyyyygggg...",
+    "..gggyyyygggg...",
+    "..ggg....ggg....",
+    "..kkk....kkk....",
+  ],
+  up1: [
+    "................",
+    "................",
+    "....kkkkkkk.....",
+    "...kkkkkkkkk....",
+    "...kkkkkkkkk....",
+    "....kkkkkkk.....",
+    "....HHHHHHH.....",
+    "...hHHHHHHHh....",
+    "...hhhhhhhhh....",
+    "....DsssssD.....",
+    "...gggggggg.....",
+    "..ggyyyyyygg....",
+    "..gggyyyygggg...",
+    "..gggyyyygggg...",
+    "..gggg..gggg....",
+    "..kk......kk....",
+  ],
+  left0: [
+    "................",
+    "................",
+    "...kkkkkkk......",
+    "..kkkkkkkkk.....",
+    "..kkkkkkkkky....",
+    "...kkkkkkk.y....",
+    "...hhhhhhh......",
+    "..hsesssss......",
+    "..hssmmmss......",
+    "...DssssD.......",
+    "..gggggggg......",
+    "..gyyyyyyg......",
+    "..ggyyyygg......",
+    "..ggyyyygg......",
+    "..ggg.gg........",
+    "..kkk.kk........",
+  ],
+  left1: [
+    "................",
+    "................",
+    "...kkkkkkk......",
+    "..kkkkkkkkk.....",
+    "..kkkkkkkkky....",
+    "...kkkkkkk.y....",
+    "...hhhhhhh......",
+    "..hsesssss......",
+    "..hssmmmss......",
+    "...DssssD.......",
+    "..gggggggg......",
+    "..gyyyyyyg......",
+    "..ggyyyygg......",
+    "..ggyyyygg......",
+    "..gg.ggg........",
+    "..kk.kkk........",
+  ],
+  right0: [
+    "................",
+    "................",
+    "......kkkkkkk...",
+    ".....kkkkkkkkk..",
+    "....ykkkkkkkkk..",
+    "....y.kkkkkkk...",
+    "......hhhhhhh...",
+    "......sssssesh..",
+    "......ssmmmssh..",
+    ".......DssssD...",
+    "......gggggggg..",
+    "......gyyyyyyg..",
+    "......ggyyyygg..",
+    "......ggyyyygg..",
+    "........gg.ggg..",
+    "........kk.kkk..",
+  ],
+  right1: [
+    "................",
+    "................",
+    "......kkkkkkk...",
+    ".....kkkkkkkkk..",
+    "....ykkkkkkkkk..",
+    "....y.kkkkkkk...",
+    "......hhhhhhh...",
+    "......sssssesh..",
+    "......ssmmmssh..",
+    ".......DssssD...",
+    "......gggggggg..",
+    "......gyyyyyyg..",
+    "......ggyyyygg..",
+    "......ggyyyygg..",
+    "........ggg.gg..",
+    "........kkk.kk..",
+  ],
+};
+
+// Buzz — Yellow Jacket mascot
+const BUZZ_PAL = {
+  k: C.black, K: C.dark,
+  y: C.gold, Y: C.goldDk, w: C.white,
+  o: '#ffe040', O: '#cc9900',
+  e: C.black,
+  s: '#ffd040',
+};
+
+const BUZZ_FRAMES = {
+  down0: [
+    "................",
+    "...k........k...",
+    "....k......k....",  // antennae
+    ".....yyyyyy.....",
+    "....yyyyyyyy....",
+    "....yyeyyeyy....",  // eyes
+    "....ywyyyywy....",
+    "....yyyyyyyy....",
+    "....ykkkkkky....",  // mouth/mandible
+    "...kykyyyykky...",  // body neck
+    "..kykkkkkkkkky..",
+    "..kykyyyyykkky..",  // body with stripes
+    "..kkyykkkyykky..",
+    "..kykyyyyyykky..",
+    "...yyy....yyy...",
+    "...sss....sss...",
+  ],
+  down1: [
+    "................",
+    "...k........k...",
+    "....k......k....",
+    ".....yyyyyy.....",
+    "....yyyyyyyy....",
+    "....yyeyyeyy....",
+    "....ywyyyywy....",
+    "....yyyyyyyy....",
+    "....ykkkkkky....",
+    "...kykyyyykky...",
+    "..kykkkkkkkkky..",
+    "..kykyyyyykkky..",
+    "..kkyykkkyykky..",
+    "..kykyyyyyykky..",
+    "...yyy....yyy...",
+    "...ss......ss...",
+  ],
+};
+
+// Professor — older man with glasses, tweed jacket, holding paper
+const PROF_PAL = {
+  k: C.dark, K: C.black,
+  s: C.skin, S: C.skinSh, D: C.skinDk,
+  h: C.hairGr, H: '#666666',
+  j: '#704020', J: '#503010',         // jacket tweed
+  t: '#a08070',                        // tie
+  p: '#fff8e0',                        // paper
+  w: C.white,
+  e: C.dark,
+  g: C.dark,                           // glasses frame
+};
+
+const PROF_FRAMES = {
+  down0: [
+    "................",
+    "....hhhhhhh.....",
+    "...HhhhhhhhH....",
+    "...hssssssh.....",
+    "...sgsssgsS.....",  // glasses
+    "...segsesgss....",
+    "....sssssss.....",
+    "....DsssssD.....",
+    "...jjjtjjjj.....",
+    "..jjjjtjjjj.....",
+    "..jJjjtjjjJj....",
+    "..jjJjjjjJjjp...",  // paper
+    "..jjjjjjjjjjp...",
+    "..jjJjjjjJjj....",
+    "..jjj....jjj....",
+    "..kkk....kkk....",
+  ],
+  down1: [
+    "................",
+    "....hhhhhhh.....",
+    "...HhhhhhhhH....",
+    "...hssssssh.....",
+    "...sgsssgsS.....",
+    "...segsesgss....",
+    "....sssssss.....",
+    "....DsssssD.....",
+    "...jjjtjjjj.....",
+    "..jjjjtjjjj.....",
+    "..jJjjtjjjJj....",
+    "..jjJjjjjJjjp...",
+    "..jjjjjjjjjjp...",
+    "..jjJjjjjJjj....",
+    "..jjjssssjjj....",
+    "..kss....ssk....",
+  ],
+};
+
+// Fellow grad — different hair (blonde) and red stole to distinguish from Eli
+const FRIEND_PAL = {
+  k: C.dark, K: C.black,
+  s: C.skin, S: C.skinSh, D: C.skinDk,
+  h: '#d4a060', H: '#a07040',
+  g: '#202020', G: '#0c0c0c',
+  y: '#cc3030', Y: '#801a1a',     // red stole instead of gold
+  e: C.dark, m: C.redDk,
+  w: C.white,
+};
+
+const FRIEND_FRAMES = {
+  down0: [
+    "................",
+    "................",
+    "....kkkkkkk.....",
+    "...kkkkkkkkk....",
+    "...kkkkkkkkky...",
+    "....kkkkkkk.y...",
+    "....hhhhhhh.....",
+    "...hsesssesh....",
+    "...hsssssssh....",
+    "....smmmmms.....",
+    "....DsssssD.....",
+    "...gggggggg.....",
+    "..ggyyyyyygg....",
+    "..gggyyyygggg...",
+    "..ggg....ggg....",
+    "..kkk....kkk....",
+  ],
+  down1: [
+    "................",
+    "................",
+    "....kkkkkkk.....",
+    "...kkkkkkkkk....",
+    "...kkkkkkkkky...",
+    "....kkkkkkk.y...",
+    "....hhhhhhh.....",
+    "...hsesssesh....",
+    "...hsssssssh....",
+    "....smmmmms.....",
+    "....DsssssD.....",
+    "...gggggggg.....",
+    "..ggyyyyyygg....",
+    "..gggyyyygggg...",
+    "..gggg..gggg....",
+    "..kk......kk....",
+  ],
+};
+
+// ---------- Casual person sprite (no cap, no gown) — used for non-grad NPCs ----------
+// Palette keys: k=outline/shoes, K=black, s/S/D=skin, h/H=hair, g/G=shirt, y/Y=pants,
+// e=eye, m=mouth, w=white, b=beard accent (used by bearded variants).
+const CASUAL_FRAMES = {
+  down0: [
+    "................",
+    "................",
+    "................",
+    "....HHHHHHH.....",
+    "...HhhhhhhhH....",
+    "...hhhhhhhhh....",
+    "...hsesssesh....",
+    "...hsssssssh....",
+    "....smmmmms.....",
+    "....DsssssD.....",
+    "...gggggggg.....",
+    "..gggggggggg....",
+    "..gggggggggg....",
+    "..gggggggggg....",
+    "..yyy....yyy....",
+    "..kkk....kkk....",
+  ],
+  down1: [
+    "................",
+    "................",
+    "................",
+    "....HHHHHHH.....",
+    "...HhhhhhhhH....",
+    "...hhhhhhhhh....",
+    "...hsesssesh....",
+    "...hsssssssh....",
+    "....smmmmms.....",
+    "....DsssssD.....",
+    "...gggggggg.....",
+    "..gggggggggg....",
+    "..gggggggggg....",
+    "..gggggggggg....",
+    "..yyy....yyy....",
+    "..kk......kk....",
+  ],
+};
+
+// ---------- Casual sprite with long flowing hair (sister/girl variant) ----------
+// Hair frames the head and continues down behind the shoulders past mid-back.
+const CASUAL_GIRL_FRAMES = {
+  down0: [
+    "................",
+    "................",
+    "....HHHHHHH.....",
+    "...HhhhhhhhH....",
+    "..HhhhhhhhhhH...",
+    "..hhhhhhhhhhh...",
+    "...hsesssesh....",
+    "...hsssssssh....",
+    "....smmmmms.....",
+    "..hhDsssssDhh...",
+    "..hhgggggggghh..",
+    "..hhgggggggghh..",
+    "..hggggggggggh..",
+    "..hggggggggggh..",
+    "..yyy....yyy....",
+    "..kkk....kkk....",
+  ],
+  down1: [
+    "................",
+    "................",
+    "....HHHHHHH.....",
+    "...HhhhhhhhH....",
+    "..HhhhhhhhhhH...",
+    "..hhhhhhhhhhh...",
+    "...hsesssesh....",
+    "...hsssssssh....",
+    "....smmmmms.....",
+    "..hhDsssssDhh...",
+    "..hhgggggggghh..",
+    "..hhgggggggghh..",
+    "..hggggggggggh..",
+    "..hggggggggggh..",
+    "..yyy....yyy....",
+    "..kk......kk....",
+  ],
+};
+
+// ---------- Adult / family / generic NPC palettes (reuse CASUAL layout) ----------
+// Mom (J'Amy) — auburn-chestnut hair, dark teal top. Softer face + longer mane.
+const MOM_PAL = {
+  k: C.dark, K: C.black,
+  s: C.skin, S: C.skinSh, D: C.skinDk,
+  h: '#9a5028', H: '#683010',         // warm auburn / chestnut
+  g: '#3a606a', G: '#1a3a44',         // dark teal top
+  y: '#403020', Y: '#201810',
+  e: '#3a2410',                       // softer brown eyes
+  m: '#cc6080', w: C.white,            // pink-rose lips, not the harsher red
+};
+
+// Dedicated Mom sprite — fuller hair across the head, hair flows past mid-back,
+// smaller softer mouth, eyelashes hint via hair color near eyes.
+const MOM_FRAMES = {
+  down0: [
+    "................",
+    "....HHHHHHH.....",
+    "..HHHhhhhhHHH...",
+    ".HhhhhhhhhhhhH..",
+    ".hhhhhhhhhhhhh..",
+    "..hhhhhhhhhhh...",
+    "..hhsesssseshh..",
+    "..hhsssssssshh..",
+    "....sssmmsss....",
+    "..hhDsssssDhh...",
+    "..hhgggggggghh..",
+    "..hhgggggggghh..",
+    "..hhgggggggghh..",
+    "..hggggggggggh..",
+    "..yyy....yyy....",
+    "..kkk....kkk....",
+  ],
+  down1: [
+    "................",
+    "....HHHHHHH.....",
+    "..HHHhhhhhHHH...",
+    ".HhhhhhhhhhhhH..",
+    ".hhhhhhhhhhhhh..",
+    "..hhhhhhhhhhh...",
+    "..hhsesssseshh..",
+    "..hhsssssssshh..",
+    "....sssmmsss....",
+    "..hhDsssssDhh...",
+    "..hhgggggggghh..",
+    "..hhgggggggghh..",
+    "..hhgggggggghh..",
+    "..hggggggggggh..",
+    "..yyy....yyy....",
+    "..kk......kk....",
+  ],
+};
+
+// Dad (the user) — graying hair, blue shirt
+const DAD_PAL = {
+  k: C.dark, K: C.black,
+  s: C.skin, S: C.skinSh, D: C.skinDk,
+  h: '#999999', H: '#666666',
+  g: '#3060c0', G: '#1a3060',
+  y: '#403020', Y: '#201810',
+  e: C.dark, m: C.redDk, w: C.white,
+};
+const DAD_FRAMES = CASUAL_FRAMES;
+
+// Sister (Delilah) — dirty blond shoulder-length hair, pink top
+const SIS_PAL = {
+  k: C.dark, K: C.black,
+  s: C.skin, S: C.skinSh, D: C.skinDk,
+  h: '#c8a26a', H: '#9a7848',         // dirty blond, matches Eli's
+  g: '#ff80b8', G: '#cc4080',
+  y: '#cc4040', Y: '#801a1a',
+  e: C.dark, m: C.redDk, w: C.white,
+};
+const SIS_FRAMES = CASUAL_GIRL_FRAMES;   // already shoulder-length frames
+
+// GT Marching band uniform — gold jacket, white pants, gold-feathered shako
+const BAND_PAL = {
+  k: C.dark, K: C.black,
+  s: C.skin, S: C.skinSh, D: C.skinDk,
+  h: '#EAAA00', H: '#cc8800',         // gold plume on hat
+  g: '#EAAA00', G: '#cc8800',         // gold uniform jacket
+  y: '#ffffff', Y: '#dddddd',         // white pants
+  e: C.dark, m: C.redDk, w: C.white,
+};
+
+// Drum major — same uniform but with white plume / different colors
+const DRUM_MAJOR_PAL = {
+  k: C.dark, K: C.black,
+  s: C.skin, S: C.skinSh, D: C.skinDk,
+  h: '#ffffff', H: '#cccccc',         // white plume
+  g: '#003057', G: '#001a30',         // navy jacket
+  y: '#ffffff', Y: '#dddddd',         // white pants
+  e: C.dark, m: C.redDk, w: C.white,
+};
+
+// Generic guy — dark hair, green shirt
+const GUY_PAL = {
+  k: C.dark, K: C.black,
+  s: C.skin, S: C.skinSh, D: C.skinDk,
+  h: '#3a2410', H: '#1a0a05',
+  g: '#5a8c4a', G: '#3a6c30',
+  y: '#403020', Y: '#201810',
+  e: C.dark, m: C.redDk, w: C.white,
+};
+const GUY_FRAMES = CASUAL_FRAMES;
+
+// Generic girl — brown hair, purple top
+const GIRL_PAL = {
+  k: C.dark, K: C.black,
+  s: C.skin, S: C.skinSh, D: C.skinDk,
+  h: '#704020', H: '#503010',
+  g: '#a070d0', G: '#7050a0',
+  y: '#3060c0', Y: '#1a3060',
+  e: C.dark, m: C.redDk, w: C.white,
+};
+const GIRL_FRAMES = CASUAL_GIRL_FRAMES;
+
+// ---------- Hazel (English Lab) ----------
+const DOG_PAL = {
+  l: '#e8c890', L: '#c8a070', k: C.dark, e: C.dark, m: '#a04040', n: C.black, w: C.white,
+};
+const DOG_FRAMES = {
+  down0: [
+    "................",
+    "................",
+    "................",
+    "................",
+    "...llllll.......",
+    "..LLllllLL......",
+    "..lleLleLll.....",
+    "..lLlnnllL......",
+    "..llmmmmll......",
+    "..llllllll......",
+    ".lllllllllLL....",
+    ".llllllllllLL...",
+    ".llllllllllll...",
+    "..k..k...k..k...",
+    "................",
+    "................",
+  ],
+  down1: [
+    "................",
+    "................",
+    "................",
+    "................",
+    "...llllll.......",
+    "..LLllllLL......",
+    "..lleLleLll.....",
+    "..lLlnnllL......",
+    "..llmmmmll......",
+    "..llllllll......",
+    ".lllllllllL.....",
+    ".llllllllllLL...",
+    ".lllllllllllLL..",
+    "..k..k...k..k...",
+    "................",
+    "................",
+  ],
+};
+
+// ---------- Llama (for Machu Picchu) ----------
+const LLAMA_PAL = {
+  w: '#f0e0c8', W: '#c0a880', k: C.dark, e: C.dark, m: '#a04040',
+};
+const LLAMA_FRAMES = {
+  down0: [
+    "................",
+    "....www.........",
+    "....wew.........",
+    "....www.........",
+    "....www.........",
+    "....www.........",
+    "...wwww.........",
+    "...wwwwwww......",
+    "..Wwwwwwwwww....",
+    "..wwwwwwwwwww...",
+    "..wwwwwwwwwww...",
+    "..wwwwwwwwwww...",
+    "...w...w.w...w..",
+    "...w...w.w...w..",
+    "...k...k.k...k..",
+    "................",
+  ],
+  down1: [
+    "................",
+    "....www.........",
+    "....wew.........",
+    "....www.........",
+    "....www.........",
+    "....www.........",
+    "...wwww.........",
+    "...wwwwwww......",
+    "..Wwwwwwwwww....",
+    "..wwwwwwwwwww...",
+    "..wwwwwwwwwww...",
+    "..wwwwwwwwwww...",
+    "...w...w.w...w..",
+    "...k...w.k...w..",
+    "...w...k.w...k..",
+    "................",
+  ],
+};
+
+// =============================================================
+// SCENES / CHAPTERS — registry is defined at the bottom of the file.
+// =============================================================
+// Tile codes (shared base + scene-specific overlays):
+//  . / g / l = grass passable
+//  T = tree (solid)
+//  B = bush (solid)
+//  F = flowers (passable)
+//  P = brick path (passable)
+//  C = chair (solid)
+//  S = stage plank (passable)
+//  E = stage edge (passable)
+//  X = scene trigger / "exit" tile (passable; advances scene when player steps on it)
+//  W = solid building/wall
+//  H = house tile (solid)
+//  D = door (passable, can act as trigger)
+//  R = redwood/big tree (solid)
+//  V = vehicle / bus (solid)
+//  M = mountain peak (solid background)
+//  K = kitchen counter (solid)
+//  Q = quantum-computer prop (solid)
+//  L = low-ceiling rafters (solid; visual)
+//  Z = sand / cobblestone path (passable)
+//  N = water / canal (solid)
+//  J = lab equipment (solid)
+//  + = generic prop (solid)
+//
+//  20 wide x 12 tall. (320x192)
+let MAP = [];
+let npcs = [];
+let currentScene = null;     // SCENES[id], populated by loadScene()
+
+function isSolid(tx, ty) {
+  if (tx < 0 || ty < 0 || tx >= MAP_W || ty >= MAP_H) return true;
+  // Top 3 rows of horizon scenes are the horizon backdrop — block walking into them
+  if (currentScene && currentScene.horizon && ty < 3) return true;
+  const ch = MAP[ty][tx];
+  // walkable (passable):  . g l F P S E X w t Z D p k L (rafters are overhead, not floor blockers)
+  // solid:                T B C W H R V M K Q N J + h s r b d I u v y a m n 1 2 3
+  return 'TBCWHRVMKQNJ+hsrbdIuvyamn123'.indexOf(ch) >= 0;
+}
+
+const eli = {
+  x: 10 * TILE, y: 10 * TILE,
+  dir: 'down',
+  variant: 'grad',           // 'clean' | 'headband' | 'beard' | 'grad' (visual sprite to use)
+  moving: false,
+  frame: 0,
+  animTimer: 0,
+  speed: 1.1,
+};
+
+// localStorage save/resume
+const SAVE_KEY = 'eligame.lastScene.v1';
+function saveProgress(id) {
+  try { localStorage.setItem(SAVE_KEY, id); } catch (e) {}
+}
+function loadProgress() {
+  try { return localStorage.getItem(SAVE_KEY); } catch (e) { return null; }
+}
+function clearProgress() {
+  try { localStorage.removeItem(SAVE_KEY); } catch (e) {}
+}
+
+function loadScene(id) {
+  const s = SCENES[id];
+  if (!s) { console.error('Unknown scene', id); return; }
+  currentScene = s;
+  saveProgress(id);
+  // build MAP from scene tiles, padded to 20 wide
+  MAP = s.map.map(r => r.padEnd(MAP_W, '.').slice(0, MAP_W));
+  // reset NPCs (deep copy lines/talked etc.)
+  npcs = s.npcs.map(n => ({ ...n, talked: false, dir: n.dir || 'down', frame: 0 }));
+  // place Eli
+  eli.x = s.eliStart.x * TILE;
+  eli.y = s.eliStart.y * TILE;
+  eli.dir = s.eliStart.dir || 'down';
+  eli.variant = s.eli || 'clean';
+  eli.moving = false;
+  eli.frame = 0;
+  // reset state flags
+  ceremonyTriggered = false;
+  ceremonyTimer = 0;
+  confetti = [];
+  walkPath = null;
+  walkTarget = null;
+}
+
+function showChapterCard(onTap) {
+  if (!currentScene) return;
+  const el = document.getElementById('chapter');
+  document.getElementById('chapterNum').textContent = 'CHAPTER ' + currentScene.chapterNum;
+  document.getElementById('chapterTitle').textContent = currentScene.title;
+  document.getElementById('chapterSub').textContent = currentScene.subtitle || '';
+  el.classList.add('show');
+  const dismiss = (e) => {
+    if (e) e.preventDefault();
+    el.removeEventListener('click', dismiss);
+    el.removeEventListener('touchstart', dismiss);
+    el.classList.remove('show');
+    if (onTap) onTap();
+  };
+  el.addEventListener('click', dismiss);
+  el.addEventListener('touchstart', dismiss, { passive: false });
+}
+
+// fade helpers (manipulate #fade overlay)
+function fadeOut(cb) {
+  const el = document.getElementById('fade');
+  el.classList.add('on');
+  setTimeout(() => { if (cb) cb(); }, 650);
+}
+function fadeIn() {
+  const el = document.getElementById('fade');
+  el.classList.remove('on');
+}
+
+function advanceScene() {
+  if (!currentScene || !currentScene.next) {
+    // last scene — finale already handled by the GT graduation
+    return;
+  }
+  const nextId = currentScene.next;
+  fadeOut(() => {
+    loadScene(nextId);
+    fadeIn();
+    showChapterCard(() => {
+      if (currentScene.hint) showHint(currentScene.hint, 4500);
+    });
+  });
+}
+
+// =============================================================
+// INPUT
+// =============================================================
+const keys = { up: false, down: false, left: false, right: false, action: false };
+
+document.addEventListener('keydown', (e) => {
+  switch (e.key) {
+    case 'ArrowUp': case 'w': case 'W': keys.up = true; e.preventDefault(); break;
+    case 'ArrowDown': case 's': case 'S': keys.down = true; e.preventDefault(); break;
+    case 'ArrowLeft': case 'a': case 'A': keys.left = true; e.preventDefault(); break;
+    case 'ArrowRight': case 'd': case 'D': keys.right = true; e.preventDefault(); break;
+    case ' ': case 'Enter': case 'z': case 'Z':
+      if (!keys.action) { keys.action = true; pressAction(); }
+      e.preventDefault();
+      break;
+  }
+});
+document.addEventListener('keyup', (e) => {
+  switch (e.key) {
+    case 'ArrowUp': case 'w': case 'W': keys.up = false; break;
+    case 'ArrowDown': case 's': case 'S': keys.down = false; break;
+    case 'ArrowLeft': case 'a': case 'A': keys.left = false; break;
+    case 'ArrowRight': case 'd': case 'D': keys.right = false; break;
+    case ' ': case 'Enter': case 'z': case 'Z': keys.action = false; break;
+  }
+});
+
+// Touch dpad
+function bindDpadButton(el, dir) {
+  const setOn = (e) => { keys[dir] = true; e.preventDefault(); };
+  const setOff = (e) => { keys[dir] = false; e.preventDefault(); };
+  el.addEventListener('touchstart', setOn, { passive: false });
+  el.addEventListener('touchend', setOff, { passive: false });
+  el.addEventListener('touchcancel', setOff, { passive: false });
+  el.addEventListener('mousedown', setOn);
+  el.addEventListener('mouseup', setOff);
+  el.addEventListener('mouseleave', setOff);
+}
+document.querySelectorAll('.dpad-btn').forEach(el => {
+  bindDpadButton(el, el.dataset.dir);
+});
+
+const actionBtn = document.getElementById('actionBtn');
+actionBtn.addEventListener('touchstart', (e) => { e.preventDefault(); pressAction(); }, { passive: false });
+actionBtn.addEventListener('mousedown', (e) => { e.preventDefault(); pressAction(); });
+
+// =============================================================
+// DIALOG SYSTEM
+// =============================================================
+const dialogEl = document.getElementById('dialog');
+const dialogSpeaker = dialogEl.querySelector('.speaker');
+const dialogText = dialogEl.querySelector('.text');
+
+let dialogQueue = null;     // { speaker, lines, idx, onDone, npc?, useModal }
+
+// Character-modal dom
+const charDialogEl = document.getElementById('charDialog');
+const cdName = document.getElementById('cdName');
+const cdText = document.getElementById('cdText');
+const cdPortrait = document.getElementById('cdPortrait');
+const cdCtx = cdPortrait.getContext('2d');
+cdCtx.imageSmoothingEnabled = false;
+
+// Draw an NPC sprite into the portrait canvas (32x32 internal — 16px tile centered with 8px margin)
+function renderPortraitFor(npc) {
+  cdCtx.fillStyle = '#B3A369';
+  cdCtx.fillRect(0, 0, 32, 32);
+  // simple gradient floor for portrait
+  cdCtx.fillStyle = '#5a8c4a';
+  cdCtx.fillRect(0, 24, 32, 8);
+  cdCtx.fillStyle = '#3a6c30';
+  cdCtx.fillRect(0, 24, 32, 1);
+  if (!npc) return;
+  const sp = spriteForNPC(npc);
+  const frame = (Date.now() / 300 | 0) % 2;
+  const data = sp.frames['down' + frame] || sp.frames.down0;
+  // bob up/down 1px for "talking"
+  const bob = (Math.sin(Date.now() / 200) > 0) ? 0 : 1;
+  // draw at offset (8, 7) so the 16x16 sprite sits centered in the 32x32 portrait
+  for (let r = 0; r < data.length; r++) {
+    const row = data[r];
+    for (let c = 0; c < row.length; c++) {
+      const ch = row[c];
+      if (ch === '.') continue;
+      const col = sp.palette[ch];
+      if (col) {
+        cdCtx.fillStyle = col;
+        cdCtx.fillRect(8 + c, 7 + r + bob, 1, 1);
+      }
+    }
+  }
+  // shadow under feet
+  cdCtx.fillStyle = 'rgba(0,0,0,0.25)';
+  cdCtx.fillRect(13, 24, 6, 1);
+}
+
+function startDialog(speaker, lines, onDone, npc) {
+  const useModal = !!npc;
+  dialogQueue = { speaker, lines, idx: 0, onDone, npc, useModal };
+  showCurrentLine();
+  if (useModal) {
+    charDialogEl.classList.add('show');
+    renderPortraitFor(npc);
+  } else {
+    dialogEl.classList.add('show');
+  }
+}
+function showCurrentLine() {
+  if (!dialogQueue) return;
+  if (dialogQueue.useModal) {
+    cdName.textContent = dialogQueue.speaker;
+    cdText.textContent = dialogQueue.lines[dialogQueue.idx];
+  } else {
+    dialogSpeaker.textContent = dialogQueue.speaker;
+    dialogText.textContent = dialogQueue.lines[dialogQueue.idx];
+  }
+}
+function advanceDialog() {
+  if (!dialogQueue) return false;
+  dialogQueue.idx++;
+  if (dialogQueue.idx >= dialogQueue.lines.length) {
+    const cb = dialogQueue.onDone;
+    const npc = dialogQueue.npc;
+    const wasModal = dialogQueue.useModal;
+    dialogQueue = null;
+    if (wasModal) charDialogEl.classList.remove('show');
+    else dialogEl.classList.remove('show');
+    if (npc) npc.talked = true;
+    if (cb) cb();
+    return true;
+  }
+  showCurrentLine();
+  return true;
+}
+dialogEl.addEventListener('click', advanceDialog);
+dialogEl.addEventListener('touchstart', (e) => { e.preventDefault(); advanceDialog(); }, { passive: false });
+charDialogEl.addEventListener('click', advanceDialog);
+charDialogEl.addEventListener('touchstart', (e) => { e.preventDefault(); advanceDialog(); }, { passive: false });
+
+// =============================================================
+// HINT BANNER
+// =============================================================
+const hintEl = document.getElementById('hint');
+function showHint(text, ms) {
+  hintEl.textContent = text;
+  hintEl.classList.remove('hidden');
+  if (ms) {
+    clearTimeout(showHint._t);
+    showHint._t = setTimeout(() => hintEl.classList.add('hidden'), ms);
+  }
+}
+function hideHint() { hintEl.classList.add('hidden'); }
+
+// =============================================================
+// ACTION (talk / interact)
+// =============================================================
+function pressAction() {
+  if (dialogQueue) { advanceDialog(); return; }
+  if (state !== 'play') return;
+  // find NPC in front of Eli
+  const facing = facingTile();
+  for (const n of npcs) {
+    if (n.x === facing.tx && n.y === facing.ty) {
+      // make NPC face Eli
+      const dx = (eli.x / TILE | 0) - n.x;
+      const dy = (eli.y / TILE | 0) - n.y;
+      if (Math.abs(dx) > Math.abs(dy)) n.dir = dx > 0 ? 'right' : 'left';
+      else n.dir = dy > 0 ? 'down' : 'up';
+      startDialog(n.name, n.lines, onNpcDone, n);
+      return;
+    }
+  }
+}
+
+function facingTile() {
+  const cx = (eli.x + 8) / TILE | 0;
+  const cy = (eli.y + 8) / TILE | 0;
+  let tx = cx, ty = cy;
+  if (eli.dir === 'up') ty -= 1;
+  else if (eli.dir === 'down') ty += 1;
+  else if (eli.dir === 'left') tx -= 1;
+  else if (eli.dir === 'right') tx += 1;
+  return { tx, ty };
+}
+
+function onNpcDone() {
+  if (npcs.every(n => n.talked) && !ceremonyTriggered) {
+    const msg = currentScene && currentScene.exitHint
+      ? currentScene.exitHint
+      : (currentScene && currentScene.id === 'gt-grad'
+          ? "🎓 The ceremony is starting! Walk onto the stage."
+          : "Tap the glowing exit (X) to continue →");
+    showHint(msg, 5000);
+  }
+}
+
+// =============================================================
+// GAME STATE
+// =============================================================
+let state = 'title';   // title | play | ceremony | finale
+let ceremonyTriggered = false;
+let ceremonyTimer = 0;
+let confetti = [];
+
+document.getElementById('startBtn').addEventListener('click', () => startGame('mill-valley'));
+document.getElementById('startBtn').addEventListener('touchstart', (e) => { e.preventDefault(); startGame('mill-valley'); }, { passive: false });
+
+// Continue / Start Over title-screen buttons (only shown if a save exists)
+const continueBtn = document.getElementById('continueBtn');
+const restartBtn = document.getElementById('restartBtn');
+const startBtn = document.getElementById('startBtn');
+
+function refreshTitleButtons() {
+  const saved = loadProgress();
+  if (saved && SCENES[saved] && saved !== 'mill-valley') {
+    const ch = SCENES[saved].chapterNum;
+    const t = SCENES[saved].title;
+    continueBtn.textContent = '▶ CONTINUE — Ch ' + ch.split(' ')[0] + ': ' + t;
+    continueBtn.style.display = 'inline-block';
+    restartBtn.style.display = 'inline-block';
+    startBtn.style.display = 'none';
+  } else {
+    continueBtn.style.display = 'none';
+    restartBtn.style.display = 'none';
+    startBtn.style.display = 'inline-block';
+  }
+}
+// initial call deferred until after SCENES is initialized — see bottom of script
+continueBtn.addEventListener('click', () => startGame(loadProgress() || 'mill-valley'));
+continueBtn.addEventListener('touchstart', (e) => { e.preventDefault(); startGame(loadProgress() || 'mill-valley'); }, { passive: false });
+restartBtn.addEventListener('click', () => { clearProgress(); startGame('mill-valley'); });
+restartBtn.addEventListener('touchstart', (e) => { e.preventDefault(); clearProgress(); startGame('mill-valley'); }, { passive: false });
+
+async function tryLockLandscape() {
+  // Best-effort: works on Android Chrome (when fullscreen). iOS Safari ignores it,
+  // but the CSS portrait overlay still nudges the user.
+  try {
+    const el = document.documentElement;
+    if (!document.fullscreenElement && el.requestFullscreen) {
+      await el.requestFullscreen();
+    } else if (!document.webkitFullscreenElement && el.webkitRequestFullscreen) {
+      el.webkitRequestFullscreen();
+    }
+  } catch (e) { /* user denied or not supported */ }
+  try {
+    if (screen.orientation && screen.orientation.lock) {
+      await screen.orientation.lock('landscape');
+    }
+  } catch (e) { /* not supported on this browser/OS */ }
+}
+
+function startGame(sceneId) {
+  document.getElementById('title').classList.add('hidden');
+  state = 'play';
+  tryLockLandscape();
+  // detect touch capability
+  if (!('ontouchstart' in window) && navigator.maxTouchPoints === 0) {
+    document.body.classList.add('hidden-touch');
+  }
+  // load the requested scene + show chapter card
+  loadScene(sceneId || 'mill-valley');
+  showChapterCard(() => {
+    if (currentScene.hint) showHint(currentScene.hint, 4500);
+  });
+  // show the in-game menu button so the player can jump chapters mid-game
+  document.getElementById('menuBtn').classList.add('show');
+}
+
+// Replay
+document.getElementById('replayBtn').addEventListener('click', () => location.reload());
+
+// =============================================================
+// MOVEMENT
+// =============================================================
+function tryMove(dx, dy) {
+  // collision: check 4 corners of a small bounding box
+  const newX = eli.x + dx;
+  const newY = eli.y + dy;
+  // bounding box: 8px wide, 8px tall, centered horizontally, lower half of sprite
+  const bx0 = newX + 4, bx1 = newX + 11;
+  const by0 = newY + 8, by1 = newY + 15;
+  const corners = [[bx0, by0], [bx1, by0], [bx0, by1], [bx1, by1]];
+  for (const [px0, py0] of corners) {
+    const tx = (px0 / TILE) | 0;
+    const ty = (py0 / TILE) | 0;
+    if (isSolid(tx, ty)) return false;
+  }
+  // also check NPC collision (don't walk through them)
+  const eliTx = ((newX + 8) / TILE) | 0;
+  const eliTy = ((newY + 8) / TILE) | 0;
+  for (const n of npcs) {
+    if (n.x === eliTx && n.y === eliTy) return false;
+  }
+  eli.x = newX;
+  eli.y = newY;
+  return true;
+}
+
+// ---------- Click-to-walk pathfinding ----------
+let walkPath = null;       // remaining tile coords [{x,y},...] to walk
+let walkTarget = null;     // {x, y, npc?} to auto-talk on arrival
+
+function findPath(startX, startY, endX, endY) {
+  if (startX === endX && startY === endY) return [];
+  const queue = [[startX, startY]];
+  const visited = new Set([startX + ',' + startY]);
+  const parent = new Map();
+  while (queue.length) {
+    const [cx, cy] = queue.shift();
+    const moves = [[0,-1],[0,1],[-1,0],[1,0]];
+    for (const [dx, dy] of moves) {
+      const nx = cx + dx, ny = cy + dy;
+      const key = nx + ',' + ny;
+      if (visited.has(key)) continue;
+      if (isSolid(nx, ny)) continue;
+      visited.add(key);
+      parent.set(key, [cx, cy]);
+      if (nx === endX && ny === endY) {
+        // reconstruct
+        const path = [];
+        let k = nx + ',' + ny;
+        path.unshift({ x: nx, y: ny });
+        while (parent.has(k)) {
+          const [px0, py0] = parent.get(k);
+          if (px0 === startX && py0 === startY) break;
+          path.unshift({ x: px0, y: py0 });
+          k = px0 + ',' + py0;
+        }
+        return path;
+      }
+      queue.push([nx, ny]);
+    }
+  }
+  return null;
+}
+
+function adjacentWalkable(tx, ty) {
+  const ord = [[0,1],[1,0],[-1,0],[0,-1]];
+  for (const [dx, dy] of ord) {
+    if (!isSolid(tx + dx, ty + dy)) return { x: tx + dx, y: ty + dy };
+  }
+  return null;
+}
+
+function setWalkTo(tx, ty, npc) {
+  if (state !== 'play' || dialogQueue) return;
+  const startTx = ((eli.x + 8) / TILE) | 0;
+  const startTy = ((eli.y + 8) / TILE) | 0;
+  const path = findPath(startTx, startTy, tx, ty);
+  if (!path) return;
+  walkPath = path;
+  walkTarget = { x: tx, y: ty, npc };
+}
+
+function tickWalk(dt) {
+  if (!walkPath || walkPath.length === 0) {
+    if (walkTarget && walkTarget.npc) {
+      // arrived at adjacent tile — face the NPC and auto-talk
+      const dx = walkTarget.npc.x - ((eli.x + 8) / TILE | 0);
+      const dy = walkTarget.npc.y - ((eli.y + 8) / TILE | 0);
+      if (Math.abs(dx) > Math.abs(dy)) eli.dir = dx > 0 ? 'right' : 'left';
+      else eli.dir = dy > 0 ? 'down' : 'up';
+      eli.moving = false;
+      eli.frame = 0;
+      pressAction();
+    }
+    walkPath = null;
+    walkTarget = null;
+    eli.moving = false;
+    return;
+  }
+  const target = walkPath[0];
+  const tx = target.x * TILE;
+  const ty = target.y * TILE;
+  const dx = tx - eli.x;
+  const dy = ty - eli.y;
+  const dist = Math.hypot(dx, dy);
+  const sp = eli.speed * 1.4;   // slightly faster on tap-to-walk
+  if (dist <= sp) {
+    eli.x = tx;
+    eli.y = ty;
+    walkPath.shift();
+  } else {
+    if (Math.abs(dx) > Math.abs(dy)) eli.dir = dx > 0 ? 'right' : 'left';
+    else eli.dir = dy > 0 ? 'down' : 'up';
+    eli.x += (dx / dist) * sp;
+    eli.y += (dy / dist) * sp;
+  }
+  eli.moving = true;
+  eli.animTimer += dt;
+  if (eli.animTimer > 150) { eli.frame = 1 - eli.frame; eli.animTimer = 0; }
+}
+
+// canvas click → walk-to or talk-to handler
+function onCanvasTap(clientX, clientY) {
+  if (state !== 'play') return;
+  if (dialogQueue) { advanceDialog(); return; }   // tap-anywhere advances dialog
+  const rect = canvas.getBoundingClientRect();
+  const cx = (clientX - rect.left) * (VIEW_W / rect.width);
+  const cy = (clientY - rect.top) * (VIEW_H / rect.height);
+  const tx = (cx / TILE) | 0;
+  const ty = (cy / TILE) | 0;
+  if (tx < 0 || ty < 0 || tx >= MAP_W || ty >= MAP_H) return;
+  // check NPC click (within 1 tile of an NPC)
+  let bestNpc = null, bestDist = 999;
+  for (const n of npcs) {
+    const d = Math.abs(n.x - tx) + Math.abs(n.y - ty);
+    if (d <= 1 && d < bestDist) { bestNpc = n; bestDist = d; }
+  }
+  if (bestNpc) {
+    // walk to a tile adjacent to the NPC
+    const adj = adjacentWalkable(bestNpc.x, bestNpc.y);
+    if (adj) setWalkTo(adj.x, adj.y, bestNpc);
+    return;
+  }
+  // empty/walkable tile — walk there
+  if (!isSolid(tx, ty)) setWalkTo(tx, ty, null);
+}
+
+canvas.addEventListener('click', (e) => onCanvasTap(e.clientX, e.clientY));
+canvas.addEventListener('touchstart', (e) => {
+  e.preventDefault();
+  const t = e.touches[0];
+  if (t) onCanvasTap(t.clientX, t.clientY);
+}, { passive: false });
+
+function updateMovement(dt) {
+  if (dialogQueue || state !== 'play') { eli.moving = false; return; }
+
+  // 1) tap-to-walk path takes priority
+  if (walkPath) { tickWalk(dt); }
+  else {
+    // 2) keyboard / d-pad fallback (kept for desktop)
+    let mvx = 0, mvy = 0;
+    if (keys.up) mvy -= 1;
+    if (keys.down) mvy += 1;
+    if (keys.left) mvx -= 1;
+    if (keys.right) mvx += 1;
+    if (mvx !== 0 && mvy !== 0) { mvx *= 0.7071; mvy *= 0.7071; }
+    if (mvx !== 0 || mvy !== 0) {
+      eli.moving = true;
+      if (Math.abs(mvx) > Math.abs(mvy)) eli.dir = mvx > 0 ? 'right' : 'left';
+      else eli.dir = mvy > 0 ? 'down' : 'up';
+      const sp = eli.speed;
+      if (mvx !== 0) tryMove(mvx * sp, 0);
+      if (mvy !== 0) tryMove(0, mvy * sp);
+    } else {
+      eli.moving = false;
+    }
+    // animate
+    if (eli.moving) {
+      eli.animTimer += dt;
+      if (eli.animTimer > 180) { eli.frame = 1 - eli.frame; eli.animTimer = 0; }
+    } else {
+      eli.frame = 0;
+    }
+  }
+
+  // check scene-end trigger zone (X tile)
+  if (!ceremonyTriggered) {
+    const eliTx = ((eli.x + 8) / TILE) | 0;
+    const eliTy = ((eli.y + 8) / TILE) | 0;
+    if (MAP[eliTy] && MAP[eliTy][eliTx] === 'X') {
+      if (npcs.every(n => n.talked)) {
+        if (currentScene && currentScene.id === 'gt-grad') {
+          triggerCeremony();
+        } else if (currentScene && currentScene.next) {
+          ceremonyTriggered = true;
+          advanceScene();
+        }
+      } else if (currentScene) {
+        showHint(currentScene.lockedHint || "Talk to everyone first!", 2500);
+      }
+    }
+  }
+}
+
+// =============================================================
+// CEREMONY
+// =============================================================
+function triggerCeremony() {
+  ceremonyTriggered = true;
+  state = 'ceremony';
+  ceremonyTimer = 0;
+  hideHint();
+  // lock player to stage center (find the X row + col)
+  let xRow = -1, xCol = -1;
+  for (let r = 0; r < MAP.length; r++) {
+    const c = MAP[r].indexOf('X');
+    if (c >= 0) { xRow = r; xCol = c; break; }
+  }
+  if (xCol >= 0) {
+    eli.x = xCol * TILE;
+    eli.y = xRow * TILE;
+  }
+  eli.dir = 'down';
+  eli.moving = false;
+  // queue ceremony dialog
+  startDialog('Announcer', [
+    "Ladies and gentlemen, please rise...",
+    "Presenting our graduate from the College of Computing...",
+    "ELIJAH ORION TARR!",
+    "Bachelor of Science in Computer Science — Quantum Computing concentration.",
+    "Graduating with a 4.0 GPA!",
+    "Class of 2026!",
+  ], () => {
+    spawnConfetti(120);
+    setTimeout(showFinale, 1800);
+  });
+}
+
+function spawnConfetti(n) {
+  for (let i = 0; i < n; i++) {
+    confetti.push({
+      x: Math.random() * VIEW_W,
+      y: -Math.random() * 40,
+      vx: (Math.random() - 0.5) * 1.5,
+      vy: 0.5 + Math.random() * 1.5,
+      rot: Math.random() * Math.PI * 2,
+      vrot: (Math.random() - 0.5) * 0.2,
+      size: 2 + Math.random() * 2,
+      color: [C.gold, C.goldDk, C.goldLt, C.navy, C.navyLt, C.white, C.cream][i % 7],
+    });
+  }
+}
+
+function updateConfetti() {
+  for (let i = confetti.length - 1; i >= 0; i--) {
+    const c = confetti[i];
+    c.x += c.vx;
+    c.y += c.vy;
+    c.rot += c.vrot;
+    c.vy += 0.02;
+    if (c.y > VIEW_H + 20) confetti.splice(i, 1);
+  }
+}
+
+function drawConfetti() {
+  for (const c of confetti) {
+    ctx.save();
+    ctx.translate(c.x | 0, c.y | 0);
+    ctx.rotate(c.rot);
+    ctx.fillStyle = c.color;
+    ctx.fillRect(-c.size, -c.size / 2, c.size * 2, c.size);
+    ctx.restore();
+  }
+}
+
+// =============================================================
+// FINALE
+// =============================================================
+function showFinale() {
+  state = 'finale';
+  document.getElementById('finaleMsg').innerHTML =
+    `<div style="font-family:Georgia,'Times New Roman',serif;font-size:clamp(16px,4vw,20px);` +
+    `line-height:1.6;color:#fff;max-width:560px;margin:0 auto;padding:0 8px;">` +
+    `Dear Eli —<br><br>` +
+    `We love you and we are so proud of you and everything you've accomplished.<br><br>` +
+    `<strong style="color:#EAAA00">Congratulations!</strong><br><br>` +
+    `Love, Mom, Dad, Delilah & Hazel 🐶` +
+    `</div>`;
+  // clear the per-person notes
+  document.getElementById('finaleNotes').innerHTML = '';
+  // ensure the family photo is visible (img src is set in HTML to family.jpg)
+  const fp = document.getElementById('familyPhoto');
+  if (fp) fp.style.display = 'block';
+  document.getElementById('finale').classList.add('show');
+}
+
+// =============================================================
+// RENDER
+// =============================================================
+function drawMap() {
+  // Optionally a different "base" for interior scenes (wood floor) vs outdoor (grass)
+  const baseDraw = currentScene && currentScene.base === 'wood' ? drawWoodFloor :
+                   currentScene && currentScene.base === 'cobble' ? drawCobble :
+                   currentScene && currentScene.base === 'sky' ? drawSkyTile :
+                   currentScene && currentScene.base === 'dirt' ? drawDirt :
+                   null;
+  for (let ty = 0; ty < MAP_H; ty++) {
+    for (let tx = 0; tx < MAP_W; tx++) {
+      const ch = MAP[ty][tx];
+      const x = tx * TILE, y = ty * TILE;
+      const variant = (tx * 7 + ty * 13);
+      switch (ch) {
+        // outdoor / base
+        case 'P': drawBrick(x, y); break;
+        case 'S': case 'X': {
+          // X is also a stage tile in graduation scenes; for non-stage scenes
+          // it's just the floor/path under it (rendered the same as the base)
+          if (currentScene && currentScene.useStage === false) {
+            if (baseDraw) baseDraw(x, y); else drawGrass(x, y, variant);
+          } else {
+            drawStage(x, y);
+          }
+          break;
+        }
+        case 'E': drawStageEdge(x, y); break;
+        case 'T': drawTree(x, y); break;
+        case 'B': drawBush(x, y); break;
+        case 'F': drawFlowers(x, y); break;
+        case 'C': drawChair(x, y); break;
+        // interior
+        case 'W': drawWall(x, y); break;
+        case 'w': drawWoodFloor(x, y); break;
+        case 'K': drawKitchenCounter(x, y); break;
+        case 's': drawStove(x, y); break;
+        case 'r': drawFridge(x, y); break;
+        case 'b': drawBed(x, y); break;
+        case 'd': drawDesk(x, y); break;
+        case 't': drawTrumpet(x, y); break;
+        case 'L': drawRafter(x, y); break;
+        case 'Q': drawQuantumProp(x, y); break;
+        case 'J': drawLabBoard(x, y); break;
+        // outdoor specials
+        case 'N': drawWater(x, y); break;
+        case 'Z': drawCobble(x, y); break;
+        case 'D': drawDirt(x, y); break;
+        case 'M': drawMountain(x, y); break;
+        case 'I': drawIncaStone(x, y); break;
+        case 'R': drawRedwood(x, y); break;
+        case 'H': drawHouse(x, y, 'roof'); break;
+        case 'h': drawHouse(x, y, 'wall'); break;
+        case 'p': drawHouse(x, y, 'door'); break;
+        case '1': drawEiffelBase(x, y, 'top'); break;
+        case '2': drawEiffelBase(x, y, 'mid'); break;
+        case '3': drawEiffelBase(x, y, 'bot'); break;
+        case 'u': drawBus(x, y, 'front'); break;
+        case 'v': drawBus(x, y, 'mid'); break;
+        case 'y': drawBus(x, y, 'back'); break;
+        case 'a': drawPlane(x, y, 'nose'); break;
+        case 'm': drawPlane(x, y, 'mid'); break;
+        case 'n': drawPlane(x, y, 'tail'); break;
+        case 'k': drawSkyTile(x, y); break;
+        default:
+          // If the scene has a horizon backdrop, skip painting the top 3 rows
+          // (rows 0, 1, 2) with the default ground tile — let the horizon show through.
+          if (currentScene && currentScene.horizon && ty < 3) break;
+          if (baseDraw) baseDraw(x, y);
+          else drawGrass(x, y, variant);
+          break;
+      }
+    }
+  }
+  // football field overlay for the marching band scene
+  if (currentScene && currentScene.fieldOverlay === 'football') drawFootballField();
+  // optional banner + stage decor only in scenes that use the stage
+  if (currentScene && currentScene.banner) drawStageBanner();
+  if (!currentScene || currentScene.useStage !== false) drawStageDecor();
+}
+
+// Football-field paint: yard lines, hash marks, end zones, GT logo
+function drawFootballField() {
+  // FIELD_TOP is the y-coordinate where the playable field starts (just below horizon)
+  const FT = 3 * TILE;        // y=48 (top of field)
+  const FB = 12 * TILE;       // y=192 (bottom of canvas)
+  const FH = FB - FT;
+  // green field tint (slightly brighter, more turf-like)
+  ctx.fillStyle = '#3a7a3a';
+  ctx.fillRect(0, FT, VIEW_W, FH);
+  // mowed-grass stripe pattern (darker bands)
+  ctx.fillStyle = '#2e6a2e';
+  for (let y = FT; y < FB; y += 16) ctx.fillRect(0, y, VIEW_W, 8);
+  // end zones — left = TECH, right = visitors (darker green + gold lettering)
+  ctx.fillStyle = '#1a4a1a';
+  ctx.fillRect(0, FT, 2 * TILE, FH);
+  ctx.fillRect(18 * TILE, FT, 2 * TILE, FH);
+  // end-zone GT/TECH text (rotated 90°-ish — stacked letters)
+  const ezTextL = 'TECH', ezTextR = 'JAX';
+  for (let i = 0; i < ezTextL.length; i++) {
+    drawTinyText(ezTextL[i], 12, FT + 30 + i * 8, '#EAAA00');
+  }
+  for (let i = 0; i < ezTextR.length; i++) {
+    drawTinyText(ezTextR[i], 18 * TILE + 12, FT + 38 + i * 8, '#EAAA00');
+  }
+  // sidelines (top and bottom edges of playing area)
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, FT, VIEW_W, 2);
+  ctx.fillRect(0, FB - 2, VIEW_W, 2);
+  // yard lines — every 1.6 tiles, 9 lines from 10-yard to 10-yard (5,4,3,2,1,2,3,4,5 → 50 in middle)
+  const yardCols = [
+    { x: 4 * TILE, label: '10' },
+    { x: 5.6 * TILE, label: '20' },
+    { x: 7.2 * TILE, label: '30' },
+    { x: 8.8 * TILE, label: '40' },
+    { x: 10 * TILE, label: '50', bold: true },
+    { x: 11.2 * TILE, label: '40' },
+    { x: 12.8 * TILE, label: '30' },
+    { x: 14.4 * TILE, label: '20' },
+    { x: 16 * TILE, label: '10' },
+  ];
+  for (const yl of yardCols) {
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(yl.x | 0, FT + 2, yl.bold ? 2 : 1, FH - 4);
+    // yard number (top + bottom of field)
+    drawTinyText(yl.label, ((yl.x - 5) | 0), FT + 8, '#ffffff');
+    drawTinyText(yl.label, ((yl.x - 5) | 0), FB - 14, '#ffffff');
+  }
+  // hash marks (small ticks) along the middle of the field
+  ctx.fillStyle = '#ffffff';
+  for (let x = 2 * TILE; x < 18 * TILE; x += 8) {
+    ctx.fillRect(x, FT + Math.floor(FH / 3), 3, 1);
+    ctx.fillRect(x, FT + Math.floor(2 * FH / 3), 3, 1);
+  }
+  // 50-yard line GT logo at center
+  drawTinyText('GT', 10 * TILE - 5, FT + Math.floor(FH / 2) - 2, '#EAAA00');
+}
+
+function drawStageBanner() {
+  // Drape a banner across the top of the stage. Per-scene text/colors and Y-offset.
+  if (!currentScene) return;
+  const bgCol = currentScene.bannerBg || C.navyDk;
+  const fgCol = currentScene.bannerColor || C.gold;
+  const text = currentScene.banner || '';
+  if (!text) return;
+  const bx = 4 * TILE, by = currentScene.bannerY ?? 1;
+  const bw = 12 * TILE, bh = 14;
+  px(bx, by, bgCol, bw, bh);
+  px(bx, by, fgCol, bw, 1);
+  px(bx, by + bh - 1, fgCol, bw, 1);
+  const charW = 5;
+  const startX = bx + (bw - text.length * charW) / 2;
+  drawTinyText(text, startX, by + 4, fgCol);
+}
+
+function drawStageDecor() {
+  // gold tassels hanging down from stage front edge
+  for (let i = 0; i < 5; i++) {
+    const x = 3 * TILE + i * 3 * TILE + 6;
+    const y = 4 * TILE;
+    px(x, y, C.goldDk, 2, 1);
+    px(x, y + 1, C.gold, 2, 2);
+    px(x, y + 3, C.goldDk, 2, 1);
+  }
+  // podium at the X (ceremony) spot — only show when no one is on it
+  const xCol = MAP[2].indexOf('X');
+  if (xCol >= 0 && state !== 'ceremony') {
+    const px0 = xCol * TILE;
+    const py0 = 2 * TILE;
+    // small podium graphic on the stage
+    px(px0 + 5, py0 + 2, C.navyDk, 6, 2);
+    px(px0 + 5, py0 + 2, C.navy, 6, 1);
+    px(px0 + 4, py0 + 4, C.navyDk, 8, 1);
+    px(px0 + 6, py0 + 5, C.navy, 4, 4);  // body of podium
+    px(px0 + 6, py0 + 5, C.navyLt, 4, 1);
+    px(px0 + 7, py0 + 6, C.gold, 2, 1);  // GT logo
+    px(px0 + 7, py0 + 7, C.goldDk, 2, 1);
+    px(px0 + 6, py0 + 9, C.navyDk, 4, 1);
+  }
+}
+
+// Tiny pixel font (5x7) — minimal subset for the banner
+const TINY_FONT = {
+  'A':[" XX ","X  X","XXXX","X  X","X  X"],
+  'B':["XXX ","X  X","XXX ","X  X","XXX "],
+  'C':[" XXX","X   ","X   ","X   "," XXX"],
+  'D':["XXX ","X  X","X  X","X  X","XXX "],
+  'E':["XXXX","X   ","XXX ","X   ","XXXX"],
+  'F':["XXXX","X   ","XXX ","X   ","X   "],
+  'G':[" XXX","X   ","X XX","X  X"," XXX"],
+  'H':["X  X","X  X","XXXX","X  X","X  X"],
+  'I':["XXX "," X  "," X  "," X  ","XXX "],
+  'J':[" XXX","   X","   X","X  X"," XX "],
+  'K':["X  X","X X ","XX  ","X X ","X  X"],
+  'L':["X   ","X   ","X   ","X   ","XXXX"],
+  'M':["X  X","XXXX","XXXX","X  X","X  X"],
+  'N':["X  X","XX X","X XX","X  X","X  X"],
+  'O':[" XX ","X  X","X  X","X  X"," XX "],
+  'P':["XXX ","X  X","XXX ","X   ","X   "],
+  'Q':[" XX ","X  X","X  X","X X ","XX X"],
+  'R':["XXX ","X  X","XXX ","X X ","X  X"],
+  'S':[" XXX","X   "," XX ","   X","XXX "],
+  'T':["XXXXX","  X  ","  X  ","  X  ","  X  "],
+  'U':["X  X","X  X","X  X","X  X"," XX "],
+  'V':["X  X","X  X","X  X"," XX ","  X "],
+  'W':["X  X","X  X","XXXX","XXXX","X  X"],
+  'X':["X  X","X  X"," XX ","X  X","X  X"],
+  'Y':["X  X","X  X"," XX ","  X ","  X "],
+  'Z':["XXXX","   X"," XX ","X   ","XXXX"],
+  '0':[" XX ","X  X","X  X","X  X"," XX "],
+  '1':["  X ","XXX ","  X ","  X ","XXXX"],
+  '2':["XXX ","   X"," XX ","X   ","XXXX"],
+  '3':["XXX ","   X"," XX ","   X","XXX "],
+  '4':["X  X","X  X","XXXX","   X","   X"],
+  '5':["XXXX","X   ","XXX ","   X","XXX "],
+  '6':[" XXX","X   ","XXX ","X  X"," XX "],
+  '7':["XXXX","   X","  X ","  X ","  X "],
+  '8':[" XX ","X  X"," XX ","X  X"," XX "],
+  '9':[" XX ","X  X"," XXX","   X","XXX "],
+  ' ':["    ","    ","    ","    ","    "],
+  '!':["X","X","X"," ","X"],
+  ".":["    ","    ","    ","    ","X   "],
+  "'":[" X ","X  ","   ","   ","   "],
+};
+
+function drawTinyText(text, x, y, color) {
+  for (let i = 0; i < text.length; i++) {
+    const glyph = TINY_FONT[text[i]];
+    if (!glyph) continue;
+    for (let r = 0; r < glyph.length; r++) {
+      const row = glyph[r];
+      for (let c = 0; c < row.length; c++) {
+        if (row[c] === 'X') px(x + i * 5 + c, y + r, color);
+      }
+    }
+  }
+}
+
+function spriteForNPC(n) {
+  if (n.sprite === 'BUZZ') return { frames: BUZZ_FRAMES, palette: BUZZ_PAL };
+  if (n.sprite === 'PROF') return { frames: PROF_FRAMES, palette: PROF_PAL };
+  if (n.sprite === 'FRIEND') return { frames: FRIEND_FRAMES, palette: FRIEND_PAL };
+  if (n.sprite === 'DOG') return { frames: DOG_FRAMES, palette: DOG_PAL };
+  if (n.sprite === 'MOM') return { frames: MOM_FRAMES, palette: MOM_PAL };
+  if (n.sprite === 'DAD') return { frames: DAD_FRAMES, palette: DAD_PAL };
+  if (n.sprite === 'SIS') return { frames: SIS_FRAMES, palette: SIS_PAL };
+  if (n.sprite === 'GUY') return { frames: GUY_FRAMES, palette: GUY_PAL };
+  if (n.sprite === 'GIRL') return { frames: GIRL_FRAMES, palette: GIRL_PAL };
+  if (n.sprite === 'LLAMA') return { frames: LLAMA_FRAMES, palette: LLAMA_PAL };
+  if (n.sprite === 'BAND') return { frames: CASUAL_FRAMES, palette: BAND_PAL };
+  if (n.sprite === 'DRUM_MAJOR') return { frames: CASUAL_FRAMES, palette: DRUM_MAJOR_PAL };
+  return { frames: ELI_FRAMES, palette: ELI_PAL };
+}
+
+function drawCharShadow(x, y) {
+  // soft elliptical shadow under feet
+  ctx.fillStyle = 'rgba(0,0,0,0.25)';
+  ctx.beginPath();
+  ctx.ellipse(x + 8, y + 15, 5, 2, 0, 0, Math.PI * 2);
+  ctx.fill();
+}
+
+function drawNPCs() {
+  for (const n of npcs) {
+    const px0 = n.x * TILE;
+    const py0 = n.y * TILE;
+    const sp = spriteForNPC(n);
+    // pick frame — for buzz, gentle bob; for others, idle
+    const frame = (Date.now() / 400 | 0) % 2;
+    const dirKey = (n.dir || 'down') + frame;
+    const data = sp.frames[dirKey] || sp.frames['down' + frame] || sp.frames.down0;
+    drawCharShadow(px0, py0);
+    drawSpriteData(data, px0, py0, sp.palette);
+    // exclamation mark over un-talked NPCs
+    if (!n.talked) {
+      const bobY = Math.sin(Date.now() / 250) * 1.2;
+      const tx = px0 + 7;
+      const ty = py0 - 8 + bobY;
+      px(tx + 1, ty, C.gold);
+      px(tx, ty + 1, C.gold);
+      px(tx + 1, ty + 1, C.gold);
+      px(tx + 2, ty + 1, C.gold);
+      px(tx, ty + 2, C.gold);
+      px(tx + 1, ty + 2, C.gold);
+      px(tx + 2, ty + 2, C.gold);
+      px(tx + 1, ty + 3, C.gold);
+      px(tx + 1, ty + 5, C.gold);
+      px(tx + 1, ty + 6, C.gold);
+      // dark outline
+      ctx.fillStyle = C.navyDk;
+      ctx.fillRect(tx + 1, ty - 1, 1, 1);
+    }
+  }
+}
+
+// Eli sprite variant palettes (built off CASUAL_FRAMES)
+// Eli's hair is dirty blond.
+const ELI_PAL_CLEAN = {
+  k: C.dark, K: C.black,
+  s: C.skin, S: C.skinSh, D: C.skinDk,
+  h: '#c8a26a', H: '#9a7848',         // dirty blond
+  g: '#5a8c4a', G: '#3a6c30',         // green t-shirt (HS Eli)
+  y: '#403020', Y: '#201810',         // brown shorts/pants
+  e: C.dark, m: C.redDk, w: C.white,
+};
+const ELI_PAL_HEADBAND = {
+  k: C.dark, K: C.black,
+  s: C.skin, S: C.skinSh, D: C.skinDk,
+  h: '#c8a26a', H: '#cc4080',         // dirty blond hair, pink headband at the top
+  g: '#a04030', G: '#702a20',         // burgundy shirt (GT-ish)
+  y: '#3060c0', Y: '#1a3060',         // jeans
+  e: C.dark, m: C.redDk, w: C.white,
+};
+const ELI_PAL_BEARD = {
+  k: C.dark, K: C.black,
+  s: C.skin, S: C.skinSh, D: C.skinDk,
+  h: '#c8a26a', H: '#9a7848',         // dirty blond
+  g: '#3a608a', G: '#1a3060',         // navy shirt
+  y: '#403020', Y: '#201810',         // pants
+  e: C.dark, m: '#7a5a32',            // dirty-blond-ish beard
+  w: C.white,
+};
+
+const ELI_VARIANT_FRAMES = {
+  'clean':    { frames: CASUAL_FRAMES, palette: ELI_PAL_CLEAN },
+  'headband': { frames: CASUAL_FRAMES, palette: ELI_PAL_HEADBAND },
+  'beard':    { frames: CASUAL_FRAMES, palette: ELI_PAL_BEARD },
+  'grad':     { frames: ELI_FRAMES,    palette: ELI_PAL },
+};
+
+function drawEli() {
+  const variant = ELI_VARIANT_FRAMES[eli.variant] || ELI_VARIANT_FRAMES['grad'];
+  const dirKey = eli.dir + (eli.moving ? eli.frame : 0);
+  const data = variant.frames[dirKey] || variant.frames.down0;
+  drawCharShadow(eli.x, eli.y);
+  drawSpriteData(data, eli.x, eli.y, variant.palette);
+  // For bearded variant, overlay a beard on the chin area
+  if (eli.variant === 'beard') {
+    px(eli.x + 4, eli.y + 9, '#3a2410', 8, 1);   // beard line under mouth
+    px(eli.x + 5, eli.y + 10, '#3a2410', 6, 1);
+  }
+  // For headband variant, overlay a colorful crochet band
+  if (eli.variant === 'headband') {
+    const bands = ['#ff80b8', '#ffe040', '#a070d0', '#5a8c4a', '#3060c0'];
+    for (let i = 0; i < 7; i++) {
+      px(eli.x + 4 + i, eli.y + 4, bands[(i + Math.floor(Date.now()/600)) % bands.length]);
+    }
+  }
+  // during ceremony, show diploma raise
+  if (state === 'ceremony' && ceremonyTimer > 1500) {
+    // diploma in hand
+    const dx = eli.x + 11;
+    const dy = eli.y + 4 - Math.min(4, (ceremonyTimer - 1500) / 200);
+    px(dx, dy, C.cream, 4, 5);
+    px(dx, dy, C.goldDk, 4, 1);
+    px(dx, dy + 4, C.goldDk, 4, 1);
+    // ribbon
+    px(dx + 1, dy + 5, C.red);
+  }
+}
+
+function drawSpotlight() {
+  if (!npcs.every(n => n.talked) || ceremonyTriggered) return;
+  // find the X tile in the current map
+  let xRow = -1, xCol = -1;
+  for (let r = 0; r < MAP.length; r++) {
+    const c = MAP[r].indexOf('X');
+    if (c >= 0) { xRow = r; xCol = c; break; }
+  }
+  if (xCol < 0) return;
+  const cx = (xCol + 0.5) * TILE;
+  const cy = (xRow + 0.5) * TILE;
+  const r = 18 + Math.sin(Date.now() / 380) * 4;
+  const g = ctx.createRadialGradient(cx, cy, 3, cx, cy, r);
+  g.addColorStop(0, 'rgba(234,170,0,0.7)');
+  g.addColorStop(1, 'rgba(234,170,0,0)');
+  ctx.fillStyle = g;
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, 0, Math.PI * 2);
+  ctx.fill();
+  // for non-graduation scenes, also draw a bouncing arrow over the X
+  if (currentScene && currentScene.useStage === false) {
+    const bob = Math.sin(Date.now() / 220) * 2;
+    const ax = cx | 0;
+    const ay = (cy - 14 - bob) | 0;
+    // gold downward arrow
+    px(ax - 3, ay, '#001a30', 7, 1);
+    px(ax - 2, ay + 1, '#EAAA00', 5, 1);
+    px(ax - 1, ay + 2, '#EAAA00', 3, 1);
+    px(ax, ay + 3, '#EAAA00', 1, 1);
+    // little label "EXIT"
+    drawTinyText('EXIT', ax - 9, ay - 7, '#EAAA00');
+  }
+}
+
+function drawSky() {
+  // subtle dawn gradient overlay across top — gives a ceremony "morning" feel
+  const grad = ctx.createLinearGradient(0, 0, 0, TILE * 2);
+  grad.addColorStop(0, 'rgba(255, 220, 140, 0.15)');
+  grad.addColorStop(1, 'rgba(255, 220, 140, 0)');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, VIEW_W, TILE * 2);
+}
+
+function render() {
+  // clear
+  ctx.fillStyle = C.g2;
+  ctx.fillRect(0, 0, VIEW_W, VIEW_H);
+
+  // skip drawing if no scene is loaded yet (title screen / before startGame)
+  if (!currentScene || MAP.length === 0) return;
+
+  drawHorizon();        // landscape backdrop (Mt Tam, Andes, Eiffel, Tech Tower, etc.)
+  drawMap();
+  drawSpotlight();
+  drawNPCs();
+  drawEli();
+  drawSky();
+  if (state === 'ceremony' || confetti.length) drawConfetti();
+}
+
+// =============================================================
+// SCENES REGISTRY
+// =============================================================
+// Map-tile legend (see top of file). Each scene defines:
+//   id, chapterNum, title, subtitle, banner (text on the upper banner),
+//   map (string array of rows), eliStart {x, y, dir}, eli (sprite variant),
+//   npcs [{name, sprite, x, y, dir, lines}], next (id of next scene), hint.
+// =============================================================
+const SCENES = {
+
+  // ========== CHAPTER 1: Mill Valley & Tam High Graduation ==========
+  'mill-valley': {
+    id: 'mill-valley',
+    chapterNum: '1 / 11',
+    title: 'Mill Valley',
+    subtitle: 'Tam High Graduation — June 2022',
+    banner: 'TAM HIGH 2022',
+    bannerColor: '#EAAA00',
+    bannerBg: '#7a1f1f',
+    bannerY: 88,
+    horizon: 'mt-tam',
+    eli: 'clean',
+    next: 'europe',
+    hint: "It's HS graduation day. Say goodbye, then walk onto the stage.",
+    eliStart: { x: 10, y: 10, dir: 'up' },
+    map: [
+      "....................",
+      "....................",
+      "....................",
+      "....SSSSSSSSSSSS....",
+      "T..gSSSSSSSSXSSSSSg.",
+      "Tg.gEEEEEEEEEEEEEEgg",
+      "T..g..............g.",
+      "T.g..F........F....g",
+      "T....g.g..PP..g.g...",
+      "T.g..g..g.PP.g..g...",
+      "Tg......g.PP.g.....g",
+      "TTTTT.....PP.....TTT",
+    ],
+    npcs: [
+      { name: "Mom (J'Amy)", sprite: 'MOM', x: 4, y: 6, dir: 'down', lines: [
+          "Eli! There's my graduate. 🥹",
+          "Look at you on this stage. You've worked so hard for this.",
+          "Tam High Class of 2022 — and we are so, so proud of you.",
+          "Now go enjoy this. We'll see you after — flowers and all." ] },
+      { name: "Delilah", sprite: 'SIS', x: 15, y: 6, dir: 'down', lines: [
+          "Oh look — the giant has descended from his cap and gown.",
+          "I drew a comic about you in the program. You're the villain. Obviously.",
+          "Mom is crying SO hard. Like, embarrassing-for-the-whole-row hard.",
+          "Go get your little piece of paper, nerd. I'll be at the back judging." ] },
+      { name: "Ari", sprite: 'GUY', x: 7, y: 8, dir: 'down', lines: [
+          "ELI! Yo, we made it dude!",
+          "Strawberry Point School, second grade. Remember? You had that one tooth.",
+          "Berkeley physics for me, Georgia Tech computing for you. Different fields, same brain.",
+          "Eleven years of school together. ELEVEN.",
+          "Don't lose touch, OK? Never." ] },
+      { name: "Hazel", sprite: 'DOG', x: 4, y: 9, dir: 'down', lines: [
+          "Woof! 🐶",
+          "(Hazel the English lab is wagging her entire body.)",
+          "(She licks your hand. Twice.)",
+          "*tail thumps loud on grass*" ] },
+    ],
+  },
+
+  // ========== CHAPTER 2: Europe Bus Tour ==========
+  'europe': {
+    id: 'europe',
+    chapterNum: '2 / 11',
+    title: 'Europe',
+    subtitle: 'Rick Steves Family Tour — Summer 2022 (3 weeks)',
+    banner: 'EUROPE 2022',
+    bannerColor: '#EAAA00',
+    bannerBg: '#003057',
+    bannerY: 88,
+    horizon: 'euro',
+    eli: 'clean',
+    next: 'smith-hall',
+    base: 'cobble',
+    useStage: false,
+    hint: "Three weeks across Europe. Find the family, then board the bus.",
+    eliStart: { x: 9, y: 10, dir: 'up' },
+    map: [
+      "....................",
+      "....................",
+      "....................",
+      "TTZZZZZZZZZZZZZZZZTT",
+      "TZZZZZZZZZZZZZZZZZZT",
+      "TZZZZZZZZZZZZZZZZZZT",
+      "TZZZZZZZZZZZZZZZZZZT",
+      "TZuvvvyZZZZZZZZZZZZT",
+      "TZZZZZZZZZZZZZZZZZZT",
+      "TZZZZZZZZZZZZZZZZZXT",
+      "TZZZZZZZZZZZZZZZZZZT",
+      "TTTTTTTTTTTTTTTTTTTT",
+    ],
+    npcs: [
+      { name: "Andy Steves (tour guide)", sprite: 'GUY', x: 8, y: 6, dir: 'down', lines: [
+          "Guten morgen, everybody!",
+          "Andy here — your guide for the next three weeks.",
+          "We need to get going at 7:30 AM SHARP!",
+          "On the bus, on the bus, on the bus." ] },
+      { name: "Mom (J'Amy)", sprite: 'MOM', x: 4, y: 5, dir: 'down', lines: [
+          "Three weeks. Six countries. Two of us actually finished the trip.",
+          "Dad and Delilah caught COVID in Rome and we left them there.",
+          "Switzerland and France was you and me. Best two-person bus tour ever.",
+          "I can't believe my baby's going to Atlanta in a month." ] },
+      { name: "Dad", sprite: 'DAD', x: 14, y: 5, dir: 'down', lines: [
+          "Neuschwanstein. The fairytale castle in Bavaria.",
+          "We hiked straight up that hill — I thought I was going to die.",
+          "You and Delilah went bounding ahead. I sat on a rock halfway up.",
+          "I never made it to Switzerland or France — Rome got me and Delilah with COVID.",
+          "But that castle. That's the one I still see when I close my eyes." ] },
+      { name: "Delilah", sprite: 'SIS', x: 7, y: 7, dir: 'down', lines: [
+          "Yeah, I caught COVID and missed half this trip. Don't @ me.",
+          "Dad and I were stuck in Rome for a week eating room-service pasta. He snored.",
+          "I drew a whole comic about it. You're in it. You don't say anything because you weren't there.",
+          "Bring me back a stroopwafel, beanstalk." ] },
+    ],
+  },
+
+  // ========== CHAPTER 3: Smith Hall, Freshman Year ==========
+  'smith-hall': {
+    id: 'smith-hall',
+    chapterNum: '3 / 11',
+    title: 'Smith Hall',
+    subtitle: 'Freshman Year — Fall 2022',
+    banner: 'SMITH HALL',
+    bannerColor: '#EAAA00',
+    bannerBg: '#003057',
+    eli: 'headband',
+    next: 'marching-band',
+    base: 'wood',
+    useStage: false,
+    horizon: 'smith',
+    bannerY: 88,
+    hint: "Meet the dorm crew, then head out (door on the right).",
+    eliStart: { x: 9, y: 10, dir: 'up' },
+    map: [
+      "....................",
+      "....................",
+      "....................",
+      "WtwwwbbbwwwbbbwwwddW",
+      "WwwwwbbbwwwbbbwwwddW",
+      "WwwwwwwwwwwwwwwwwwwW",
+      "WwwwbbbwwwwwwwwwbbwW",
+      "WwwwbbbwwwwwwwwwbbwW",
+      "WdwwwwwwwwwwwwwwwwwW",
+      "WdwwwwwwwwwwwwwwwwwW",
+      "WwwwwwwwwwwwwwwwwwXW",
+      "WWWWWWWWWWWWWWWWWWWW",
+    ],
+    npcs: [
+      { name: "Simon (roommate)", sprite: 'GUY', x: 6, y: 6, dir: 'down', lines: [
+          "Yo new guy! Eli, right? I'm Simon.",
+          "Computer Engineering? Same. Welcome to the suffering.",
+          "I see Delilah crocheted you that headband. Iconic." ] },
+      { name: "Vito (roommate)", sprite: 'GUY', x: 13, y: 6, dir: 'down', lines: [
+          "Vito. Pleasure.",
+          "Fair warning: I play music at hours that should be illegal.",
+          "Also: trumpet? You're in marching band? RIP your sleep schedule." ] },
+      { name: "Roommate", sprite: 'GUY', x: 9, y: 8, dir: 'down', lines: [
+          "Hey man — fourth roommate here.",
+          "(One of us will probably forget the others' names in twenty years.)",
+          "(But we lived through CS 1331 together. That bonds you.)" ] },
+      { name: "Marching Band Recruiter", sprite: 'PROF', x: 16, y: 5, dir: 'down', lines: [
+          "I see a 6'6\" trumpet player. You're WAY in the back row, kid.",
+          "Marching band. Jazz band. Both. Practice starts Monday.",
+          "Welcome to the Yellow Jacket Marching Band, Eli." ] },
+    ],
+  },
+
+  // ========== CHAPTER 4: Marching Band at Bobby Dodd Stadium ==========
+  'marching-band': {
+    id: 'marching-band',
+    chapterNum: '4 / 11',
+    title: 'Bobby Dodd Stadium',
+    subtitle: 'Yellow Jacket Marching Band — Game Day',
+    banner: 'GAME DAY',
+    bannerColor: '#EAAA00',
+    bannerBg: '#003057',
+    bannerY: 88,
+    horizon: 'stadium',
+    eli: 'beard',
+    next: 'du-house',
+    useStage: false,
+    fieldOverlay: 'football',
+    hint: "It's halftime. Find the section, then march to the formation (X).",
+    eliStart: { x: 10, y: 10, dir: 'up' },
+    map: [
+      "....................",
+      "....................",
+      "....................",
+      "llllllllllllllllllll",
+      "ll.l.l.l.l.l.l.l.l.l",
+      "llllllllllllllllllll",
+      "ll.l.l.l.l.X.l.l.l.l",
+      "llllllllllllllllllll",
+      "ll.l.l.l.l.l.l.l.l.l",
+      "llllllllllllllllllll",
+      "ll.l.l.l.l.l.l.l.l.l",
+      "llllllllllllllllllll",
+    ],
+    npcs: [
+      { name: "Drum Major", sprite: 'DRUM_MAJOR', x: 10, y: 4, dir: 'down', lines: [
+          "BAND, ATTEN-HUT!",
+          "We've got eight minutes until kickoff. Three songs in the rotation.",
+          "Trumpets — I want you LOUD on the high B.",
+          "Eli, you've got the solo on the bridge. Don't drop it. Go." ] },
+      { name: "Trumpet Buddy", sprite: 'BAND', x: 5, y: 6, dir: 'down', lines: [
+          "Yo Eli — that drill last night was BRUTAL.",
+          "You hit that high B clean every time though. Show-off.",
+          "Pre-game, halftime, post-game. Six hours of horn.",
+          "Worth it for the fight song. Every time." ] },
+      { name: "Sousaphone", sprite: 'BAND', x: 14, y: 6, dir: 'down', lines: [
+          "(He waves with one hand. The other is holding 30 pounds of brass.)",
+          "Tubas got your back, trumpets.",
+          "RAMBLIN' WRECK FROM GEORGIA TECH!" ] },
+      { name: "Buzz", sprite: 'BUZZ', x: 7, y: 8, dir: 'down', lines: [
+          "ELIIIIII! 🐝",
+          "Show me that high B! Show me that knee-high march step!",
+          "Stadium's packed. 50,000 fans. Let's GO Jackets!" ] },
+      { name: "Jazz Band Friend", sprite: 'BAND', x: 13, y: 8, dir: 'down', lines: [
+          "Marching by day, jazz tonight.",
+          "Brings out the same trumpet too — it's earned its keep.",
+          "Rest those lips, dude. Long night ahead." ] },
+    ],
+  },
+
+  // ========== CHAPTER 5: DU House — The Attic Loft ==========
+  'du-house': {
+    id: 'du-house',
+    chapterNum: '5 / 11',
+    title: 'The DU House',
+    subtitle: 'Sophomore + Junior — 2023-25',
+    banner: '   DU HOUSE   ',
+    bannerColor: '#EAAA00',
+    bannerBg: '#003057',
+    eli: 'beard',
+    next: 'paris',
+    base: 'wood',
+    useStage: false,
+    horizon: 'du',
+    bannerY: 88,
+    hint: "Eli's tall — watch the rafters. Talk to the brothers, then exit.",
+    eliStart: { x: 9, y: 10, dir: 'up' },
+    map: [
+      "....................",
+      "....................",
+      "....................",
+      "WLLLLLLLLLLLLLLLLLLW",
+      "WwwwwwbbbwwwwwwwddwW",
+      "WwwwwwbbbwwwwwwwddwW",
+      "WwwwwwwwwwwwwwwwwwwW",
+      "WwwwtwwwwwwwwwwwwwwW",
+      "WwwwwwwwwwwwwwwwwwwW",
+      "WwwwwwwwwwwwwwwwwwwW",
+      "WwwwwwwwwwwwwwwwwwXW",
+      "WWWWWWWWWWWWWWWWWWWW",
+    ],
+    npcs: [
+      { name: "Colby (roommate)", sprite: 'GUY', x: 6, y: 6, dir: 'down', lines: [
+          "There he is — the tallest man ever to live in this attic.",
+          "I literally watch you duck through every doorway.",
+          "And you switched to CS this year. ML, then Quantum. The whiteboard never stops moving." ] },
+      { name: "DU Brother", sprite: 'GUY', x: 14, y: 8, dir: 'down', lines: [
+          "Beard suits you, Eli. Headband era is over.",
+          "Initiation feels like yesterday. Two years ago already.",
+          "Brotherhood. Always." ] },
+      { name: "Jazz Band Buddy", sprite: 'GUY', x: 13, y: 6, dir: 'down', lines: [
+          "Trumpet, my dude. You and me on the next gig?",
+          "Marching by day, jazz by night. The schedule is psychotic.",
+          "But man, the music." ] },
+    ],
+  },
+
+  // ========== CHAPTER 5: Paris Study Abroad ==========
+  'paris': {
+    id: 'paris',
+    chapterNum: '6 / 11',
+    title: 'Paris',
+    subtitle: 'Cité Universitaire — Summer 2024',
+    banner: '    PARIS    ',
+    bannerColor: '#EAAA00',
+    bannerBg: '#003057',
+    bannerY: 88,
+    horizon: 'paris',
+    eli: 'beard',
+    next: 'machu-picchu',
+    base: 'cobble',
+    useStage: false,
+    hint: "Take in Paris. Then continue east to the train.",
+    eliStart: { x: 9, y: 10, dir: 'up' },
+    map: [
+      "....................",
+      "....................",
+      "....................",
+      "TTZZZZZZZZZZZZZZZZTT",
+      "TZZZZZZZZZZZZZZZZZZT",
+      "TZ..ZZZZZZZZZZZZ..ZT",
+      "TZZZZZZZZZZZZZZZZZZT",
+      "TZZ..ZZZZZZZZZZZZZZT",
+      "TZZZZZZZZZZZZZZZZZZT",
+      "TZZZZZZZZZZZZZZZZZXT",
+      "TZZZZZZZZZZZZZZZZZZT",
+      "TTTTTTTTTTTTTTTTTTTT",
+    ],
+    npcs: [
+      { name: "Café Owner", sprite: 'PROF', x: 4, y: 5, dir: 'down', lines: [
+          "Bonjour! American student?",
+          "Cité Universitaire — the campus, oui? You walk past my café every morning.",
+          "Pain au chocolat or croissant? Take both. You're growing." ] },
+      { name: "Fellow Student", sprite: 'GIRL', x: 16, y: 5, dir: 'down', lines: [
+          "Eli! On the balcony again, debugging at midnight?",
+          "You're the only person I know who codes in two languages and one accent.",
+          "Tonight: dinner near the Eiffel Tower. I'm not asking." ] },
+      { name: "Quiet Moment", sprite: 'GUY', x: 4, y: 8, dir: 'down', lines: [
+          "(You stop on the cobblestones.)",
+          "(Eiffel Tower over your shoulder. Code on your laptop.)",
+          "(You're a long way from Mill Valley. And exactly where you should be.)" ] },
+    ],
+  },
+
+  // ========== CHAPTER 6: Machu Picchu ==========
+  'machu-picchu': {
+    id: 'machu-picchu',
+    chapterNum: '7 / 11',
+    title: 'Machu Picchu',
+    subtitle: 'Spring Break — March 2025',
+    banner: 'MACHU PICCHU',
+    bannerColor: '#EAAA00',
+    bannerBg: '#3a2410',
+    bannerY: 88,
+    horizon: 'andes',
+    eli: 'beard',
+    next: 'quantum-lab',
+    base: 'dirt',
+    useStage: false,
+    hint: "Top of the world. Take it in, then continue.",
+    eliStart: { x: 9, y: 10, dir: 'up' },
+    map: [
+      "....................",
+      "....................",
+      "....................",
+      "IIIIIIIIIIIIIIIIIIII",
+      "I.DDDDDDDDDDDDDDDD.I",
+      "I.DDDDDDDDDDDDDDDD.I",
+      "I.DDDDDDDDDDDDDDDD.I",
+      "I.DDDDDDDDDDDDDDDD.I",
+      "I.DDDDDDDDDDDDDDDD.I",
+      "I.DDDDDDDDDDDDDDXD.I",
+      "I.DDDDDDDDDDDDDDDDII",
+      "IIIIIIIIIIIIIIIIIIII",
+    ],
+    npcs: [
+      { name: "A friend", sprite: 'GUY', x: 5, y: 5, dir: 'down', lines: [
+          "Bro. We're at MACHU PICCHU.",
+          "Spring break trip of the millennium. Confirmed.",
+          "Junior year was wild. You picked quantum. You started research. You did the thing." ] },
+      { name: "A friend", sprite: 'GIRL', x: 14, y: 5, dir: 'down', lines: [
+          "I cannot believe you carried half my pack up the trail.",
+          "Pretty sure your stride is two of mine.",
+          "Look at this view. Remember it. We did this." ] },
+      { name: "A Llama", sprite: 'LLAMA', x: 10, y: 7, dir: 'down', lines: [
+          "(The llama looks at you, unimpressed.)",
+          "(It chews. Slowly.)",
+          "(You take a photo. The llama walks off.)" ] },
+    ],
+  },
+
+  // ========== CHAPTER 7: Quantum Lab — Junior Year ==========
+  'quantum-lab': {
+    id: 'quantum-lab',
+    chapterNum: '8 / 11',
+    title: 'The Quantum Lab',
+    subtitle: 'Junior Year — Fall 2024',
+    banner: 'QUANTUM LAB',
+    bannerColor: '#80c0ff',
+    bannerBg: '#001a30',
+    eli: 'beard',
+    next: 'hi-rise',
+    base: 'wood',
+    useStage: false,
+    horizon: 'qlab',
+    bannerY: 88,
+    hint: "This is where everything clicks. Talk to the lab crew, then exit.",
+    eliStart: { x: 9, y: 10, dir: 'up' },
+    map: [
+      "....................",
+      "....................",
+      "....................",
+      "WJJJwwwwQQwwwwJJJJJW",
+      "WwwwwwwwwwwwwwwwwwwW",
+      "WwdwwwwwwwwwwwwwwwwW",
+      "WwwwwwwwwwwwwwwwwwwW",
+      "WwwwwwwwwwwwwwwwwwwW",
+      "WwwwwwwwwwwwwwwwwwwW",
+      "WwwwwwwwwwwwwwwwwwwW",
+      "WwwwwwwwwwwwwwwwwwXW",
+      "WWWWWWWWWWWWWWWWWWWW",
+    ],
+    npcs: [
+      { name: "Nargaz (advisor)", sprite: 'GIRL', x: 6, y: 6, dir: 'down', lines: [
+          "Eli — read your latest writeup last night.",
+          "You switched into quantum six months ago and you're already running experiments.",
+          "Most undergrads take a year to find the rhythm. You took a week.",
+          "Keep showing up. The lab is yours to use." ] },
+      { name: "Prof. Moin Qureshi", sprite: 'PROF', x: 14, y: 6, dir: 'down', lines: [
+          "Eli — Nargaz speaks highly of you, and Nargaz does not speak highly of many.",
+          "Quantum is a long road. You'll spend years learning what you don't yet know.",
+          "I run this lab because the questions are worth a lifetime.",
+          "UCLA is going to be lucky to have you." ] },
+      { name: "The Whiteboard", sprite: 'GUY', x: 12, y: 8, dir: 'down', lines: [
+          "(Equations everywhere. Bloch spheres. Hadamard gates.)",
+          "(The board doesn't care about your major. It only respects work.)",
+          "(You've been showing up. The board notices.)" ] },
+    ],
+  },
+
+  // ========== CHAPTER 8: Hi Rise Connector — Senior Year ==========
+  'hi-rise': {
+    id: 'hi-rise',
+    chapterNum: '9 / 11',
+    title: 'The Hi Rise Connector',
+    subtitle: 'Senior Year Apartment — 2025-26',
+    banner: 'HI RISE',
+    bannerColor: '#EAAA00',
+    bannerBg: '#003057',
+    eli: 'beard',
+    next: 'rome',
+    base: 'wood',
+    useStage: false,
+    horizon: 'hirise',
+    bannerY: 88,
+    hint: "Eli's cooking — talk to the roommates, then head out.",
+    eliStart: { x: 9, y: 10, dir: 'up' },
+    map: [
+      "....................",
+      "....................",
+      "....................",
+      "WrsKKKwwwwbbbwwwwbbW",
+      "WwwwwwwwwwbbbwwwwbbW",
+      "WwwwwwwwwwwwwwwwwwwW",
+      "WdwwwwwwwwwwwwwwwwwW",
+      "WdwwwwwwwwwwwwwwwwwW",
+      "WwwwwwwwwwwwwwwwwwwW",
+      "WwwwwwwwwwwwwwwwwwwW",
+      "WwwwwwwwwwwwwwwwwwXW",
+      "WWWWWWWWWWWWWWWWWWWW",
+    ],
+    npcs: [
+      { name: "Colby", sprite: 'GUY', x: 4, y: 5, dir: 'down', lines: [
+          "Eli's cooking. AGAIN.",
+          "Three apartments, three years of roommate-ing. Wouldn't change a thing.",
+          "Whatever you're making smells incredible by the way." ] },
+      { name: "Adrian", sprite: 'GUY', x: 14, y: 6, dir: 'down', lines: [
+          "Hey man. Senior year going fast, huh?",
+          "Quantum thesis? Going to UCLA? Crazy.",
+          "Don't forget about us when you're a Doctor." ] },
+      { name: "French Roommate", sprite: 'GUY', x: 10, y: 6, dir: 'down', lines: [
+          "Eli! You make pasta better than Italians. Don't tell my mother.",
+          "You always cook for the four of us. Always.",
+          "Bonne chance for the thesis, mon ami." ] },
+      { name: "Vinay", sprite: 'GUY', x: 6, y: 8, dir: 'down', lines: [
+          "Yo — just stopped by. Portugal pictures still haven't sunk in.",
+          "Lisbon. Porto. The cliffs.",
+          "Best spring break ever. Period." ] },
+    ],
+  },
+
+  // ========== CHAPTER 9: The Rome Misadventure ==========
+  'rome': {
+    id: 'rome',
+    chapterNum: '10 / 11',
+    title: 'The Rome Misadventure',
+    subtitle: 'Two weeks before finals — April 2026',
+    banner: ' ROME TO ATL ',
+    bannerColor: '#EAAA00',
+    bannerBg: '#801a1a',
+    eli: 'beard',
+    next: 'gt-grad',
+    base: 'cobble',
+    useStage: false,
+    horizon: 'rome',
+    bannerY: 88,
+    hint: "Standby flight: missed. Find a way home before the exam.",
+    eliStart: { x: 9, y: 10, dir: 'up' },
+    map: [
+      "....................",
+      "....................",
+      "....................",
+      "ZZZZZZZZZZZZZZZZZZZZ",
+      "ZZZZZZZZZZZZZZZZZZZZ",
+      "Z..ZZZZZZZZZZZZZZZZZ",
+      "ZZZZZZZZZZZZZZZZZZZZ",
+      "ZZZZZZZZZZ..ZZZZZZZZ",
+      "ZZZZZZZZZZZZZZZZZZZZ",
+      "ZZZZZZZZZZZZZZZZZZXZ",
+      "ZZZZZZZZZZZZZZZZZZZZ",
+      "ZZZZZZZZZZZZZZZZZZZZ",
+    ],
+    npcs: [
+      { name: "Colby", sprite: 'GUY', x: 4, y: 5, dir: 'down', lines: [
+          "WE MISSED THE STANDBY.",
+          "OK new plan: Rome → Boston → Charlotte → train to Atlanta.",
+          "Exam is in 18 hours. We can do this." ] },
+      { name: "Gate Agent", sprite: 'GIRL', x: 12, y: 7, dir: 'down', lines: [
+          "Boston in 90 minutes. Charlotte connection. Then a train south.",
+          "You'll land in Atlanta with about an hour to spare. Maybe.",
+          "Run." ] },
+      { name: "Future Eli", sprite: 'GUY', x: 16, y: 9, dir: 'down', lines: [
+          "(Spoiler from the future:)",
+          "(You make it. One hour before the exam. Sweating, exhausted, alive.)",
+          "(You ace it. Of course you do.)" ] },
+    ],
+  },
+
+  // ========== CHAPTER 10: GT Graduation (Finale) ==========
+  'gt-grad': {
+    id: 'gt-grad',
+    chapterNum: '11 / 11',
+    title: 'Georgia Tech',
+    subtitle: 'Graduation Day — May 2026',
+    banner: 'GA TECH 2026',
+    bannerColor: '#EAAA00',
+    bannerBg: '#001a30',
+    bannerY: 88,
+    horizon: 'gt',
+    eli: 'grad',
+    next: null,                                    // finale scene
+    hint: "Talk to everyone, then walk onto the stage!",
+    lockedHint: "One more friend to greet first!",
+    eliStart: { x: 10, y: 10, dir: 'up' },
+    map: [
+      "....................",
+      "....................",
+      "....................",
+      "....SSSSSSSSSSSS....",
+      "T..gSSSSSSSSXSSSSSg.",
+      "Tg.gEEEEEEEEEEEEEEgg",
+      "T..g..............g.",
+      "T.g..C........C....g",
+      "T....g.g..PP..g.g...",
+      "T.g..g..g.PP.g..g...",
+      "Tg......g.PP.g.....g",
+      "TTTTT.....PP.....TTT",
+    ],
+    npcs: [
+      {
+        name: 'Buzz',
+        sprite: 'BUZZ',
+        x: 4, y: 7,
+        dir: 'down',
+        lines: [
+          "ELI! It's me, Buzz!",
+          "Four years and you made it through Georgia Tech!",
+          "Quantum Computing! 4.0! UCLA-bound! Insane.",
+          "You're a Yellow Jacket for life. Welcome to the alumni hive!",
+          "Go Jackets! 🐝🟡",
+        ],
+      },
+      {
+        name: 'A Professor',
+        sprite: 'PROF',
+        x: 15, y: 7,
+        dir: 'down',
+        lines: [
+          "Eli! There you are — our quantum computing star.",
+          "I remember when you switched in junior year and immediately joined the lab.",
+          "Most students take a year to find their footing. You took a week.",
+          "UCLA is lucky to have you. The PhD is going to suit you.",
+          "Now go build the future. We're proud of you.",
+        ],
+      },
+      {
+        name: 'Colby',
+        sprite: 'FRIEND',
+        x: 7, y: 9,
+        dir: 'down',
+        lines: [
+          "DUDE. WE DID IT.",
+          "Three years of roommate-ing. The DU attic. The Hi Rise. Rome.",
+          "Remember sprinting through Charlotte airport? I'll never forget that.",
+          "PhD-bound, baby. Go crush it at UCLA.",
+          "Now hurry up, the ceremony's about to start!",
+        ],
+      },
+    ],
+  },
+
+};
+
+// SCENES is now defined — safe to refresh the title-screen buttons
+refreshTitleButtons();
+
+// ---------- Chapter picker (jump-to-chapter menu) ----------
+const chapterPickerEl = document.getElementById('chapterPicker');
+const cpList = document.getElementById('cpList');
+const cpCloseBtn = document.getElementById('cpCloseBtn');
+const chooseChBtn = document.getElementById('chooseChBtn');
+const menuBtn = document.getElementById('menuBtn');
+const SCENE_ORDER = [
+  'mill-valley', 'europe', 'smith-hall', 'marching-band', 'du-house', 'paris',
+  'machu-picchu', 'quantum-lab', 'hi-rise', 'rome', 'gt-grad',
+];
+
+function buildChapterList() {
+  cpList.innerHTML = '';
+  SCENE_ORDER.forEach((id) => {
+    const s = SCENES[id];
+    if (!s) return;
+    const btn = document.createElement('button');
+    btn.className = 'cp-item';
+    btn.innerHTML =
+      '<span class="cp-num">' + s.chapterNum + '</span>' +
+      '<span class="cp-title">' + s.title +
+        ' <span class="cp-when">' + (s.subtitle || '') + '</span></span>';
+    const go = () => {
+      hideChapterPicker();
+      document.getElementById('title').classList.add('hidden');
+      document.getElementById('finale').classList.remove('show');
+      charDialogEl.classList.remove('show');
+      dialogEl.classList.remove('show');
+      dialogQueue = null;
+      state = 'play';
+      loadScene(id);
+      showChapterCard(() => {
+        if (currentScene.hint) showHint(currentScene.hint, 4500);
+      });
+      menuBtn.classList.add('show');
+    };
+    btn.addEventListener('click', go);
+    cpList.appendChild(btn);
+  });
+  // Final "Family Note" option — jumps to the finale screen
+  const fbtn = document.createElement('button');
+  fbtn.className = 'cp-item';
+  fbtn.style.borderColor = '#EAAA00';
+  fbtn.style.background = 'rgba(234,170,0,0.18)';
+  fbtn.innerHTML =
+    '<span class="cp-num">★</span>' +
+    '<span class="cp-title">The Family Note ' +
+      '<span class="cp-when">— Photo + Dad\'s message</span></span>';
+  fbtn.addEventListener('click', () => {
+    hideChapterPicker();
+    document.getElementById('title').classList.add('hidden');
+    charDialogEl.classList.remove('show');
+    dialogEl.classList.remove('show');
+    dialogQueue = null;
+    showFinale();
+  });
+  cpList.appendChild(fbtn);
+}
+
+function showChapterPicker() {
+  buildChapterList();
+  chapterPickerEl.classList.add('show');
+}
+function hideChapterPicker() {
+  chapterPickerEl.classList.remove('show');
+}
+
+chooseChBtn.addEventListener('click', showChapterPicker);
+chooseChBtn.addEventListener('touchstart', (e) => { e.preventDefault(); showChapterPicker(); }, { passive: false });
+cpCloseBtn.addEventListener('click', hideChapterPicker);
+cpCloseBtn.addEventListener('touchstart', (e) => { e.preventDefault(); hideChapterPicker(); }, { passive: false });
+// dismiss when tapping the dim background outside the card
+chapterPickerEl.addEventListener('click', (e) => {
+  if (e.target === chapterPickerEl) hideChapterPicker();
+});
+menuBtn.addEventListener('click', showChapterPicker);
+menuBtn.addEventListener('touchstart', (e) => { e.preventDefault(); showChapterPicker(); }, { passive: false });
+
+// =============================================================
+// MAIN LOOP
+// =============================================================
+let lastT = 0;
+function loop(t) {
+  try {
+    const dt = Math.min(50, t - lastT);
+    lastT = t;
+
+    if (state === 'play') updateMovement(dt);
+    if (state === 'ceremony') {
+      ceremonyTimer += dt;
+      if (Math.random() < 0.08) spawnConfetti(2);
+    }
+    updateConfetti();
+    render();
+    // animate the portrait modal if it's open
+    if (dialogQueue && dialogQueue.useModal && dialogQueue.npc) {
+      renderPortraitFor(dialogQueue.npc);
+    }
+  } catch (err) {
+    console.error('Frame error:', err);
+  }
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+
+// Pre-render check: hide controls if dialog showing? (always-on is fine)
+// detect non-touch on first input
+let firstInteract = false;
+window.addEventListener('mousedown', () => {
+  if (!firstInteract) {
+    firstInteract = true;
+    if (!('ontouchstart' in window)) document.body.classList.add('hidden-touch');
+  }
+});
+</script>
+</body>
+</html>
