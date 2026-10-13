@@ -9,3 +9,5 @@ title: "contact"
 
 * Github
   * <a href="https://www.github.com/tarr11">tarr11</a>
+* X
+  * <a href="https://x.com/doug_tarr">@doug_tarr</a>
