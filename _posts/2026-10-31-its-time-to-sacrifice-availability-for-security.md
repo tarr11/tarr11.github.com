@@ -31,7 +31,7 @@ In 2014, an attacker got into Code Spaces' AWS control panel and, over about 12 
 
 ## We internalized availability, but not security
 
-AWS commits to 99.99% monthly uptime for EC2 deployed across availability zones, and pays service credits when it misses ([AWS](https://aws.amazon.com/compute/sla/)). That's about four minutes of downtime a month. To hit numbers like that, engineers replicate, fail over, retry and recover. They assume disks die, servers crash, networks partition and regions go down, and they design around it.
+Zeabur ran its shared cluster in nine regions and backed up every cluster daily. That's normal. Engineers replicate, fail over, retry and recover. They assume disks die, servers crash, networks partition and regions go down, and they design around it.
 
 Security usually stops at authentication, authorization and encryption. Once a request passes those checks, the system serves it. Zeabur's attacker read the platform database through an internal read-only account that could read everything. The database logged 29 connections and 8,903 operations, and every one passed the checks.
 
