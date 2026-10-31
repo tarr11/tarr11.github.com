@@ -11,11 +11,9 @@ Zeabur published the most detailed report. On October 14, an attacker signed in 
 
 PingCAP's attacker used stolen service account credentials from September 9 to October 7, 28 days, before PingCAP noticed ([PingCAP](https://www.pingcap.com/trust-hub/security/security-update-october-2026/)). Railway paused every deployment on its platform while it investigated ([Railway](https://blog.railway.com/p/security-disclosure-wednesday-october-21st)). Northflank told every customer to assume attackers had decrypted all their environment variables ([Northflank](https://status.northflank.com/cmvv0rn5a092f14rutwccodpp)).
 
+![Timeline of notable security incidents in October 2026: Fireworks AI Oct 6, Andromeda Oct 9, Zeabur Oct 14, Lightning AI Oct 15, OpenCode Oct 16, PingCAP Oct 19, Railway Oct 20, Warp Oct 23, CommandCode Oct 28, Northflank Oct 30](/images/october-2026-incidents.svg)
+
 At Fireworks, Zeabur, Lightning AI and PingCAP, the attacker didn't break in. They logged in with valid credentials. Zeabur's report says that because the attacker used valid credentials and Zeabur's own access paths, about 36 hours of activity triggered no alerts. A user reported the breach.
-
-It wasn't only developer platforms. One tracker counted 100 dated security incidents in October, and its weekly count climbed from 9 in the first week to 35 in the third ([explainx.ai](https://explainx.ai/blog/october-2026-cyberattacks-list-breaches-exploits-ai-run-attacks-tracker-2026)). The company behind it sells agent security, so treat it as one vendor's count.
-
-![Security incidents per week in October 2026: 9, 13, 35, 31, and 12 in the last two days](/images/october-2026-incidents.svg)
 
 These systems are lopsided. They have sophisticated ways to keep running when something breaks. Few have a good way to stop when something looks wrong.
 
