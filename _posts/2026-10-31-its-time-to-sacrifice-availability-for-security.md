@@ -76,6 +76,8 @@ Should security interruptions count against availability SLAs? I think vendors s
 
 If I were building a data platform today, this is what I'd want on the list.
 
+![Nine ways to help your systems contain a breach: nine practices, from designing the security experience to designing for recovery](/images/developer-checklist.svg)
+
 **Design the security experience from the start.** Commits pushed while Railway's deployments were paused never deployed. Railway published follow-up posts telling customers to redeploy, reconnect GitHub, and recreate CLI and CI credentials ([Railway](https://blog.railway.com/p/security-disclosure-recommendation-recover-failing-deploys)). Containment isn't an error message. When the system pauses an export or locks a credential, the customer should know what happened, why, and what to do next. Design the notifications, the status in the console, the reauthorization flow and the path back to normal alongside the feature itself.
 
 **Build security circuit breakers.** PingCAP's attacker copied data for four weeks before anyone noticed. PingCAP now plans alerts for unusual access and large data exports, but an alert still waits for a person. Mass deletions, bulk exports, bulk secret reads and privilege changes should pause automatically when they look wrong. Detection has to lead to enforcement.

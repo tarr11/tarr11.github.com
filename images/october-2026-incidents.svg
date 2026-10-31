@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 350" width="640" height="350" role="img" aria-labelledby="t d">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 390" width="640" height="390" role="img" aria-labelledby="t d">
   <title id="t">Notable security incidents in October 2026</title>
   <desc id="d">Timeline of AI developer platforms that disclosed security incidents in October 2026, by disclosure date: Fireworks AI Oct 6, Andromeda Oct 9, Zeabur Oct 14, Lightning AI Oct 15, OpenCode Oct 16, PingCAP Oct 19, Railway Oct 20, Warp Oct 23, CommandCode Oct 28, Northflank Oct 30.</desc>
   <style>
@@ -10,6 +10,8 @@
     .t2 { fill: #52514e; font: 13px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
     .name { fill: #0b0b0b; font: 600 13px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
     .date { fill: #52514e; font: 12px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .foot { fill: #52514e; font: 600 13px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .rule { stroke: #e4e3df; stroke-width: 1; }
     .note { fill: #52514e; font: 12px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
     @media (prefers-color-scheme: dark) {
       .bg { fill: #1a1a19; }
@@ -17,10 +19,11 @@
       .stem { stroke: #4a4944; }
       .axis { stroke: #8a8984; }
       .t1, .name { fill: #f0efec; }
-      .t2, .date, .note { fill: #c3c2b7; }
+      .t2, .date, .note, .foot { fill: #c3c2b7; }
+      .rule { stroke: #33332f; }
     }
   </style>
-  <rect class="bg" width="640" height="350" rx="8"/>
+  <rect class="bg" width="640" height="390" rx="8"/>
   <text class="t1" x="24" y="34">Notable security incidents in October 2026</text>
   <text class="t2" x="24" y="54">AI developer platforms that disclosed breaches, by disclosure date</text>
 
@@ -76,4 +79,7 @@
   <text class="date" x="581" y="264" text-anchor="middle">Oct 30</text>
 
   <text class="note" x="24" y="336">Dates from Wiz's Black October list; PingCAP from its own incident report.</text>
+  <line class="rule" x1="24" x2="616" y1="352" y2="352"/>
+  <text class="foot" x="24" y="376">Doug Tarr</text>
+  <text class="foot" x="616" y="376" text-anchor="end">douglastarr.com</text>
 </svg>
