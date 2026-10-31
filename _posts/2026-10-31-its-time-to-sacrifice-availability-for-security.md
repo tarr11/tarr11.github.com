@@ -27,17 +27,17 @@ So containment has to be automated. Automated systems will sometimes get it wron
 
 We already accept this tradeoff in the physical world. Banks freeze your card when a charge looks odd (usually right when you're traveling and need it). Airports clear terminals over a suspicious bag. Schools lock down over a credible threat. Nobody loves these, but we accept some disruption to avoid something worse.
 
-In 2014, an attacker got into Code Spaces' AWS control panel and, over about 12 hours, deleted most of its data, machine configurations and offsite backups. The company shut down ([Channel Futures](https://channelfutures.com/cloud/the-cautionary-tale-of-code-spaces)). A temporary interruption is annoying, but you recover from it. Once an attacker steals or destroys your data, it stays that way.
+In August 2025, Microsoft described a ransomware group, Storm-0501, that took Global Administrator access to a company's Azure environment. It copied large amounts of data out, destroyed the data and the backups, then demanded a ransom over Microsoft Teams ([The Register](https://www.theregister.com/2025/08/27/storm0501_ransomware_azure_teams/)). A temporary interruption is annoying, but you recover from it. Once an attacker steals or destroys your data, it stays that way.
 
 ## We internalized availability, but not security
 
-In 2011, Netflix described Chaos Monkey, a tool that randomly shuts down its own production servers in the middle of the business day to prove customers won't notice. A sibling tool simulated losing an entire AWS availability zone ([Netflix](https://techblog.netflix.com/2011/07/netflix-simian-army.html)). That mindset is normal now. Engineers replicate, fail over, retry and recover. They assume disks die, servers crash, networks partition and regions go down, and they design around it.
+AWS lets customers cut the power to an entire availability zone on purpose. Its Fault Injection Service added that scenario in 2023 after customers asked for it, so they could prove their applications keep running ([AWS](https://aws.amazon.com/about-aws/whats-new/2023/11/aws-fault-injection-service-two-requested-scenarios/)). That mindset is normal now. Engineers replicate, fail over, retry and recover. They assume disks die, servers crash, networks partition and regions go down, and they design around it.
 
 Security usually stops at authentication, authorization and encryption. Once a request passes those checks, the system serves it. PingCAP's attacker used stolen service account credentials for 28 days, copying data and source code. Each request carried valid credentials, so each one passed the checks.
 
 Unit 42 found that identity weaknesses played a material role in nearly 90% of its investigations: attackers logged in instead of breaking in. Security people have understood defense in depth for a long time, but it hasn't sunk into everyday application engineering the way fault tolerance has. We should assume credentials will be compromised, permissions will be misconfigured and attackers will get past the perimeter, the same way we assume a disk will fail.
 
-Availability machinery can also work for the attacker. Zeabur's daily cluster backups stored every secret. During the incident, Zeabur rotated a compromised key at 15:40 UTC. The 16:00 backup captured the new key, and the attacker used it at 20:30. At Code Spaces, the offsite backups sat behind the same AWS account, so the attacker deleted those too. Backups, retries and replication can't tell a customer's work from an attacker's. They make sure both get done.
+Availability machinery can also work for the attacker. Zeabur's daily cluster backups stored every secret. During the incident, Zeabur rotated a compromised key at 15:40 UTC. The 16:00 backup captured the new key, and the attacker used it at 20:30. Storm-0501 reached the backups with the same admin access it used for everything else, and deleted those too. Backups, retries and replication can't tell a customer's work from an attacker's. They make sure both get done.
 
 ## Security teams can't solve this alone
 
@@ -82,7 +82,7 @@ If I were building a data platform today, this is what I'd want on the list.
 
 **Design for partial unavailability.** Railway stopped deployments for everyone. You should be able to suspend one user, tenant, resource, API or class of operation without shutting down the whole service. That's the brake for one car instead of the whole train.
 
-**Make operations interruptible.** Code Spaces' attacker spent about 12 hours deleting data and backups. Long-running exports, bulk reads and admin operations should support pause, cancel and reauthorize, so the system can stop one partway through.
+**Make operations interruptible.** Storm-0501 copied data out, then deleted data and backups across a company's Azure environment. Long-running exports, bulk reads and admin operations should support pause, cancel and reauthorize, so the system can stop one partway through.
 
 **Add friction when behavior looks suspicious.** Wiz followed two stolen AWS Bedrock keys. One made about 1.7 million calls in 13 hours. The other only worked in one group of AWS regions, so thousands of its calls failed and regional quotas slowed the rest ([Wiz, summarized by Qovery](https://www.qovery.com/blog/northflank-security-incident-secrets-own-cloud)). Scoped keys, rate limits, reduced concurrency and extra authorization buy time even when they don't stop an attack.
 
@@ -90,7 +90,7 @@ If I were building a data platform today, this is what I'd want on the list.
 
 **Measure false positives.** Track how often legitimate operations get interrupted, how long the interruptions last and how fast customers recover. Without that number, nobody can make a case for a tighter threshold.
 
-**Test containment, not just detection.** PingCAP's attacker had 28 days inside with valid credentials. Netflix shuts down its own servers on purpose to prove it can survive that. Do the same for attacks: compromised credentials, malicious bulk operations and privilege escalation. Then confirm the dangerous operations stop and nothing bypasses the restriction.
+**Test containment, not just detection.** PingCAP's attacker had 28 days inside with valid credentials. AWS will cut the power to an availability zone for you as a test. Do the same for attacks: compromised credentials, malicious bulk operations and privilege escalation. Then confirm the dangerous operations stop and nothing bypasses the restriction.
 
 **Design for recovery.** When Fireworks revoked exposed API keys, every customer app using them failed authentication until the customer created new keys. Make temporary restrictions reversible, and make interrupted operations safe to resume.
 
@@ -100,7 +100,7 @@ Railway's pause blocked deploys for every customer, including ones its own first
 
 The answer is graduated, fine-grained responses: slow it down first, then restrict, then stop, and only for the thing that looks wrong. The region-scoped Bedrock key in the Wiz case shows the first step working.
 
-The distinction I keep coming back to is reversible versus irreversible. Railway's customers redeployed. Zeabur is shutting down, and so did Code Spaces. A delayed export or a temporary account suspension is something you can recover from. Once someone steals confidential data, you can't make it secret again.
+The distinction I keep coming back to is reversible versus irreversible. Railway's customers redeployed. Zeabur is shutting down. Storm-0501's victim lost its backups. A delayed export or a temporary account suspension is something you can recover from. Once someone steals confidential data, you can't make it secret again.
 
 ## Security is part of reliability
 
