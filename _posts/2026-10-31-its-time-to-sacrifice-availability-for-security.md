@@ -115,4 +115,4 @@ That takes changes in architecture, engineering culture, who owns what, how vend
 
 A system that stays up while an attacker walks off with its customers' data isn't a reliable system.
 
-If you're working on this, or think I'm wrong, I'd love to hear from you.
+If you're working on this, or think I'm wrong, I'd love to hear from you. [Discuss this on X](https://x.com/doug_tarr/status/2116602423846588530).
