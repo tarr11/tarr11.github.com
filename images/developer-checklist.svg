@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 786" width="800" height="786" role="img" aria-labelledby="t d">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 830" width="800" height="830" role="img" aria-labelledby="t d">
 <title id="t">What developers should do differently</title>
 <desc id="d">1. Design the security experience: Tell customers what happened, why, and how to recover; 2. Build security circuit breakers: Suspicious bulk actions pause automatically, not just alert; 3. Design for partial unavailability: Suspend one tenant or operation, not the whole service; 4. Make operations interruptible: Long-running work can pause, cancel or reauthorize; 5. Add friction when behavior looks suspicious: Scoped keys, rate limits, less concurrency, extra auth; 6. Make restrictions survive failover: Retries, queues and backups can't route around them; 7. Measure false positives: Track interruptions, how long they last, how fast customers recover; 8. Test containment, not just detection: Simulate stolen credentials and confirm the damage stops; 9. Design for recovery: Restrictions are reversible; interrupted work resumes safely</desc>
 <style>
 .bg{fill:#fcfcfb} .num{fill:#2a78d6} .numt{fill:#ffffff;font:700 16px -apple-system, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif}
 .t1{fill:#0b0b0b;font:700 26px -apple-system, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif} .h{fill:#0b0b0b;font:600 18px -apple-system, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif} .d{fill:#52514e;font:15px -apple-system, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif}
-.rule{stroke:#e4e3df;stroke-width:1}
-@media (prefers-color-scheme: dark){ .bg{fill:#1a1a19} .num{fill:#3987e5} .t1,.h{fill:#f0efec} .d{fill:#c3c2b7} .rule{stroke:#33332f} }
+.foot{fill:#52514e;font:600 14px -apple-system, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif} .rule{stroke:#e4e3df;stroke-width:1}
+@media (prefers-color-scheme: dark){ .bg{fill:#1a1a19} .num{fill:#3987e5} .t1,.h{fill:#f0efec} .d,.foot{fill:#c3c2b7} .rule{stroke:#33332f} }
 </style>
-<rect class="bg" width="800" height="786" rx="10"/>
+<rect class="bg" width="800" height="830" rx="10"/>
 <text class="t1" x="40" y="60">What developers should do differently</text>
 <circle class="num" cx="58" cy="126" r="18"/><text class="numt" x="58" y="132" text-anchor="middle">1</text>
 <text class="h" x="96" y="121">Design the security experience</text><text class="d" x="96" y="144">Tell customers what happened, why, and how to recover</text>
@@ -35,4 +35,5 @@
 <line class="rule" x1="96" x2="760" y1="682" y2="682"/>
 <circle class="num" cx="58" cy="718" r="18"/><text class="numt" x="58" y="724" text-anchor="middle">9</text>
 <text class="h" x="96" y="713">Design for recovery</text><text class="d" x="96" y="736">Restrictions are reversible; interrupted work resumes safely</text>
+<line class="rule" x1="40" x2="760" y1="786" y2="786"/><text class="foot" x="40" y="814">Doug Tarr</text><text class="foot" x="760" y="814" text-anchor="end">douglastarr.com</text>
 </svg>
