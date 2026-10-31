@@ -1,7 +1,10 @@
 ---
 layout: post
 title: "It's time to sacrifice availability for security"
+image: /images/availability-for-security-cover.jpg
 ---
+
+![A single train car stopped under a red signal while another train speeds past at sunset](/images/availability-for-security-cover.jpg)
 
 ## October 2026 was a bad month
 
