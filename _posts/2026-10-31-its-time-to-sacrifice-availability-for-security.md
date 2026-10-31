@@ -13,6 +13,10 @@ PingCAP's attacker used stolen service account credentials from September 9 to O
 
 At Fireworks, Zeabur, Lightning AI and PingCAP, the attacker didn't break in. They logged in with valid credentials. Zeabur's report says that because the attacker used valid credentials and Zeabur's own access paths, about 36 hours of activity triggered no alerts. A user reported the breach.
 
+It wasn't only developer platforms. One tracker counted 100 dated security incidents in October, and its weekly count climbed from 9 in the first week to 35 in the third ([explainx.ai](https://explainx.ai/blog/october-2026-cyberattacks-list-breaches-exploits-ai-run-attacks-tracker-2026)). The company behind it sells agent security, so treat it as one vendor's count.
+
+![Security incidents per week in October 2026: 9, 13, 35, 31, and 12 in the last two days](/images/october-2026-incidents.svg)
+
 These systems are lopsided. They have sophisticated ways to keep running when something breaks. Few have a good way to stop when something looks wrong.
 
 ## We need to accept false positives

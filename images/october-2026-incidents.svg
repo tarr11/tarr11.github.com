@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" width="640" height="340" role="img" aria-labelledby="t d">
+  <title id="t">Security incidents per week, October 2026</title>
+  <desc id="d">Bar chart of incidents per week in October 2026: Oct 1 to 7, 9; Oct 8 to 14, 13; Oct 15 to 21, 35; Oct 22 to 28, 31; Oct 29 to 30 (two days), 12. Source: AgentBeam tracker via explainx.ai.</desc>
+  <style>
+    .bg { fill: #fcfcfb; }
+    .bar { fill: #2a78d6; }
+    .grid { stroke: #e4e3df; stroke-width: 1; }
+    .base { stroke: #b5b4ae; stroke-width: 1; }
+    .t1 { fill: #0b0b0b; font: 600 16px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .t2 { fill: #52514e; font: 13px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .val { fill: #0b0b0b; font: 600 14px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .note { fill: #52514e; font: 12px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #1a1a19; }
+      .bar { fill: #3987e5; }
+      .grid { stroke: #33332f; }
+      .base { stroke: #5c5b55; }
+      .t1, .val { fill: #f0efec; }
+      .t2, .note { fill: #c3c2b7; }
+    }
+  </style>
+  <rect class="bg" width="640" height="340" rx="8"/>
+  <text class="t1" x="24" y="34">Security incidents per week, October 2026</text>
+  <text class="t2" x="24" y="54">100 dated incidents in one tracker's count</text>
+
+  <!-- grid: y = 270 - v*5 -->
+  <line class="grid" x1="56" x2="616" y1="220" y2="220"/>
+  <line class="grid" x1="56" x2="616" y1="170" y2="170"/>
+  <line class="grid" x1="56" x2="616" y1="120" y2="120"/>
+  <text class="t2" x="46" y="224" text-anchor="end">10</text>
+  <text class="t2" x="46" y="174" text-anchor="end">20</text>
+  <text class="t2" x="46" y="124" text-anchor="end">30</text>
+
+  <!-- bars: 4px rounded data end, square at baseline -->
+  <path class="bar" d="M76,270 V229 a4,4 0 0 1 4,-4 H148 a4,4 0 0 1 4,4 V270 Z"/>
+  <path class="bar" d="M188,270 V209 a4,4 0 0 1 4,-4 H260 a4,4 0 0 1 4,4 V270 Z"/>
+  <path class="bar" d="M300,270 V99 a4,4 0 0 1 4,-4 H372 a4,4 0 0 1 4,4 V270 Z"/>
+  <path class="bar" d="M412,270 V119 a4,4 0 0 1 4,-4 H484 a4,4 0 0 1 4,4 V270 Z"/>
+  <path class="bar" d="M524,270 V214 a4,4 0 0 1 4,-4 H596 a4,4 0 0 1 4,4 V270 Z"/>
+  <line class="base" x1="56" x2="616" y1="270" y2="270"/>
+
+  <text class="val" x="114" y="217" text-anchor="middle">9</text>
+  <text class="val" x="226" y="197" text-anchor="middle">13</text>
+  <text class="val" x="338" y="87" text-anchor="middle">35</text>
+  <text class="val" x="450" y="107" text-anchor="middle">31</text>
+  <text class="val" x="562" y="202" text-anchor="middle">12</text>
+
+  <text class="t2" x="114" y="290" text-anchor="middle">Oct 1 to 7</text>
+  <text class="t2" x="226" y="290" text-anchor="middle">Oct 8 to 14</text>
+  <text class="t2" x="338" y="290" text-anchor="middle">Oct 15 to 21</text>
+  <text class="t2" x="450" y="290" text-anchor="middle">Oct 22 to 28</text>
+  <text class="t2" x="562" y="290" text-anchor="middle">Oct 29 to 30*</text>
+
+  <text class="note" x="24" y="322">Source: AgentBeam tracker via explainx.ai, a security vendor's count. *Two days only.</text>
+</svg>
