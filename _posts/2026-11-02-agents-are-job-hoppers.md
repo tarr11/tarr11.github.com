@@ -1,6 +1,6 @@
 ---
 layout: post
-title: agents are job hoppers
+title: agents are still job hoppers
 ---
 
 Agents won't take over software engineering until they've had to do it for as long as you have. So you probably have a few years, at minimum.
