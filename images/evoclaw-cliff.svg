@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 312" width="640" height="312" role="img" aria-labelledby="t d">
+  <title id="t">Agents fall apart when they have to live with their code</title>
+  <desc id="d">On the same milestones, the best agents score above 80% when each milestone starts from a clean snapshot, and 38% when the agent builds on its own earlier work.</desc>
+  <style>
+    .bg { fill: #fcfcfb; }
+    .t1 { fill: #0b0b0b; font: 600 16px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .t2 { fill: #52514e; font: 13px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .lab { fill: #52514e; font: 13px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .val { fill: #0b0b0b; font: 600 15px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .tick { fill: #898781; font: 11px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .grid { stroke: #e4e3df; stroke-width: 1; }
+    .zero { stroke: #8a8984; stroke-width: 1.5; }
+    .base { stroke: #c9c8c2; stroke-width: 1; }
+    .hi { fill: #2a78d6; }
+    .mute { fill: #c3c2b7; }
+    .neg { fill: #e34948; }
+    .note { fill: #52514e; font: 12px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .foot { fill: #52514e; font: 600 13px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .rule { stroke: #e4e3df; stroke-width: 1; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #1a1a19; }
+      .t1, .val { fill: #f0efec; }
+      .t2, .lab, .note, .foot { fill: #c3c2b7; }
+      .grid, .rule { stroke: #33332f; }
+      .base { stroke: #4a4944; }
+      .hi { fill: #3987e5; }
+      .mute { fill: #5a5954; }
+      .neg { fill: #e66767; }
+    }
+  </style>
+  <rect class="bg" width="640" height="312" rx="8"/>
+  <text class="t1" x="24" y="34">Agents fall apart when they have to live with their code</text>
+  <text class="t2" x="24" y="54">Best overall score on the same EvoClaw (SWE-Milestone) milestones, 2026</text>
+  <line class="grid" x1="200.0" x2="200.0" y1="76" y2="180"/>
+  <line class="grid" x1="296.0" x2="296.0" y1="76" y2="180"/>
+  <line class="grid" x1="392.0" x2="392.0" y1="76" y2="180"/>
+  <line class="grid" x1="488.0" x2="488.0" y1="76" y2="180"/>
+  <line class="grid" x1="584.0" x2="584.0" y1="76" y2="180"/>
+  <line class="base" x1="200" x2="584" y1="180" y2="180"/>
+  <text class="tick" x="200.0" y="198" text-anchor="middle">0%</text>
+  <text class="tick" x="296.0" y="198" text-anchor="middle">25%</text>
+  <text class="tick" x="392.0" y="198" text-anchor="middle">50%</text>
+  <text class="tick" x="488.0" y="198" text-anchor="middle">75%</text>
+  <text class="tick" x="584.0" y="198" text-anchor="middle">100%</text>
+  <path class="mute" d="M200.0,89.0 H503.2 A4,4 0 0 1 507.2,93.0 V111.0 A4,4 0 0 1 503.2,115.0 H200.0 Z"/>
+  <text class="val" x="515.2" y="107.0">80%+</text>
+  <text class="lab" x="188" y="99.0" text-anchor="end">Each milestone from</text>
+  <text class="lab" x="188" y="115.0" text-anchor="end">a clean snapshot</text>
+  <path class="hi" d="M200.0,141.0 H342.0 A4,4 0 0 1 346.0,145.0 V163.0 A4,4 0 0 1 342.0,167.0 H200.0 Z"/>
+  <text class="val" x="354.0" y="159.0">38%</text>
+  <text class="lab" x="188" y="151.0" text-anchor="end">Building on its</text>
+  <text class="lab" x="188" y="167.0" text-anchor="end">own earlier work</text>
+  <text class="note" x="24" y="226">Source: Deng et al., EvoClaw / SWE-Milestone, arXiv 2603.13428.</text>
+  <text class="note" x="24" y="242">Score combines new features added and existing tests kept passing.</text>
+  <text class="note" x="24" y="258">The clean-snapshot score is reported only as “above 80%.”</text>
+  <line class="rule" x1="24" x2="616" y1="274" y2="274"/>
+  <text class="foot" x="24" y="298">Doug Tarr</text>
+  <text class="foot" x="616" y="298" text-anchor="end">douglastarr.com</text>
+</svg>
