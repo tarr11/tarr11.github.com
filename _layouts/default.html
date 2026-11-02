@@ -5,6 +5,9 @@
     <main class="page-content" aria-label="Content">
       <div class="w">
         {{ content }}
+        {%- if page.layout == "post" -%}
+          {%- include follow.html -%}
+        {%- endif -%}
       </div>
 
     </main>
