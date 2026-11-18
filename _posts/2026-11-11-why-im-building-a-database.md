@@ -19,4 +19,4 @@ It's early, and I keep finding things. A few weeks ago I learned the agents had 
 
 I don't know yet whether this becomes something other people use. I'd like to get it to a first release and find out.
 
-If you're curious, I'm starting a [Discord](https://discord.gg/WE3Cp9qY2h) to talk about the design. You can also leave your email on the site to hear when there's something to try. I'd appreciate the feedback.
+If you're curious, you can leave your email on the site to hear when there's something to try. I'd appreciate the feedback.
