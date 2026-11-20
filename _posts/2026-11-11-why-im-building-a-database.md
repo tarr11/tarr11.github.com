@@ -1,6 +1,7 @@
 ---
 layout: post
 title: why i'm building a database
+description: "Why I'm building MelodyDB, a database that takes the pain out of running a distributed system."
 ---
 
 I left MongoDB in July, after about eight years. I'd done what I set out to do there: we built a search and vector search platform and integrated the Voyage embeddings platform. I'm proud of what we built, and many people use those systems at large scale. I'm not looking for another role right now. I'm working on my own projects instead, and one of them has taken over.
